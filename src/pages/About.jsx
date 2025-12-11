@@ -60,13 +60,11 @@ export default function About() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
             >
-              <div className="absolute inset-0 bg-blue-500 rounded-full transform translate-x-4 translate-y-4 scale-90"></div>
               <img
                 src="https://highcaliberai.com/wp-content/uploads/2025/07/5aab4e52-cb31-4320-8571-5a879a62e390-1024x1024.png"
                 alt="David Berkowitz"
-                className="relative w-full max-w-md mx-auto rounded-full shadow-xl"
+                className="w-full max-w-md mx-auto rounded-full shadow-xl"
               />
             </motion.div>
           </div>

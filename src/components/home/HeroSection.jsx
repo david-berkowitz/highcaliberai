@@ -16,17 +16,11 @@ export default function HeroSection() {
         >
           {/* Logo Mark */}
           <div className="flex justify-center mb-8">
-            <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-bold tracking-wider text-gray-900">HIGH</span>
-              <span className="text-2xl font-bold tracking-wider">
-                <span className="text-red-600">C</span>
-                <span className="text-gray-900">ALIBER</span>
-              </span>
-              <span className="text-2xl font-bold tracking-wider">
-                <span className="text-red-600">A</span>
-                <span className="text-gray-900">I</span>
-              </span>
-            </div>
+            <img
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
+              alt="High Caliber AI"
+              className="h-20 w-auto"
+            />
           </div>
 
           {/* Headline */}

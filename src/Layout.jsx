@@ -22,17 +22,11 @@ export default function Layout({ children, currentPageName }) {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to={createPageUrl("Home")} className="flex items-center">
-              <div className="flex flex-col leading-tight">
-                <span className="text-sm font-bold tracking-wider text-gray-900">HIGH</span>
-                <span className="text-sm font-bold tracking-wider">
-                  <span className="text-red-600">C</span>
-                  <span className="text-gray-900">ALIBER</span>
-                </span>
-                <span className="text-sm font-bold tracking-wider">
-                  <span className="text-red-600">A</span>
-                  <span className="text-gray-900">I</span>
-                </span>
-              </div>
+              <img
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
+                alt="High Caliber AI"
+                className="h-10 w-auto"
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -132,18 +126,12 @@ export default function Layout({ children, currentPageName }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
-              <div className="flex flex-col leading-tight">
-                <span className="text-sm font-bold tracking-wider text-gray-900">HIGH</span>
-                <span className="text-sm font-bold tracking-wider">
-                  <span className="text-red-600">C</span>
-                  <span className="text-gray-900">ALIBER</span>
-                </span>
-                <span className="text-sm font-bold tracking-wider">
-                  <span className="text-red-600">A</span>
-                  <span className="text-gray-900">I</span>
-                </span>
-              </div>
-              <p className="text-sm text-gray-500 mt-3">
+              <img
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
+                alt="High Caliber AI"
+                className="h-12 w-auto mb-3"
+              />
+              <p className="text-sm text-gray-500">
                 Applied AI for Marketing
               </p>
             </div>

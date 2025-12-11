@@ -42,14 +42,11 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-blue-500 rounded-full transform translate-x-4 translate-y-4"></div>
-              <img
-                src="https://highcaliberai.com/wp-content/uploads/2025/10/l32o7gz1zoqjdnzz1nfq.avif"
-                alt="David Berkowitz"
-                className="relative w-full max-w-md mx-auto rounded-lg shadow-xl"
-              />
-            </div>
+            <img
+              src="https://highcaliberai.com/wp-content/uploads/2025/10/l32o7gz1zoqjdnzz1nfq.avif"
+              alt="David Berkowitz"
+              className="w-full max-w-md mx-auto rounded-2xl shadow-xl"
+            />
           </motion.div>
         </div>
       </div>
