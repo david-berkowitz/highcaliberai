@@ -55,7 +55,7 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-4">
+          <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-4 tracking-tight">
             What People Say
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-red-600 to-transparent mx-auto"></div>
@@ -72,16 +72,16 @@ export default function TestimonialsSection() {
                 transition={{ duration: 0.5 }}
                 className="w-full"
               >
-                <div className="bg-white rounded-3xl p-10 md:p-14 shadow-xl border border-gray-100">
-                  <Quote className="w-16 h-16 text-red-200 mx-auto mb-8" />
-                  <blockquote className="text-2xl md:text-3xl text-gray-800 leading-relaxed mb-10 font-medium text-center">
+                <div className="bg-white rounded-lg p-10 md:p-14 shadow-lg border border-gray-200">
+                  <Quote className="w-12 h-12 text-red-200 mx-auto mb-8" />
+                  <blockquote className="text-2xl md:text-3xl text-gray-800 leading-relaxed mb-10 font-light text-center">
                     "{testimonials[current].quote}"
                   </blockquote>
                   <div className="text-center">
-                    <p className="font-black text-gray-900 text-xl mb-1">
+                    <p className="font-semibold text-gray-900 text-lg mb-1">
                       {testimonials[current].name}
                     </p>
-                    <p className="text-red-600 font-semibold">
+                    <p className="text-gray-600 font-light text-sm">
                       {testimonials[current].title}
                     </p>
                   </div>

@@ -19,10 +19,10 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block px-4 py-2 bg-red-100 text-red-700 text-sm font-bold rounded-full mb-6">
-              MEET THE FOUNDER
+            <div className="inline-block px-4 py-1.5 border border-red-600 text-red-600 text-xs font-medium tracking-wider uppercase mb-8">
+              Meet the Founder
             </div>
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-10 leading-tight tracking-tight">
               David Berkowitz
             </h2>
             <div className="space-y-6">
@@ -45,10 +45,10 @@ export default function AboutSection() {
             </div>
             <Link
               to={createPageUrl("About")}
-              className="inline-flex items-center mt-8 px-8 py-4 bg-gray-900 text-white text-lg font-bold rounded-xl hover:bg-gray-800 transition-all hover:scale-105 group"
+              className="inline-flex items-center mt-8 px-8 py-3 bg-gray-900 text-white font-medium rounded-md hover:bg-gray-800 transition-all group"
             >
               Learn More About David
-              <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
