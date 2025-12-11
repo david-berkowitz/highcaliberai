@@ -44,71 +44,76 @@ export default function TestimonialsSection() {
   const prev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 lg:py-32 bg-gradient-to-br from-red-50 to-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(220,38,38,0.1),transparent_50%)]"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-4">
             What People Say
           </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-red-600 to-transparent mx-auto"></div>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto">
-          <div className="min-h-[300px] flex items-center">
+        <div className="relative max-w-5xl mx-auto">
+          <div className="min-h-[350px] flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="text-center px-4"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="w-full"
               >
-                <Quote className="w-12 h-12 text-red-100 mx-auto mb-6" />
-                <blockquote className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 italic">
-                  "{testimonials[current].quote}"
-                </blockquote>
-                <div>
-                  <p className="font-bold text-gray-900 text-lg">
-                    {testimonials[current].name}
-                  </p>
-                  <p className="text-gray-500">
-                    {testimonials[current].title}
-                  </p>
+                <div className="bg-white rounded-3xl p-10 md:p-14 shadow-xl border border-gray-100">
+                  <Quote className="w-16 h-16 text-red-200 mx-auto mb-8" />
+                  <blockquote className="text-2xl md:text-3xl text-gray-800 leading-relaxed mb-10 font-medium text-center">
+                    "{testimonials[current].quote}"
+                  </blockquote>
+                  <div className="text-center">
+                    <p className="font-black text-gray-900 text-xl mb-1">
+                      {testimonials[current].name}
+                    </p>
+                    <p className="text-red-600 font-semibold">
+                      {testimonials[current].title}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-6 mt-10">
             <button
               onClick={prev}
-              className="p-2 rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors"
+              className="p-3 rounded-full bg-white border-2 border-gray-200 hover:border-red-600 hover:bg-red-50 transition-all shadow-md hover:shadow-lg"
             >
-              <ChevronLeft className="w-5 h-5 text-gray-600" />
+              <ChevronLeft className="w-6 h-6 text-gray-600" />
             </button>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrent(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === current ? "bg-red-600" : "bg-gray-300"
+                  className={`h-3 rounded-full transition-all ${
+                    index === current ? "bg-red-600 w-10" : "bg-gray-300 w-3 hover:bg-gray-400"
                   }`}
                 />
               ))}
             </div>
             <button
               onClick={next}
-              className="p-2 rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors"
+              className="p-3 rounded-full bg-white border-2 border-gray-200 hover:border-red-600 hover:bg-red-50 transition-all shadow-md hover:shadow-lg"
             >
-              <ChevronRight className="w-5 h-5 text-gray-600" />
+              <ChevronRight className="w-6 h-6 text-gray-600" />
             </button>
           </div>
         </div>

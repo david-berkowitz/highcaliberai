@@ -17,7 +17,7 @@ export default function Layout({ children, currentPageName }) {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -122,16 +122,16 @@ export default function Layout({ children, currentPageName }) {
       <main className="pt-20">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <footer className="bg-gray-900 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
+            <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
               <img
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
                 alt="High Caliber AI"
-                className="h-12 w-auto mb-3"
+                className="h-14 w-auto mb-4 brightness-0 invert"
               />
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400 font-semibold">
                 Applied AI for Marketing
               </p>
             </div>
@@ -140,20 +140,20 @@ export default function Layout({ children, currentPageName }) {
                 href="https://www.linkedin.com/in/dberkowitz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-red-600 transition-colors"
+                className="text-gray-400 hover:text-red-500 transition-colors p-3 hover:bg-gray-800 rounded-lg"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-6 h-6" />
               </a>
               <a
                 href="mailto:david@highcaliberai.com"
-                className="text-gray-400 hover:text-red-600 transition-colors"
+                className="text-gray-400 hover:text-red-500 transition-colors p-3 hover:bg-gray-800 rounded-lg"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-6 h-6" />
               </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-            <p className="text-sm text-gray-400">
+          <div className="mt-12 pt-8 border-t border-gray-800 text-center">
+            <p className="text-sm text-gray-500 font-medium">
               © {new Date().getFullYear()} High Caliber AI. All rights reserved.
             </p>
           </div>
