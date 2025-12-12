@@ -166,7 +166,7 @@ export default function Services() {
             </p>
           </motion.div>
 
-          <div className="space-y-12">
+          <div className="grid md:grid-cols-3 gap-6">
             {pillars.map((pillar, index) => (
               <motion.div
                 key={pillar.title}
@@ -174,56 +174,51 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative"
+                className="group relative"
               >
-                <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
-                  <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Left: Number and Icon */}
-                    <div className="lg:col-span-1 bg-gradient-to-br from-red-600 to-red-700 p-8 lg:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden">
-                      <div className="absolute inset-0 opacity-10" style={{
-                        backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-                        backgroundSize: '20px 20px'
-                      }}></div>
-                      <div className="text-8xl font-black text-white/20 mb-4 relative z-10">{pillar.number}</div>
-                      <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-4 relative z-10">
-                        <pillar.icon className="w-10 h-10 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-white mb-2 relative z-10">{pillar.title}</h3>
-                      <p className="text-red-100 font-semibold relative z-10">{pillar.subtitle}</p>
+                <div className="h-full bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300">
+                  {/* Accent bar */}
+                  <div className="h-2 bg-gradient-to-r from-red-600 to-red-500"></div>
+                  
+                  <div className="p-8">
+                    {/* Icon */}
+                    <div className="w-14 h-14 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <pillar.icon className="w-7 h-7 text-white" />
                     </div>
-
-                    {/* Right: Content */}
-                    <div className="lg:col-span-2 p-8 lg:p-12">
-                      <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                        {pillar.description}
-                      </p>
-                      
-                      <div className="space-y-4 mb-6">
-                        <div className="flex items-start gap-3">
-                          <div className="w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <Check className="w-4 h-4 text-red-600" />
-                          </div>
-                          <div>
-                            <span className="font-semibold text-gray-900">Deliverable: </span>
-                            <span className="text-gray-700">{pillar.deliverable}</span>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start gap-3">
-                          <div className="w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <Zap className="w-4 h-4 text-red-600" />
-                          </div>
-                          <div>
-                            <span className="font-semibold text-gray-900">The Win: </span>
-                            <span className="text-gray-700">{pillar.outcome}</span>
-                          </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{pillar.title}</h3>
+                    <p className="text-red-600 font-semibold text-sm mb-4">{pillar.subtitle}</p>
+                    
+                    {/* Description */}
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      {pillar.description}
+                    </p>
+                    
+                    {/* Deliverable */}
+                    <div className="mb-4 p-4 bg-red-50 rounded-lg border border-red-100">
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="font-semibold text-gray-900 block text-sm mb-1">Deliverable</span>
+                          <span className="text-gray-700 text-sm">{pillar.deliverable}</span>
                         </div>
                       </div>
-
-                      <div className="pt-4 border-t border-gray-200">
-                        <p className="text-sm text-gray-500 italic">{pillar.example}</p>
+                    </div>
+                    
+                    {/* Outcome */}
+                    <div className="mb-4 p-4 bg-gray-900 rounded-lg">
+                      <div className="flex items-start gap-2">
+                        <Zap className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="font-semibold text-white block text-sm mb-1">The Win</span>
+                          <span className="text-gray-300 text-sm">{pillar.outcome}</span>
+                        </div>
                       </div>
                     </div>
+
+                    {/* Example */}
+                    <p className="text-xs text-gray-500 italic border-t border-gray-200 pt-4">{pillar.example}</p>
                   </div>
                 </div>
               </motion.div>
