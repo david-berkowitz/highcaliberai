@@ -38,50 +38,104 @@ function SnowfallBackground() {
 
 function SnowGlobe() {
   return (
-    <div className="relative w-full max-w-md mx-auto aspect-square">
-      {/* Glass sphere effect */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-100/20 via-transparent to-blue-200/30 backdrop-blur-sm border-4 border-white/30 shadow-2xl">
-        {/* Inner glow */}
-        <div className="absolute inset-4 rounded-full bg-gradient-radial from-white/10 to-transparent"></div>
-        
-        {/* Snow inside globe */}
-        <div className="absolute inset-0 rounded-full overflow-hidden">
-          {Array.from({ length: 30 }).map((_, i) => (
+    <div className="relative w-full max-w-md mx-auto aspect-square perspective-1000">
+      <motion.div
+        className="relative w-full h-full"
+        animate={{
+          rotateY: [0, 5, -5, 0],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        {/* Outer glass sphere with 3D effect */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 via-blue-100/30 to-blue-200/20 backdrop-blur-md border-[6px] border-white/50 shadow-[0_25px_60px_rgba(0,0,0,0.4),inset_0_-20px_40px_rgba(255,255,255,0.1),inset_0_20px_40px_rgba(0,0,0,0.1)]">
+          
+          {/* Light reflection - top left */}
+          <div className="absolute top-8 left-8 w-24 h-24 rounded-full bg-gradient-to-br from-white/60 to-transparent blur-xl"></div>
+          
+          {/* Light reflection - bottom right */}
+          <div className="absolute bottom-12 right-12 w-32 h-32 rounded-full bg-gradient-to-tl from-blue-200/40 to-transparent blur-2xl"></div>
+
+          {/* Inner atmosphere */}
+          <div className="absolute inset-8 rounded-full bg-gradient-radial from-blue-50/20 via-transparent to-transparent"></div>
+          
+          {/* Snow inside globe */}
+          <div className="absolute inset-0 rounded-full overflow-hidden">
+            {Array.from({ length: 40 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+                style={{
+                  width: `${Math.random() * 6 + 2}px`,
+                  height: `${Math.random() * 6 + 2}px`,
+                  left: `${Math.random() * 100}%`,
+                }}
+                initial={{
+                  y: "-10%",
+                  opacity: 0.9,
+                }}
+                animate={{
+                  y: "110%",
+                  x: [0, Math.random() * 20 - 10, 0],
+                  opacity: [0.9, 1, 0.8],
+                }}
+                transition={{
+                  duration: Math.random() * 4 + 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: Math.random() * 4,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Center content with 3D depth */}
+          <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-white rounded-full opacity-80"
-              initial={{
-                x: Math.random() * 100 + "%",
-                y: "-10%",
-              }}
+              className="relative"
               animate={{
-                y: "110%",
+                scale: [1, 1.05, 1],
+                rotateZ: [0, -2, 2, 0],
               }}
               transition={{
-                duration: Math.random() * 3 + 3,
+                duration: 4,
                 repeat: Infinity,
-                ease: "linear",
-                delay: Math.random() * 3,
+                ease: "easeInOut",
               }}
-            />
-          ))}
-        </div>
-
-        {/* Center content */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-red-600 px-8 py-6 rounded-lg shadow-xl transform hover:scale-105 transition-transform">
-            <div className="text-6xl font-bold text-white text-center">
-              2025
-            </div>
-            <div className="text-white text-center text-sm font-semibold mt-2">
-              Happy Holidays
-            </div>
+            >
+              <div className="relative bg-gradient-to-br from-red-500 to-red-700 px-10 py-8 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_-4px_8px_rgba(0,0,0,0.3),inset_0_4px_8px_rgba(255,255,255,0.2)] border-2 border-red-400/50">
+                {/* Shine effect */}
+                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/30 to-transparent rounded-t-xl"></div>
+                
+                <div className="relative text-7xl font-black text-white text-center drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
+                  2025
+                </div>
+                <div className="relative text-white text-center text-base font-bold mt-2 tracking-wide drop-shadow-lg">
+                  Happy Holidays
+                </div>
+                
+                {/* Sparkle decorations */}
+                <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-yellow-300 animate-pulse" />
+                <Sparkles className="absolute -bottom-2 -left-2 w-5 h-5 text-yellow-300 animate-pulse" style={{ animationDelay: "0.5s" }} />
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </div>
 
-      {/* Base */}
-      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-b from-gray-700 to-gray-900 rounded-b-full shadow-xl"></div>
+          {/* Snow pile at bottom */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-16 bg-gradient-to-t from-white/80 to-transparent rounded-b-full blur-sm"></div>
+        </div>
+
+        {/* Glass edge highlight */}
+        <div className="absolute inset-0 rounded-full border-[3px] border-transparent bg-gradient-to-br from-white/60 via-transparent to-transparent" style={{ WebkitMaskImage: 'radial-gradient(circle, transparent 98%, black 99%)', maskImage: 'radial-gradient(circle, transparent 98%, black 99%)' }}></div>
+      </motion.div>
+
+      {/* Base with 3D perspective */}
+      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-gradient-to-b from-gray-600 via-gray-800 to-gray-900 rounded-b-[50%] shadow-[0_15px_40px_rgba(0,0,0,0.6),inset_0_-8px_16px_rgba(0,0,0,0.4)]">
+        <div className="absolute inset-0 rounded-b-[50%] bg-gradient-to-b from-white/10 to-transparent"></div>
+      </div>
     </div>
   );
 }
@@ -144,6 +198,9 @@ ${companyName || "High Caliber AI"}
         }
         .animate-fall {
           animation: fall linear infinite;
+        }
+        .perspective-1000 {
+          perspective: 1000px;
         }
       `}</style>
 
