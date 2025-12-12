@@ -1,82 +1,88 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Sphere, Text3D, Center } from "@react-three/drei";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Download, RefreshCw, Loader2 } from "lucide-react";
+import { Sparkles, Download, RefreshCw, Loader2, Snowflake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { base44 } from "@/api/base44Client";
 
-function SnowParticle({ position }) {
-  const meshRef = useRef();
-  const [velocity] = useState(Math.random() * 0.02 + 0.01);
-  
-  useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.position.y -= velocity;
-      if (meshRef.current.position.y < -3) {
-        meshRef.current.position.y = 3;
-      }
-    }
-  });
+function SnowfallBackground() {
+  const snowflakes = Array.from({ length: 50 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    animationDuration: `${Math.random() * 3 + 2}s`,
+    animationDelay: `${Math.random() * 5}s`,
+    fontSize: `${Math.random() * 10 + 10}px`,
+  }));
 
   return (
-    <mesh ref={meshRef} position={position}>
-      <sphereGeometry args={[0.02, 8, 8]} />
-      <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} />
-    </mesh>
+    <div className="fixed inset-0 pointer-events-none overflow-hidden">
+      {snowflakes.map((flake) => (
+        <div
+          key={flake.id}
+          className="absolute animate-fall text-white opacity-70"
+          style={{
+            left: flake.left,
+            animationDuration: flake.animationDuration,
+            animationDelay: flake.animationDelay,
+            fontSize: flake.fontSize,
+          }}
+        >
+          ❄
+        </div>
+      ))}
+    </div>
   );
 }
 
 function SnowGlobe() {
-  const snowflakes = Array.from({ length: 100 }, (_, i) => ({
-    id: i,
-    position: [
-      (Math.random() - 0.5) * 4,
-      Math.random() * 6 - 3,
-      (Math.random() - 0.5) * 4
-    ]
-  }));
-
   return (
-    <>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} />
-      <pointLight position={[-10, -10, -10]} intensity={0.5} />
-      
-      {/* Outer glass sphere */}
-      <Sphere args={[2.5, 64, 64]} position={[0, 0, 0]}>
-        <meshPhysicalMaterial
-          transparent
-          opacity={0.2}
-          roughness={0.1}
-          metalness={0.1}
-          transmission={0.9}
-          thickness={0.5}
-        />
-      </Sphere>
+    <div className="relative w-full max-w-md mx-auto aspect-square">
+      {/* Glass sphere effect */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-100/20 via-transparent to-blue-200/30 backdrop-blur-sm border-4 border-white/30 shadow-2xl">
+        {/* Inner glow */}
+        <div className="absolute inset-4 rounded-full bg-gradient-radial from-white/10 to-transparent"></div>
+        
+        {/* Snow inside globe */}
+        <div className="absolute inset-0 rounded-full overflow-hidden">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white rounded-full opacity-80"
+              initial={{
+                x: Math.random() * 100 + "%",
+                y: "-10%",
+              }}
+              animate={{
+                y: "110%",
+              }}
+              transition={{
+                duration: Math.random() * 3 + 3,
+                repeat: Infinity,
+                ease: "linear",
+                delay: Math.random() * 3,
+              }}
+            />
+          ))}
+        </div>
 
-      {/* Snow particles */}
-      {snowflakes.map((flake) => (
-        <SnowParticle key={flake.id} position={flake.position} />
-      ))}
+        {/* Center content */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="bg-red-600 px-8 py-6 rounded-lg shadow-xl transform hover:scale-105 transition-transform">
+            <div className="text-6xl font-bold text-white text-center">
+              2025
+            </div>
+            <div className="text-white text-center text-sm font-semibold mt-2">
+              Happy Holidays
+            </div>
+          </div>
+        </div>
+      </div>
 
-      {/* Center piece - "2025" */}
-      <Center position={[0, 0, 0]}>
-        <mesh>
-          <boxGeometry args={[1.5, 0.8, 0.3]} />
-          <meshStandardMaterial color="#dc2626" metalness={0.6} roughness={0.2} />
-        </mesh>
-        <mesh position={[0, 0, 0.16]}>
-          <planeGeometry args={[1.4, 0.7]} />
-          <meshStandardMaterial color="#ffffff" />
-        </mesh>
-      </Center>
-
-      <OrbitControls enableZoom={false} enablePan={false} />
-    </>
+      {/* Base */}
+      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-b from-gray-700 to-gray-900 rounded-b-full shadow-xl"></div>
+    </div>
   );
 }
 
@@ -98,7 +104,7 @@ export default function Holidays() {
       
       setMessage(response);
     } catch (error) {
-      setMessage("Wishing you a season filled with innovation, success, and the perfect blend of human creativity and AI capability. Happy Holidays from High Caliber AI!");
+      setMessage("Wishing you a season filled with innovation, success, and the perfect blend of human creativity and AI capability. Happy Holidays 2025 from High Caliber AI!");
     } finally {
       setLoading(false);
     }
@@ -127,9 +133,22 @@ ${companyName || "High Caliber AI"}
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      <SnowfallBackground />
+      
+      <style>{`
+        @keyframes fall {
+          to {
+            transform: translateY(100vh);
+          }
+        }
+        .animate-fall {
+          animation: fall linear infinite;
+        }
+      `}</style>
+
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -150,20 +169,16 @@ ${companyName || "High Caliber AI"}
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* 3D Snow Globe */}
+            {/* Snow Globe */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
-                <div className="aspect-square w-full max-w-md mx-auto">
-                  <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
-                    <SnowGlobe />
-                  </Canvas>
-                </div>
-                <p className="text-center text-gray-400 text-sm mt-6">
-                  Drag to rotate the snow globe
+                <SnowGlobe />
+                <p className="text-center text-gray-400 text-sm mt-12">
+                  Interactive snow globe with falling snow
                 </p>
               </div>
             </motion.div>
@@ -273,7 +288,7 @@ ${companyName || "High Caliber AI"}
       </section>
 
       {/* Footer Message */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
