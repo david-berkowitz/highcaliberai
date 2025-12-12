@@ -20,7 +20,7 @@ const pillars = [
   {
     icon: Target,
     number: "01",
-    title: "The Strategy",
+    title: "Strategy",
     subtitle: "AI Marketing Roadmap",
     description: "I audit your marketing capabilities—not just your tech stack. I review talent, workflows, and processes to identify the bottlenecks holding growth back.",
     deliverable: "A prioritized roadmap that tells you exactly where to invest and where to cut costs.",
@@ -30,7 +30,7 @@ const pillars = [
   {
     icon: Users,
     number: "02",
-    title: "The Enablement",
+    title: "Enablement",
     subtitle: "Team Velocity & Upskilling",
     description: "I don't just teach prompts—I mentor your marketing staff to produce exponentially more output without burnout.",
     deliverable: "Custom workshops and ongoing mentorship that turn your writers, designers, and strategists into AI-augmented experts.",
@@ -40,7 +40,7 @@ const pillars = [
   {
     icon: Shield,
     number: "03",
-    title: "The Governance",
+    title: "Governance",
     subtitle: "Brand Safety & Growth Pilots",
     description: "I protect your brand while accelerating innovation through clear policies and high-impact pilot projects.",
     deliverable: "Internal AI usage policies plus managed pilots for GEO/AI Search Visibility and Content Scaling with trusted technical partners.",
@@ -162,7 +162,7 @@ export default function Services() {
               The Modern Marketing Operating System
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              I don't just consult—I install a complete framework across three strategic pillars
+              A complete framework across three strategic pillars
             </p>
           </motion.div>
 
@@ -265,45 +265,6 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Me - Credentials */}
-      <section className="py-20 lg:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why This Works
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Deep expertise at the intersection of enterprise marketing strategy and cutting-edge AI innovation
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {credentials.map((cred, index) => (
-              <motion.div
-                key={cred.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 border border-gray-200 text-center hover:shadow-lg transition-shadow"
-              >
-                <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <cred.icon className="w-8 h-8 text-red-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{cred.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{cred.description}</p>
               </motion.div>
             ))}
           </div>
