@@ -9,100 +9,86 @@ import {
   Handshake,
   Check,
   ArrowRight,
-  Circle
+  Circle,
+  Target,
+  Users,
+  Shield,
+  Zap
 } from "lucide-react";
 
-const services = [
+const pillars = [
   {
-    icon: TrendingUp,
-    title: "Fractional CMO Retainers",
-    description: "Strategic marketing leadership for B2B tech companies seeking experienced guidance without full-time commitment.",
-    features: [
-      "Go-to-market strategy development",
-      "Agency RFP management and selection",
-      "AI implementation consulting",
-      "Marketing team optimization",
-      "Performance measurement frameworks",
-      "Competitive analysis and positioning",
-    ],
-    benefits: [
-      "Senior-level expertise at a fraction of the cost",
-      "Flexible engagement based on your needs",
-      "Immediate impact on marketing effectiveness",
-      "Strategic perspective from industry veteran",
-    ],
+    icon: Target,
+    number: "01",
+    title: "The Strategy",
+    subtitle: "AI Marketing Roadmap",
+    description: "I audit your marketing capabilities—not just your tech stack. I review talent, workflows, and processes to identify the bottlenecks holding growth back.",
+    deliverable: "A prioritized roadmap that tells you exactly where to invest and where to cut costs.",
+    outcome: "Stop wasting budget on tools that don't deliver. Build a defensible GTM engine that scales.",
+    example: "Similar to the AI Readiness Roadmap delivered for data firm Athena Solutions",
   },
   {
+    icon: Users,
+    number: "02",
+    title: "The Enablement",
+    subtitle: "Team Velocity & Upskilling",
+    description: "I don't just teach prompts—I mentor your marketing staff to produce exponentially more output without burnout.",
+    deliverable: "Custom workshops and ongoing mentorship that turn your writers, designers, and strategists into AI-augmented experts.",
+    outcome: "Your existing team becomes your scaled team. No headcount added.",
+    example: "Like the transformational work delivered for ISLAA",
+  },
+  {
+    icon: Shield,
+    number: "03",
+    title: "The Governance",
+    subtitle: "Brand Safety & Growth Pilots",
+    description: "I protect your brand while accelerating innovation through clear policies and high-impact pilot projects.",
+    deliverable: "Internal AI usage policies plus managed pilots for GEO/AI Search Visibility and Content Scaling with trusted technical partners.",
+    outcome: "Innovate faster than competitors without risking your reputation or data.",
+    example: "Like the AI policy framework built for Russo Partners",
+  },
+];
+
+const additionalServices = [
+  {
     icon: BookOpen,
-    title: "AI Education & Training",
-    description: "Comprehensive learning programs designed to upskill marketing teams and drive AI adoption across organizations.",
+    title: "Speaking & Workshops",
+    description: "Executive keynotes and custom training programs that equip your organization with practical AI marketing strategies.",
     features: [
-      "Executive keynote presentations",
+      "Executive presentations",
       "Custom workshop development",
+      "Industry conference keynotes",
       "Team training sessions",
-      "AI strategy consulting",
-      "Implementation roadmaps",
-      "Best practices documentation",
-    ],
-    benefits: [
-      "Practical, immediately actionable insights",
-      "Customized content for your industry",
-      "Proven training methodologies",
-      "Ongoing support and guidance",
     ],
   },
   {
     icon: FileText,
-    title: "B2B Content Creation",
-    description: "High-quality content that positions your company as a thought leader while driving business results.",
+    title: "Thought Leadership Content",
+    description: "Strategic content that positions your company as an AI marketing authority while driving business results.",
     features: [
       "White papers and research reports",
       "Industry bylines and articles",
-      "Sales collateral and case studies",
-      "Thought leadership content",
-      "Email marketing campaigns",
-      "Social media strategy",
-    ],
-    benefits: [
-      "Expert-level content quality",
-      "Industry credibility and authority",
-      "Lead generation focused approach",
-      "Consistent brand messaging",
-    ],
-  },
-  {
-    icon: Handshake,
-    title: "Business Development",
-    description: "Strategic partnership development and networking to accelerate growth and market expansion.",
-    features: [
-      "Partnership strategy development",
-      "Industry connection facilitation",
-      "Business development consulting",
-      "Market expansion planning",
-      "Investor relations support",
-      "Advisory board participation",
-    ],
-    benefits: [
-      "Access to extensive industry network",
-      "Accelerated business growth",
-      "Strategic partnership opportunities",
-      "Market insights and intelligence",
+      "Case studies and success stories",
+      "LinkedIn and social media strategy",
     ],
   },
 ];
 
-const caseStudies = [
+const credentials = [
   {
-    client: "AARP",
-    challenge: "Needed strategic guidance for digital transformation initiative",
-    solution: "Provided fractional CMO services and AI implementation strategy",
-    result: "Successfully launched new digital marketing capabilities with measurable ROI improvements",
+    icon: TrendingUp,
+    title: "The Strategist",
+    description: "Fractional CMO for AI-forward companies like MADTECH.AI",
   },
   {
-    client: "Education First",
-    challenge: "Required team training on AI marketing applications",
-    solution: "Delivered comprehensive AI workshop series for marketing team",
-    result: "Enhanced team capabilities leading to improved campaign performance and efficiency",
+    icon: BookOpen,
+    title: "The Authority",
+    description: "Author of The Non-Obvious Guide to Using AI for Marketing (2025) and founder of AI Marketers Guild",
+  },
+  {
+    icon: Handshake,
+    title: "The Operator",
+    description: "Former executive at 360i and Publicis, translating enterprise rigor to growth-stage agility",
   },
 ];
 
@@ -110,89 +96,60 @@ export default function Services() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our <span className="text-red-600">Services</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/20 border border-red-600/30 rounded-full text-red-400 text-sm font-semibold mb-8">
+              <Zap className="w-4 h-4" />
+              AI-Transition Fractional CMO
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight">
+              Modernize Your Marketing
             </h1>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Comprehensive AI marketing solutions designed to drive real business results for B2B tech companies and agencies.
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-red-400 mb-8">
+              For the AI Era
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
+              I help B2B marketing leaders transform their teams, governance, and strategy—so they don't get left behind.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className={`grid lg:grid-cols-2 gap-12 items-start ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6">
-                    <service.icon className="w-7 h-7 text-red-600" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                    {service.title}
-                  </h2>
-                  <p className="text-lg text-gray-600 mb-8">
-                    {service.description}
-                  </p>
-                  <div className="mb-8">
-                    <h3 className="font-semibold text-gray-900 mb-4">What's Included:</h3>
-                    <ul className="space-y-3">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-start">
-                          <Check className="w-5 h-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-600">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <Link
-                    to={createPageUrl("Contact")}
-                    className="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors group"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-
-                <div className={`bg-white rounded-2xl p-8 shadow-sm border border-gray-100 ${
-                  index % 2 === 1 ? "lg:order-1" : ""
-                }`}>
-                  <h3 className="font-semibold text-gray-900 mb-6">Key Benefits:</h3>
-                  <ul className="space-y-4">
-                    {service.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-start">
-                        <Circle className="w-3 h-3 text-red-600 mr-3 mt-1.5 flex-shrink-0 fill-current" />
-                        <span className="text-gray-600">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      {/* Problem Statement */}
+      <section className="py-16 bg-white border-b border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+              The Challenge
+            </h3>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Your marketing team is overwhelmed. You're buying AI tools, but adoption is low, policies are non-existent, and you're worried about losing search visibility to AI agents. You don't need tech support—you need a <span className="font-semibold text-red-600">GTM strategy that incorporates AI</span>.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Case Studies */}
-      <section className="py-20 lg:py-28 bg-white">
+      {/* 3-Pillar Solution */}
+      <section className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -202,36 +159,71 @@ export default function Services() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Client Success Stories
+              The Modern Marketing Operating System
             </h2>
-            <p className="text-lg text-gray-600">
-              Real results from real clients who have transformed their marketing with our help.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              I don't just consult—I install a complete framework across three strategic pillars
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {caseStudies.map((study, index) => (
+          <div className="space-y-12">
+            {pillars.map((pillar, index) => (
               <motion.div
-                key={study.client}
-                initial={{ opacity: 0, y: 30 }}
+                key={pillar.title}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-2xl p-8"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative"
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">{study.client}</h3>
-                <div className="space-y-4">
-                  <div>
-                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">Challenge:</span>
-                    <p className="text-gray-600 mt-1">{study.challenge}</p>
-                  </div>
-                  <div>
-                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">Solution:</span>
-                    <p className="text-gray-600 mt-1">{study.solution}</p>
-                  </div>
-                  <div>
-                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">Result:</span>
-                    <p className="text-gray-600 mt-1">{study.result}</p>
+                <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
+                  <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Left: Number and Icon */}
+                    <div className="lg:col-span-1 bg-gradient-to-br from-red-600 to-red-700 p-8 lg:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden">
+                      <div className="absolute inset-0 opacity-10" style={{
+                        backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+                        backgroundSize: '20px 20px'
+                      }}></div>
+                      <div className="text-8xl font-black text-white/20 mb-4 relative z-10">{pillar.number}</div>
+                      <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-4 relative z-10">
+                        <pillar.icon className="w-10 h-10 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2 relative z-10">{pillar.title}</h3>
+                      <p className="text-red-100 font-semibold relative z-10">{pillar.subtitle}</p>
+                    </div>
+
+                    {/* Right: Content */}
+                    <div className="lg:col-span-2 p-8 lg:p-12">
+                      <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                        {pillar.description}
+                      </p>
+                      
+                      <div className="space-y-4 mb-6">
+                        <div className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Check className="w-4 h-4 text-red-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-gray-900">Deliverable: </span>
+                            <span className="text-gray-700">{pillar.deliverable}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Zap className="w-4 h-4 text-red-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-gray-900">The Win: </span>
+                            <span className="text-gray-700">{pillar.outcome}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="pt-4 border-t border-gray-200">
+                        <p className="text-sm text-gray-500 italic">{pillar.example}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -240,26 +232,117 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Additional Services */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Additional Services
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {additionalServices.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-shadow"
+              >
+                <div className="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                  <service.icon className="w-7 h-7 text-red-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-start">
+                      <Check className="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Me - Credentials */}
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why This Works
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Deep expertise at the intersection of enterprise marketing strategy and cutting-edge AI innovation
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {credentials.map((cred, index) => (
+              <motion.div
+                key={cred.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 border border-gray-200 text-center hover:shadow-lg transition-shadow"
+              >
+                <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <cred.icon className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{cred.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{cred.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Get Started?
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Ready to Modernize Your Marketing?
             </h2>
-            <p className="text-lg text-gray-400 mb-8">
-              Let's discuss which services would be the best fit for your organization's goals and challenges.
+            <p className="text-xl text-gray-300 mb-10 font-light">
+              Let's discuss how to transform your team, processes, and results for the AI era.
             </p>
             <Link
               to={createPageUrl("Contact")}
-              className="inline-flex items-center px-8 py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+              className="inline-flex items-center px-10 py-5 bg-red-600 text-white text-lg font-semibold rounded-lg hover:bg-red-700 transition-all shadow-xl hover:shadow-2xl group"
             >
               Schedule Consultation
+              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>
