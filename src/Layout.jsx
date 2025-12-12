@@ -126,11 +126,9 @@ export default function Layout({ children, currentPageName }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
-              <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
-                alt="High Caliber AI"
-                className="h-14 w-auto mb-4 brightness-0 invert"
-              />
+              <div className="h-14 mb-4 flex items-center">
+                <span className="text-2xl font-light text-white tracking-tight">High Caliber AI</span>
+              </div>
               <p className="text-sm text-gray-400 font-semibold">
                 Applied AI for Marketing
               </p>
@@ -144,12 +142,12 @@ export default function Layout({ children, currentPageName }) {
               >
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a
-                href="mailto:david@highcaliberai.com"
+              <Link
+                to={createPageUrl("Contact")}
                 className="text-gray-400 hover:text-red-500 transition-colors p-3 hover:bg-gray-800 rounded-lg"
               >
                 <Mail className="w-6 h-6" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-gray-800 text-center">
