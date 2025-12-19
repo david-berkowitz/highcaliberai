@@ -59,7 +59,7 @@ export default function WorkshopShowcase() {
                 transition={{ delay: 0.2 }}
                 className="text-xl md:text-2xl text-gray-600 mb-14 leading-relaxed max-w-3xl mx-auto font-light"
               >
-                This showcases the structure and interactive elements from a two-day intensive AI marketing training I delivered for the <span className="text-gray-900 font-medium">Institute of Culinary Education</span>.
+                This showcases the structure and interactive elements from a two-day intensive AI marketing training I delivered for <span className="text-gray-900 font-medium">other clients</span>.
               </motion.p>
               
               <motion.div 

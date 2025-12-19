@@ -4,6 +4,7 @@ import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Holidays from './pages/Holidays';
 import WorkshopShowcase from './pages/WorkshopShowcase';
+import Resources from './pages/Resources';
 import __Layout from './Layout.jsx';
 
 
@@ -14,6 +15,7 @@ export const PAGES = {
     "Contact": Contact,
     "Holidays": Holidays,
     "WorkshopShowcase": WorkshopShowcase,
+    "Resources": Resources,
 }
 
 export const pagesConfig = {
