@@ -13,19 +13,19 @@ const stats = [
 
 const experiences = [
   {
-    title: "Founder",
-    company: "AI Marketers Guild & Serial Marketers",
-    description: "Building communities for marketing professionals to learn and share AI best practices.",
+    title: "Community Leadership",
+    company: "Marketecture Media (Chief Community Officer)",
+    description: "Leading community strategy following the acquisition of Serial Marketers and AI Marketers Guild, running Slack groups, weekly webinars, and events focused on peer learning.",
   },
   {
-    title: "Senior Positions",
-    company: "360i, MRY, WITHIN",
-    description: "Led strategic initiatives at top-tier advertising agencies, driving innovation in digital marketing.",
+    title: "Fractional CMO & Advisor",
+    company: "MADTECH.AI, Athena Solutions, Thece, Progress Partners",
+    description: "Providing strategic marketing leadership and AI readiness guidance to growth-stage B2B tech companies as Executive in Residence and fractional executive.",
   },
   {
-    title: "Technology Leadership",
-    company: "Sysomos, Mediaocean, Storyhunter",
-    description: "Shaped product strategy and marketing for leading marketing technology companies.",
+    title: "Senior Agency & Tech Roles",
+    company: "Mediaocean (SVP), MRY (CMO), 360i (VP), Sysomos (CSO)",
+    description: "Held senior positions across top agencies and marketing technology companies, leading brand, product marketing, and go-to-market strategy.",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function About() {
                 <span className="text-red-600">Meet</span> David Berkowitz
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                A recognized thought leader in AI marketing with over 15 years of experience helping companies leverage technology for marketing success.
+                AI marketing strategist, community builder, and author. David founded Serial Marketers and AI Marketers Guild (now part of Marketecture Media), serves as fractional CMO for AI-forward companies, and is Executive in Residence at Progress Partners.
               </p>
               <Link
                 to={createPageUrl("Contact")}
