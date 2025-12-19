@@ -39,7 +39,7 @@ export default function BookSection() {
               The Non-Obvious Guide to Using AI for Marketing
             </h2>
             <p className="text-xl text-gray-600 mb-10 leading-relaxed font-light">
-              A practical, no-nonsense guide to implementing AI in your marketing strategy. Learn how to evaluate AI tools, avoid common pitfalls, and create effective AI-powered campaigns.
+              The playbook for the modern CMO. A practical guide to evaluating tools, avoiding "vaporware," and creating the AI Readiness Roadmap your team needs to survive 2026.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a

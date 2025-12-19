@@ -7,20 +7,20 @@ import { motion } from "framer-motion";
 const services = [
   {
     icon: TrendingUp,
-    title: "Fractional CMO Retainers",
-    description: "Go-to-market strategy, agency RFPs, and AI consulting for B2B tech companies.",
+    title: "Strategy & Roadmaps",
+    description: "We audit your marketing capabilities (talent, tech, data) and deliver the "AI Readiness Roadmap." Available as a one-time Project Audit or ongoing Fractional CMO leadership.",
     features: ["Strategic Planning", "Market Analysis", "Growth Tactics"],
   },
   {
     icon: BookOpen,
-    title: "AI Education & Training",
-    description: "Keynotes, workshops, and custom consulting to upskill your marketing team.",
+    title: "Team Enablement & Training",
+    description: "Move your team from fear to proficiency. Applied workshops and mentorship that turn your existing staff into "AI-Augmented" creators, increasing output without adding headcount.",
     features: ["Expert Keynotes", "Custom Workshops", "Team Training"],
   },
   {
     icon: FileText,
-    title: "B2B Content Creation",
-    description: "White papers, bylines, sales collateral, and thought leadership content.",
+    title: "Implementation & Governance",
+    description: "Innovate without breaking your brand. We draft your AI policies and oversee high-impact pilots—bringing in technical partners to handle the wiring while we manage the GTM strategy.",
     features: ["White Papers", "Sales Collateral", "Thought Leadership"],
   },
 ];

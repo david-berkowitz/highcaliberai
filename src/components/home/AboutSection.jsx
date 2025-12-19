@@ -27,7 +27,7 @@ export default function AboutSection() {
             </h2>
             <div className="space-y-6">
               <p className="text-xl text-gray-700 leading-relaxed font-medium">
-                The force behind High Caliber AI, David brings extensive experience as a thought leader in AI marketing.
+                David is the Architect of AI Readiness for B2B brands. He moves marketing teams from "random experimentation" to operational excellence. He is the author of The Non-Obvious Guide to Using AI for Marketing (2025), founder of the AI Marketers Guild, and serves as a Fractional CMO for AI-forward firms like MADTECH.AI and Athena Solutions.
               </p>
               <div className="flex items-center gap-8 py-6 border-y border-gray-200">
                 <div>
@@ -39,9 +39,7 @@ export default function AboutSection() {
                   <div className="text-sm text-gray-600 font-semibold">Speeches</div>
                 </div>
               </div>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Founder of AI Marketers Guild and Serial Marketers, with experience at top agencies like 360i, MRY, and WITHIN, plus tech companies including Sysomos, Mediaocean, and Storyhunter.
-              </p>
+
             </div>
             <Link
               to={createPageUrl("About")}
