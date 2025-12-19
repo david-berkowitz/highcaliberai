@@ -41,7 +41,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Applied AI for Marketing:
+            Stop Experimenting with AI.
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function HeroSection() {
             className="mb-12"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-red-600 leading-[1.15] tracking-tight">
-              Strategy, Training, and Execution
+              Start Operationalizing It.
             </h2>
           </motion.div>
 
@@ -61,7 +61,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            High Caliber AI helps B2B tech companies and agencies harness the transformative power of artificial intelligence.
+            I am an Applied AI Strategist who builds Readiness Roadmaps for B2B marketing teams. From one-day audits to fractional leadership, I help you modernize your GTM engine without the hype.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -75,14 +75,14 @@ export default function HeroSection() {
               to={createPageUrl("Services")}
               className="inline-flex items-center px-10 py-4 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all group"
             >
-              Services
+              View Services
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to={createPageUrl("Contact")}
               className="inline-flex items-center px-10 py-4 border border-gray-900 text-gray-900 font-medium rounded-md hover:bg-gray-900 hover:text-white transition-all"
             >
-              Schedule Consultation
+              Get the Roadmap
             </Link>
           </motion.div>
         </motion.div>
