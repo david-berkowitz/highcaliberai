@@ -8,13 +8,13 @@ const services = [
   {
     icon: TrendingUp,
     title: "Strategy & Roadmaps",
-    description: "We audit your marketing capabilities (talent, tech, data) and deliver the "AI Readiness Roadmap." Available as a one-time Project Audit or ongoing Fractional CMO leadership.",
+    description: "We audit your marketing capabilities (talent, tech, data) and deliver the \"AI Readiness Roadmap.\" Available as a one-time Project Audit or ongoing Fractional CMO leadership.",
     features: ["Strategic Planning", "Market Analysis", "Growth Tactics"],
   },
   {
     icon: BookOpen,
     title: "Team Enablement & Training",
-    description: "Move your team from fear to proficiency. Applied workshops and mentorship that turn your existing staff into "AI-Augmented" creators, increasing output without adding headcount.",
+    description: "Move your team from fear to proficiency. Applied workshops and mentorship that turn your existing staff into \"AI-Augmented\" creators, increasing output without adding headcount.",
     features: ["Expert Keynotes", "Custom Workshops", "Team Training"],
   },
   {
