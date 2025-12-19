@@ -151,7 +151,7 @@ export default function Resources() {
               icon={Brain}
               title="Happenstance AI"
               description="Intelligent marketing automation and workflow optimization"
-              href="https://happenstance.ai/invite/friend/yuqdbLCl7N5lUWLNDncIC2T5qC3"
+              href="https://happenstance.ai/invite/friend/kG7j1tmEVzwEe0tzIT8im6pw7m2"
             />
           </div>
         </div>
