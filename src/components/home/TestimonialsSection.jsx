@@ -4,6 +4,21 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
+    quote: "David's an innovative thinker and a true pleasure to work with. He's always ahead of the curve and tuned into what's next and what's new. He's pragmatic, sharp, and brings an energy every team wishes they had more of.",
+    name: "Leo Morejon",
+    title: "Director of Social & Influencer, Hormel Foods",
+  },
+  {
+    quote: "David, thank you again for a fantastic session. I have received a lot of great feedback about it, including from our CIO. The tips and tricks were excellent, and the case studies provided some new ideas on how folks could integrate generative AI into their projects.",
+    name: "D.O.",
+    title: "Delivery Lead, AARP",
+  },
+  {
+    quote: "Thanks for such an engaging presentation! You've certainly managed to take daunting information and make it so interesting and accessible!",
+    name: "Patricia Raufer",
+    title: "Executive Forum",
+  },
+  {
     quote: "David Berkowitz's AI Marketers Guild has been impressive to watch and participate in. If you are a marketer or working in growth at a company, large or small, you should consider checking out his community.",
     name: "Darren Herman",
     title: "Managing Director, Bain Capital",
