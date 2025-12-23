@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { base44 } from "@/api/base44Client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { 
   Calendar, 
   Mail, 
@@ -16,6 +20,50 @@ const resources = [
 ];
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setIsSubmitting(true);
+
+    try {
+      // Save to database
+      await base44.entities.ContactSubmission.create(formData);
+
+      // Send email notification
+      await base44.integrations.Core.SendEmail({
+        to: "dberkowitz@gmail.com",
+        subject: `New Contact Form Submission from ${formData.name}`,
+        body: `
+New contact form submission:
+
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company || "N/A"}
+
+Message:
+${formData.message}
+        `
+      });
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -66,7 +114,7 @@ export default function Contact() {
               </a>
             </motion.div>
 
-            {/* Contact Info Card */}
+            {/* Contact Form Card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -74,52 +122,116 @@ export default function Contact() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-gray-100"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Get in Touch</h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                    <Mail className="w-6 h-6 text-red-600" />
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Mail className="w-8 h-8 text-green-600" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Email</h3>
-                    <a 
-                      href="mailto:david@highcaliberai.com" 
-                      className="text-gray-600 hover:text-red-600 transition-colors"
-                    >
-                      david@highcaliberai.com
-                    </a>
-                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+                  <p className="text-gray-600 mb-6">Your message has been sent. We'll get back to you soon.</p>
+                  <Button
+                    onClick={() => setSubmitted(false)}
+                    variant="outline"
+                  >
+                    Send Another Message
+                  </Button>
                 </div>
+              ) : (
+                <>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-8">Send a Message</h2>
 
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-red-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Location</h3>
-                    <p className="text-gray-600">New York, NY</p>
-                  </div>
-                </div>
-              </div>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Name *
+                      </label>
+                      <Input
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        placeholder="Your name"
+                      />
+                    </div>
 
-              <div className="mt-10 pt-8 border-t border-gray-100">
-                <h3 className="font-semibold text-gray-900 mb-4">Quick Resources</h3>
-                <div className="space-y-3">
-                  {resources.map((resource) => (
-                    <a
-                      key={resource.name}
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-red-600 hover:text-red-700 transition-colors group"
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Email *
+                      </label>
+                      <Input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        placeholder="your@email.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Company
+                      </label>
+                      <Input
+                        value={formData.company}
+                        onChange={(e) => setFormData({...formData, company: e.target.value})}
+                        placeholder="Your company"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Message *
+                      </label>
+                      <Textarea
+                        required
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        placeholder="Tell us about your needs..."
+                        rows={5}
+                      />
+                    </div>
+
+                    {error && (
+                      <p className="text-red-600 text-sm">{error}</p>
+                    )}
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-red-600 hover:bg-red-700"
                     >
-                      {resource.name}
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </a>
-                  ))}
-                </div>
-              </div>
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </form>
+
+                  <div className="mt-8 pt-8 border-t border-gray-100">
+                    <div className="flex items-start mb-4">
+                      <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                        <MapPin className="w-5 h-5 text-red-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 text-sm">Location</h3>
+                        <p className="text-gray-600 text-sm">New York, NY</p>
+                      </div>
+                    </div>
+
+                    <h3 className="font-semibold text-gray-900 mb-3 text-sm">Quick Resources</h3>
+                    <div className="space-y-2">
+                      {resources.map((resource) => (
+                        <a
+                          key={resource.name}
+                          href={resource.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-red-600 hover:text-red-700 transition-colors group text-sm"
+                        >
+                          {resource.name}
+                          <ArrowRight className="ml-2 w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
             </motion.div>
           </div>
         </div>
