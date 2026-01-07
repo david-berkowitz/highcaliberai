@@ -254,7 +254,7 @@ export default function WorkshopShowcase() {
                 <ScheduleItem 
                   time="2:15 - 3:00"
                   title="Exercise 1: Live Demo & Fix"
-                  description="10 min demo • 30 min \"fix your own work\" session."
+                  description="10 min demo • 30 min 'fix your own work' session."
                   color="green"
                   badge="Hands-On"
                 />
