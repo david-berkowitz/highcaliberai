@@ -20,23 +20,36 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="inline-block px-4 py-1.5 border border-red-600 text-red-600 text-xs font-medium tracking-wider uppercase mb-8">
-              Meet the Founder
+              Community-Tested. Agency-Vetted.
             </div>
             <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-10 leading-tight tracking-tight">
               David Berkowitz
             </h2>
             <div className="space-y-6">
               <p className="text-xl text-gray-700 leading-relaxed font-medium">
-                David is the Architect of AI Readiness for B2B brands. He moves marketing teams from "random experimentation" to operational excellence. He is the author of The Non-Obvious Guide to Using AI for Marketing (2025), founder of the AI Marketers Guild, and serves as a Fractional CMO for AI-forward firms like MADTECH.AI and Athena Solutions.
+                David Berkowitz doesn't just "consult" on AI; he uses it to drive GTM strategy. As the founder of the AI Marketers Guild, he tracks what's actually working for 7,000+ peers. He combines that community intelligence with decades of executive experience (360i, Sysomos, MADTECH.AI) to help you skip the "hype cycle" and move straight to revenue.
               </p>
-              <div className="flex items-center gap-8 py-6 border-y border-gray-200">
-                <div>
-                  <div className="text-4xl font-black text-red-600">1000+</div>
-                  <div className="text-sm text-gray-600 font-semibold">Bylines</div>
+              <div className="flex flex-col gap-4 py-6 border-y border-gray-200">
+                <div className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2.5 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-bold text-gray-900">The Leader:</span>
+                    <span className="text-gray-700"> Fractional CMO for AI-forward firms.</span>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-4xl font-black text-red-600">400+</div>
-                  <div className="text-sm text-gray-600 font-semibold">Speeches</div>
+                <div className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2.5 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-bold text-gray-900">The Pragmatist:</span>
+                    <span className="text-gray-700"> Author of The Non-Obvious Guide to Using AI for Marketing.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2.5 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-bold text-gray-900">The Connector:</span>
+                    <span className="text-gray-700"> Founder of AIMG & Serial Marketers.</span>
+                  </div>
                 </div>
               </div>
 

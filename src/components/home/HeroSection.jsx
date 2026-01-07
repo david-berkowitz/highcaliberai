@@ -41,7 +41,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Stop Experimenting with AI.
+            Real-World AI Strategy.
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function HeroSection() {
             className="mb-12"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-red-600 leading-[1.15] tracking-tight">
-              Start Operationalizing It.
+              No Science Fiction.
             </h2>
           </motion.div>
 
@@ -61,7 +61,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            I am an Applied AI Strategist who builds Readiness Roadmaps for B2B marketing teams. From one-day audits to fractional leadership, I help you modernize your GTM engine without the hype.
+            Any agency can sell you a roadmap. I deliver Operational Readiness. I partner with B2B marketing leaders to bridge the gap between "buying tools" and "getting results"—combining fractional leadership, applied training, and safe execution.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -79,10 +79,10 @@ export default function HeroSection() {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              to={createPageUrl("Contact")}
+              to={createPageUrl("About")}
               className="inline-flex items-center px-10 py-4 border border-gray-900 text-gray-900 font-medium rounded-md hover:bg-gray-900 hover:text-white transition-all"
             >
-              Get the Roadmap
+              Meet David
             </Link>
           </motion.div>
         </motion.div>
