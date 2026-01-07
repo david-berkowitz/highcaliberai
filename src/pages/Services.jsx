@@ -21,55 +21,53 @@ const pillars = [
     icon: Target,
     number: "01",
     title: "Strategy",
-    subtitle: "AI Marketing Roadmap",
-    description: "I audit your marketing capabilities—not just your tech stack. I review talent, workflows, and processes to identify the bottlenecks holding growth back.",
-    deliverable: "A prioritized roadmap that tells you exactly where to invest and where to cut costs.",
-    outcome: "Stop wasting budget on tools that don't deliver. Build a defensible GTM engine that scales.",
-    example: "Similar to the AI Readiness Roadmap delivered for data firm Athena Solutions",
+    subtitle: "Fractional GTM Leadership",
+    description: "Don't just get a plan; get a partner. I embed with your team to fix the \"messy middle\" of AI adoption—overseeing your tech stack, talent alignment, and execution strategy.",
+    deliverable: "A partner who leads the charge, starting with a proprietary AI Readiness Audit to prioritize high-impact wins and cut low-value noise.",
+    outcome: "Stop wasting budget on \"vaporware.\" Build a defensible GTM engine rooted in market reality.",
+    example: "Includes the specific roadmap approach used for Athena Solutions",
   },
   {
     icon: Users,
     number: "02",
     title: "Enablement",
-    subtitle: "Team Velocity & Upskilling",
-    description: "I don't just teach prompts—I mentor your marketing staff to produce exponentially more output without burnout.",
-    deliverable: "Custom workshops and ongoing mentorship that turn your writers, designers, and strategists into AI-augmented experts.",
+    subtitle: "Team Activation & Training",
+    description: "Strategy fails without skills. I run Applied Workshops that force your team to use AI on live campaigns—building muscle memory and immediate output, not just theory.",
+    deliverable: "Custom \"Dot-Connecting\" workshops and mentorship that turn your writers, designers, and strategists into AI-augmented creators.",
     outcome: "Your existing team becomes your scaled team. No headcount added.",
-    example: "Like the transformational work delivered for ISLAA",
+    example: "Based on the applied training delivered for ISLAA",
   },
   {
     icon: Shield,
     number: "03",
     title: "Governance",
-    subtitle: "Brand Safety & Growth Pilots",
-    description: "I protect your brand while accelerating innovation through clear policies and high-impact pilot projects.",
-    deliverable: "Internal AI usage policies plus managed pilots for GEO/AI Search Visibility and Content Scaling with trusted technical partners.",
-    outcome: "Innovate faster than competitors without risking your reputation or data.",
-    example: "Like the AI policy framework built for Russo Partners",
+    subtitle: "Managed Innovation Pilots",
+    description: "Move fast without breaking things. I oversee high-impact pilots—like AI Search Visibility (GEO) and Content Scaling—bringing in my technical partners to handle the wiring while I ensure it hits your KPIs.",
+    deliverable: "A \"Safety First, Speed Second\" framework. I set up simple rules of the road so you can innovate without needing legal to sign off on every prompt.",
+    outcome: "Launch pilots in weeks, not months, without risking your reputation or data.",
+    example: "Leveraging the policy frameworks built for Russo Partners",
   },
 ];
 
 const additionalServices = [
   {
     icon: BookOpen,
-    title: "Speaking & Workshops",
-    description: "Executive keynotes and custom training programs that equip your organization with practical AI marketing strategies.",
+    title: "Keynotes Without the Hype",
+    description: "Executive presentations and training programs grounded in what 7,000+ marketers are actually doing—not what futurists are predicting.",
     features: [
-      "Executive presentations",
-      "Custom workshop development",
-      "Industry conference keynotes",
-      "Team training sessions",
+      "\"State of the Market\" Executive Briefings",
+      "Custom Workshop Development",
+      "Industry Conference Keynotes",
     ],
   },
   {
     icon: FileText,
-    title: "Thought Leadership Content",
-    description: "Strategic content that positions your company as an AI marketing authority while driving business results.",
+    title: "Strategic Content & POV",
+    description: "Position your company as an authority. I help you craft white papers and bylines that cut through the AI noise with a sharp, community-tested point of view.",
     features: [
-      "White papers and research reports",
-      "Industry bylines and articles",
-      "Case studies and success stories",
-      "LinkedIn and social media strategy",
+      "White Papers & Research Reports",
+      "Industry Bylines & Op-Eds",
+      "Case Studies & Success Stories",
     ],
   },
 ];
@@ -116,13 +114,13 @@ export default function Services() {
               AI-Transition Fractional CMO
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight">
-              Modernize Your Marketing
+              Real-World AI Strategy.
             </h1>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-red-400 mb-8">
-              For the AI Era
+              No Science Fiction.
             </h2>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
-              I help B2B marketing leaders transform their teams, governance, and strategy—so they don't get left behind.
+              I partner with B2B marketing leaders to bridge the gap between "buying tools" and "getting results"—combining fractional leadership, applied training, and safe execution.
             </p>
           </motion.div>
         </div>
@@ -142,7 +140,7 @@ export default function Services() {
               The Challenge
             </h3>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Your marketing team is overwhelmed. You're buying AI tools, but adoption is low, policies are non-existent, and you're worried about losing search visibility to AI agents. You don't need tech support—you need a <span className="font-semibold text-red-600">GTM strategy that incorporates AI</span>.
+              Buying tools is easy. Adoption is hard. Your team is overwhelmed. You've bought the tech, but you're stuck in "experiment mode." Policies are non-existent, shelfware is piling up, and you're worried about losing search visibility. You don't need tech support—you need a <span className="font-semibold text-red-600">GTM partner who knows what actually works</span>.
             </p>
           </motion.div>
         </div>
