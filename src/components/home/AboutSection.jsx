@@ -74,8 +74,8 @@ export default function AboutSection() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-red-600 to-red-800 rounded-3xl rotate-3 opacity-20"></div>
               <img
-                src="https://highcaliberai.com/wp-content/uploads/2025/10/l32o7gz1zoqjdnzz1nfq.avif"
-                alt="David Berkowitz"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
+                alt="David Berkowitz Speaking"
                 className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl"
               />
             </div>
