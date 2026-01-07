@@ -20,21 +20,18 @@ export default function HeroSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          {/* Hero Visual */}
+          {/* Logo Mark */}
           <motion.div 
             className="flex justify-center mb-16"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-red-600/20 to-red-800/20 rounded-full blur-2xl"></div>
-              <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
-                alt="David Berkowitz"
-                className="relative w-64 h-64 object-cover rounded-full shadow-2xl border-4 border-white"
-              />
-            </div>
+            <img
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
+              alt="High Caliber AI"
+              className="h-24 w-auto"
+            />
           </motion.div>
 
           {/* Headline */}
