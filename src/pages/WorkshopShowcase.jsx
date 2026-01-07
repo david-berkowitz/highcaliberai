@@ -47,9 +47,9 @@ export default function WorkshopShowcase() {
                 transition={{ delay: 0.1 }}
                 className="text-6xl md:text-7xl font-light text-gray-900 mb-8 leading-[1.05] tracking-tight"
               >
-                AI Marketing
-                <span className="block font-semibold bg-gradient-to-r from-red-600 via-red-500 to-red-600 bg-clip-text text-transparent mt-2">
-                  Workshop Example
+                The <span className="font-semibold bg-gradient-to-r from-red-600 via-red-500 to-red-600 bg-clip-text text-transparent">"Applied AI"</span>
+                <span className="block mt-2">
+                  Workshop Model
                 </span>
               </motion.h1>
               
@@ -59,7 +59,7 @@ export default function WorkshopShowcase() {
                 transition={{ delay: 0.2 }}
                 className="text-xl md:text-2xl text-gray-600 mb-14 leading-relaxed max-w-3xl mx-auto font-light"
               >
-                This showcases the structure and interactive elements from a two-day intensive AI marketing training I delivered for <span className="text-gray-900 font-medium">other clients</span>.
+                This isn't a lecture. It's a structured "Activation Sprint" for your marketing operations. Below is the exact 2-day framework I use to move teams from "theory" to "finished work."
               </motion.p>
               
               <motion.div 
@@ -72,14 +72,14 @@ export default function WorkshopShowcase() {
                   onClick={() => scrollToSection('overview')}
                   className="bg-red-600 hover:bg-red-700 text-white px-10 py-7 text-lg shadow-xl shadow-red-600/20 rounded-full font-medium group"
                 >
-                  View Workshop Structure
+                  View the Framework
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Link
                   to={createPageUrl("Contact")}
                   className="inline-flex items-center px-10 py-7 border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 text-lg rounded-full font-medium shadow-lg transition-all"
                 >
-                  Request Custom Workshop
+                  Book a Session
                 </Link>
               </motion.div>
 
@@ -87,9 +87,9 @@ export default function WorkshopShowcase() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-6xl mx-auto">
                 {[
                   { icon: Calendar, label: '2 Days', sub: 'Intensive' },
-                  { icon: Brain, label: '6 Sessions', sub: 'Interactive' },
+                  { icon: Brain, label: '6 Sessions', sub: 'Live Building' },
                   { icon: Zap, label: '3 Exercises', sub: 'Hands-on' },
-                  { icon: Award, label: '100%', sub: 'Actionable' }
+                  { icon: Award, label: 'Zero', sub: 'Theory' }
                 ].map((stat, i) => (
                   <motion.div 
                     key={i}
@@ -116,9 +116,9 @@ export default function WorkshopShowcase() {
                 <Sparkles className="w-4 h-4 text-red-600" />
                 <span className="text-sm font-medium text-red-600 tracking-wide">Program Design</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-5">Workshop <span className="font-semibold">Structure</span></h2>
+              <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-5">From "Curiosity" to <span className="font-semibold">"Capability"</span></h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
-                A comprehensive journey from AI fundamentals to advanced marketing applications
+                We don't waste time on history lessons. We focus entirely on the tools and workflows your team needs to ship work faster tomorrow.
               </p>
             </div>
 
@@ -128,14 +128,14 @@ export default function WorkshopShowcase() {
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-8">
                     <div className="bg-red-600/10 text-red-600 px-5 py-2 rounded-xl font-semibold text-base border border-red-600/20">Day 1</div>
-                    <h3 className="text-2xl font-light text-gray-900">Core Skills & <span className="font-semibold">Quick Wins</span></h3>
+                    <h3 className="text-2xl font-light text-gray-900">Breaking Bad Habits & <span className="font-semibold">Building Speed</span></h3>
                   </div>
                   <div className="space-y-3">
                     {[
-                      { icon: Brain, title: 'AI Without the Hype', time: '60 min', desc: 'Tools you can use today, separating fact from fiction' },
-                      { icon: Sparkles, title: 'Smarter Prompting & Creativity', time: '45 min', desc: 'Advanced techniques, chaining, personas' },
-                      { icon: TrendingUp, title: 'AI Marketing Expedition', time: '60 min', desc: 'Strategies across PR, content, email & web' },
-                      { icon: Zap, title: 'Mini Hackathon', time: '45 min', desc: 'The "One Task Faster" Challenge' }
+                      { icon: Brain, title: 'AI Without the Hype', time: '60 min', desc: 'The Reality Check. Separating vendor noise from the tools that actually drive revenue today.' },
+                      { icon: Sparkles, title: 'Smarter Prompting', time: '45 min', desc: 'Applied Prompting Lab. We fix your team\'s bad habits live. Advanced chaining and personas, not just "magic words."' },
+                      { icon: TrendingUp, title: 'AI Marketing Expedition', time: '60 min', desc: 'The "What\'s Working" Expedition. Real-world use cases curated from the AI Marketers Guild community—strategies that are working right now.' },
+                      { icon: Zap, title: 'Mini Hackathon', time: '45 min', desc: 'The "One Task" Sprint. Teams compete to automate a single daily annoyance before the day ends.' }
                     ].map((item, i) => (
                       <div key={i} className="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-100 hover:bg-red-50/50 hover:border-red-600/20 transition-all cursor-pointer group/item">
                         <div className="flex-shrink-0">
@@ -164,14 +164,14 @@ export default function WorkshopShowcase() {
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-8">
                     <div className="bg-white/20 backdrop-blur text-white px-5 py-2 rounded-xl font-semibold text-base border border-white/30">Day 2</div>
-                    <h3 className="text-2xl font-light text-white">Adoption & <span className="font-semibold">Application</span></h3>
+                    <h3 className="text-2xl font-light text-white">Re-Engineering the <span className="font-semibold">Workflow</span></h3>
                   </div>
                   <div className="space-y-3">
                     {[
-                      { icon: Users, title: 'AI + Change Management', time: '60 min', desc: 'Overcoming objections, building culture' },
-                      { icon: Target, title: 'Workflow Mapping', time: '45 min', desc: 'Design AI-enhanced workflows for your team' },
-                      { icon: Book, title: 'Team Modules (Breakouts)', time: '75 min', desc: 'PR, Content/Social, Email/Web deep dives' },
-                      { icon: Lightbulb, title: 'Action Plan & Share-Out', time: '30 min', desc: 'AI Agents & future of marketing' }
+                      { icon: Users, title: 'AI + Change Management', time: '60 min', desc: 'Overcoming the "Fear Factor." Honest conversations about job security, adoption friction, and building a culture of experimentation.' },
+                      { icon: Target, title: 'Workflow Mapping', time: '45 min', desc: 'Redesigning the Day Job. We take actual upcoming campaigns and map where AI sits in the process.' },
+                      { icon: Book, title: 'Team Modules', time: '75 min', desc: 'Departmental Deep Dives. Specific tactics for PR (monitoring), Content (repurposing), and Email (personalization).' },
+                      { icon: Lightbulb, title: 'Action Plan', time: '30 min', desc: 'The "Monday Morning" Protocol. Assigning ownership and setting the rules for the next 30 days.' }
                     ].map((item, i) => (
                       <div key={i} className="flex gap-4 p-5 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all cursor-pointer group/item">
                         <div className="flex-shrink-0">
@@ -240,21 +240,21 @@ export default function WorkshopShowcase() {
               <div className="space-y-6 animate-in fade-in duration-500">
                 <ScheduleItem 
                   time="1:00 - 1:15"
-                  title="Welcome & Context"
-                  description="Why AI matters now; what to expect"
+                  title="Welcome: State of the Market"
+                  description="What 7,000+ marketers are actually seeing in the wild."
                   color="slate"
                 />
                 <ScheduleItem 
                   time="1:15 - 2:15"
-                  title="Session: AI Without the Hype"
-                  description="Tools you can use today; separating fact from fiction"
+                  title="Session 1: Tool Selection & Stack Audit"
+                  description="What to keep, what to cut."
                   color="amber"
                   badge="Core Session"
                 />
                 <ScheduleItem 
                   time="2:15 - 3:00"
-                  title="Exercise 1: Smarter Prompting & Creativity"
-                  description="10 min demo (personas, chaining, system instructions) • 30 min hands-on in small groups • 5 min share-out"
+                  title="Exercise 1: Live Demo & Fix"
+                  description="10 min demo • 30 min \"fix your own work\" session."
                   color="green"
                   badge="Hands-On"
                 />
@@ -273,8 +273,8 @@ export default function WorkshopShowcase() {
                 />
                 <ScheduleItem 
                   time="4:15 - 5:00"
-                  title="Exercise 2: Mini Hackathon"
-                  description="Small groups tackle real marketing challenges using AI"
+                  title="Exercise 2: Real Marketing Challenges"
+                  description="Small groups solve a current company bottleneck using AI."
                   color="green"
                   badge="Team Challenge"
                 />
@@ -353,16 +353,16 @@ export default function WorkshopShowcase() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Ready for Your Custom Workshop?
+                Stop Sending Your Team to Generic Webinars.
               </h2>
               <p className="text-xl text-gray-300 mb-10 font-light leading-relaxed">
-                I design workshops tailored to your team's needs, industry, and AI maturity level.
+                I design workshops tailored to your specific stack, your specific industry, and your team's specific fears. Let's build a curriculum that sticks.
               </p>
               <Link
                 to={createPageUrl("Contact")}
                 className="inline-flex items-center px-10 py-5 bg-red-600 text-white text-lg font-semibold rounded-lg hover:bg-red-700 transition-all shadow-xl hover:shadow-2xl group"
               >
-                Schedule Consultation
+                Design My Workshop
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
