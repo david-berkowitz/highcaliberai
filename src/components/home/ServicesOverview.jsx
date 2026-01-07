@@ -7,21 +7,21 @@ import { motion } from "framer-motion";
 const services = [
   {
     icon: TrendingUp,
-    title: "Strategy & Roadmaps",
-    description: "We audit your marketing capabilities (talent, tech, data) and deliver the \"AI Readiness Roadmap.\" Available as a one-time Project Audit or ongoing Fractional CMO leadership.",
-    features: ["Strategic Planning", "Market Analysis", "Growth Tactics"],
+    title: "Fractional GTM Leadership",
+    description: "Don't just get a plan; get a partner. I embed with your team to modernize your GTM strategy, overseeing the tech stack, talent alignment, and execution. (Includes my proprietary AI Readiness Audit as the diagnostic starting point).",
+    features: ["Tech Stack Audit", "Talent Alignment", "GTM Strategy"],
   },
   {
     icon: BookOpen,
-    title: "Team Enablement & Training",
-    description: "Move your team from fear to proficiency. Applied workshops and mentorship that turn your existing staff into \"AI-Augmented\" creators, increasing output without adding headcount.",
-    features: ["Expert Keynotes", "Custom Workshops", "Team Training"],
+    title: "Team Activation & Training",
+    description: "Strategy fails without skills. I run Applied Workshops that force your team to use AI on live campaigns—building muscle memory and immediate output, not just theory.",
+    features: ["Applied Workshops", "Live Campaign Work", "Skill Building"],
   },
   {
     icon: FileText,
-    title: "Implementation & Governance",
-    description: "Innovate without breaking your brand. We draft your AI policies and oversee high-impact pilots—bringing in technical partners to handle the wiring while we manage the GTM strategy.",
-    features: ["White Papers", "Sales Collateral", "Thought Leadership"],
+    title: "Managed Innovation Pilots",
+    description: "Move fast without breaking things. I oversee high-impact pilots like AI Search Visibility (GEO) and Content Scaling, bringing in my technical partners to handle the wiring while I ensure it hits your KPIs.",
+    features: ["AI Search Visibility", "Content Scaling", "KPI Tracking"],
   },
 ];
 
