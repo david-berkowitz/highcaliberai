@@ -20,18 +20,21 @@ export default function HeroSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          {/* Logo Mark */}
+          {/* Hero Visual */}
           <motion.div 
             className="flex justify-center mb-16"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <img
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
-              alt="High Caliber AI"
-              className="h-24 w-auto"
-            />
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-br from-red-600/20 to-red-800/20 rounded-full blur-2xl"></div>
+              <img
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
+                alt="David Berkowitz"
+                className="relative w-64 h-64 object-cover rounded-full shadow-2xl border-4 border-white"
+              />
+            </div>
           </motion.div>
 
           {/* Headline */}
@@ -61,7 +64,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Any agency can sell you a roadmap. I deliver Operational Readiness. I partner with B2B marketing leaders to bridge the gap between "buying tools" and "getting results"—combining fractional leadership, applied training, and safe execution.
+            I partner with B2B marketing leaders to bridge the gap between "buying tools" and "getting results"—combining fractional leadership, applied training, and safe execution.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -75,7 +78,7 @@ export default function HeroSection() {
               to={createPageUrl("Services")}
               className="inline-flex items-center px-10 py-4 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all group"
             >
-              View Services
+              View Capabilities
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link

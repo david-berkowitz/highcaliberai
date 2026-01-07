@@ -57,6 +57,9 @@ export default function TrustedBySection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center pt-12 border-t border-gray-200"
         >
+          <p className="text-sm font-medium text-gray-400 mb-3">
+            Providing Market Reality Checks For:
+          </p>
           <h3 className="text-lg font-semibold text-gray-500 mb-8">
             Featured In
           </h3>

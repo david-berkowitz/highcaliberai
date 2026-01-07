@@ -10,10 +10,10 @@ export default function Layout({ children, currentPageName }) {
   const navLinks = [
     { name: "Home", page: "Home" },
     { name: "About", page: "About" },
-    { name: "Services", page: "Services" },
-    { name: "Workshop", page: "WorkshopShowcase" },
+    { name: "Capabilities", page: "Services" },
+    { name: "Training", page: "WorkshopShowcase" },
     { name: "AI Audit", page: "AIAudit" },
-    { name: "Resources", page: "Resources" },
+    { name: "Insights", page: "Resources" },
     { name: "Contact", page: "Contact" },
   ];
 
@@ -153,8 +153,11 @@ export default function Layout({ children, currentPageName }) {
               </Link>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-gray-800 text-center">
-            <p className="text-sm text-gray-500 font-medium">
+          <div className="mt-12 pt-8 border-t border-gray-800">
+            <p className="text-sm text-gray-400 text-center mb-4 leading-relaxed">
+              David Berkowitz: Founder of AI Marketers Guild (7,000+ Members). Author of The Non-Obvious Guide to Using AI for Marketing.
+            </p>
+            <p className="text-sm text-gray-500 font-medium text-center">
               © {new Date().getFullYear()} High Caliber AI. All rights reserved.
             </p>
           </div>

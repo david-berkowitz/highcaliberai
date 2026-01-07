@@ -82,7 +82,7 @@ export default function ServicesOverview() {
             to={createPageUrl("Services")}
             className="inline-flex items-center px-10 py-4 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all group"
           >
-            View All Services
+            View All Capabilities
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

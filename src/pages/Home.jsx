@@ -5,6 +5,7 @@ import ServicesOverview from "../components/home/ServicesOverview";
 import TestimonialsSection from "../components/home/TestimonialsSection";
 import TrustedBySection from "../components/home/TrustedBySection";
 import BookSection from "../components/home/BookSection";
+import PreFooterCTA from "../components/home/PreFooterCTA";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <TestimonialsSection />
       <TrustedBySection />
       <BookSection />
+      <PreFooterCTA />
     </div>
   );
 }
