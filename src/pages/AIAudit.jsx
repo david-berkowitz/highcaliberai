@@ -220,7 +220,7 @@ export default function AIAudit() {
             </Card>
 
             {/* CTA Section */}
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-10 text-center text-white mb-6">
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-10 text-center text-white mb-8">
               <h3 className="text-3xl font-bold mb-4">Ready to Take Action?</h3>
               <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
                 Let's discuss your specific AI challenges and build a custom roadmap tailored to your team's needs, tech stack, and goals.
@@ -240,6 +240,45 @@ export default function AIAudit() {
                   <Mail className="mr-2 w-5 h-5" />
                   Email David
                 </a>
+              </div>
+            </div>
+
+            {/* Book Section */}
+            <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 mb-6">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="order-2 md:order-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                    Prefer to Explore on Your Own?
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    This assessment is just one chapter from <span className="font-semibold">The Non-Obvious Guide to Using AI for Marketing</span>. Get the complete framework for AI-powered marketing strategy, implementation, and measurement.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <a
+                      href="https://www.amazon.com/Non-Obvious-Guide-Using-Marketing-Transformative/dp/1646871863"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-all"
+                    >
+                      Buy on Amazon
+                    </a>
+                    <a
+                      href="http://bit.ly/ai-guides"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-all"
+                    >
+                      Free Resources
+                    </a>
+                  </div>
+                </div>
+                <div className="order-1 md:order-2">
+                  <img
+                    src="https://highcaliberai.com/wp-content/uploads/2025/07/The-Non-Obvious-Guide-to-Using-AI-for-Marketing-by-David-Berkowitz-193x300.png"
+                    alt="The Non-Obvious Guide to Using AI for Marketing"
+                    className="w-48 mx-auto md:w-full md:max-w-xs rounded-lg shadow-xl"
+                  />
+                </div>
               </div>
             </div>
 
