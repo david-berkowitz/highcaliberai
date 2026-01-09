@@ -17,7 +17,7 @@ export default function BookSection() {
           >
             <div className="relative max-w-sm mx-auto lg:mx-0">
               <img
-                src="https://m.media-amazon.com/images/I/71O4GsMdBjL._SY522_.jpg"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/324737b14_IMG_4434.jpg"
                 alt="The Non-Obvious Guide to Using AI for Marketing"
                 className="rounded-lg shadow-xl w-full"
               />
