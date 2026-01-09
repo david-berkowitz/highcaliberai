@@ -17,7 +17,7 @@ export default function BookSection() {
           >
             <div className="relative max-w-sm mx-auto lg:mx-0">
               <img
-                src="https://highcaliberai.com/wp-content/uploads/2025/10/i16ml40mrv0mpmzthwrw.avif"
+                src="https://m.media-amazon.com/images/I/71O4GsMdBjL._SY522_.jpg"
                 alt="The Non-Obvious Guide to Using AI for Marketing"
                 className="rounded-lg shadow-xl w-full"
               />
