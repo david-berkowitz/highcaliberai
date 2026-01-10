@@ -178,7 +178,7 @@ export default function IndeCollectivePage() {
                 </div>
                 <div className="md:col-span-3 flex flex-col justify-center">
                   <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                    David Berkowitz is the founder of <span className="font-semibold text-[#E89B1C]">High Caliber AI</span> and <span className="font-semibold text-[#E89B1C]">AI Marketers Guild</span>, and he's the author of <span className="font-semibold text-[#E89B1C]">The Non-Obvious Guide to Using AI for Marketing</span> (Ideapress, 2025).
+                    David Berkowitz is the founder of <span className="font-semibold text-[#E89B1C]">High Caliber AI</span> and <a href="https://www.aimarketersguild.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#E89B1C] hover:text-[#D88A0A] underline">AI Marketers Guild</a>, and he's the author of <a href="https://usingaiformarketing.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#E89B1C] hover:text-[#D88A0A] underline">The Non-Obvious Guide to Using AI for Marketing</a> (Ideapress, 2025).
                   </p>
                   <p className="text-gray-700 text-lg leading-relaxed mb-6">
                     A longtime marketing strategist, David has led marketing and innovation for companies including Mediaocean, Storyhunter, Sysomos, MRY (Publicis), and 360i (Dentsu). He has contributed 600+ columns to outlets like Advertising Age, MediaPost, and VentureBeat, and spoken at 400+ events worldwide.

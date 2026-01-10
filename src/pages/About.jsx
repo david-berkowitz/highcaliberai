@@ -62,7 +62,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <img
-                src="https://highcaliberai.com/wp-content/uploads/2025/07/5aab4e52-cb31-4320-8571-5a879a62e390-1024x1024.png"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
                 alt="David Berkowitz"
                 className="w-full max-w-md mx-auto rounded-full shadow-xl"
               />
