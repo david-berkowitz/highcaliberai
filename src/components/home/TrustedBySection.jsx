@@ -10,12 +10,11 @@ const trustedLogos = [
 ];
 
 const featuredLogos = [
-  { name: "AdAge", placeholder: "AdAge" },
-  { name: "Marketing Week", placeholder: "MW" },
-  { name: "Forbes", placeholder: "Forbes" },
-  { name: "WSJ", placeholder: "WSJ" },
-  { name: "TechCrunch", placeholder: "TC" },
-  { name: "MarTech", placeholder: "MT" },
+  { name: "AdAge", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/141df5a5e_image.png" },
+  { name: "MarketWatch", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/6cc991648_image.png" },
+  { name: "USA Today", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a07bd6b26_image.png" },
+  { name: "Forbes", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/72f8513e3_image.png" },
+  { name: "VentureBeat", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/9885fb33d_image.png" },
 ];
 
 export default function TrustedBySection() {
@@ -57,9 +56,6 @@ export default function TrustedBySection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center pt-12 border-t border-gray-200"
         >
-          <p className="text-sm font-medium text-gray-400 mb-3">
-            Providing Market Reality Checks For:
-          </p>
           <h3 className="text-lg font-semibold text-gray-500 mb-8">
             Featured In
           </h3>
@@ -71,9 +67,9 @@ export default function TrustedBySection() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-24 h-12 flex items-center justify-center"
+                className="h-12 flex items-center justify-center grayscale hover:grayscale-0 transition-all"
               >
-                <span className="text-xl font-bold text-gray-300">{logo.placeholder}</span>
+                <img src={logo.url} alt={logo.name} className="h-full w-auto object-contain" />
               </motion.div>
             ))}
           </div>
