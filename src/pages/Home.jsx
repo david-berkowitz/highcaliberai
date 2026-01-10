@@ -14,8 +14,8 @@ export default function Home() {
       <AboutSection />
       <ServicesOverview />
       <TestimonialsSection />
-      <TrustedBySection />
       <BookSection />
+      <TrustedBySection />
       <PreFooterCTA />
     </div>
   );
