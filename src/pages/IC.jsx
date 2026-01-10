@@ -27,7 +27,7 @@ export default function IndeCollectivePage() {
                 />
                 <div>
                   <h1 className="text-xl font-bold text-black tracking-tight">AI Marketing Training</h1>
-                  <p className="text-xs text-[#E89B1C] font-semibold tracking-widest">INDE COLLECTIVE</p>
+                  <p className="text-xs text-[#E89B1C] font-semibold tracking-widest">INDECOLLECTIVE</p>
                 </div>
               </div>
               <div className="hidden md:flex items-center gap-8">
@@ -586,11 +586,11 @@ export default function IndeCollectivePage() {
               </div>
             </div>
 
-            {/* App Building */}
+            {/* Vibe Coding */}
             <div>
               <h3 className="text-xl font-semibold text-black mb-6 flex items-center gap-2">
                 <Lightbulb className="w-5 h-5" />
-                App Building
+                Vibe Coding
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <a href="https://base44.pxf.io/c/5604633/2049275/25619?trafcat=base" target="_blank" rel="noopener noreferrer" className="group block">
@@ -612,6 +612,39 @@ export default function IndeCollectivePage() {
                       </div>
                       <h3 className="text-xl font-semibold text-black mb-2 group-hover:text-[#D88A0A] transition-colors">Lovable</h3>
                       <p className="text-black/60 text-sm font-light">AI-powered app development platform</p>
+                    </CardContent>
+                  </Card>
+                </a>
+                <a href="https://www.anthropic.com/claude/code" target="_blank" rel="noopener noreferrer" className="group block">
+                  <Card className="bg-white border border-[#E89B1C]/10 hover:border-[#E89B1C]/30 hover:shadow-xl transition-all duration-300 rounded-xl h-full">
+                    <CardContent className="p-6">
+                      <div className="w-12 h-12 rounded-lg bg-[#E89B1C]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Brain className="w-6 h-6 text-[#E89B1C]" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-black mb-2 group-hover:text-[#D88A0A] transition-colors">Claude Code</h3>
+                      <p className="text-black/60 text-sm font-light">AI coding assistant for developers</p>
+                    </CardContent>
+                  </Card>
+                </a>
+                <a href="https://ghostty.org/" target="_blank" rel="noopener noreferrer" className="group block">
+                  <Card className="bg-white border border-[#E89B1C]/10 hover:border-[#E89B1C]/30 hover:shadow-xl transition-all duration-300 rounded-xl h-full">
+                    <CardContent className="p-6">
+                      <div className="w-12 h-12 rounded-lg bg-[#E89B1C]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Target className="w-6 h-6 text-[#E89B1C]" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-black mb-2 group-hover:text-[#D88A0A] transition-colors">Ghostty</h3>
+                      <p className="text-black/60 text-sm font-light">Fast, modern terminal emulator</p>
+                    </CardContent>
+                  </Card>
+                </a>
+                <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer" className="group block">
+                  <Card className="bg-white border border-[#E89B1C]/10 hover:border-[#E89B1C]/30 hover:shadow-xl transition-all duration-300 rounded-xl h-full">
+                    <CardContent className="p-6">
+                      <div className="w-12 h-12 rounded-lg bg-[#E89B1C]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Zap className="w-6 h-6 text-[#E89B1C]" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-black mb-2 group-hover:text-[#D88A0A] transition-colors">Netlify</h3>
+                      <p className="text-black/60 text-sm font-light">Modern web hosting and deployment platform</p>
                     </CardContent>
                   </Card>
                 </a>

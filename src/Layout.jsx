@@ -162,7 +162,7 @@ export default function Layout({ children, currentPageName }) {
                 to={createPageUrl("IC")}
                 className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
               >
-                Inde Collective
+                IndeCollective
               </Link>
             </div>
             <p className="text-sm text-gray-500 font-medium text-center">
