@@ -157,6 +157,14 @@ export default function Layout({ children, currentPageName }) {
             <p className="text-sm text-gray-400 text-center mb-4 leading-relaxed">
               David Berkowitz: Founder of AI Marketers Guild (7,000+ Members). Author of The Non-Obvious Guide to Using AI for Marketing.
             </p>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <Link
+                to={createPageUrl("IC")}
+                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                Inde Collective
+              </Link>
+            </div>
             <p className="text-sm text-gray-500 font-medium text-center">
               © {new Date().getFullYear()} High Caliber AI. All rights reserved.
             </p>
