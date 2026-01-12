@@ -551,6 +551,17 @@ export default function IndeCollectivePage() {
                     </CardContent>
                   </Card>
                 </a>
+                <a href="https://labs.google/experiments" target="_blank" rel="noopener noreferrer" className="group block">
+                  <Card className="bg-white border border-[#E89B1C]/10 hover:border-[#E89B1C]/30 hover:shadow-xl transition-all duration-300 rounded-xl h-full">
+                    <CardContent className="p-6">
+                      <div className="w-12 h-12 rounded-lg bg-[#E89B1C]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Sparkles className="w-6 h-6 text-[#E89B1C]" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-black mb-2 group-hover:text-[#D88A0A] transition-colors">Google Labs</h3>
+                      <p className="text-black/60 text-sm font-light">Experimental AI content generation tools from Google</p>
+                    </CardContent>
+                  </Card>
+                </a>
               </div>
             </div>
 
