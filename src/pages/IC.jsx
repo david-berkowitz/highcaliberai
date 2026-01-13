@@ -112,14 +112,34 @@ export default function IndeCollectivePage() {
                 </Button>
               </motion.div>
 
-              {/* Presentation Downloads - Placeholder for now */}
+              {/* Presentation Downloads */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
                 className="mb-24"
               >
-                <p className="text-[#E89B1C]/60 text-sm font-medium mb-4 tracking-wide">SESSION MATERIALS COMING SOON</p>
+                <p className="text-[#E89B1C] text-sm font-medium mb-4 tracking-wide uppercase">Get the Slides</p>
+                <div className="flex items-center justify-center gap-4 flex-wrap">
+                  <a 
+                    href="https://www.dropbox.com/scl/fi/lhsrfhendc3s5u8x6mhwm/indecollective-1-2026-dberkowitz.pptx?rlkey=z1knqqctq5lgwd8sywhsdjt2a&dl=0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#E89B1C]/20 hover:border-[#E89B1C] text-black rounded-lg font-medium transition-all hover:shadow-lg"
+                  >
+                    <Download className="w-4 h-4" />
+                    PowerPoint
+                  </a>
+                  <a 
+                    href="https://www.dropbox.com/scl/fi/hhekncikohjmatphx0564/indecollective-1-2026-dberkowitz.pdf?rlkey=15hye7c0a2djn5yabjt82ahrq&dl=0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#E89B1C]/20 hover:border-[#E89B1C] text-black rounded-lg font-medium transition-all hover:shadow-lg"
+                  >
+                    <Download className="w-4 h-4" />
+                    PDF
+                  </a>
+                </div>
               </motion.div>
 
               {/* Elegant Stats Grid */}
