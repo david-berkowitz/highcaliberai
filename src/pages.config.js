@@ -7,6 +7,7 @@ import IC from './pages/IC';
 import Resources from './pages/Resources';
 import Services from './pages/Services';
 import WorkshopShowcase from './pages/WorkshopShowcase';
+import Lux from './pages/Lux';
 import __Layout from './Layout.jsx';
 
 
@@ -20,6 +21,7 @@ export const PAGES = {
     "Resources": Resources,
     "Services": Services,
     "WorkshopShowcase": WorkshopShowcase,
+    "Lux": Lux,
 }
 
 export const pagesConfig = {
