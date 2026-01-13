@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import AIMarketingKitchen from '@/components/ice/AIMarketingKitchen';
-import ActionPlanBuilder from '@/components/ice/ActionPlanBuilder';
+import LuxuryActionPlanBuilder from '@/components/ice/LuxuryActionPlanBuilder';
 
 export default function LuxuryOutlookPage() {
   const scrollToSection = (id) => {
@@ -481,7 +481,7 @@ export default function LuxuryOutlookPage() {
             </p>
           </div>
           
-          <ActionPlanBuilder />
+          <LuxuryActionPlanBuilder />
         </div>
       </section>
 

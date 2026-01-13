@@ -4,10 +4,10 @@ import Contact from './pages/Contact';
 import Holidays from './pages/Holidays';
 import Home from './pages/Home';
 import IC from './pages/IC';
+import Lux from './pages/Lux';
 import Resources from './pages/Resources';
 import Services from './pages/Services';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import Lux from './pages/Lux';
 import __Layout from './Layout.jsx';
 
 
@@ -18,10 +18,10 @@ export const PAGES = {
     "Holidays": Holidays,
     "Home": Home,
     "IC": IC,
+    "Lux": Lux,
     "Resources": Resources,
     "Services": Services,
     "WorkshopShowcase": WorkshopShowcase,
-    "Lux": Lux,
 }
 
 export const pagesConfig = {
