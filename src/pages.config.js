@@ -9,6 +9,7 @@ import Resources from './pages/Resources';
 import Services from './pages/Services';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import Book from './pages/Book';
+import Jobs from './pages/Jobs';
 import __Layout from './Layout.jsx';
 
 
@@ -24,6 +25,7 @@ export const PAGES = {
     "Services": Services,
     "WorkshopShowcase": WorkshopShowcase,
     "Book": Book,
+    "Jobs": Jobs,
 }
 
 export const pagesConfig = {

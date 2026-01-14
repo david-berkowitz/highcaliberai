@@ -165,6 +165,12 @@ export default function Layout({ children, currentPageName }) {
               >
                 IndeCollective
               </Link>
+              <Link
+                to={createPageUrl("Jobs")}
+                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                Job Resources
+              </Link>
             </div>
             <p className="text-sm text-gray-500 font-medium text-center">
               © {new Date().getFullYear()} High Caliber AI. All rights reserved.
