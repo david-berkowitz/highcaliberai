@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "./utils";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
@@ -13,7 +15,8 @@ import {
   ExternalLink,
   Mail,
   Calendar,
-  FileText
+  FileText,
+  ArrowRight
 } from "lucide-react";
 
 export default function Resources() {
@@ -38,53 +41,35 @@ export default function Resources() {
       </section>
 
       {/* Book Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-red-50 to-white">
-        <div className="max-w-5xl mx-auto">
-          <Card className="bg-white border-2 border-red-600/20 shadow-xl overflow-hidden">
-            <CardContent className="p-0">
-              <div className="grid md:grid-cols-5 gap-8 items-center">
-                <div className="md:col-span-2 p-8 md:p-0">
-                  <img 
-                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68c6fbda0a2f6be073e07a4f/51ee6e13f_bookcover.png"
-                    alt="The Non-Obvious Guide to Using AI for Marketing"
-                    className="w-full max-w-sm mx-auto shadow-2xl rounded-lg"
-                  />
-                </div>
-                <div className="md:col-span-3 p-8">
-                  <div className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                    FEATURED BOOK
+      <section className="py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <Link to={createPageUrl("Book")}>
+            <Card className="bg-gradient-to-r from-purple-900 to-indigo-900 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between gap-6">
+                  <div className="flex items-center gap-6">
+                    <img 
+                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68c6fbda0a2f6be073e07a4f/51ee6e13f_bookcover.png"
+                      alt="The Non-Obvious Guide to Using AI for Marketing"
+                      className="w-24 h-auto rounded-lg shadow-lg"
+                    />
+                    <div>
+                      <div className="inline-block bg-yellow-500 text-purple-900 text-xs font-bold px-3 py-1 rounded-full mb-2">
+                        NEW BOOK
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        The Non-Obvious Guide to Using AI for Marketing
+                      </h3>
+                      <p className="text-purple-200">
+                        A practical guide to implementing AI in your marketing strategy
+                      </p>
+                    </div>
                   </div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                    The Non-Obvious Guide to Using AI for Marketing
-                  </h2>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    A practical, hands-on guide to implementing AI in your marketing strategy. Learn proven frameworks, avoid common pitfalls, and discover actionable techniques to transform your marketing with AI.
-                  </p>
-                  <div className="flex flex-wrap gap-4">
-                    <a 
-                      href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-                    >
-                      <Book className="w-5 h-5" />
-                      Get the Book
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                    <a 
-                      href="https://usingaiformarketing.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-red-600 border-2 border-red-600 px-6 py-3 rounded-lg font-semibold transition-colors"
-                    >
-                      Free Resources
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
+                  <ArrowRight className="w-8 h-8 text-white group-hover:translate-x-2 transition-transform flex-shrink-0" />
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </section>
 
