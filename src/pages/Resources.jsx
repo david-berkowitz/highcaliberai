@@ -10,7 +10,10 @@ import {
   Zap, 
   Lightbulb,
   Book,
-  ExternalLink 
+  ExternalLink,
+  Mail,
+  Calendar,
+  FileText
 } from "lucide-react";
 
 export default function Resources() {
@@ -126,6 +129,12 @@ export default function Resources() {
               description="AI-powered jingle and brand music creation"
               href="https://jinglemybrand.com/"
             />
+            <ResourceCard 
+              icon={Target}
+              title="Napkin"
+              description="AI-powered infographic and visual storytelling"
+              href="https://www.napkin.ai/"
+            />
           </div>
         </div>
       </section>
@@ -150,8 +159,14 @@ export default function Resources() {
             <ResourceCard 
               icon={Brain}
               title="Happenstance AI"
-              description="Intelligent marketing automation and workflow optimization"
-              href="https://happenstance.ai/invite/friend/kG7j1tmEVzwEe0tzIT8im6pw7m2"
+              description="Intelligent contact search and business development"
+              href="https://happenstance.ai/invite/friend/yuqdbLCl7N5lUWLNDncIC2T5qC3"
+            />
+            <ResourceCard 
+              icon={Users}
+              title="CTD.ai"
+              description="AI-powered contact discovery and relationship mapping"
+              href="https://ctd.ai/"
             />
           </div>
         </div>
@@ -184,12 +199,219 @@ export default function Resources() {
         </div>
       </section>
 
+      {/* Newsletters */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
+              <Mail className="w-8 h-8 text-red-600" />
+              Newsletters
+            </h2>
+            <p className="text-gray-600">Stay updated with the latest AI marketing news and insights</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ResourceCard 
+              icon={Mail}
+              title="The Neuron Daily"
+              description="Daily AI news and insights by Pete Huang"
+              href="https://www.theneurondaily.com/"
+              featured
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="The Rundown"
+              description="Daily AI updates by Rowan Cheung"
+              href="https://www.therundown.ai/"
+              featured
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="Ben's Bites"
+              description="Daily AI news digest"
+              href="https://www.bensbites.com/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="One Useful Thing"
+              description="AI insights by Ethan Mollick"
+              href="https://www.oneusefulthing.org/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="Almost Timely News"
+              description="Weekly AI marketing by Chris Penn"
+              href="https://almosttimely.substack.com?r=xky0"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="AI Marketing School"
+              description="AI marketing insights by Charlie Braithwaite"
+              href="https://aimarketingschool.beehiiv.com/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="The AI Valley"
+              description="Daily AI news by Barsee"
+              href="https://www.theaivalley.com/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="Wonder Tools"
+              description="Weekly AI tools by Jeremy Caplan"
+              href="https://wondertools.substack.com/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="AI Report"
+              description="Weekly AI tool updates"
+              href="https://aitoolreport.beehiiv.com/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="IPG Media Lab Weekly"
+              description="Weekly media and AI insights"
+              href="https://ipglab.substack.com/"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Directories & Prompts */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
+              <FileText className="w-8 h-8 text-red-600" />
+              Directories & Prompts
+            </h2>
+            <p className="text-gray-600">Discover AI tools and access curated prompt libraries</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ResourceCard 
+              icon={FileText}
+              title="Supertools by The Rundown"
+              description="Curated directory of AI tools"
+              href="https://www.supertools.com/"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="Top AI Tools for Business"
+              description="Business-focused AI tools by The Neuron"
+              href="https://www.topaitools.com/"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="There's an AI for That"
+              description="Comprehensive AI tool database"
+              href="https://www.theresanaiforthat.com/"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="Find My AI Tool"
+              description="Search engine for AI tools"
+              href="https://www.findmyaitool.com/"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="AITools.fyi"
+              description="AI marketing tools directory"
+              href="https://aitools.fyi/category/ai-marketing"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="MKT1's AI Tools"
+              description="Airtable of marketing AI tools"
+              href="https://airtable.com/appcRvwXdyEJR0fsT/shrCMY1xkb2fOmy7t/tblrn88uEcqUypqFX"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="1000+ Best ChatGPT Prompts"
+              description="Prompt library by Rowan Cheung"
+              href="https://www.notion.so/3c26e97a23a948d499e9f1882dd2f542?pvs=21"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="Anthropic's Prompt Library"
+              description="Official Claude prompt examples"
+              href="https://docs.anthropic.com/en/prompt-library/library"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="ChatGPT Prompt Frameworks"
+              description="Prompt frameworks by Shelly Palmer"
+              href="https://shellypalmer.com/2023/11/chatgpt-prompt-frameworks/"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Courses & Learning */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
+              <Book className="w-8 h-8 text-red-600" />
+              Courses & Learning
+            </h2>
+            <p className="text-gray-600">Educational resources and video content for AI marketing</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ResourceCard 
+              icon={Book}
+              title="AIMG YouTube Channel"
+              description="Dozens of AI marketing expert interviews"
+              href="https://www.youtube.com/@aimarketersguild"
+              featured
+            />
+            <ResourceCard 
+              icon={Book}
+              title="Generative AI for Brand Execs"
+              description="Course by Shelly Palmer"
+              href="https://courses.shellypalmer.com/metacademy-generative-ai"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* LinkedIn Thought Leaders */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
+              <Users className="w-8 h-8 text-red-600" />
+              LinkedIn Thought Leaders
+            </h2>
+            <p className="text-gray-600">Follow these AI marketing experts on LinkedIn</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ResourceCard 
+              icon={Users}
+              title="Ethan Mollick"
+              description="Wharton School professor and AI researcher"
+              href="https://www.linkedin.com/in/emollick/"
+            />
+            <ResourceCard 
+              icon={Users}
+              title="Catharine Montgomery"
+              description="Better Together Agency"
+              href="https://www.linkedin.com/in/cnmontgomery/"
+            />
+            <ResourceCard 
+              icon={Users}
+              title="Jeremiah Owyang"
+              description="Blitzscaling VC"
+              href="https://www.linkedin.com/in/jowyang/"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Community Links */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Community & Learning</h2>
-            <p className="text-gray-600">Connect with AI marketing communities and access learning resources</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Community & Events</h2>
+            <p className="text-gray-600">Connect with AI marketing communities and attend events</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="bg-gradient-to-br from-purple-600 to-purple-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300">
@@ -242,10 +464,10 @@ export default function Resources() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-white/20 p-3 rounded-xl">
-                    <Brain className="w-8 h-8 text-white" />
+                    <Calendar className="w-8 h-8 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl font-bold text-white mb-2">AIMG Events</h4>
+                    <h4 className="text-xl font-bold text-white mb-2">AI Insiders Events</h4>
                     <p className="text-green-100 mb-4">Attend virtual events, workshops, and networking sessions on AI marketing</p>
                     <a 
                       href="https://lu.ma/aimg" 
@@ -313,7 +535,7 @@ export default function Resources() {
   );
 }
 
-function ResourceCard({ icon: Icon, title, description, href }) {
+function ResourceCard({ icon: Icon, title, description, href, featured }) {
   return (
     <a 
       href={href}
@@ -321,12 +543,12 @@ function ResourceCard({ icon: Icon, title, description, href }) {
       rel="noopener noreferrer"
       className="group block"
     >
-      <Card className="bg-white border border-gray-200 hover:border-red-600/30 hover:shadow-xl transition-all duration-300 rounded-xl h-full">
+      <Card className={`bg-white border ${featured ? 'border-red-600/50 shadow-lg' : 'border-gray-200'} hover:border-red-600/30 hover:shadow-xl transition-all duration-300 rounded-xl h-full`}>
         <CardContent className="p-6">
           <div className="w-12 h-12 rounded-lg bg-red-600/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <Icon className="w-6 h-6 text-red-600" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">{title}</h3>
+          <h3 className={`text-xl ${featured ? 'font-bold' : 'font-semibold'} text-gray-900 mb-2 group-hover:text-red-600 transition-colors`}>{title}</h3>
           <p className="text-gray-600 text-sm leading-relaxed mb-4">{description}</p>
           <div className="flex items-center gap-2 text-red-600 font-medium text-sm">
             Visit Site
