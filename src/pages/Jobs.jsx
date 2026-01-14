@@ -394,14 +394,23 @@ function JobLink({ title, href, description, featured }) {
       rel="noopener noreferrer"
       className="group block"
     >
-      <Card className={`bg-white border ${featured ? 'border-red-600/50 shadow-md' : 'border-gray-200'} hover:border-red-600/50 hover:shadow-lg transition-all duration-200 h-full`}>
+      <Card className={`${featured ? 'bg-gradient-to-br from-red-50 to-orange-50 border-red-600 shadow-md' : 'bg-white border-gray-200'} border hover:border-red-600/50 hover:shadow-lg transition-all duration-200 h-full`}>
         <CardContent className="p-4">
-          <h3 className={`text-base ${featured ? 'font-bold' : 'font-semibold'} text-gray-900 mb-1 group-hover:text-red-600 transition-colors flex items-center gap-2`}>
-            {title}
-            <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-          </h3>
+          <div className="flex items-start justify-between gap-2 mb-1">
+            <h3 className={`text-base ${featured ? 'font-bold' : 'font-semibold'} text-gray-900 group-hover:text-red-600 transition-colors flex items-center gap-2`}>
+              {title}
+              {featured && (
+                <span className="text-xs bg-red-600 text-white px-2 py-0.5 rounded-full font-semibold">
+                  Featured
+                </span>
+              )}
+            </h3>
+            <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-1" />
+          </div>
           {description && (
-            <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
+            <p className={`text-sm ${featured ? 'text-gray-800 font-medium' : 'text-gray-600'} leading-relaxed`}>
+              {description}
+            </p>
           )}
         </CardContent>
       </Card>
