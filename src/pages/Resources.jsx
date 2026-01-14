@@ -37,6 +37,57 @@ export default function Resources() {
         </div>
       </section>
 
+      {/* Book Section */}
+      <section className="py-16 px-6 bg-gradient-to-br from-red-50 to-white">
+        <div className="max-w-5xl mx-auto">
+          <Card className="bg-white border-2 border-red-600/20 shadow-xl overflow-hidden">
+            <CardContent className="p-0">
+              <div className="grid md:grid-cols-5 gap-8 items-center">
+                <div className="md:col-span-2 p-8 md:p-0">
+                  <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68c6fbda0a2f6be073e07a4f/51ee6e13f_bookcover.png"
+                    alt="The Non-Obvious Guide to Using AI for Marketing"
+                    className="w-full max-w-sm mx-auto shadow-2xl rounded-lg"
+                  />
+                </div>
+                <div className="md:col-span-3 p-8">
+                  <div className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                    FEATURED BOOK
+                  </div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    The Non-Obvious Guide to Using AI for Marketing
+                  </h2>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    A practical, hands-on guide to implementing AI in your marketing strategy. Learn proven frameworks, avoid common pitfalls, and discover actionable techniques to transform your marketing with AI.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <a 
+                      href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                    >
+                      <Book className="w-5 h-5" />
+                      Get the Book
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                    <a 
+                      href="https://usingaiformarketing.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-red-600 border-2 border-red-600 px-6 py-3 rounded-lg font-semibold transition-colors"
+                    >
+                      Free Resources
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Research & Insights */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
@@ -135,27 +186,33 @@ export default function Resources() {
               description="AI-powered infographic and visual storytelling"
               href="https://www.napkin.ai/"
             />
+            <ResourceCard 
+              icon={Brain}
+              title="LiveAvatar"
+              description="Live video avatars by HeyGen for real-time presentations"
+              href="https://liveavatar.com/"
+            />
+            <ResourceCard 
+              icon={Sparkles}
+              title="Google Labs"
+              description="Experimental AI content generation tools from Google"
+              href="https://labs.google/experiments"
+            />
           </div>
         </div>
       </section>
 
-      {/* Automation & Workflow */}
+      {/* Contact Discovery */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
-              <Zap className="w-8 h-8 text-red-600" />
-              Automation & Workflow
+              <Users className="w-8 h-8 text-red-600" />
+              Contact Discovery
             </h2>
-            <p className="text-gray-600">Tools to streamline and automate your marketing workflows</p>
+            <p className="text-gray-600">AI-powered tools for finding and connecting with prospects</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={Zap}
-              title="n8n"
-              description="Workflow automation for technical teams"
-              href="https://n8n.io/"
-            />
             <ResourceCard 
               icon={Brain}
               title="Happenstance AI"
@@ -172,15 +229,36 @@ export default function Resources() {
         </div>
       </section>
 
-      {/* App Building */}
+      {/* Agents & Workflow Automation */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
-              <Lightbulb className="w-8 h-8 text-red-600" />
-              App Building
+              <Zap className="w-8 h-8 text-red-600" />
+              Agents & Workflow Automation
             </h2>
-            <p className="text-gray-600">No-code and low-code platforms for building AI-powered applications</p>
+            <p className="text-gray-600">Build AI agents and automate complex workflows</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ResourceCard 
+              icon={Zap}
+              title="n8n"
+              description="Workflow automation for technical teams"
+              href="https://n8n.io/"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Vibe Coding */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
+              <Lightbulb className="w-8 h-8 text-red-600" />
+              Vibe Coding
+            </h2>
+            <p className="text-gray-600">No-code and AI-assisted platforms for building applications</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ResourceCard 
@@ -188,12 +266,32 @@ export default function Resources() {
               title="Base44"
               description="Build AI-powered apps without code"
               href="https://base44.pxf.io/c/5604633/2049275/25619?trafcat=base"
+              featured
             />
             <ResourceCard 
               icon={Lightbulb}
               title="Lovable"
               description="AI-powered app development platform"
               href="https://lovable.dev/?via=david-berkowitz"
+              featured
+            />
+            <ResourceCard 
+              icon={Brain}
+              title="Claude Code"
+              description="AI coding assistant for developers"
+              href="https://www.anthropic.com/claude/code"
+            />
+            <ResourceCard 
+              icon={Target}
+              title="Ghostty"
+              description="Fast, modern terminal emulator"
+              href="https://ghostty.org/"
+            />
+            <ResourceCard 
+              icon={Zap}
+              title="Netlify"
+              description="Modern web hosting and deployment platform"
+              href="https://www.netlify.com/"
             />
           </div>
         </div>
