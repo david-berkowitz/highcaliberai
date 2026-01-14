@@ -8,6 +8,7 @@ import Lux from './pages/Lux';
 import Resources from './pages/Resources';
 import Services from './pages/Services';
 import WorkshopShowcase from './pages/WorkshopShowcase';
+import Book from './pages/Book';
 import __Layout from './Layout.jsx';
 
 
@@ -22,6 +23,7 @@ export const PAGES = {
     "Resources": Resources,
     "Services": Services,
     "WorkshopShowcase": WorkshopShowcase,
+    "Book": Book,
 }
 
 export const pagesConfig = {

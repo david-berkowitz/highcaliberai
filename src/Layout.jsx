@@ -12,6 +12,7 @@ export default function Layout({ children, currentPageName }) {
     { name: "About", page: "About" },
     { name: "Capabilities", page: "Services" },
     { name: "Training", page: "WorkshopShowcase" },
+    { name: "Book", page: "Book" },
     { name: "AI Audit", page: "AIAudit" },
     { name: "Resources", page: "Resources" },
     { name: "Contact", page: "Contact" },
