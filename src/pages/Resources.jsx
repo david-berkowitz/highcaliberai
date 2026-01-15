@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
+import MetaTags from "@/components/SEO/MetaTags";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   TrendingUp, 
@@ -22,6 +23,12 @@ import {
 export default function Resources() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      <MetaTags 
+        title="AI Marketing Resources, Tools & Guides"
+        description="Curated directory of AI marketing tools, research platforms, content creation apps, and learning resources. Free guides, checklists, and access to AI Marketers Guild community."
+        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
+        url="https://highcaliberai.com/resources"
+      />
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
