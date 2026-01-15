@@ -222,76 +222,8 @@ export default function LuxuryRealEstate() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative py-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, gold 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-none bg-white/5 border border-[#D4AF37]/20"
-            >
-              <Sparkles className="w-4 h-4 text-[#D4AF37]" />
-              <span className="text-xs text-white tracking-[0.3em]">AI-POWERED PROPERTY DISCOVERY</span>
-            </motion.div>
-            
-            <h1 className="text-5xl md:text-7xl font-extralight text-white mb-6 tracking-tight">
-              Discover Your
-              <span className="block font-light text-[#D4AF37] mt-2" style={{ fontFamily: 'Georgia, serif' }}>
-                Dream Estate
-              </span>
-            </h1>
-            
-            <p className="text-xl text-white/70 mb-12 font-light leading-relaxed">
-              Curated collection of Manhattan's most prestigious properties
-            </p>
-
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#D4AF37]" />
-                <Input
-                  placeholder="Search by location or property type..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 pr-4 py-6 bg-white/5 border-[#D4AF37]/30 text-white placeholder:text-white/40 rounded-none focus:border-[#D4AF37] font-light"
-                />
-                <Button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black rounded-none px-6 font-light tracking-wider">
-                  SEARCH
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {[
-              { label: 'Properties', value: '150+' },
-              { label: 'Avg. Price', value: '$12M' },
-              { label: 'Sold', value: '200+' },
-              { label: 'Agents', value: '25+' }
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + i * 0.1 }}
-                className="bg-white/5 border border-[#D4AF37]/20 rounded-none p-6 text-center backdrop-blur-sm"
-              >
-                <div className="text-3xl font-light text-[#D4AF37] mb-2">{stat.value}</div>
-                <div className="text-sm text-white/60 tracking-wider">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* AI Tools Section */}
-      <section className="py-24 px-6 bg-gradient-to-b from-black to-gray-900 border-y border-[#D4AF37]/20">
+      <section className="pt-32 pb-24 px-6 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.div

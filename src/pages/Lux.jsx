@@ -118,6 +118,13 @@ export default function LuxuryOutlookPage() {
                 <Zap className="mr-2 w-5 h-5" />
                 VIEW AI TOOLS
               </Button>
+              <a 
+                href="/luxuryrealestate"
+                className="inline-flex items-center justify-center bg-white/5 border-2 border-[#D4AF37]/40 hover:bg-[#D4AF37]/10 text-white px-12 py-7 text-base rounded-none font-light tracking-widest shadow-lg backdrop-blur-sm transition-all"
+              >
+                <Diamond className="mr-2 w-5 h-5" />
+                VIEW LIVE DEMO
+              </a>
             </motion.div>
 
             {/* Elegant Stats Grid */}
