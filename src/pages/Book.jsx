@@ -136,6 +136,7 @@ export default function BookPage() {
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e2caa7739d4d7ec44ee610/cedc73191_NOG-AIMarketing-2025-HiRes.jpg"
                 alt="The Non-Obvious Guide to Using AI for Marketing book cover by David Berkowitz - practical strategies for harnessing AI in marketing"
                 className="relative w-full max-w-md mx-auto rounded-2xl shadow-2xl"
+                loading="eager"
               />
               <div className="absolute -bottom-4 -right-4 bg-white rounded-full px-4 py-2 shadow-xl flex items-center gap-2">
                 <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
@@ -307,6 +308,7 @@ export default function BookPage() {
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e2caa7739d4d7ec44ee610/a6e122b8e_DarrenHermanwithbook.png"
                   alt="Marketing executive Darren Herman reading The Non-Obvious Guide to Using AI for Marketing"
                   className="w-full rounded-lg mb-6"
+                  loading="lazy"
                 />
                 <p className="text-white/90 text-center italic">
                   Trusted by industry leaders and marketing executives.
@@ -380,6 +382,7 @@ export default function BookPage() {
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e2caa7739d4d7ec44ee610/00b68beb5_dbholdingbooksxsw2025.jpg"
                 alt="David Berkowitz holding The Non-Obvious Guide to Using AI for Marketing at SXSW 2025"
                 className="w-full rounded-2xl shadow-2xl"
+                loading="lazy"
               />
             </motion.div>
             <motion.div
