@@ -341,7 +341,7 @@ export default function Home() {
           </p>
           
           <Link 
-            to={createPageUrl('AIAudit')}
+            to={createPageUrl('ZAIAudit')}
             className="inline-flex items-center px-10 py-4 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all group"
           >
             Check Your AI Readiness
