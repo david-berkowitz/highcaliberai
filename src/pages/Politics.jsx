@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flag, Brain, Sparkles, Users, TrendingUp, Mail, Calendar, Book, Lightbulb, Target, Zap, ArrowRight, Download, ExternalLink, Clock, Award, Lock, Gamepad2, Vote } from 'lucide-react';
+import { Flag, Brain, Sparkles, Users, TrendingUp, Mail, Calendar, Book, Lightbulb, Target, Zap, ArrowRight, Download, ExternalLink, Clock, Award, Gamepad2, Vote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -10,50 +10,6 @@ import ActionPlanBuilder from '@/components/ice/ActionPlanBuilder';
 
 export default function PoliticsPage() {
   const [activeDay, setActiveDay] = useState('day1');
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
-
-  const handlePasswordSubmit = (e) => {
-    e.preventDefault();
-    if (password === 'campaign2026') {
-      setIsAuthenticated(true);
-      setError(false);
-    } else {
-      setError(true);
-    }
-  };
-
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50 flex items-center justify-center p-4">
-        <Card className="w-full max-w-md bg-white border border-blue-200 shadow-xl rounded-2xl">
-          <CardContent className="p-8">
-            <div className="flex justify-center mb-6">
-              <div className="bg-gradient-to-br from-blue-600 to-red-600 p-4 rounded-xl shadow-md">
-                <Lock className="w-8 h-8 text-white" />
-              </div>
-            </div>
-            <h2 className="text-2xl font-semibold text-blue-900 text-center mb-2">Protected Content</h2>
-            <p className="text-gray-600 text-center mb-6">Please enter the password to access the Campaign Training page.</p>
-            <form onSubmit={handlePasswordSubmit} className="space-y-4">
-              <Input
-                type="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className={`text-center ${error ? 'border-red-500' : ''}`}
-              />
-              {error && <p className="text-red-500 text-sm text-center">Incorrect password. Please try again.</p>}
-              <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white">
-                Access Training
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
