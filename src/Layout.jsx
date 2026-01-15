@@ -171,6 +171,12 @@ export default function Layout({ children, currentPageName }) {
               >
                 Job Resources
               </Link>
+              <Link
+                to={createPageUrl("Lux")}
+                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                Luxury Outlook
+              </Link>
             </div>
             <p className="text-sm text-gray-500 font-medium text-center">
               © {new Date().getFullYear()} High Caliber AI. All rights reserved.
