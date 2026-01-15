@@ -11,6 +11,7 @@ export default function Layout({ children, currentPageName }) {
     { name: "Home", page: "Home" },
     { name: "About", page: "About" },
     { name: "Capabilities", page: "Services" },
+    { name: "Blog", page: "Blog" },
     { name: "Training", page: "WorkshopShowcase" },
     { name: "Book", page: "Book" },
     { name: "AI Audit", page: "ZAIAudit" },
@@ -160,6 +161,12 @@ export default function Layout({ children, currentPageName }) {
               David Berkowitz: Founder of AI Marketers Guild (7,000+ Members). Author of The Non-Obvious Guide to Using AI for Marketing.
             </p>
             <div className="flex items-center justify-center gap-4 mb-4">
+              <Link
+                to={createPageUrl("Blog")}
+                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                Blog
+              </Link>
               <Link
                 to={createPageUrl("IC")}
                 className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
