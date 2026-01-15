@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
 import { BookOpen, Mic, Users, Award, ArrowRight, ChevronDown } from "lucide-react";
+import { PersonStructuredData, FAQStructuredData } from "@/components/SEO/StructuredData";
 
 const stats = [
   { icon: BookOpen, number: "1000+", label: "Published Bylines" },
@@ -76,8 +77,30 @@ function FAQItem({ question, answer }) {
 }
 
 export default function About() {
+  const faqs = [
+    {
+      question: "What is David Berkowitz's background in AI marketing?",
+      answer: "David Berkowitz is the founder of AI Marketers Guild (7,000+ members) and author of The Non-Obvious Guide to Using AI for Marketing. He serves as fractional CMO for AI-forward companies and Executive in Residence at Progress Partners. With over 15 years of experience and former roles at 360i, MRY, Mediaocean, and Sysomos, he combines agency expertise with technical knowledge."
+    },
+    {
+      question: "Who is the ideal client for High Caliber AI?",
+      answer: "We work primarily with B2B tech companies, agencies, and growth-stage firms that have already bought AI tools but struggle with adoption. Our clients are typically CMOs, VPs of Marketing, or agency leaders who need strategic leadership to bridge the gap between purchasing technology and achieving measurable results."
+    },
+    {
+      question: "What is a Fractional CMO?",
+      answer: "A fractional CMO is an experienced marketing executive who works with your company on a part-time or project basis. Unlike a full-time CMO, you get senior-level strategic leadership without the commitment of a full-time hire. David embeds with your team to modernize your GTM strategy, tech stack, and team capabilities."
+    },
+    {
+      question: "How does the AI Marketers Guild inform David's consulting work?",
+      answer: "David founded AI Marketers Guild and Serial Marketers, which he sold to Marketecture Media in 2025. He continues to run both communities as Chief Community Officer. The AI Marketers Guild community of 7,000+ marketing professionals provides real-time intelligence on what's actually working in AI marketing. This community feedback allows David to distinguish between AI hype and proven tactics, ensuring recommendations are grounded in real-world results rather than vendor promises."
+    }
+  ];
+
   return (
     <div>
+      <PersonStructuredData />
+      <FAQStructuredData faqs={faqs} />
+      
       {/* Hero Section */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,7 +132,7 @@ export default function About() {
             >
               <img
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
-                alt="David Berkowitz"
+                alt="David Berkowitz - AI marketing strategist, author, and founder of AI Marketers Guild"
                 className="w-full max-w-md mx-auto rounded-full shadow-xl"
               />
             </motion.div>

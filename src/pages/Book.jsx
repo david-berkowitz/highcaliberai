@@ -21,6 +21,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
+import { BookStructuredData, PersonStructuredData } from '@/components/SEO/StructuredData';
 
 export default function BookPage() {
   const [ideaInput, setIdeaInput] = useState('');
@@ -107,6 +108,8 @@ export default function BookPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+      <BookStructuredData />
+      <PersonStructuredData />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
@@ -123,7 +126,7 @@ export default function BookPage() {
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur-2xl opacity-30"></div>
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e2caa7739d4d7ec44ee610/cedc73191_NOG-AIMarketing-2025-HiRes.jpg"
-                alt="The Non-Obvious Guide to Using AI for Marketing"
+                alt="The Non-Obvious Guide to Using AI for Marketing book cover by David Berkowitz - practical strategies for harnessing AI in marketing"
                 className="relative w-full max-w-md mx-auto rounded-2xl shadow-2xl"
               />
               <div className="absolute -bottom-4 -right-4 bg-white rounded-full px-4 py-2 shadow-xl flex items-center gap-2">
@@ -294,7 +297,7 @@ export default function BookPage() {
               <CardContent className="p-8">
                 <img 
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e2caa7739d4d7ec44ee610/a6e122b8e_DarrenHermanwithbook.png"
-                  alt="Darren Herman with the book"
+                  alt="Marketing executive Darren Herman reading The Non-Obvious Guide to Using AI for Marketing"
                   className="w-full rounded-lg mb-6"
                 />
                 <p className="text-white/90 text-center italic">
@@ -367,7 +370,7 @@ export default function BookPage() {
             >
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e2caa7739d4d7ec44ee610/00b68beb5_dbholdingbooksxsw2025.jpg"
-                alt="David Berkowitz, author"
+                alt="David Berkowitz holding The Non-Obvious Guide to Using AI for Marketing at SXSW 2025"
                 className="w-full rounded-2xl shadow-2xl"
               />
             </motion.div>

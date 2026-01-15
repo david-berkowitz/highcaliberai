@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, BookOpen, FileText } from 'lucide-react';
 import { createPageUrl } from '../utils';
+import { PersonStructuredData, OrganizationStructuredData } from '@/components/SEO/StructuredData';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white"
-    >
+    <div className="min-h-screen bg-white">
+      <PersonStructuredData />
+      <OrganizationStructuredData />
+      
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white py-24 lg:py-40">
         <div className="absolute inset-0 overflow-hidden opacity-40">
@@ -116,7 +119,7 @@ export default function Home() {
                 <div className="absolute -inset-4 bg-gradient-to-br from-red-600 to-red-800 rounded-3xl rotate-3 opacity-20"></div>
                 <img 
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg" 
-                  alt="David Berkowitz Speaking" 
+                  alt="David Berkowitz speaking at Forbes event on AI marketing strategy and implementation" 
                   className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl"
                 />
               </div>
@@ -288,7 +291,7 @@ export default function Home() {
             <div className="order-1 lg:order-2">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/324737b14_IMG_4434.jpg"
-                alt="The Non-Obvious Guide to Using AI for Marketing"
+                alt="The Non-Obvious Guide to Using AI for Marketing book by David Berkowitz - learn practical AI strategies for modern marketers"
                 className="w-full max-w-md mx-auto rounded-lg shadow-2xl"
               />
             </div>
