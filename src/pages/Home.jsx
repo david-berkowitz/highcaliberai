@@ -74,7 +74,7 @@ export default function Home() {
               
               <div className="space-y-6">
                 <p className="text-xl text-gray-700 leading-relaxed font-medium">
-                  David Berkowitz doesn't just "consult" on AI; he uses it to drive GTM strategy. As the founder of the AI Marketers Guild, he tracks what's actually working for 7,000+ peers. He combines that community intelligence with decades of executive experience (360i, Sysomos, MADTECH.AI) to help you skip the "hype cycle" and move straight to revenue.
+                  David Berkowitz doesn't just "consult" on AI; he uses it to drive GTM strategy. He founded AI Marketers Guild and Serial Marketers (sold to Marketecture Media in 2025, where he serves as Chief Community Officer), tracking what's actually working for 7,000+ peers. He combines that community intelligence with decades of executive experience (360i, Sysomos, MADTECH.AI) to help you skip the "hype cycle" and move straight to revenue.
                 </p>
                 
                 <div className="flex flex-col gap-4 py-6 border-y border-gray-200">

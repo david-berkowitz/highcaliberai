@@ -82,7 +82,7 @@ const credentials = [
   {
     icon: BookOpen,
     title: "The Authority",
-    description: "Author of The Non-Obvious Guide to Using AI for Marketing (2025) and founder of AI Marketers Guild",
+    description: "Author of The Non-Obvious Guide to Using AI for Marketing (2025) and Chief Community Officer at Marketecture Media (AI Marketers Guild, Serial Marketers)",
   },
   {
     icon: Handshake,

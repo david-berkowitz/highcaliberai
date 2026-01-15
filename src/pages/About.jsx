@@ -71,7 +71,7 @@ export default function About() {
                 <span className="text-red-600">Meet</span> David Berkowitz
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                AI marketing strategist, community builder, and author. David founded Serial Marketers and AI Marketers Guild (now part of Marketecture Media), serves as fractional CMO for AI-forward companies, and is Executive in Residence at Progress Partners.
+                AI marketing strategist, community builder, and author. David founded Serial Marketers and AI Marketers Guild, which he sold to Marketecture Media in 2025. He continues as Chief Community Officer, serves as fractional CMO for AI-forward companies, and is Executive in Residence at Progress Partners.
               </p>
               <Link
                 to={createPageUrl("Contact")}
@@ -225,8 +225,8 @@ export default function About() {
             answer="A fractional CMO is an experienced marketing executive who works with your company on a part-time or project basis. Unlike a full-time CMO, you get senior-level strategic leadership without the commitment of a full-time hire. David embeds with your team to modernize your GTM strategy, tech stack, and team capabilities."
           />
           <FAQItem 
-            question="How does David's AI Marketers Guild inform his consulting work?"
-            answer="The AI Marketers Guild community of 7,000+ marketing professionals provides real-time intelligence on what's actually working in AI marketing. This community feedback allows David to distinguish between AI hype and proven tactics, ensuring recommendations are grounded in real-world results rather than vendor promises."
+            question="How does the AI Marketers Guild inform David's consulting work?"
+            answer="David founded AI Marketers Guild and Serial Marketers, which he sold to Marketecture Media in 2025. He continues to run both communities as Chief Community Officer. The AI Marketers Guild community of 7,000+ marketing professionals provides real-time intelligence on what's actually working in AI marketing. This community feedback allows David to distinguish between AI hype and proven tactics, ensuring recommendations are grounded in real-world results rather than vendor promises."
           />
         </div>
       </section>
