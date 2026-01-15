@@ -35,6 +35,7 @@ export default function LuxuryOutlookPage() {
               <button onClick={() => scrollToSection('tools')} className="text-sm font-light text-white/80 hover:text-[#D4AF37] transition-colors tracking-wide">AI TOOLS</button>
               <button onClick={() => scrollToSection('game')} className="text-sm font-light text-white/80 hover:text-[#D4AF37] transition-colors tracking-wide">EXPERIENCE</button>
               <button onClick={() => scrollToSection('action-plan')} className="text-sm font-light text-white/80 hover:text-[#D4AF37] transition-colors tracking-wide">ACTION PLAN</button>
+              <a href="/luxuryrealestate" className="text-sm font-light text-white/80 hover:text-[#D4AF37] transition-colors tracking-wide">DEMO</a>
               <Button className="bg-gradient-to-r from-[#D4AF37] via-[#F4D03F] to-[#D4AF37] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] text-black shadow-lg rounded-none px-8 font-light tracking-widest">
                 CONNECT
                 <ArrowRight className="ml-2 w-4 h-4" />

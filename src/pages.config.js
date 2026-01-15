@@ -10,6 +10,7 @@ import Resources from './pages/Resources';
 import Services from './pages/Services';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import Home from './pages/Home';
+import LuxuryRealEstate from './pages/LuxuryRealEstate';
 import __Layout from './Layout.jsx';
 
 
@@ -26,6 +27,7 @@ export const PAGES = {
     "Services": Services,
     "WorkshopShowcase": WorkshopShowcase,
     "Home": Home,
+    "LuxuryRealEstate": LuxuryRealEstate,
 }
 
 export const pagesConfig = {
