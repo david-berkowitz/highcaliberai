@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "./utils";
-import { Menu, X, Linkedin, Mail } from "lucide-react";
+import { Menu, X, Linkedin, Mail, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = [
+  const primaryNavLinks = [
     { name: "Home", page: "Home" },
     { name: "About", page: "About" },
     { name: "Capabilities", page: "Services" },
     { name: "Speaking", page: "Speaking" },
     { name: "Blog", page: "Blog" },
+    { name: "Contact", page: "Contact" },
+  ];
+
+  const secondaryNavLinks = [
     { name: "Training", page: "WorkshopShowcase" },
     { name: "Book", page: "Book" },
     { name: "Resources", page: "Resources" },
-    { name: "Contact", page: "Contact" },
   ];
 
   return (
@@ -37,7 +40,7 @@ export default function Layout({ children, currentPageName }) {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {navLinks.map((link) => (
+              {primaryNavLinks.map((link) => (
                 <Link
                   key={link.page}
                   to={createPageUrl(link.page)}
@@ -50,6 +53,23 @@ export default function Layout({ children, currentPageName }) {
                   {link.name}
                 </Link>
               ))}
+              <div className="relative group">
+                <button className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-1">
+                  More
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  {secondaryNavLinks.map((link) => (
+                    <Link
+                      key={link.page}
+                      to={createPageUrl(link.page)}
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
               <div className="flex items-center space-x-4 ml-4 pl-4 border-l border-gray-200">
                 <a
                   href="https://www.linkedin.com/in/dberkowitz/"
@@ -88,7 +108,7 @@ export default function Layout({ children, currentPageName }) {
               className="md:hidden bg-white border-t border-gray-100"
             >
               <div className="px-4 py-4 space-y-3">
-                {navLinks.map((link) => (
+                {primaryNavLinks.map((link) => (
                   <Link
                     key={link.page}
                     to={createPageUrl(link.page)}
@@ -102,6 +122,19 @@ export default function Layout({ children, currentPageName }) {
                     {link.name}
                   </Link>
                 ))}
+                <div className="border-t border-gray-100 pt-3">
+                  <p className="text-xs font-semibold text-gray-500 uppercase mb-3">More</p>
+                  {secondaryNavLinks.map((link) => (
+                    <Link
+                      key={link.page}
+                      to={createPageUrl(link.page)}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-2 text-base text-gray-600"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
                 <div className="flex items-center space-x-4 pt-4 border-t border-gray-100">
                   <a
                     href="https://www.linkedin.com/in/dberkowitz/"

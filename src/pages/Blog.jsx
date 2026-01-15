@@ -151,9 +151,12 @@ export default function Blog() {
             <div className="text-center py-20">
               <p className="text-gray-500">Loading articles...</p>
             </div>
-          ) : otherPosts.length === 0 ? (
+          ) : filteredPosts.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">No articles found. Check back soon!</p>
+              <div className="inline-block px-6 py-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p className="text-blue-900 font-medium mb-2">📝 Coming Soon</p>
+                <p className="text-blue-700 text-sm">We're working on fresh AI marketing insights. Check back soon for in-depth articles, case studies, and strategy guides.</p>
+              </div>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

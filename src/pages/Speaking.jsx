@@ -64,8 +64,11 @@ export default function Speaking() {
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
               Speaking <span className="text-red-600">Engagements</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
               Keynotes, panels, and workshops on AI marketing, digital strategy, and marketing innovation at industry events, universities, and executive forums worldwide
+            </p>
+            <p className="text-sm text-gray-500 max-w-3xl mx-auto mb-8">
+              (Showing recent highlights—view complete history on David's <a href="https://serialmarketer.net/contact/speaking/" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700 underline">speaking page</a>)
             </p>
 
             {/* Year Filter */}
