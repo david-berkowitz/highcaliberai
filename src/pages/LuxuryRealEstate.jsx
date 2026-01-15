@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { MapPin, Home, Bed, Bath, Square, TrendingUp, Sparkles, Search, Filter, Diamond, Heart, Share2, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Home, Bed, Bath, Square, TrendingUp, Sparkles, Search, Filter, Diamond, Heart, Share2, Eye, ChevronLeft, ChevronRight, Upload, Mail, BarChart3, Wand2, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Textarea } from '@/components/ui/textarea';
 import { motion, AnimatePresence } from 'framer-motion';
+import { base44 } from '@/api/base44Client';
 
 const properties = [
   {
@@ -92,11 +94,90 @@ export default function LuxuryRealEstate() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [favorites, setFavorites] = useState([]);
+  
+  // AI Tools State
+  const [activeTab, setActiveTab] = useState('description');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [generatedDescription, setGeneratedDescription] = useState('');
+  const [propertyAddress, setPropertyAddress] = useState('');
+  const [marketAnalysis, setMarketAnalysis] = useState('');
+  const [clientName, setClientName] = useState('');
+  const [propertyDetails, setPropertyDetails] = useState('');
+  const [generatedEmail, setGeneratedEmail] = useState('');
 
   const toggleFavorite = (id) => {
     setFavorites(prev => 
       prev.includes(id) ? prev.filter(fav => fav !== id) : [...prev, id]
     );
+  };
+
+  // AI Description Generator
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    setIsGenerating(true);
+    setGeneratedDescription('');
+    
+    try {
+      // Upload image
+      const uploadResult = await base44.integrations.Core.UploadFile({ file });
+      setUploadedImage(uploadResult.file_url);
+      
+      // Generate description
+      const result = await base44.integrations.Core.InvokeLLM({
+        prompt: `You are a luxury real estate copywriter. Analyze this property image and create an elegant, compelling property description (150-200 words) that would appeal to high-net-worth buyers. Focus on luxury details, architectural features, lifestyle benefits, and emotional appeal. Use sophisticated language.`,
+        file_urls: [uploadResult.file_url]
+      });
+      
+      setGeneratedDescription(result);
+    } catch (error) {
+      setGeneratedDescription('Error generating description. Please try again.');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  // AI Market Analysis
+  const handleMarketAnalysis = async () => {
+    if (!propertyAddress.trim()) return;
+    
+    setIsGenerating(true);
+    setMarketAnalysis('');
+    
+    try {
+      const result = await base44.integrations.Core.InvokeLLM({
+        prompt: `Provide a detailed luxury real estate market analysis for: ${propertyAddress}. Include: current market trends, comparable recent sales, neighborhood highlights, investment outlook, and price positioning. Format with clear sections and bullet points. Be specific and data-driven.`,
+        add_context_from_internet: true
+      });
+      
+      setMarketAnalysis(result);
+    } catch (error) {
+      setMarketAnalysis('Error generating analysis. Please try again.');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  // AI Email Generator
+  const handleEmailGeneration = async () => {
+    if (!clientName.trim() || !propertyDetails.trim()) return;
+    
+    setIsGenerating(true);
+    setGeneratedEmail('');
+    
+    try {
+      const result = await base44.integrations.Core.InvokeLLM({
+        prompt: `Write a professional, personalized email from a luxury real estate agent to ${clientName} about this property: ${propertyDetails}. The email should be warm yet sophisticated, highlight key features, create urgency, and include a clear call-to-action for a private viewing. Keep it concise (200-250 words) and compelling.`
+      });
+      
+      setGeneratedEmail(result);
+    } catch (error) {
+      setGeneratedEmail('Error generating email. Please try again.');
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const filteredProperties = properties.filter(prop =>
@@ -205,6 +286,239 @@ export default function LuxuryRealEstate() {
                 <div className="text-sm text-white/60 tracking-wider">{stat.label}</div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Tools Section */}
+      <section className="py-24 px-6 bg-gradient-to-b from-black to-gray-900 border-y border-[#D4AF37]/20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 mb-6 px-6 py-3 rounded-none bg-white/5 border border-[#D4AF37]/20"
+            >
+              <Wand2 className="w-4 h-4 text-[#D4AF37]" />
+              <span className="text-xs text-white tracking-[0.3em]">LIVE AI DEMONSTRATIONS</span>
+            </motion.div>
+            <h2 className="text-4xl md:text-5xl font-extralight text-white mb-4">
+              AI-Powered <span className="text-[#D4AF37] font-light" style={{ fontFamily: 'Georgia, serif' }}>Marketing Tools</span>
+            </h2>
+            <p className="text-lg text-white/70 font-light max-w-2xl mx-auto">
+              See how vibe-coded AI can transform your real estate business—these tools actually work
+            </p>
+          </div>
+
+          {/* Tool Tabs */}
+          <div className="flex gap-4 mb-8 border-b border-[#D4AF37]/20 overflow-x-auto">
+            <button
+              onClick={() => setActiveTab('description')}
+              className={`pb-4 px-6 font-light tracking-wider whitespace-nowrap transition-colors ${
+                activeTab === 'description'
+                  ? 'text-[#D4AF37] border-b-2 border-[#D4AF37]'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              DESCRIPTION GENERATOR
+            </button>
+            <button
+              onClick={() => setActiveTab('market')}
+              className={`pb-4 px-6 font-light tracking-wider whitespace-nowrap transition-colors ${
+                activeTab === 'market'
+                  ? 'text-[#D4AF37] border-b-2 border-[#D4AF37]'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              MARKET ANALYSIS
+            </button>
+            <button
+              onClick={() => setActiveTab('email')}
+              className={`pb-4 px-6 font-light tracking-wider whitespace-nowrap transition-colors ${
+                activeTab === 'email'
+                  ? 'text-[#D4AF37] border-b-2 border-[#D4AF37]'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              EMAIL GENERATOR
+            </button>
+          </div>
+
+          {/* Tool Content */}
+          <div className="bg-white/5 border border-[#D4AF37]/20 rounded-none p-8 backdrop-blur-sm">
+            {activeTab === 'description' && (
+              <div>
+                <h3 className="text-2xl font-light text-white mb-3">AI Property Description Generator</h3>
+                <p className="text-white/70 mb-6 font-light">Upload a property photo and get a luxury listing description instantly</p>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <label className="block text-white/80 mb-3 font-light tracking-wide">UPLOAD PROPERTY IMAGE</label>
+                    <div className="border-2 border-dashed border-[#D4AF37]/30 rounded-none p-12 text-center hover:border-[#D4AF37] transition-colors cursor-pointer">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        className="hidden"
+                        id="image-upload"
+                      />
+                      <label htmlFor="image-upload" className="cursor-pointer">
+                        {uploadedImage ? (
+                          <img src={uploadedImage} alt="Uploaded" className="max-h-64 mx-auto mb-4" />
+                        ) : (
+                          <>
+                            <Upload className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
+                            <p className="text-white/60 font-light">Click to upload property image</p>
+                          </>
+                        )}
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-white/80 mb-3 font-light tracking-wide">GENERATED DESCRIPTION</label>
+                    <div className="bg-black/30 border border-[#D4AF37]/20 rounded-none p-6 min-h-[300px]">
+                      {isGenerating ? (
+                        <div className="flex items-center justify-center h-full">
+                          <Loader2 className="w-8 h-8 text-[#D4AF37] animate-spin" />
+                        </div>
+                      ) : generatedDescription ? (
+                        <p className="text-white/90 font-light leading-relaxed">{generatedDescription}</p>
+                      ) : (
+                        <p className="text-white/40 font-light italic">Your AI-generated description will appear here...</p>
+                      )}
+                    </div>
+                    {generatedDescription && !isGenerating && (
+                      <Button
+                        onClick={() => navigator.clipboard.writeText(generatedDescription)}
+                        className="mt-4 bg-[#D4AF37] text-black rounded-none px-6 hover:bg-[#F4D03F] font-light tracking-wider"
+                      >
+                        COPY TO CLIPBOARD
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'market' && (
+              <div>
+                <h3 className="text-2xl font-light text-white mb-3">AI Market Analysis</h3>
+                <p className="text-white/70 mb-6 font-light">Get real-time market insights for any property location</p>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <label className="block text-white/80 mb-3 font-light tracking-wide">PROPERTY ADDRESS</label>
+                    <Input
+                      value={propertyAddress}
+                      onChange={(e) => setPropertyAddress(e.target.value)}
+                      placeholder="e.g., 432 Park Avenue, New York, NY"
+                      className="bg-black/30 border-[#D4AF37]/30 text-white placeholder:text-white/40 rounded-none mb-4 font-light"
+                    />
+                    <Button
+                      onClick={handleMarketAnalysis}
+                      disabled={!propertyAddress.trim() || isGenerating}
+                      className="bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black rounded-none px-8 py-6 font-light tracking-widest hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] disabled:opacity-50 w-full"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                          ANALYZING...
+                        </>
+                      ) : (
+                        <>
+                          <BarChart3 className="w-5 h-5 mr-2" />
+                          GENERATE ANALYSIS
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-white/80 mb-3 font-light tracking-wide">MARKET INSIGHTS</label>
+                    <div className="bg-black/30 border border-[#D4AF37]/20 rounded-none p-6 min-h-[300px] max-h-[500px] overflow-y-auto">
+                      {marketAnalysis ? (
+                        <div className="text-white/90 font-light leading-relaxed whitespace-pre-line">{marketAnalysis}</div>
+                      ) : (
+                        <p className="text-white/40 font-light italic">AI-powered market analysis will appear here...</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'email' && (
+              <div>
+                <h3 className="text-2xl font-light text-white mb-3">AI Client Email Generator</h3>
+                <p className="text-white/70 mb-6 font-light">Create personalized client emails in seconds</p>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <label className="block text-white/80 mb-3 font-light tracking-wide">CLIENT NAME</label>
+                    <Input
+                      value={clientName}
+                      onChange={(e) => setClientName(e.target.value)}
+                      placeholder="e.g., Sarah Johnson"
+                      className="bg-black/30 border-[#D4AF37]/30 text-white placeholder:text-white/40 rounded-none mb-4 font-light"
+                    />
+                    
+                    <label className="block text-white/80 mb-3 font-light tracking-wide">PROPERTY DETAILS</label>
+                    <Textarea
+                      value={propertyDetails}
+                      onChange={(e) => setPropertyDetails(e.target.value)}
+                      placeholder="e.g., 5-bed penthouse on Park Avenue, $25M, 6,500 sqft, panoramic views, private terrace"
+                      className="bg-black/30 border-[#D4AF37]/30 text-white placeholder:text-white/40 rounded-none mb-4 font-light h-32"
+                    />
+                    
+                    <Button
+                      onClick={handleEmailGeneration}
+                      disabled={!clientName.trim() || !propertyDetails.trim() || isGenerating}
+                      className="bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black rounded-none px-8 py-6 font-light tracking-widest hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] disabled:opacity-50 w-full"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                          GENERATING...
+                        </>
+                      ) : (
+                        <>
+                          <Mail className="w-5 h-5 mr-2" />
+                          GENERATE EMAIL
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-white/80 mb-3 font-light tracking-wide">GENERATED EMAIL</label>
+                    <div className="bg-black/30 border border-[#D4AF37]/20 rounded-none p-6 min-h-[300px]">
+                      {generatedEmail ? (
+                        <div className="text-white/90 font-light leading-relaxed whitespace-pre-line">{generatedEmail}</div>
+                      ) : (
+                        <p className="text-white/40 font-light italic">Your personalized email will appear here...</p>
+                      )}
+                    </div>
+                    {generatedEmail && !isGenerating && (
+                      <Button
+                        onClick={() => navigator.clipboard.writeText(generatedEmail)}
+                        className="mt-4 bg-[#D4AF37] text-black rounded-none px-6 hover:bg-[#F4D03F] font-light tracking-wider"
+                      >
+                        COPY EMAIL
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-white/60 text-sm font-light">
+              <Sparkles className="w-4 h-4 inline mr-2 text-[#D4AF37]" />
+              These tools are fully functional and powered by live AI—try them now!
+            </p>
           </div>
         </div>
       </section>
