@@ -258,6 +258,58 @@ export default function LuxuryOutlookPage() {
             />
           </div>
 
+          {/* Presentation Slides */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-light text-white mb-8 text-center tracking-wide">Presentation Materials</h3>
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
+              <Card className="bg-gradient-to-br from-[#D4AF37]/20 to-[#D4AF37]/5 border border-[#D4AF37]/30 shadow-2xl hover:scale-[1.02] transition-transform duration-300 rounded-none backdrop-blur-sm">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[#D4AF37]/20 p-4 rounded-none border border-[#D4AF37]/30">
+                      <Download className="w-8 h-8 text-[#D4AF37]" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-light text-white mb-2 tracking-wide">PowerPoint Slides</h4>
+                      <p className="text-white/70 mb-4 font-light text-sm">Download the complete presentation deck in PowerPoint format</p>
+                      <a 
+                        href="https://www.dropbox.com/scl/fi/b8p4bksvlnpf6rrbrcu8z/Luxury-Roundtable-1-2026.pptx?rlkey=xcqbwwb9l6xqfnaurca3btguj&dl=1" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black px-5 py-2.5 rounded-none font-light tracking-widest hover:shadow-lg transition-all text-sm"
+                      >
+                        DOWNLOAD PPTX
+                        <Download className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-[#D4AF37]/20 to-[#D4AF37]/5 border border-[#D4AF37]/30 shadow-2xl hover:scale-[1.02] transition-transform duration-300 rounded-none backdrop-blur-sm">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[#D4AF37]/20 p-4 rounded-none border border-[#D4AF37]/30">
+                      <Download className="w-8 h-8 text-[#D4AF37]" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-light text-white mb-2 tracking-wide">PDF Slides</h4>
+                      <p className="text-white/70 mb-4 font-light text-sm">Download the complete presentation deck in PDF format</p>
+                      <a 
+                        href="https://www.dropbox.com/scl/fi/h86igf0qosdi33sv96jk8/Luxury-Roundtable-1-2026.pdf?rlkey=ep6uz674ax5nix7o3d0cmnhhj&dl=1" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black px-5 py-2.5 rounded-none font-light tracking-widest hover:shadow-lg transition-all text-sm"
+                      >
+                        DOWNLOAD PDF
+                        <Download className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
           {/* Community Links */}
           <div className="mb-12">
             <h3 className="text-2xl font-light text-white mb-8 text-center tracking-wide">Community & Resources</h3>
