@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
@@ -13,7 +13,8 @@ import {
   Target,
   Users,
   Shield,
-  Zap
+  Zap,
+  ChevronDown
 } from "lucide-react";
 
 const pillars = [
@@ -89,6 +90,32 @@ const credentials = [
     description: "Former executive at 360i and Publicis, translating enterprise rigor to growth-stage agility",
   },
 ];
+
+function FAQItem({ question, answer }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mb-4 bg-white rounded-lg border border-gray-200 overflow-hidden"
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+      >
+        <span className="font-semibold text-gray-900 pr-4">{question}</span>
+        <ChevronDown className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      {isOpen && (
+        <div className="px-6 pb-5 text-gray-600 leading-relaxed">
+          {answer}
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 export default function Services() {
   return (
@@ -289,13 +316,51 @@ export default function Services() {
               Take the AI Readiness Assessment and get instant, personalized recommendations for your marketing team.
             </p>
             <Link
-              to={createPageUrl("AIAudit")}
+              to={createPageUrl("ZAIAudit")}
               className="inline-flex items-center px-8 py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl group"
             >
               Check Your AI Readiness
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Common Questions
+            </h2>
+          </motion.div>
+
+          <FAQItem 
+            question="What is Fractional GTM Leadership?"
+            answer="Fractional GTM (Go-to-Market) Leadership means embedding a senior marketing executive with your team on a part-time basis to lead strategy, tech stack decisions, and execution. Unlike traditional consulting, this is hands-on leadership that modernizes your marketing operations while building internal capabilities."
+          />
+          <FAQItem 
+            question="What is GEO (Generative Engine Optimization)?"
+            answer="GEO (Generative Engine Optimization) is the practice of optimizing your content and digital presence to appear in AI-generated search results from tools like ChatGPT, Perplexity, and Google's AI Overviews. As AI search replaces traditional search, GEO ensures your brand remains visible and authoritative."
+          />
+          <FAQItem 
+            question="How long does a typical engagement last?"
+            answer="Fractional CMO engagements typically run 6-12 months to allow for meaningful transformation. Training workshops can be one-time sessions or ongoing programs. Innovation pilots run 8-12 weeks. Each engagement is customized based on your needs and readiness level."
+          />
+          <FAQItem 
+            question="What is the AI Readiness Audit?"
+            answer="The AI Readiness Audit is a proprietary diagnostic that evaluates your current marketing tech stack, team capabilities, processes, and policies. It identifies high-impact opportunities, eliminates low-value shelfware, and creates a prioritized roadmap for AI adoption. This audit is the starting point for all fractional CMO engagements."
+          />
+          <FAQItem 
+            question="Do you work with agencies or just brands?"
+            answer="We work with both B2B tech companies and marketing agencies. For agencies, we help modernize service offerings, train teams on AI tools, and develop AI-powered capabilities that differentiate you from competitors. Our approach is tailored to whether you're an in-house team or agency partner."
+          />
         </div>
       </section>
 

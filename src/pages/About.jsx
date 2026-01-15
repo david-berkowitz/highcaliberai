@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
-import { BookOpen, Mic, Users, Award, ArrowRight } from "lucide-react";
+import { BookOpen, Mic, Users, Award, ArrowRight, ChevronDown } from "lucide-react";
 
 const stats = [
   { icon: BookOpen, number: "1000+", label: "Published Bylines" },
@@ -28,6 +28,32 @@ const experiences = [
     description: "Held senior positions across top agencies and marketing technology companies, leading brand, product marketing, and go-to-market strategy.",
   },
 ];
+
+function FAQItem({ question, answer }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mb-4 bg-white rounded-lg border border-gray-200 overflow-hidden"
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+      >
+        <span className="font-semibold text-gray-900 pr-4">{question}</span>
+        <ChevronDown className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      {isOpen && (
+        <div className="px-6 pb-5 text-gray-600 leading-relaxed">
+          {answer}
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 export default function About() {
   return (
@@ -168,6 +194,40 @@ export default function About() {
               </p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+          </motion.div>
+
+          <FAQItem 
+            question="What is David Berkowitz's background in AI marketing?"
+            answer="David Berkowitz is the founder of AI Marketers Guild (7,000+ members) and author of The Non-Obvious Guide to Using AI for Marketing. He serves as fractional CMO for AI-forward companies and Executive in Residence at Progress Partners. With over 15 years of experience and former roles at 360i, MRY, Mediaocean, and Sysomos, he combines agency expertise with technical knowledge."
+          />
+          <FAQItem 
+            question="Who is the ideal client for High Caliber AI?"
+            answer="We work primarily with B2B tech companies, agencies, and growth-stage firms that have already bought AI tools but struggle with adoption. Our clients are typically CMOs, VPs of Marketing, or agency leaders who need strategic leadership to bridge the gap between purchasing technology and achieving measurable results."
+          />
+          <FAQItem 
+            question="What is a Fractional CMO?"
+            answer="A fractional CMO is an experienced marketing executive who works with your company on a part-time or project basis. Unlike a full-time CMO, you get senior-level strategic leadership without the commitment of a full-time hire. David embeds with your team to modernize your GTM strategy, tech stack, and team capabilities."
+          />
+          <FAQItem 
+            question="How does David's AI Marketers Guild inform his consulting work?"
+            answer="The AI Marketers Guild community of 7,000+ marketing professionals provides real-time intelligence on what's actually working in AI marketing. This community feedback allows David to distinguish between AI hype and proven tactics, ensuring recommendations are grounded in real-world results rather than vendor promises."
+          />
         </div>
       </section>
 
