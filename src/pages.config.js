@@ -14,6 +14,7 @@ import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import Speaking from './pages/Speaking';
 import __Layout from './Layout.jsx';
 
 
@@ -34,6 +35,7 @@ export const PAGES = {
     "ZAIAudit": ZAIAudit,
     "Blog": Blog,
     "BlogPost": BlogPost,
+    "Speaking": Speaking,
 }
 
 export const pagesConfig = {

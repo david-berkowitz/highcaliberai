@@ -11,10 +11,10 @@ export default function Layout({ children, currentPageName }) {
     { name: "Home", page: "Home" },
     { name: "About", page: "About" },
     { name: "Capabilities", page: "Services" },
+    { name: "Speaking", page: "Speaking" },
     { name: "Blog", page: "Blog" },
     { name: "Training", page: "WorkshopShowcase" },
     { name: "Book", page: "Book" },
-    { name: "AI Audit", page: "ZAIAudit" },
     { name: "Resources", page: "Resources" },
     { name: "Contact", page: "Contact" },
   ];

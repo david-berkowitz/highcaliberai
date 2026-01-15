@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
-import { BookOpen, Mic, Users, Award, ArrowRight, ChevronDown } from "lucide-react";
+import { base44 } from "@/api/base44Client";
+import { useQuery } from "@tanstack/react-query";
+import { BookOpen, Mic, Users, Award, ArrowRight, ChevronDown, ExternalLink } from "lucide-react";
 import { PersonStructuredData, FAQStructuredData } from "@/components/SEO/StructuredData";
 import MetaTags from "@/components/SEO/MetaTags";
 
@@ -31,23 +33,78 @@ const experiences = [
   },
 ];
 
-function SpeakingCard({ date, event, title, url }) {
-  const Card = url ? 'a' : 'div';
-  const cardProps = url ? { href: url, target: "_blank", rel: "noopener noreferrer" } : {};
-  
+function RecentSpeaking() {
+  const { data: engagements = [] } = useQuery({
+    queryKey: ['recent-speaking'],
+    queryFn: () => base44.entities.SpeakingEngagement.list('-date', 6),
+    initialData: [],
+  });
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="h-full"
-    >
-      <Card {...cardProps} className={`block h-full bg-white rounded-lg border border-gray-200 p-6 ${url ? 'hover:border-red-600 hover:shadow-lg transition-all cursor-pointer' : ''}`}>
-        <div className="text-sm text-red-600 font-semibold mb-2">{date}</div>
-        <div className="font-bold text-gray-900 mb-2">{event}</div>
-        <div className="text-gray-600 text-sm leading-relaxed">{title}</div>
-      </Card>
-    </motion.div>
+    <section className="py-20 lg:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Recent Speaking Engagements
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            David regularly speaks at industry events, universities, and executive forums on AI marketing strategy and implementation
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {engagements.map((eng, index) => (
+            <motion.div
+              key={eng.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="h-full"
+            >
+              {eng.url ? (
+                <a 
+                  href={eng.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block h-full bg-white rounded-lg border border-gray-200 p-6 hover:border-red-600 hover:shadow-lg transition-all cursor-pointer"
+                >
+                  <div className="text-sm text-red-600 font-semibold mb-2">
+                    {new Date(eng.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </div>
+                  <div className="font-bold text-gray-900 mb-2">{eng.event_name}</div>
+                  <div className="text-gray-600 text-sm leading-relaxed">{eng.title}</div>
+                </a>
+              ) : (
+                <div className="block h-full bg-white rounded-lg border border-gray-200 p-6">
+                  <div className="text-sm text-red-600 font-semibold mb-2">
+                    {new Date(eng.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </div>
+                  <div className="font-bold text-gray-900 mb-2">{eng.event_name}</div>
+                  <div className="text-gray-600 text-sm leading-relaxed">{eng.title}</div>
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link
+            to={createPageUrl("Speaking")}
+            className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold"
+          >
+            View Complete Speaking History
+            <ArrowRight className="ml-2 w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -212,155 +269,7 @@ export default function About() {
       </section>
 
       {/* Speaking Engagements */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Recent Speaking Engagements
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              David regularly speaks at industry events, universities, and executive forums on AI marketing strategy and implementation
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <SpeakingCard 
-              date="Jan 13, 2026"
-              event="IndeCollective"
-              title="The Non-Obvious Tech Stack: High-Impact AI Tools Under $30/Month"
-            />
-            <SpeakingCard 
-              date="Nov 5, 2025"
-              event="BSchool Travel AI Summit"
-              title="AI for Marketing: Making Marketing Smarter"
-            />
-            <SpeakingCard 
-              date="Sep 25, 2025"
-              event="Luxury Real Estate and Design Summit"
-              title="AI will Reshape the Larger Real Estate Ecosystem. Are We Prepared?"
-              url="https://luxuryoutlook.com/"
-            />
-            <SpeakingCard 
-              date="Sep 19, 2025"
-              event="MAGNET Global Paris Summit"
-              title="Hopes, Fears & Blueprints for the Agentic Agency of the Future"
-            />
-            <SpeakingCard 
-              date="Sep 16, 2025"
-              event="Binghamton University Alumni Association"
-              title="AI for Marketing: Making Marketing Smarter"
-            />
-            <SpeakingCard 
-              date="Sep 2, 2025"
-              event="Midday Connect"
-              title="How to Build Your Marketing Engine on a Bootstrap Budget Using AI"
-            />
-            <SpeakingCard 
-              date="Aug 7, 2025"
-              event="Google's Accelerate Aggregators Summit"
-              title="From Acquisition to Authority: How Aggregators Win in the Age of AI Agents"
-            />
-            <SpeakingCard 
-              date="Jul 9, 2025"
-              event="Columbia Alumni of New Jersey"
-              title="Harness the Transformative Power of AI for Marketing"
-              url="https://nj.alumni.columbia.edu/artificial_intelligence_in_marketing"
-            />
-            <SpeakingCard 
-              date="Jun 10, 2025"
-              event="EF Education First"
-              title="The AI Marketing Expedition: Practical Strategies for Real Impact"
-            />
-            <SpeakingCard 
-              date="May 27, 2025"
-              event="VentureOut Generative AI Leadership Summit"
-              title="Beyond the Buzz: How to Actually Use AI for Marketing"
-            />
-            <SpeakingCard 
-              date="May 16, 2025"
-              event="AARP"
-              title="Wait, I Can Use AI for THAT?!?"
-            />
-            <SpeakingCard 
-              date="May 8, 2025"
-              event="eMarketing Association"
-              title="Building Your Brand's AI SEO Visibility"
-              url="https://buildingyourbrandsaiseovisibil.splashthat.com/"
-            />
-            <SpeakingCard 
-              date="May 1, 2025"
-              event="Executive Forum"
-              title="The Non-Obvious Truths about AI in Marketing: What Every Leader Needs to Know"
-            />
-            <SpeakingCard 
-              date="Apr 16, 2025"
-              event="Columbia University"
-              title="AI Without the Hype: How to Use AI for Marketing Without Losing the Human Touch"
-            />
-            <SpeakingCard 
-              date="Apr 10, 2025"
-              event="FlexOS Masterclass"
-              title="AI Without the Hype: How to Use AI for Marketing Without Losing the Human Touch"
-            />
-            <SpeakingCard 
-              date="Apr 9, 2025"
-              event="Columbia Business School Alumni Club"
-              title="AI in Marketing: Innovation, Impact and the Road Ahead (Moderator)"
-              url="https://www.cbsacny.org/events/EventDetails.aspx?id=1943043&group="
-            />
-            <SpeakingCard 
-              date="Apr 8, 2025"
-              event="Midday Connect"
-              title="How to Use AI to Attract Customers and Scale Fast without a Big Budget"
-              url="https://lu.ma/d8k2s8i4"
-            />
-            <SpeakingCard 
-              date="Apr 2, 2025"
-              event="Native Ad Institute Jury Summit"
-              title="AI + Change Management -- Leading Branded Content Teams through the Shift"
-              url="https://www.nativeadvertisinginstitute.com/brandedcontentdays"
-            />
-            <SpeakingCard 
-              date="Mar 20, 2025"
-              event="North Carolina Central University"
-              title="Guest Lecture"
-            />
-            <SpeakingCard 
-              date="Mar 18, 2025"
-              event="The AI Marketing Playbook Launch"
-              title="20 Things to Know about How AI Will Transform Marketing"
-            />
-            <SpeakingCard 
-              date="Feb 12, 2025"
-              event="Kochava Summit 2025"
-              title="The Future of Search & AI and the Agentic Future"
-            />
-            <SpeakingCard 
-              date="Nov 12, 2024"
-              event="HSMAI Curate Executive Forum"
-              title="AI Success Stories in Hospitality"
-            />
-          </div>
-
-          <div className="text-center mt-12">
-            <a
-              href="https://serialmarketer.net/contact/speaking/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold"
-            >
-              View Complete Speaking History
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <RecentSpeaking />
 
       {/* Mission & Vision */}
       <section className="py-20 lg:py-28 bg-white">
