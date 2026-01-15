@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { motion, AnimatePresence } from "framer-motion";
+import MetaTags from "@/components/SEO/MetaTags";
 import { 
   Brain, 
   Target, 
@@ -295,6 +296,12 @@ export default function ZAIAudit() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-20 px-6">
+      <MetaTags 
+        title="Free AI Readiness Assessment for Marketing Teams"
+        description="Take this 10-question self-assessment from The Non-Obvious Guide to Using AI for Marketing. Gauge your AI maturity and get personalized recommendations for your marketing team."
+        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
+        url="https://highcaliberai.com/ai-audit"
+      />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div

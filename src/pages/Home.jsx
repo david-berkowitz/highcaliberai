@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, BookOpen, FileText } from 'lucide-react';
 import { createPageUrl } from '../utils';
 import { PersonStructuredData, OrganizationStructuredData } from '@/components/SEO/StructuredData';
+import MetaTags from '@/components/SEO/MetaTags';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <MetaTags 
+        title="AI Marketing Strategy & Fractional CMO Services"
+        description="Real-world AI strategy for B2B marketing leaders. Fractional CMO services, team training, and managed AI pilots. Founded by David Berkowitz, author and AI Marketers Guild founder."
+        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
+        url="https://highcaliberai.com"
+      />
       <PersonStructuredData />
       <OrganizationStructuredData />
       

@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { BookStructuredData, PersonStructuredData } from '@/components/SEO/StructuredData';
+import MetaTags from '@/components/SEO/MetaTags';
 
 export default function BookPage() {
   const [ideaInput, setIdeaInput] = useState('');
@@ -108,6 +109,13 @@ export default function BookPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+      <MetaTags 
+        title="The Non-Obvious Guide to Using AI for Marketing"
+        description="A practical guide by David Berkowitz to harnessing AI for marketing without losing your brand's human touch. Learn strategic integration, boost productivity, and stay competitive in the AI era."
+        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e2caa7739d4d7ec44ee610/cedc73191_NOG-AIMarketing-2025-HiRes.jpg"
+        url="https://highcaliberai.com/book"
+        type="book"
+      />
       <BookStructuredData />
       <PersonStructuredData />
       

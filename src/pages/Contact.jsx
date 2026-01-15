@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
+import MetaTags from "@/components/SEO/MetaTags";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { 
@@ -66,6 +67,12 @@ ${formData.message}
 
   return (
     <div>
+      <MetaTags 
+        title="Contact David Berkowitz - AI Marketing Consultation"
+        description="Schedule a consultation with David Berkowitz for AI marketing strategy, fractional CMO services, or speaking engagements. Located in New York, NY. Book a meeting via Calendly or send a message."
+        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
+        url="https://highcaliberai.com/contact"
+      />
       {/* Hero Section */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

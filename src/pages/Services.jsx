@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
+import MetaTags from "@/components/SEO/MetaTags";
 import { 
   TrendingUp, 
   BookOpen, 
@@ -120,6 +121,12 @@ function FAQItem({ question, answer }) {
 export default function Services() {
   return (
     <div>
+      <MetaTags 
+        title="AI Marketing Services - Fractional CMO & Team Training"
+        description="Fractional GTM leadership, team activation, and managed AI pilots for B2B marketing teams. Bridge the gap between buying AI tools and getting results with proven strategies and hands-on training."
+        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
+        url="https://highcaliberai.com/services"
+      />
       {/* Hero Section */}
       <section className="relative py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
         {/* Background pattern */}
