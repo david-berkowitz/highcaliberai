@@ -11,6 +11,7 @@ import Resources from './pages/Resources';
 import Services from './pages/Services';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
+import Politics from './pages/Politics';
 import __Layout from './Layout.jsx';
 
 
@@ -28,6 +29,7 @@ export const PAGES = {
     "Services": Services,
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
+    "Politics": Politics,
 }
 
 export const pagesConfig = {
