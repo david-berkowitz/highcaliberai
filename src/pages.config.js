@@ -1,4 +1,3 @@
-import AIAudit from './pages/AIAudit';
 import About from './pages/About';
 import Book from './pages/Book';
 import Contact from './pages/Contact';
@@ -11,11 +10,11 @@ import Services from './pages/Services';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import Home from './pages/Home';
 import LuxuryRealEstate from './pages/LuxuryRealEstate';
+import ZAIAudit from './pages/ZAIAudit';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
-    "AIAudit": AIAudit,
     "About": About,
     "Book": Book,
     "Contact": Contact,
@@ -28,6 +27,7 @@ export const PAGES = {
     "WorkshopShowcase": WorkshopShowcase,
     "Home": Home,
     "LuxuryRealEstate": LuxuryRealEstate,
+    "ZAIAudit": ZAIAudit,
 }
 
 export const pagesConfig = {
