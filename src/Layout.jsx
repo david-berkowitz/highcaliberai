@@ -30,6 +30,7 @@ export default function Layout({ children, currentPageName }) {
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
                 alt="High Caliber AI"
                 className="h-10 w-auto"
+                loading="lazy"
               />
             </Link>
 

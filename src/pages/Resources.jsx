@@ -59,6 +59,7 @@ export default function Resources() {
                       src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68c6fbda0a2f6be073e07a4f/51ee6e13f_bookcover.png"
                       alt="The Non-Obvious Guide to Using AI for Marketing"
                       className="w-24 h-auto rounded-lg shadow-lg"
+                      loading="lazy"
                     />
                     <div>
                       <div className="inline-block bg-yellow-500 text-purple-900 text-xs font-bold px-3 py-1 rounded-full mb-2">

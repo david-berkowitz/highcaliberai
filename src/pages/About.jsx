@@ -141,6 +141,7 @@ export default function About() {
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
                 alt="David Berkowitz - AI marketing strategist, author, and founder of AI Marketers Guild"
                 className="w-full max-w-md mx-auto rounded-full shadow-xl"
+                loading="lazy"
               />
             </motion.div>
           </div>

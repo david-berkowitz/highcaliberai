@@ -31,6 +31,7 @@ export default function Home() {
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png" 
                 alt="High Caliber AI" 
                 className="h-24 w-auto"
+                loading="eager"
               />
             </div>
             
@@ -128,6 +129,7 @@ export default function Home() {
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg" 
                   alt="David Berkowitz speaking at Forbes event on AI marketing strategy and implementation" 
                   className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -300,6 +302,7 @@ export default function Home() {
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/324737b14_IMG_4434.jpg"
                 alt="The Non-Obvious Guide to Using AI for Marketing book by David Berkowitz - learn practical AI strategies for modern marketers"
                 className="w-full max-w-md mx-auto rounded-lg shadow-2xl"
+                loading="lazy"
               />
             </div>
           </div>
@@ -314,11 +317,11 @@ export default function Home() {
           </h3>
           
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center mb-20">
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a73caf28d_image.png" alt="Twin Galaxies" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" />
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/05e61e07e_image.png" alt="MadTech.AI" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" />
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/916f7f775_image.png" alt="Mediaocean" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" />
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/115c61a35_image.png" alt="Augie" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" />
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a1888e9a8_image.png" alt="Nomix Group" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a73caf28d_image.png" alt="Twin Galaxies" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/05e61e07e_image.png" alt="MadTech.AI" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/916f7f775_image.png" alt="Mediaocean" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/115c61a35_image.png" alt="Augie" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a1888e9a8_image.png" alt="Nomix Group" className="h-12 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
           </div>
           
           <h3 className="text-2xl font-semibold text-gray-900 text-center mb-12">
@@ -326,11 +329,11 @@ export default function Home() {
           </h3>
           
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/141df5a5e_image.png" alt="AdAge" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" />
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/6cc991648_image.png" alt="MarketWatch" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" />
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a07bd6b26_image.png" alt="USA Today" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" />
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/72f8513e3_image.png" alt="Forbes" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" />
-            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/9885fb33d_image.png" alt="VentureBeat" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/141df5a5e_image.png" alt="AdAge" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/6cc991648_image.png" alt="MarketWatch" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a07bd6b26_image.png" alt="USA Today" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/72f8513e3_image.png" alt="Forbes" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/9885fb33d_image.png" alt="VentureBeat" className="h-8 mx-auto grayscale hover:grayscale-0 transition-all" loading="lazy" />
           </div>
         </div>
       </section>

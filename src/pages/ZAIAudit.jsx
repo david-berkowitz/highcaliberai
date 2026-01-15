@@ -278,6 +278,7 @@ export default function ZAIAudit() {
                     src="https://highcaliberai.com/wp-content/uploads/2025/07/The-Non-Obvious-Guide-to-Using-AI-for-Marketing-by-David-Berkowitz-193x300.png"
                     alt="The Non-Obvious Guide to Using AI for Marketing"
                     className="w-48 mx-auto md:w-full md:max-w-xs rounded-lg shadow-xl"
+                    loading="lazy"
                   />
                 </div>
               </div>
