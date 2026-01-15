@@ -5,7 +5,8 @@ import { createPageUrl } from '../utils';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white"
+    >
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white py-24 lg:py-40">
         <div className="absolute inset-0 overflow-hidden opacity-40">
