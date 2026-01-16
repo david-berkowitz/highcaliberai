@@ -308,6 +308,87 @@ export default function About() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 tracking-tight">
+              What People Say
+            </h2>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gray-50 rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 italic">
+                "David Berkowitz's AI Marketers Guild has been impressive to watch and participate in. At a time of such innovation, learning from peers and getting inspired with applications of AI is important. If you are a marketer or working in growth at a company, large or small, you should consider checking out this community."
+              </blockquote>
+              <div>
+                <p className="font-semibold text-gray-900">Darren Herman</p>
+                <p className="text-gray-600 text-sm">Managing Director, Bain Capital</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-gray-50 rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 italic">
+                "David Berkowitz isn't just an AI expert—he's one of the most uniquely creative and strategic minds in the business. A connector, visionary, and trusted advisor, he makes AI not only approachable but truly actionable for executives."
+              </blockquote>
+              <div>
+                <p className="font-semibold text-gray-900">Jessica Geran Straw</p>
+                <p className="text-gray-600 text-sm">Director – Executive-in-Residence (EIR) Network, Progress Partners</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-gray-50 rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 italic">
+                "Marketing is certainly not immune to dramatic transformation by AI, and this book is the guide every marketer needs to navigate it. Written by one of the best marketers I've known—David Berkowitz—with his signature wit, insight, and a refreshing dose of skepticism."
+              </blockquote>
+              <div>
+                <p className="font-semibold text-gray-900">Nihal Mehta</p>
+                <p className="text-gray-600 text-sm">Co-Founder, Eniac Ventures</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-gray-50 rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 italic">
+                "David's an innovative thinker and a true pleasure to work with. He's always ahead of the curve and tuned into what's next and what's new. He's pragmatic, sharp, and brings an energy every team wishes they had more of."
+              </blockquote>
+              <div>
+                <p className="font-semibold text-gray-900">Leo Morejon</p>
+                <p className="text-gray-600 text-sm">Director of Social & Influencer, Hormel Foods</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
