@@ -50,26 +50,33 @@ export default function Resources() {
       {/* Book Section */}
       <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <Link to={createPageUrl("Book")}>
+          <a 
+            href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Card className="bg-gradient-to-r from-purple-900 to-indigo-900 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between gap-6">
-                  <div className="flex items-center gap-6">
+              <CardContent className="p-8">
+                <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6 flex-1">
                     <img 
-                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68c6fbda0a2f6be073e07a4f/51ee6e13f_bookcover.png"
+                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/324737b14_IMG_4434.jpg"
                       alt="The Non-Obvious Guide to Using AI for Marketing"
-                      className="w-24 h-auto rounded-lg shadow-lg"
+                      className="w-32 h-auto rounded-lg shadow-lg flex-shrink-0"
                       loading="lazy"
                     />
-                    <div>
-                      <div className="inline-block bg-yellow-500 text-purple-900 text-xs font-bold px-3 py-1 rounded-full mb-2">
+                    <div className="text-center md:text-left">
+                      <div className="inline-block bg-yellow-500 text-purple-900 text-xs font-bold px-3 py-1 rounded-full mb-3">
                         NEW BOOK
                       </div>
-                      <h3 className="text-2xl font-bold text-white mb-2">
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                         The Non-Obvious Guide to Using AI for Marketing
                       </h3>
-                      <p className="text-purple-200">
+                      <p className="text-lg text-purple-200 mb-2">
                         A practical guide to implementing AI in your marketing strategy
+                      </p>
+                      <p className="text-purple-300 text-sm">
+                        Available now on Amazon
                       </p>
                     </div>
                   </div>
@@ -77,7 +84,7 @@ export default function Resources() {
                 </div>
               </CardContent>
             </Card>
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -127,6 +134,12 @@ export default function Resources() {
               title="Rally"
               description="AI-powered research and consumer insights platform"
               href="https://askrally.com/"
+            />
+            <ResourceCard 
+              icon={Target}
+              title="Cluely"
+              description="AI-powered user research and feedback analysis"
+              href="https://cluely.com/"
             />
           </div>
         </div>
@@ -597,28 +610,7 @@ export default function Resources() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-amber-600 to-amber-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300 md:col-span-2">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-white/20 p-3 rounded-xl">
-                    <Book className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-white mb-2">AI Marketing Resource Guide</h4>
-                    <p className="text-amber-100 mb-4">Comprehensive guide with tools, prompts, and strategies for AI-powered marketing</p>
-                    <a 
-                      href="https://serialmarketers.notion.site/AI-Marketing-Resource-Guide-ab2dd847daf446618f14d1df8e16c6df" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white text-amber-700 px-4 py-2 rounded-lg font-semibold hover:bg-amber-50 transition-colors"
-                    >
-                      View Guide
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+
           </div>
         </div>
       </section>

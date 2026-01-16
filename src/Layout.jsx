@@ -213,7 +213,7 @@ export default function Layout({ children, currentPageName }) {
           </div>
           <div className="mt-12 pt-8 border-t border-gray-800">
             <p className="text-sm text-gray-400 text-center mb-4 leading-relaxed">
-              David Berkowitz: Founder of AI Marketers Guild (7,000+ Members). Author of The Non-Obvious Guide to Using AI for Marketing.
+              David Berkowitz: Founder of <a href="https://www.aimarketersguild.com" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 transition-colors">AI Marketers Guild</a> (7,000+ Members). Author of <a href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 transition-colors">The Non-Obvious Guide to Using AI for Marketing</a>.
             </p>
             <div className="flex items-center justify-center gap-4 mb-4">
               <Link
