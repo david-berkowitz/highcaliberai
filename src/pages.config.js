@@ -15,6 +15,7 @@ import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
+import CaseStudies from './pages/CaseStudies';
 import __Layout from './Layout.jsx';
 
 
@@ -36,6 +37,7 @@ export const PAGES = {
     "Speaking": Speaking,
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
+    "CaseStudies": CaseStudies,
 }
 
 export const pagesConfig = {

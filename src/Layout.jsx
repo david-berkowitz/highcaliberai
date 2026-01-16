@@ -15,6 +15,7 @@ export default function Layout({ children, currentPageName }) {
       page: "Services",
       subMenu: [
         { name: "Overview", page: "Services" },
+        { name: "Case Studies", page: "CaseStudies" },
         { name: "Training", page: "WorkshopShowcase" },
         { name: "Speaking", page: "Speaking" }
       ]
