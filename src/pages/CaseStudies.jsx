@@ -146,14 +146,14 @@ const caseStudies = [
   },
   {
     id: "merck",
-    client: "Merck",
+    client: "F500 Pharma Co",
     industry: "Pharmaceutical",
     icon: FileText,
     challenge: "Global pharmaceutical company needed comprehensive marketing competency framework for thousands of marketers worldwide.",
     solution: [
-      "Led development of Global Merck Marketing Leadership Framework with Econsultancy",
+      "Led development of Global Marketing Leadership Framework with Econsultancy",
       "Defined five experience levels for marketing professionals",
-      "Aligned 17 marketing skills with Merck's competencies",
+      "Aligned 17 marketing skills with company competencies",
       "Created 170 detailed plans (85 learning objectives + 85 curriculum plans)"
     ],
     results: [
