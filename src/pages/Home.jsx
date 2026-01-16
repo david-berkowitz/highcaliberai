@@ -247,15 +247,45 @@ export default function Home() {
           <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-16 text-center tracking-tight">
             What People Say
           </h2>
-          
-          <div className="max-w-4xl mx-auto">
-            <blockquote className="text-2xl text-gray-700 leading-relaxed mb-8 font-light italic">
-              "David's an innovative thinker and a true pleasure to work with. He's always ahead of the curve and tuned into what's next and what's new. He's pragmatic, sharp, and brings an energy every team wishes they had more of."
-            </blockquote>
-            <div className="flex items-center gap-4">
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+              <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 italic">
+                "A smart, practical, and refreshingly honest guide, full of real-world applications without the hype. Very on-brand for David Berkowitz, who always simplifies the complex."
+              </blockquote>
+              <div>
+                <p className="font-semibold text-gray-900">Sarah Hofstetter</p>
+                <p className="text-gray-600 text-sm">President, Profitero & Board Member, Campbell Soup Company</p>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+              <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 italic">
+                "David's an innovative thinker and a true pleasure to work with. He's always ahead of the curve and tuned into what's next and what's new. He's pragmatic, sharp, and brings an energy every team wishes they had more of."
+              </blockquote>
               <div>
                 <p className="font-semibold text-gray-900">Leo Morejon</p>
                 <p className="text-gray-600 text-sm">Director of Social & Influencer, Hormel Foods</p>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+              <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 italic">
+                "In a world with lots of AI fluff, AIMG keeps it real...by helping members learn from each other and experts who are on the cutting edge."
+              </blockquote>
+              <div>
+                <p className="font-semibold text-gray-900">Brad Mehl</p>
+                <p className="text-gray-600 text-sm">Managing Director, Boundless Markets</p>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+              <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 italic">
+                "AIMG is where I learn from serious practitioners which AI tools and platforms are ready for use now. This saves me so much time and frustration!"
+              </blockquote>
+              <div>
+                <p className="font-semibold text-gray-900">Chris Perkins</p>
+                <p className="text-gray-600 text-sm">President, Model B</p>
               </div>
             </div>
           </div>

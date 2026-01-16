@@ -303,6 +303,79 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Client Success Stories
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                "Here is what we accomplished with the mentoring of our 'FOAF CMO' David Berkowitz: Finetuned our sales deck, optimized our pricing plans, launched a brand new Social Media strategy showing great results, found a PR agency, and prepared our company presentation for the National Sports Forum Trade Show."
+              </blockquote>
+              <p className="font-semibold text-gray-900">Riddle</p>
+              <p className="text-gray-600 text-sm">FOAF Client</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                "Serial Marketers has been a lifeline for my business. When the idea of a fraction-of-a-fraction came up, it was really exciting. We need certain skill sets for the next evolution of our business, but we're still in a very small, scrappy stage."
+              </blockquote>
+              <p className="font-semibold text-gray-900">Zachary Rozga</p>
+              <p className="text-gray-600 text-sm">CEO, Thece</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                "Thanks again for coming to share your thoughts on AI in marketing with my team. They found you approachable and relatable, and loved your advice on which tools to use."
+              </blockquote>
+              <p className="font-semibold text-gray-900">Aurelie Guerreri</p>
+              <p className="text-gray-600 text-sm">CMO, DataDome</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                "I had the pleasure of working with FOAF during a formative stage in the development of Instreamatic. Our FOAFer was an invaluable resource and on hand whenever needed, asking the tough questions we needed to hear."
+              </blockquote>
+              <p className="font-semibold text-gray-900">Simon Dunlop</p>
+              <p className="text-gray-600 text-sm">CMO, Instreamatic</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Pre-Footer CTA */}
       <section className="py-20 bg-gradient-to-br from-gray-100 to-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

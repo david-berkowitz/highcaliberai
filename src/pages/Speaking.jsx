@@ -158,6 +158,107 @@ export default function Speaking() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              What Event Organizers Say
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-4 italic">
+                "That session was awesome -- truly! Would love to have you share what you see as new/next with our community WHENEVER you feel inspired. I wrote down multiple things I'll be digging into personally."
+              </blockquote>
+              <p className="font-semibold text-gray-900 text-sm">Sam Lee</p>
+              <p className="text-gray-600 text-xs">Founder, IndeCollective</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-4 italic">
+                "You have an incredible ability to make AI accessible, practical and fun! Thanks for joining our podcast!"
+              </blockquote>
+              <p className="font-semibold text-gray-900 text-sm">Tessa Burg</p>
+              <p className="text-gray-600 text-xs">ModOp</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-4 italic">
+                "We truly appreciated the time and effort you put into preparing and presenting such a great interactive session. We had 260 attendees to this session, and the audience was really engaged!"
+              </blockquote>
+              <p className="font-semibold text-gray-900 text-sm">Sally Word</p>
+              <p className="text-gray-600 text-xs">Digital Marketing Manager, AARP</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-4 italic">
+                "Your willingness to come out and help with an amazing day of content for HSMAI Curate was invaluable. You were the perfect closing keynote. You struck just the right tone after a day long of action packed content."
+              </blockquote>
+              <p className="font-semibold text-gray-900 text-sm">David Atkins</p>
+              <p className="text-gray-600 text-xs">HSMAI Curate</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-4 italic">
+                "Very good of you to come speak, and to share SO MUCH helpful material. I am sure everyone was really impressed, and I know they found it incredibly valuable."
+              </blockquote>
+              <p className="font-semibold text-gray-900 text-sm">Ruth Stevens</p>
+              <p className="text-gray-600 text-xs">NYU Stern</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-4 italic">
+                "Thanks again for coming to share your thoughts on AI in marketing with my team. They found you approachable and relatable, and loved your advice on which tools to use."
+              </blockquote>
+              <p className="font-semibold text-gray-900 text-sm">Aurelie Guerreri</p>
+              <p className="text-gray-600 text-xs">CMO, DataDome</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-red-600 to-red-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
