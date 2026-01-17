@@ -2,6 +2,7 @@ import About from './pages/About';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Book from './pages/Book';
+import CaseStudies from './pages/CaseStudies';
 import Contact from './pages/Contact';
 import Holidays from './pages/Holidays';
 import Home from './pages/Home';
@@ -15,7 +16,6 @@ import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
-import CaseStudies from './pages/CaseStudies';
 import __Layout from './Layout.jsx';
 
 
@@ -24,6 +24,7 @@ export const PAGES = {
     "Blog": Blog,
     "BlogPost": BlogPost,
     "Book": Book,
+    "CaseStudies": CaseStudies,
     "Contact": Contact,
     "Holidays": Holidays,
     "Home": Home,
@@ -37,7 +38,6 @@ export const PAGES = {
     "Speaking": Speaking,
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
-    "CaseStudies": CaseStudies,
 }
 
 export const pagesConfig = {
