@@ -30,6 +30,7 @@ export default function Layout({ children, currentPageName }) {
         { name: "Book", page: "Book" }
       ]
     },
+    { name: "Partners", page: "Partners" },
     { name: "Contact", page: "Contact" },
   ];
 
