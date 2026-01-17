@@ -7,7 +7,7 @@ const partners = [
   {
     name: "Morgan Digital Ventures",
     url: "https://www.morgandv.com/",
-    logo: "https://images.squarespace-cdn.com/content/v1/68f676b869d1dd4f7cc835b8/1736188886697-7K17LHV6ILZMZWGMWHV7/Morgan_DV_logo.png",
+    logo: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/848660c7d_image.png",
     description: "Strategic consulting firm helping business leaders turn AI experimentation into measurable economic value, validate product-market fit, and drive revenue growth. Led by David Morgan, former chief revenue officer and industry veteran.",
     expertise: ["AI Implementation", "GTM Strategy", "Business Development", "Market Validation"],
     color: "blue"
@@ -15,7 +15,7 @@ const partners = [
   {
     name: "Social Lollipop",
     url: "https://sociallollipop.com/",
-    logo: "https://sociallollipop.com/wp-content/uploads/2025/12/Social-lollipop-logo-1.png",
+    logo: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a4e97ed2b_image.png",
     description: "Social media tools built by marketer Leo Morejon, offering competitive intelligence, content preview optimization, and trend monitoring for brands and creators seeking tactical advantages in social platforms.",
     expertise: ["Social Media Tools", "Competitive Analysis", "Content Optimization", "Trend Monitoring"],
     color: "pink"
