@@ -4,11 +4,12 @@ import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
-import { Calendar, Clock, ArrowLeft, Tag, Share2 } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Tag, Share2, ChevronRight, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import MetaTags from "@/components/SEO/MetaTags";
+import BlogPostStructuredData from "@/components/SEO/BlogStructuredData";
 
 export default function BlogPost() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -21,7 +22,18 @@ export default function BlogPost() {
     initialData: [],
   });
 
+  const { data: relatedPosts = [] } = useQuery({
+    queryKey: ['related-posts', posts[0]?.category],
+    queryFn: () => base44.entities.BlogPost.filter({ 
+      published: true, 
+      category: posts[0]?.category 
+    }, '-published_date', 4),
+    enabled: !!posts[0],
+    initialData: [],
+  });
+
   const post = posts[0];
+  const related = relatedPosts.filter(p => p.slug !== slug).slice(0, 3);
 
   const handleShare = () => {
     if (navigator.share) {
@@ -62,11 +74,22 @@ export default function BlogPost() {
         image={post.featured_image}
         url={`https://highcaliberai.com/blog/${post.slug}`}
         type="article"
+        author="David Berkowitz"
       />
+      <BlogPostStructuredData post={post} />
 
       {/* Header */}
       <article className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
+          {/* Breadcrumbs */}
+          <nav className="flex items-center text-sm text-gray-500 mb-8">
+            <Link to={createPageUrl('Home')} className="hover:text-gray-900">Home</Link>
+            <ChevronRight className="w-4 h-4 mx-2" />
+            <Link to={createPageUrl('Blog')} className="hover:text-gray-900">Blog</Link>
+            <ChevronRight className="w-4 h-4 mx-2" />
+            <span className="text-gray-900">{post.category}</span>
+          </nav>
+
           <Link
             to={createPageUrl('Blog')}
             className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
@@ -85,22 +108,41 @@ export default function BlogPost() {
               {post.title}
             </h1>
 
-            <div className="flex items-center justify-between mb-8 pb-8 border-b border-gray-200">
-              <div className="flex items-center gap-6 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  {new Date(post.published_date).toLocaleDateString('en-US', { 
-                    month: 'long', 
-                    day: 'numeric', 
-                    year: 'numeric' 
-                  })}
-                </div>
-                {post.read_time && (
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    {post.read_time} min read
+            {/* Author & Meta */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-8 border-b border-gray-200">
+              <div className="flex flex-col gap-3">
+                <Link 
+                  to={createPageUrl('About')}
+                  className="flex items-center gap-3 group"
+                >
+                  <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
+                    alt="David Berkowitz"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-gray-900 group-hover:text-red-600 transition-colors">David Berkowitz</span>
+                    </div>
+                    <span className="text-sm text-gray-500">AI Marketing Strategist</span>
                   </div>
-                )}
+                </Link>
+                <div className="flex items-center gap-6 text-sm text-gray-500">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4" />
+                    {new Date(post.published_date).toLocaleDateString('en-US', { 
+                      month: 'long', 
+                      day: 'numeric', 
+                      year: 'numeric' 
+                    })}
+                  </div>
+                  {post.read_time && (
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      {post.read_time} min read
+                    </div>
+                  )}
+                </div>
               </div>
               <Button
                 onClick={handleShare}
@@ -139,6 +181,35 @@ export default function BlogPost() {
                     {tag}
                   </span>
                 ))}
+              </div>
+            )}
+
+            {/* Related Posts */}
+            {related.length > 0 && (
+              <div className="mb-12 pb-12 border-b border-gray-200">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {related.map(relatedPost => (
+                    <Link
+                      key={relatedPost.id}
+                      to={createPageUrl(`BlogPost?slug=${relatedPost.slug}`)}
+                      className="group"
+                    >
+                      {relatedPost.featured_image && (
+                        <img
+                          src={relatedPost.featured_image}
+                          alt={relatedPost.title}
+                          className="w-full h-40 object-cover rounded-lg mb-3 group-hover:opacity-90 transition-opacity"
+                        />
+                      )}
+                      <Badge className="bg-gray-100 text-gray-700 mb-2">{relatedPost.category}</Badge>
+                      <h4 className="font-bold text-gray-900 group-hover:text-red-600 transition-colors line-clamp-2">
+                        {relatedPost.title}
+                      </h4>
+                      <p className="text-sm text-gray-600 mt-2 line-clamp-2">{relatedPost.excerpt}</p>
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
 
