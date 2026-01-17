@@ -7,6 +7,7 @@ const partners = [
   {
     name: "Morgan Digital Ventures",
     url: "https://www.morgandv.com/",
+    logo: "https://images.squarespace-cdn.com/content/v1/68f676b869d1dd4f7cc835b8/1736188886697-7K17LHV6ILZMZWGMWHV7/Morgan_DV_logo.png",
     description: "Strategic consulting firm helping business leaders turn AI experimentation into measurable economic value, validate product-market fit, and drive revenue growth. Led by David Morgan, former chief revenue officer and industry veteran.",
     expertise: ["AI Implementation", "GTM Strategy", "Business Development", "Market Validation"],
     color: "blue"
@@ -14,6 +15,7 @@ const partners = [
   {
     name: "Social Lollipop",
     url: "https://sociallollipop.com/",
+    logo: "https://sociallollipop.com/wp-content/uploads/2025/12/Social-lollipop-logo-1.png",
     description: "Social media tools built by marketer Leo Morejon, offering competitive intelligence, content preview optimization, and trend monitoring for brands and creators seeking tactical advantages in social platforms.",
     expertise: ["Social Media Tools", "Competitive Analysis", "Content Optimization", "Trend Monitoring"],
     color: "pink"
@@ -62,9 +64,12 @@ export default function Partners() {
               >
                 <div className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-red-600 transition-all h-full flex flex-col">
                   <div className="mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                      {partner.name}
-                    </h2>
+                    <img 
+                      src={partner.logo} 
+                      alt={`${partner.name} logo`}
+                      className="h-12 mb-6"
+                      loading="lazy"
+                    />
                     <p className="text-gray-600 leading-relaxed mb-6">
                       {partner.description}
                     </p>
