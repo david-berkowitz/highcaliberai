@@ -4,6 +4,7 @@ import { ArrowRight, TrendingUp, BookOpen, FileText } from 'lucide-react';
 import { createPageUrl } from '../utils';
 import { PersonStructuredData, OrganizationStructuredData } from '@/components/SEO/StructuredData';
 import MetaTags from '@/components/SEO/MetaTags';
+import AgentChat from '@/components/AgentChat';
 
 export default function Home() {
   return (
