@@ -40,7 +40,12 @@ export default function ContentUploader() {
       setChapterNumber('');
     } catch (error) {
       console.error('Upload failed:', error);
-      alert('Upload failed: ' + error.message);
+      console.error('Full error:', error.response?.data || error);
+      
+      const errorMessage = error.response?.data?.error || error.message;
+      const errorDetails = error.response?.data?.details || '';
+      
+      alert(`Upload failed: ${errorMessage}\n${errorDetails}`);
     } finally {
       setUploading(false);
     }

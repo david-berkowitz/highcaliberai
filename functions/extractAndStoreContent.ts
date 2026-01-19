@@ -16,17 +16,16 @@ Deno.serve(async (req) => {
     }
 
     // Extract key information from the file using AI
-    const extractionPrompt = `Analyze this document and extract:
+    const extractionPrompt = `Analyze this PDF document and extract the following information:
 
-1. A clear, descriptive title (keep it concise)
-2. Key concepts and frameworks (3-7 main concepts)
-3. Main takeaways and highlights (focus on the most valuable insights - aim for 500-1000 words)
-4. Important actionable recommendations
-5. Notable quotes or statistics
+1. Title: Create a clear, descriptive title for this content
+2. Key Concepts: List 3-7 main concepts, frameworks, or ideas (as an array of strings)
+3. Content: Extract the main takeaways, insights, and highlights in 500-1000 words
+4. Tags: Suggest 3-5 relevant tags for searchability
 
-Focus on information that would be valuable for answering questions about AI marketing strategy, tools, and implementation.
+Focus on information valuable for AI marketing strategy, tools, and implementation.
 
-IMPORTANT: Keep the content focused and digestible. Don't try to capture every detail - extract the most valuable, searchable insights.`;
+YOU MUST provide all required fields. If the document is very long, summarize the key points rather than trying to include everything.`;
 
     console.log('Starting LLM extraction for:', file_url);
     
