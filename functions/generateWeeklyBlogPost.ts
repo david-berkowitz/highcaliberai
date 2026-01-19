@@ -4,6 +4,18 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
 
+    // Fetch reference content for inspiration
+    const referenceContent = await base44.asServiceRole.entities.ReferenceContent.list('-created_date', 10);
+    
+    // Build context from reference content
+    let contentContext = "";
+    if (referenceContent && referenceContent.length > 0) {
+      contentContext = "\n\nREFERENCE MATERIALS TO DRAW FROM:\n";
+      referenceContent.forEach(ref => {
+        contentContext += `\n- ${ref.title}: ${ref.key_concepts ? ref.key_concepts.join(', ') : ''}\n`;
+      });
+    }
+
     // Categories to rotate through
     const categories = ["AI Strategy", "Case Studies", "Tools & Tech", "Industry Trends", "How-To"];
     const category = categories[Math.floor(Math.random() * categories.length)];
@@ -44,9 +56,10 @@ CRITICAL RULES:
 1. NO self-promotion. Don't mention "High Caliber AI" services, "book a consultation," or "work with me"
 2. Focus on teaching, not selling. Give away the knowledge.
 3. Reference community insights: "In our guild, members report..." or "I'm hearing from practitioners..."
-4. Adapt book concepts into new angles - don't copy verbatim, create fresh takes
+4. Adapt book concepts and reference materials into new angles - don't copy verbatim, create fresh takes
 5. Include specific examples and frameworks readers can use immediately
 6. End with actionable next steps, not CTAs
+${contentContext}
 
 Write an 800-1200 word post with:
 - Title: Clear, specific, no clickbait
