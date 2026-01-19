@@ -23,6 +23,7 @@ import {
 import { base44 } from '@/api/base44Client';
 import { BookStructuredData, PersonStructuredData } from '@/components/SEO/StructuredData';
 import MetaTags from '@/components/SEO/MetaTags';
+import AgentChat from '@/components/AgentChat';
 
 export default function BookPage() {
   const [ideaInput, setIdeaInput] = useState('');
@@ -650,6 +651,12 @@ export default function BookPage() {
           </p>
         </div>
       </section>
+
+      <AgentChat 
+        agentName="book_qa_assistant"
+        title="Ask About the Book"
+        subtitle="Questions about concepts, chapters, or frameworks"
+      />
     </div>
   );
 }
