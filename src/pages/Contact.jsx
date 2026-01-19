@@ -292,6 +292,12 @@ ${formData.message}
           </motion.div>
         </div>
       </section>
-    </div>
-  );
-}
+
+      <AgentChat 
+        agentName="speaking_consulting_guide"
+        title="Speaking & Consulting"
+        subtitle="Learn about working with David"
+      />
+      </div>
+      );
+      }

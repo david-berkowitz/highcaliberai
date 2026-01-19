@@ -392,6 +392,12 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <AgentChat 
+        agentName="ai_marketing_advisor"
+        title="AI Marketing Advisor"
+        subtitle="Ask me anything about AI strategy"
+      />
     </div>
   );
 }

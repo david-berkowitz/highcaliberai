@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import MetaTags from "@/components/SEO/MetaTags";
+import AgentChat from "@/components/AgentChat";
 
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -239,6 +240,12 @@ export default function Blog() {
           </div>
         </div>
       </section>
-    </div>
-  );
-}
+
+      <AgentChat 
+        agentName="blog_discovery_assistant"
+        title="Find Content"
+        subtitle="I'll help you discover relevant articles"
+      />
+      </div>
+      );
+      }

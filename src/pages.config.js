@@ -10,13 +10,13 @@ import IC from './pages/IC';
 import Jobs from './pages/Jobs';
 import Lux from './pages/Lux';
 import LuxuryRealEstate from './pages/LuxuryRealEstate';
+import Partners from './pages/Partners';
 import Politics from './pages/Politics';
 import Resources from './pages/Resources';
 import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
-import Partners from './pages/Partners';
 import __Layout from './Layout.jsx';
 
 
@@ -33,13 +33,13 @@ export const PAGES = {
     "Jobs": Jobs,
     "Lux": Lux,
     "LuxuryRealEstate": LuxuryRealEstate,
+    "Partners": Partners,
     "Politics": Politics,
     "Resources": Resources,
     "Services": Services,
     "Speaking": Speaking,
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
-    "Partners": Partners,
 }
 
 export const pagesConfig = {
