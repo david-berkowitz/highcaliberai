@@ -30,28 +30,39 @@ IMPORTANT: Keep the content focused and digestible. Don't try to capture every d
 
     console.log('Starting LLM extraction for:', file_url);
     
-    const response = await base44.integrations.Core.InvokeLLM({
-      prompt: extractionPrompt,
-      file_urls: [file_url],
-      response_json_schema: {
-        type: "object",
-        properties: {
-          title: { type: "string" },
-          key_concepts: { 
-            type: "array",
-            items: { type: "string" }
+    let response;
+    try {
+      response = await base44.integrations.Core.InvokeLLM({
+        prompt: extractionPrompt,
+        file_urls: [file_url],
+        response_json_schema: {
+          type: "object",
+          properties: {
+            title: { type: "string" },
+            key_concepts: { 
+              type: "array",
+              items: { type: "string" }
+            },
+            content: { type: "string" },
+            tags: {
+              type: "array",
+              items: { type: "string" }
+            }
           },
-          content: { type: "string" },
-          tags: {
-            type: "array",
-            items: { type: "string" }
-          }
-        },
-        required: ["title", "key_concepts", "content"]
-      }
-    });
+          required: ["title", "key_concepts", "content"]
+        }
+      });
+    } catch (llmError) {
+      console.error('LLM extraction failed:', llmError.message);
+      throw new Error(`Failed to process file. The file may be too large, corrupted, or in an unsupported format. Error: ${llmError.message}`);
+    }
     
     console.log('LLM extraction completed successfully');
+    
+    // Validate response
+    if (!response || !response.title || !response.content) {
+      throw new Error('LLM failed to extract required fields from the document');
+    }
 
     // Store in ReferenceContent database
     const record = await base44.asServiceRole.entities.ReferenceContent.create({
