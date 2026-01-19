@@ -33,8 +33,14 @@ export default function AgentChat({ agentName, title, subtitle, defaultOpen = fa
     if (!conversation) return;
 
     const unsubscribe = base44.agents.subscribeToConversation(conversation.id, (data) => {
-      setMessages(data.messages || []);
-      setIsLoading(false);
+      const newMessages = data.messages || [];
+      setMessages(newMessages);
+      
+      // Only set loading to false if we have a response from the assistant
+      const lastMessage = newMessages[newMessages.length - 1];
+      if (lastMessage && lastMessage.role === 'assistant') {
+        setIsLoading(false);
+      }
     });
 
     return () => unsubscribe();
