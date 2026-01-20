@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Mic
 } from "lucide-react";
+import AgentChat from "@/components/AgentChat";
 
 const resources = [
   { name: "AI Marketing Guides", url: "http://bit.ly/ai-guides" },
