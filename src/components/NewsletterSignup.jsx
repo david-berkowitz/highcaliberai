@@ -23,12 +23,6 @@ export default function NewsletterSignup({ source = "website", variant = "defaul
         source
       });
 
-      await base44.integrations.Core.SendEmail({
-        to: "david@highcaliberai.com",
-        subject: `New Newsletter Subscriber from ${source}`,
-        body: `Name: ${name || "Not provided"}\nEmail: ${email}\nSource: ${source}`
-      });
-
       setIsSubscribed(true);
       setEmail("");
       setName("");
