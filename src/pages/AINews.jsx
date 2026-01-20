@@ -56,100 +56,70 @@ export default function AINews() {
 
       {/* Latest Digest */}
       {latestDigest && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
-          <Card className="shadow-xl border-2 border-red-500">
-            <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Sparkles className="w-5 h-5 text-red-600" />
-                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">Latest Digest</span>
-                  </div>
-                  <CardTitle className="text-3xl">{latestDigest.title}</CardTitle>
-                  <p className="text-sm text-gray-600 flex items-center gap-2 mt-2">
-                    <Calendar className="w-4 h-4" />
-                    {new Date(latestDigest.week_of).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                  </p>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="p-8">
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed">{latestDigest.intro}</p>
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="mb-12">
+            <span className="text-sm font-medium text-red-600 uppercase tracking-wide">Latest</span>
+            <h2 className="text-4xl font-bold text-gray-900 mt-2">{latestDigest.title}</h2>
+            <p className="text-gray-600 mt-2">{new Date(latestDigest.week_of).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+            <p className="text-lg text-gray-700 mt-6 leading-relaxed">{latestDigest.intro}</p>
+          </div>
 
-              {/* News Items */}
-              <div className="space-y-6 mb-8">
-                {latestDigest.news_items.map((item, idx) => (
-                  <div key={idx} className="border-l-4 border-red-500 pl-6 py-2">
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <h3 className="text-xl font-semibold text-gray-900">{item.headline}</h3>
-                      <Badge className={categoryColors[item.category] || 'bg-gray-100 text-gray-800'}>
-                        {item.category}
-                      </Badge>
-                    </div>
-                    <p className="text-gray-700 mb-3">{item.summary}</p>
-                    <div className="bg-blue-50 border-l-2 border-blue-400 pl-4 py-2 mb-3">
-                      <p className="text-sm font-medium text-blue-900">
-                        <span className="font-semibold">Why it matters:</span> {item.why_it_matters}
-                      </p>
-                    </div>
-                    {item.source_url && (
-                      <a
-                        href={item.source_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-red-600 hover:text-red-700 flex items-center gap-1"
-                      >
-                        Read full story <ExternalLink className="w-3 h-3" />
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Commentary */}
-              {latestDigest.commentary && (
-                <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                    💭 David's Take
-                  </h3>
-                  <div className="text-gray-700 leading-relaxed whitespace-pre-line">
-                    {latestDigest.commentary}
-                  </div>
+          {/* News Items */}
+          <div className="space-y-12 mb-16">
+            {latestDigest.news_items.map((item, idx) => (
+              <article key={idx} className="pb-8 border-b border-gray-200 last:border-0">
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <h3 className="text-2xl font-semibold text-gray-900 leading-tight">{item.headline}</h3>
+                  <span className="text-xs font-medium text-gray-500 whitespace-nowrap">{item.category}</span>
                 </div>
-              )}
-            </CardContent>
-          </Card>
+                <p className="text-gray-700 mb-4 leading-relaxed">{item.summary}</p>
+                <p className="text-sm text-gray-600 italic mb-3">{item.why_it_matters}</p>
+                {item.source_url && (
+                  <a
+                    href={item.source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-red-600 hover:text-red-700 inline-flex items-center gap-1"
+                  >
+                    Source <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+
+          {/* Commentary */}
+          {latestDigest.commentary && (
+            <div className="border-t-2 border-gray-900 pt-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">David's Take</h3>
+              <div className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
+                {latestDigest.commentary}
+              </div>
+            </div>
+          )}
         </section>
       )}
 
       {/* Older Digests */}
       {olderDigests.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Previous Digests</h2>
-          <div className="grid gap-6">
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-200">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12">Previous Digests</h2>
+          <div className="space-y-8">
             {olderDigests.map((digest) => (
-              <Card key={digest.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-2xl">{digest.title}</CardTitle>
-                  <p className="text-sm text-gray-600 flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    {new Date(digest.week_of).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700 mb-4">{digest.intro}</p>
-                  <p className="text-sm text-gray-600">
-                    {digest.news_items.length} stories curated
-                  </p>
-                </CardContent>
-              </Card>
+              <div key={digest.id} className="pb-8 border-b border-gray-200 last:border-0">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{digest.title}</h3>
+                <p className="text-sm text-gray-500 mb-3">
+                  {new Date(digest.week_of).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} · {digest.news_items.length} stories
+                </p>
+                <p className="text-gray-700">{digest.intro}</p>
+              </div>
             ))}
           </div>
         </section>
       )}
 
       {/* Newsletter CTA */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <NewsletterSignup />
       </section>
 
