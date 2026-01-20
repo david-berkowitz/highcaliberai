@@ -33,7 +33,8 @@ export default function NewsletterSignup({ source = "website", variant = "defaul
       setEmail("");
       setName("");
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      console.error('Newsletter signup error:', err);
+      setError(err.message || "Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
