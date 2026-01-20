@@ -62,13 +62,19 @@ Format as JSON matching this exact structure:
                 why_it_matters: { type: "string" },
                 source_url: { type: "string" },
                 category: { type: "string" }
-              }
+              },
+              required: ["headline", "summary", "why_it_matters", "category"]
             }
           },
           commentary: { type: "string" }
-        }
+        },
+        required: ["intro", "news_items", "commentary"]
       }
     });
+
+    if (!aiResponse || !aiResponse.news_items || aiResponse.news_items.length === 0) {
+      throw new Error('Failed to generate news digest - LLM returned empty data');
+    }
 
     // Create the digest
     const digest = await base44.asServiceRole.entities.AINewsDigest.create({
