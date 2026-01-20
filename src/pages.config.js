@@ -18,6 +18,7 @@ import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
+import AINews from './pages/AINews';
 import __Layout from './Layout.jsx';
 
 
@@ -42,6 +43,7 @@ export const PAGES = {
     "Speaking": Speaking,
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
+    "AINews": AINews,
 }
 
 export const pagesConfig = {

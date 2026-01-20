@@ -27,6 +27,7 @@ export default function Layout({ children, currentPageName }) {
       subMenu: [
         { name: "Resource Library", page: "Resources" },
         { name: "Blog", page: "Blog" },
+        { name: "AI News", page: "AINews" },
         { name: "Book", page: "Book" }
       ]
     },
