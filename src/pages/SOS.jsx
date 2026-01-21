@@ -13,6 +13,9 @@ export default function SOS() {
   const [isSubmitting, setIsSubmitting] = useState("");
   const [isEntered, setIsEntered] = useState(false);
   const [error, setError] = useState("");
+  const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isDrawingUnlocked, setIsDrawingUnlocked] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -147,11 +150,63 @@ export default function SOS() {
               </p>
             </CardContent>
           </Card>
+
+          {/* Password Access Link */}
+          {!isDrawingUnlocked && !showPasswordPrompt && (
+            <div className="text-center mt-4">
+              <button
+                onClick={() => setShowPasswordPrompt(true)}
+                className="text-sm text-gray-400 hover:text-gray-600"
+              >
+                Admin Access
+              </button>
+            </div>
+          )}
+
+          {/* Password Prompt */}
+          {showPasswordPrompt && !isDrawingUnlocked && (
+            <Card className="mt-4">
+              <CardContent className="pt-6">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (password === "sosdb") {
+                      setIsDrawingUnlocked(true);
+                      setShowPasswordPrompt(false);
+                    } else {
+                      alert("Incorrect password");
+                    }
+                  }}
+                  className="space-y-4"
+                >
+                  <Input
+                    type="password"
+                    placeholder="Enter password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    autoFocus
+                  />
+                  <div className="flex gap-2">
+                    <Button type="submit" className="flex-1">
+                      Unlock Drawing
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => setShowPasswordPrompt(false)}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
 
       {/* Admin Drawing Section */}
-      <SOSDrawing />
+      {isDrawingUnlocked && <SOSDrawing />}
     </div>
   );
 }

@@ -8,7 +8,6 @@ import confetti from "canvas-confetti";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function SOSDrawing() {
-  const [isAdmin, setIsAdmin] = useState(false);
   const [isDrawing, setIsDrawing] = useState(false);
   const [currentPick, setCurrentPick] = useState(null);
   const [winners, setWinners] = useState([]);
@@ -20,21 +19,8 @@ export default function SOSDrawing() {
       const allEntries = await base44.entities.SOSRaffleEntry.filter({ status: "entered" });
       return allEntries;
     },
-    enabled: isAdmin,
     refetchInterval: 5000,
   });
-
-  useEffect(() => {
-    const checkAdmin = async () => {
-      try {
-        const user = await base44.auth.me();
-        setIsAdmin(user?.role === 'admin');
-      } catch {
-        setIsAdmin(false);
-      }
-    };
-    checkAdmin();
-  }, []);
 
   const fireConfetti = () => {
     const count = 200;
@@ -100,8 +86,6 @@ export default function SOSDrawing() {
     setWinners([]);
     setCurrentPick(null);
   };
-
-  if (!isAdmin) return null;
 
   return (
     <div className="py-20 px-6 bg-gray-900">
