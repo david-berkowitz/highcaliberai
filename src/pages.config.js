@@ -1,3 +1,4 @@
+import AINews from './pages/AINews';
 import About from './pages/About';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
@@ -18,11 +19,12 @@ import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
-import AINews from './pages/AINews';
+import SOS from './pages/SOS';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
+    "AINews": AINews,
     "About": About,
     "Blog": Blog,
     "BlogPost": BlogPost,
@@ -43,7 +45,7 @@ export const PAGES = {
     "Speaking": Speaking,
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
-    "AINews": AINews,
+    "SOS": SOS,
 }
 
 export const pagesConfig = {
