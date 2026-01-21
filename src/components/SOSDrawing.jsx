@@ -82,7 +82,11 @@ export default function SOSDrawing() {
     }, 3000);
   };
 
-  const resetDrawing = () => {
+  const resetDrawing = async () => {
+    // Reset all winners back to "entered" status in database
+    for (const winner of winners) {
+      await base44.entities.SOSRaffleEntry.update(winner.id, { status: "entered" });
+    }
     setWinners([]);
     setCurrentPick(null);
   };
@@ -145,9 +149,6 @@ export default function SOSDrawing() {
                     <p className="text-4xl font-bold text-white mb-2">
                       {currentPick.name}
                     </p>
-                    <p className="text-white text-lg opacity-90">
-                      {currentPick.email}
-                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -161,7 +162,6 @@ export default function SOSDrawing() {
                       <div key={winner.id} className="flex items-center justify-between bg-gray-600 rounded-lg p-4">
                         <div className="text-white">
                           <p className="font-bold">#{idx + 1} - {winner.name}</p>
-                          <p className="text-sm text-gray-300">{winner.email}</p>
                         </div>
                         <Trophy className="w-6 h-6 text-yellow-500" />
                       </div>
