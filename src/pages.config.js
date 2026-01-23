@@ -15,11 +15,12 @@ import LuxuryRealEstate from './pages/LuxuryRealEstate';
 import Partners from './pages/Partners';
 import Politics from './pages/Politics';
 import Resources from './pages/Resources';
+import SOS from './pages/SOS';
 import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
-import SOS from './pages/SOS';
+import CPG from './pages/CPG';
 import __Layout from './Layout.jsx';
 
 
@@ -41,11 +42,12 @@ export const PAGES = {
     "Partners": Partners,
     "Politics": Politics,
     "Resources": Resources,
+    "SOS": SOS,
     "Services": Services,
     "Speaking": Speaking,
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
-    "SOS": SOS,
+    "CPG": CPG,
 }
 
 export const pagesConfig = {
