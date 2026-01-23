@@ -21,6 +21,7 @@ import Speaking from './pages/Speaking';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
 import CPG from './pages/CPG';
+import Offsite from './pages/Offsite';
 import __Layout from './Layout.jsx';
 
 
@@ -48,6 +49,7 @@ export const PAGES = {
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
     "CPG": CPG,
+    "Offsite": Offsite,
 }
 
 export const pagesConfig = {
