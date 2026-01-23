@@ -45,6 +45,14 @@ export default function OffsitePage() {
       description: "Strategic sessions for leadership teams on AI adoption, competitive positioning, and innovation roadmaps.",
       ideal: "C-suite, senior leadership, board meetings",
       color: "from-orange-600 to-orange-700"
+    },
+    {
+      icon: MessageSquare,
+      title: "Virtual Sessions",
+      duration: "30-60+ minutes",
+      description: "Join your team remotely for focused training, Q&A sessions, or strategic discussions—flexible timing to fit your schedule.",
+      ideal: "Distributed teams, remote-first companies, quick-win sessions",
+      color: "from-teal-600 to-teal-700"
     }
   ];
 
