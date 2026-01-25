@@ -244,6 +244,12 @@ export default function Layout({ children, currentPageName }) {
               >
                 Luxury Outlook
               </Link>
+              <Link
+                to={createPageUrl("FOAF")}
+                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                FOAF
+              </Link>
             </div>
             <p className="text-sm text-gray-500 font-medium text-center">
               © {new Date().getFullYear()} High Caliber AI. All rights reserved.
