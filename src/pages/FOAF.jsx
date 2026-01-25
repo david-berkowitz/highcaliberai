@@ -17,6 +17,11 @@ export default function FOAFPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header */}
         <div className="text-center mb-16">
+          <img
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/94dc5b1c1_foaf-logotype-full-color-rgb-900px-w-72ppi.png"
+            alt="FOAF Logo"
+            className="h-20 mx-auto mb-8"
+          />
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4" />
             Welcome FOAF Visitors
@@ -66,13 +71,13 @@ export default function FOAFPage() {
                   Need to connect with someone from the original FOAF team or looking for recommendations for fractional leadership? We're happy to help connect you with the right expertise.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="mailto:david@highcaliberai.com?subject=FOAF Inquiry">
-                    <Button className="bg-white text-gray-900 hover:bg-gray-100">
+                  <a href="mailto:david@highcaliberai.com?subject=FOAF Inquiry" className="w-full sm:w-auto">
+                    <Button className="bg-white text-gray-900 hover:bg-gray-100 w-full">
                       Email David
                     </Button>
                   </a>
-                  <Link to={createPageUrl("Contact")}>
-                    <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                  <Link to={createPageUrl("Contact")} className="w-full sm:w-auto">
+                    <Button variant="outline" className="border-white text-white hover:bg-white/10 w-full">
                       Contact Form
                     </Button>
                   </Link>
