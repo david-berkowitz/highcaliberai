@@ -77,7 +77,7 @@ export default function FOAFPage() {
                     </Button>
                   </a>
                   <Link to={createPageUrl("Contact")} className="w-full sm:w-auto">
-                    <Button variant="outline" className="border-white text-white hover:bg-white/10 w-full">
+                    <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 w-full">
                       Contact Form
                     </Button>
                   </Link>
