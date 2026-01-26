@@ -47,7 +47,7 @@ export default function Home() {
             </div>
             
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-14 leading-relaxed font-light">
-              I partner with B2B marketing leaders to bridge the gap between "buying tools" and "getting results"—combining fractional leadership, applied training, and safe execution.
+              I partner with B2B marketing leaders to bridge the gap between buying tools and getting results, combining fractional leadership, applied training, and safe execution.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -86,7 +86,7 @@ export default function Home() {
               
               <div className="space-y-6">
                 <p className="text-xl text-gray-700 leading-relaxed font-medium">
-                  David Berkowitz doesn't just "consult" on AI; he uses it to drive GTM strategy. He founded AI Marketers Guild and Serial Marketers (sold to Marketecture Media in 2025, where he serves as Chief Community Officer), tracking what's actually working for 7,000+ peers. He combines that community intelligence with decades of executive experience (360i, Sysomos, MADTECH.AI) to help you skip the "hype cycle" and move straight to revenue.
+                  David Berkowitz doesn't just consult on AI; he uses it to drive GTM strategy. He founded AI Marketers Guild and Serial Marketers (sold to Marketecture Media in 2025, where he serves as Chief Community Officer), tracking what's actually working for 7,000+ peers. He combines that community intelligence with decades of executive experience (360i, Sysomos, Publicis Groupe) to help you skip the "hype cycle" and move straight to revenue.
                 </p>
                 
                 <div className="flex flex-col gap-4 py-6 border-y border-gray-200">
@@ -127,8 +127,8 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-br from-red-600 to-red-800 rounded-3xl rotate-3 opacity-20"></div>
                 <img 
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg" 
-                  alt="David Berkowitz speaking at Forbes event on AI marketing strategy and implementation" 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/ae6a23b64_1.png" 
+                  alt="David Berkowitz - AI Marketing Strategist and Fractional CMO" 
                   className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl"
                   loading="lazy"
                 />
