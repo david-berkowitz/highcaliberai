@@ -14,6 +14,7 @@ export default function Home() {
         description="Real-world AI strategy for B2B marketing leaders. Fractional CMO services, team training, and managed AI pilots. Founded by David Berkowitz, author and AI Marketers Guild founder."
         image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
         url="https://highcaliberai.com"
+        canonical="https://highcaliberai.com"
       />
       <PersonStructuredData />
       <OrganizationStructuredData />

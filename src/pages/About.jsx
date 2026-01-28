@@ -161,6 +161,7 @@ export default function About() {
         description="David Berkowitz is founder of AI Marketers Guild (7,000+ members), author of The Non-Obvious Guide to Using AI for Marketing, and Chief Community Officer at Marketecture Media. 400+ speaking engagements, 15+ years experience."
         image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
         url="https://highcaliberai.com/about"
+        canonical="https://highcaliberai.com/about"
       />
       <PersonStructuredData />
       <FAQStructuredData faqs={faqs} />
