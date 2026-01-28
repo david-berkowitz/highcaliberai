@@ -73,6 +73,7 @@ ${formData.message}
         description="Schedule a consultation with David Berkowitz for AI marketing strategy, fractional CMO services, or speaking engagements. Located in New York, NY. Book a meeting via Calendly or send a message."
         image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
         url="https://highcaliberai.com/contact"
+        canonical="https://highcaliberai.com/contact"
       />
       {/* Hero Section */}
       <section className="py-20 lg:py-28 bg-white">

@@ -41,6 +41,7 @@ export default function Blog() {
         description="Expert insights on AI marketing strategy, tools, case studies, and industry trends. Learn how to transform your marketing with artificial intelligence."
         image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
         url="https://highcaliberai.com/blog"
+        canonical="https://highcaliberai.com/blog"
       />
 
       {/* Hero Section */}

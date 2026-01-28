@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink, TrendingUp, Calendar, Sparkles } from 'lucide-react';
 import MetaTags from '@/components/SEO/MetaTags';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { BreadcrumbStructuredData } from '@/components/SEO/StructuredData';
 
 export default function AINews() {
   const { data: digests = [], isLoading } = useQuery({
@@ -38,14 +39,21 @@ export default function AINews() {
       <MetaTags
         title="Weekly AI Marketing News Digest"
         description="Stay updated with the latest AI marketing news, tools, and trends. Curated weekly by David Berkowitz."
-        url={window.location.href}
+        url="https://highcaliberai.com/ai-news"
+        canonical="https://highcaliberai.com/ai-news"
+      />
+      <BreadcrumbStructuredData 
+        items={[
+          { name: "Home", url: "https://highcaliberai.com" },
+          { name: "AI News", url: "https://highcaliberai.com/ai-news" }
+        ]} 
       />
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-red-900 text-white py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-4">
-            <TrendingUp className="w-10 h-10 text-red-400" />
+            <TrendingUp className="w-10 h-10 text-red-400" alt="Trending up icon" />
             <h1 className="text-5xl font-bold">AI Marketing News</h1>
           </div>
           <p className="text-xl text-gray-300 max-w-3xl">

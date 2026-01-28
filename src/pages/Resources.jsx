@@ -28,6 +28,7 @@ export default function Resources() {
         description="Curated directory of AI marketing tools, research platforms, content creation apps, and learning resources. Free guides, checklists, and access to AI Marketers Guild community."
         image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
         url="https://highcaliberai.com/resources"
+        canonical="https://highcaliberai.com/resources"
       />
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">

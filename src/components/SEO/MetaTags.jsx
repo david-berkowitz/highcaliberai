@@ -6,7 +6,8 @@ export default function MetaTags({
   image, 
   url,
   type = 'website',
-  author = 'David Berkowitz'
+  author = 'David Berkowitz',
+  canonical
 }) {
   useEffect(() => {
     // Update document title
@@ -50,11 +51,20 @@ export default function MetaTags({
     setMetaTag('twitter:image', image);
     setMetaTag('twitter:creator', '@dberkowitz');
 
+    // Canonical URL
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      document.head.appendChild(link);
+    }
+    link.setAttribute('href', canonical || url || window.location.href);
+
     // Cleanup function
     return () => {
       // Optional: Remove meta tags on unmount if needed
     };
-  }, [title, description, image, url, type, author]);
+    }, [title, description, image, url, type, author, canonical]);
 
   return null;
 }

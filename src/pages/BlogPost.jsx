@@ -73,6 +73,7 @@ export default function BlogPost() {
         description={post.excerpt}
         image={post.featured_image}
         url={`https://highcaliberai.com/blog/${post.slug}`}
+        canonical={`https://highcaliberai.com/blog/${post.slug}`}
         type="article"
         author="David Berkowitz"
       />
