@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
 import MetaTags from "@/components/SEO/MetaTags";
+import FAQSchema from "@/components/SEO/FAQSchema";
 import { 
   TrendingUp, 
   BookOpen, 
@@ -128,6 +129,13 @@ export default function Services() {
         url="https://highcaliberai.com/services"
         canonical="https://highcaliberai.com/services"
       />
+      <FAQSchema faqs={[
+        { question: "What is Fractional GTM Leadership?", answer: "Fractional GTM (Go-to-Market) Leadership means embedding a senior marketing executive with your team on a part-time basis to lead strategy, tech stack decisions, and execution. Unlike traditional consulting, this is hands-on leadership that modernizes your marketing operations while building internal capabilities." },
+        { question: "What is GEO (Generative Engine Optimization)?", answer: "GEO (Generative Engine Optimization) is the practice of optimizing your content and digital presence to appear in AI-generated search results from tools like ChatGPT, Perplexity, and Google's AI Overviews. As AI search replaces traditional search, GEO ensures your brand remains visible and authoritative." },
+        { question: "How long does a typical engagement last?", answer: "Fractional CMO engagements typically run 6-12 months to allow for meaningful transformation. Training workshops can be one-time sessions or ongoing programs. Innovation pilots run 8-12 weeks. Each engagement is customized based on your needs and readiness level." },
+        { question: "What is the AI Readiness Audit?", answer: "The AI Readiness Audit is a proprietary diagnostic that evaluates your current marketing tech stack, team capabilities, processes, and policies. It identifies high-impact opportunities, eliminates low-value shelfware, and creates a prioritized roadmap for AI adoption. This audit is the starting point for all fractional CMO engagements." },
+        { question: "Do you work with agencies or just brands?", answer: "We work with both B2B tech companies and marketing agencies. For agencies, we help modernize service offerings, train teams on AI tools, and develop AI-powered capabilities that differentiate you from competitors. Our approach is tailored to whether you're an in-house team or agency partner." }
+      ]} />
       {/* Hero Section */}
       <section className="relative py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
         {/* Background pattern */}
