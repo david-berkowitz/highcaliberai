@@ -10,6 +10,40 @@ import { Button } from "@/components/ui/button";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import MetaTags from "@/components/SEO/MetaTags";
 import BlogPostStructuredData from "@/components/SEO/BlogStructuredData";
+import PeopleAlsoAsk from "@/components/PeopleAlsoAsk";
+
+// Generate People Also Ask questions based on post category
+function generatePAAQuestions(post) {
+  const categoryQuestions = {
+    "AI Strategy": [
+      { question: "How do I assess my team's AI readiness?", answer: "Start with an AI Readiness Audit that evaluates four areas: tech stack (what tools you have vs. need), team skills (who can actually use AI), processes (how work gets done), and policies (what's allowed). Be brutally honest about gaps—most teams overestimate readiness by 30-40%." },
+      { question: "What's the difference between fractional CMO and consulting?", answer: "Fractional CMOs embed with your team to lead execution—they own outcomes. Consultants deliver recommendations and leave. Think of it as the difference between hiring a part-time executive vs. buying a strategy deck." },
+      { question: "How long does AI adoption take?", answer: "Quick wins happen in 4-8 weeks (tool adoption, basic training). Real transformation takes 6-12 months because you're changing how people work, not just adding software. Anyone promising overnight results is selling vaporware." }
+    ],
+    "Tools & Tech": [
+      { question: "How do I choose between AI tools?", answer: "Use the 'Process Over Product' framework: map your workflow first, identify bottlenecks, then find tools that solve specific problems. Most teams buy tools first and wonder why adoption fails. Start with the work, not the software." },
+      { question: "What's the ROI of AI marketing tools?", answer: "Look for time savings (hours returned to the team), quality improvements (better output), and scale (doing more with same headcount). Avoid vanity metrics like 'AI-generated posts.' Measure what matters: revenue impact, team capacity, customer outcomes." },
+      { question: "Should I use free or paid AI tools?", answer: "Free tools work for experimentation and low-stakes tasks. Paid tools matter when you need: reliability (uptime), support (when things break), integration (connecting to your stack), and compliance (data security). Budget $50-200/user/month for serious adoption." }
+    ],
+    "Industry Trends": [
+      { question: "What is GEO and why does it matter?", answer: "Generative Engine Optimization (GEO) means optimizing for AI search engines like ChatGPT, Perplexity, and Google AI Overviews. It matters because 40%+ of searches now start with AI. If you're not showing up in AI results, you're invisible to a growing segment." },
+      { question: "Is AI search replacing Google?", answer: "Not replacing—augmenting. Google still owns 90%+ of search, but AI tools are changing how people search. The shift: fewer clicks to websites, more answers in-stream. Your strategy: be the source AI engines cite, not just a link they might show." },
+      { question: "What AI trends should marketers ignore?", answer: "Ignore: 'AI will replace all marketers' (won't happen), fully autonomous AI agents (not ready), and any tool promising to 'automate your entire marketing' (vaporware). Focus on: AI as augmentation, workflow automation, and practical content scaling." }
+    ],
+    "Case Studies": [
+      { question: "What results can I expect from AI implementation?", answer: "Typical wins after 6 months: 20-30% time savings on repetitive tasks, 40-60% increase in content output, 15-25% improvement in team capacity. Results vary by starting point—teams with low AI maturity see bigger gains faster." },
+      { question: "How do I measure AI success?", answer: "Track three metrics: Adoption Rate (% of team actively using AI), Time-to-Value (how fast you see results), and Business Impact (revenue, leads, efficiency). Avoid tracking 'number of AI tools'—that's shelfware risk, not success." },
+      { question: "What are common AI implementation mistakes?", answer: "Top mistakes: buying tools before defining process (causes shelfware), skipping training (adoption fails), no governance (legal/PR risk), and expecting instant ROI (transformation takes time). Fix: start small, train hard, set policies, measure outcomes." }
+    ],
+    "How-To": [
+      { question: "How do I train my team on AI?", answer: "Use Applied Workshops—not theory lectures. Give them real projects: write a blog post with AI, build a campaign brief, create social content. Learning by doing builds muscle memory. Skip the 'what is AI' intro decks—your team needs reps, not concepts." },
+      { question: "What's the best way to start with AI?", answer: "Start with high-frequency, low-risk tasks: meeting summaries, email drafts, social post ideas. Get your team comfortable with AI on tasks that don't matter much if they fail. Build confidence, then tackle bigger projects like strategy and customer-facing content." },
+      { question: "How do I overcome team resistance to AI?", answer: "Address fears head-on: AI augments, doesn't replace (show examples of roles evolving, not disappearing). Prove quick wins (show time saved on boring tasks). Make it opt-in initially (early adopters become internal champions). Most resistance melts after people see real benefits." }
+    ]
+  };
+
+  return categoryQuestions[post.category] || [];
+}
 
 export default function BlogPost() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -169,6 +203,9 @@ export default function BlogPost() {
             <div className="prose prose-lg max-w-none mb-12">
               <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
             </div>
+
+            {/* People Also Ask Section */}
+            <PeopleAlsoAsk questions={generatePAAQuestions(post)} />
 
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
