@@ -3,8 +3,8 @@ Deno.serve(async (req) => {
 User-agent: *
 Allow: /
 
-# Sitemap location (dynamic sitemap with all pages)
-Sitemap: https://highcaliberai.com/.b44/api/sitemap
+# Sitemap location
+Sitemap: https://highcaliberai.com/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 1
