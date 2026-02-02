@@ -219,37 +219,43 @@ export default function Layout({ children, currentPageName }) {
             <p className="text-sm text-gray-400 text-center mb-4 leading-relaxed">
               David Berkowitz: Founder of <a href="https://www.aimarketersguild.com" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 transition-colors">AI Marketers Guild</a> (7,000+ Members). Author of <a href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 transition-colors">The Non-Obvious Guide to Using AI for Marketing</a>.
             </p>
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <Link
-                to={createPageUrl("Blog")}
-                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
-              >
-                Blog
-              </Link>
-              <Link
-                to={createPageUrl("IC")}
-                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
-              >
-                IndeCollective
-              </Link>
-              <Link
-                to={createPageUrl("Jobs")}
-                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
-              >
-                Job Resources
-              </Link>
-              <Link
-                to={createPageUrl("Lux")}
-                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
-              >
-                Luxury Outlook
-              </Link>
-              <Link
-                to={createPageUrl("FOAF")}
-                className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
-              >
-                FOAF
-              </Link>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 max-w-4xl mx-auto">
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 mb-2">Services</h3>
+                <div className="space-y-1">
+                  <Link to={createPageUrl("Services")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Overview</Link>
+                  <Link to={createPageUrl("CaseStudies")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Case Studies</Link>
+                  <Link to={createPageUrl("WorkshopShowcase")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Training</Link>
+                  <Link to={createPageUrl("Speaking")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Speaking</Link>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 mb-2">Resources</h3>
+                <div className="space-y-1">
+                  <Link to={createPageUrl("Resources")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Tools & Guides</Link>
+                  <Link to={createPageUrl("Blog")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Blog</Link>
+                  <Link to={createPageUrl("AINews")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">AI News</Link>
+                  <Link to={createPageUrl("Book")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Book</Link>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 mb-2">Company</h3>
+                <div className="space-y-1">
+                  <Link to={createPageUrl("About")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">About David</Link>
+                  <Link to={createPageUrl("Contact")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Contact</Link>
+                  <Link to={createPageUrl("Partners")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Partners</Link>
+                  <Link to={createPageUrl("ZAIAudit")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">AI Audit</Link>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 mb-2">More</h3>
+                <div className="space-y-1">
+                  <Link to={createPageUrl("IC")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">IndeCollective</Link>
+                  <Link to={createPageUrl("Jobs")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Job Resources</Link>
+                  <Link to={createPageUrl("Lux")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Luxury Outlook</Link>
+                  <Link to={createPageUrl("FOAF")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">FOAF</Link>
+                </div>
+              </div>
             </div>
             <p className="text-sm text-gray-500 font-medium text-center">
               © {new Date().getFullYear()} High Caliber AI. All rights reserved.

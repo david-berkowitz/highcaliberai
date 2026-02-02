@@ -56,9 +56,16 @@ export default function Blog() {
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
               AI Marketing <span className="text-red-600">Insights</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
               Practical strategies, case studies, and insights on using AI to transform your marketing
             </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm mb-8">
+              <Link to={createPageUrl("Resources")} className="text-red-600 hover:text-red-700 font-medium">Browse Resources</Link>
+              <span className="text-gray-300">•</span>
+              <Link to={createPageUrl("AINews")} className="text-red-600 hover:text-red-700 font-medium">Weekly AI News</Link>
+              <span className="text-gray-300">•</span>
+              <Link to={createPageUrl("Services")} className="text-red-600 hover:text-red-700 font-medium">Our Services</Link>
+            </div>
 
             {/* Search */}
             <div className="max-w-2xl mx-auto mb-8">

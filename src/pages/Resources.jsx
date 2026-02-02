@@ -41,9 +41,16 @@ export default function Resources() {
             <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 leading-tight">
               AI Marketing <span className="font-semibold text-red-600">Resources</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
               Curated tools and platforms I recommend for enhancing your AI marketing workflow
             </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <Link to={createPageUrl("Services")} className="text-red-600 hover:text-red-700 font-medium">Explore Services</Link>
+              <span className="text-gray-300">•</span>
+              <Link to={createPageUrl("Blog")} className="text-red-600 hover:text-red-700 font-medium">Read Blog</Link>
+              <span className="text-gray-300">•</span>
+              <Link to={createPageUrl("Contact")} className="text-red-600 hover:text-red-700 font-medium">Get in Touch</Link>
+            </div>
           </motion.div>
         </div>
       </section>
