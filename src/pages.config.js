@@ -48,6 +48,7 @@
  * The mainPage value must match a key in the PAGES object exactly.
  */
 import AINews from './pages/AINews';
+import AIStrategyHub from './pages/AIStrategyHub';
 import About from './pages/About';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
@@ -70,15 +71,15 @@ import Resources from './pages/Resources';
 import SOS from './pages/SOS';
 import Services from './pages/Services';
 import Speaking from './pages/Speaking';
+import ToolsHub from './pages/ToolsHub';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import ZAIAudit from './pages/ZAIAudit';
-import AIStrategyHub from './pages/AIStrategyHub';
-import ToolsHub from './pages/ToolsHub';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "AINews": AINews,
+    "AIStrategyHub": AIStrategyHub,
     "About": About,
     "Blog": Blog,
     "BlogPost": BlogPost,
@@ -101,10 +102,9 @@ export const PAGES = {
     "SOS": SOS,
     "Services": Services,
     "Speaking": Speaking,
+    "ToolsHub": ToolsHub,
     "WorkshopShowcase": WorkshopShowcase,
     "ZAIAudit": ZAIAudit,
-    "AIStrategyHub": AIStrategyHub,
-    "ToolsHub": ToolsHub,
 }
 
 export const pagesConfig = {

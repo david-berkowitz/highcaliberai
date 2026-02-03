@@ -178,9 +178,9 @@ export default function Resources() {
             />
             <ResourceCard 
               icon={Sparkles}
-              title="AdGreetz"
+              title="BizGreetz AI®"
               description="AI-powered personalized video ad creation at scale"
-              href="https://www.adgreetz.com/"
+              href="https://www.bizgreetz.com/"
             />
             <ResourceCard 
               icon={Sparkles}
