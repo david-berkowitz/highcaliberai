@@ -146,7 +146,7 @@ export default function Resources() {
             <ResourceCard 
               icon={Target}
               title="Cluely"
-              description="AI-powered user research and feedback analysis"
+              description="Notetaking app with live feedback"
               href="https://cluely.com/"
             />
           </div>

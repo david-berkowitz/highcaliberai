@@ -18,38 +18,11 @@ import {
   ExternalLink,
   Mail,
   FileText,
-  Upload,
   File,
-  CheckCircle
+  Calendar
 } from "lucide-react";
 
 export default function SOS() {
-  const [uploading, setUploading] = useState(false);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
-  const [fileName, setFileName] = useState("");
-
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    setUploading(true);
-    setUploadSuccess(false);
-
-    try {
-      const { file_url } = await base44.integrations.Core.UploadFile({ file });
-      setFileName(file.name);
-      setUploadSuccess(true);
-      
-      // TODO: Store file reference in database if needed
-      
-      setTimeout(() => setUploadSuccess(false), 3000);
-    } catch (error) {
-      console.error('Upload failed:', error);
-    } finally {
-      setUploading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <MetaTags 
@@ -67,6 +40,14 @@ export default function SOS() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            <div className="mb-8">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/9f7781ed5_image.png"
+                alt="Small Giants 2026"
+                className="h-16 mx-auto mb-4"
+              />
+              <p className="text-sm text-gray-600 font-medium">brought to you by Source of Sources</p>
+            </div>
             <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 leading-tight">
               Source of <span className="font-semibold text-red-600">Sources</span>
             </h1>
@@ -77,40 +58,17 @@ export default function SOS() {
         </div>
       </section>
 
-      {/* Presentation Materials Upload */}
+      {/* Presentation Materials - Coming Soon */}
       <section className="py-12 px-6">
         <div className="max-w-4xl mx-auto">
           <Card className="bg-gradient-to-r from-blue-600 to-blue-700 border-0 shadow-xl">
             <CardContent className="p-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Upload className="w-8 h-8 text-white" />
+                  <File className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Upload Presentation Materials</h3>
-                <p className="text-blue-100 mb-6">Share slides, decks, or resources related to these tools</p>
-                
-                <div className="max-w-md mx-auto">
-                  <label className="cursor-pointer">
-                    <div className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center gap-2">
-                      <File className="w-5 h-5" />
-                      {uploading ? "Uploading..." : "Choose File"}
-                    </div>
-                    <Input
-                      type="file"
-                      onChange={handleFileUpload}
-                      disabled={uploading}
-                      className="hidden"
-                      accept=".pdf,.ppt,.pptx,.key"
-                    />
-                  </label>
-                  
-                  {uploadSuccess && (
-                    <div className="mt-4 bg-green-500/20 border border-green-300 rounded-lg p-3 flex items-center justify-center gap-2 text-white">
-                      <CheckCircle className="w-5 h-5" />
-                      <span className="font-medium">{fileName} uploaded successfully!</span>
-                    </div>
-                  )}
-                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Presentation Materials</h3>
+                <p className="text-blue-100 text-lg">Coming Soon</p>
               </div>
             </CardContent>
           </Card>
@@ -129,15 +87,45 @@ export default function SOS() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ResourceCard 
+              icon={TrendingUp}
+              title="SparkToro"
+              description="Audience research and intelligence platform"
+              href="https://sparktoro.com/"
+            />
+            <ResourceCard 
+              icon={Target}
+              title="Otterly AI"
+              description="AI engine monitoring and brand tracking"
+              href="https://otterly.ai/?via=david"
+            />
+            <ResourceCard 
               icon={Brain}
               title="NotebookLM"
               description="Google's AI-powered research and note-taking assistant"
               href="https://notebooklm.google/"
             />
             <ResourceCard 
+              icon={Book}
+              title="Passionfruit"
+              description="AI-powered content optimization and recommendations"
+              href="https://www.getpassionfruit.com/"
+            />
+            <ResourceCard 
+              icon={Target}
+              title="AI Search Playbook"
+              description="AirOps guide for marketers navigating AI-powered search"
+              href="https://www.airops.com/report/ai-search-playbook-marketers"
+            />
+            <ResourceCard 
+              icon={Users}
+              title="Rally"
+              description="AI-powered research and consumer insights platform"
+              href="https://askrally.com/"
+            />
+            <ResourceCard 
               icon={Target}
               title="Cluely"
-              description="AI-powered user research and feedback analysis"
+              description="Notetaking app with live feedback"
               href="https://cluely.com/"
             />
           </div>
@@ -209,7 +197,7 @@ export default function SOS() {
               <Lightbulb className="w-8 h-8 text-red-600" />
               Vibe Coding
             </h2>
-            <p className="text-gray-600">No-code platforms for building applications</p>
+            <p className="text-gray-600">No-code and AI-assisted platforms for building applications</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ResourceCard 
@@ -225,6 +213,24 @@ export default function SOS() {
               description="AI-powered app development platform"
               href="https://lovable.dev/?via=david-berkowitz"
               featured
+            />
+            <ResourceCard 
+              icon={Brain}
+              title="Claude Code"
+              description="AI coding assistant for developers"
+              href="https://www.anthropic.com/claude/code"
+            />
+            <ResourceCard 
+              icon={Target}
+              title="Ghostty"
+              description="Fast, modern terminal emulator"
+              href="https://ghostty.org/"
+            />
+            <ResourceCard 
+              icon={Target}
+              title="Netlify"
+              description="Modern web hosting and deployment platform"
+              href="https://www.netlify.com/"
             />
           </div>
         </div>
@@ -285,6 +291,24 @@ export default function SOS() {
               description="Weekly AI tools by Jeremy Caplan"
               href="https://wondertools.substack.com/"
             />
+            <ResourceCard 
+              icon={Mail}
+              title="The AI Valley"
+              description="Daily AI news by Barsee"
+              href="https://www.theaivalley.com/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="AI Report"
+              description="Weekly AI tool updates"
+              href="https://aitoolreport.beehiiv.com/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="IPG Media Lab Weekly"
+              description="Weekly media and AI insights"
+              href="https://ipglab.substack.com/"
+            />
           </div>
         </div>
       </section>
@@ -326,6 +350,24 @@ export default function SOS() {
             />
             <ResourceCard 
               icon={FileText}
+              title="Find My AI Tool"
+              description="Search engine for AI tools"
+              href="https://www.findmyaitool.com/"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="AITools.fyi"
+              description="AI marketing tools directory"
+              href="https://aitools.fyi/category/ai-marketing"
+            />
+            <ResourceCard 
+              icon={FileText}
+              title="MKT1's AI Tools"
+              description="Airtable of marketing AI tools"
+              href="https://airtable.com/appcRvwXdyEJR0fsT/shrCMY1xkb2fOmy7t/tblrn88uEcqUypqFX"
+            />
+            <ResourceCard 
+              icon={FileText}
               title="ChatGPT Prompt Frameworks"
               description="Prompt frameworks by Shelly Palmer"
               href="https://shellypalmer.com/2023/11/chatgpt-prompt-frameworks/"
@@ -334,14 +376,75 @@ export default function SOS() {
         </div>
       </section>
 
+      {/* Courses & Learning */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
+              <Book className="w-8 h-8 text-red-600" />
+              Courses & Learning
+            </h2>
+            <p className="text-gray-600">Educational resources and video content for AI marketing</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ResourceCard 
+              icon={Book}
+              title="AIMG YouTube Channel"
+              description="Dozens of AI marketing expert interviews"
+              href="https://www.youtube.com/@aimarketersguild"
+              featured
+            />
+            <ResourceCard 
+              icon={Book}
+              title="Generative AI for Brand Execs"
+              description="Course by Shelly Palmer"
+              href="https://courses.shellypalmer.com/metacademy-generative-ai"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* LinkedIn Thought Leaders */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
+              <Users className="w-8 h-8 text-red-600" />
+              LinkedIn Thought Leaders
+            </h2>
+            <p className="text-gray-600">Follow these AI marketing experts on LinkedIn</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ResourceCard 
+              icon={Users}
+              title="Ethan Mollick"
+              description="Wharton School professor and AI researcher"
+              href="https://www.linkedin.com/in/emollick/"
+            />
+            <ResourceCard 
+              icon={Users}
+              title="Catharine Montgomery"
+              description="Better Together Agency"
+              href="https://www.linkedin.com/in/cnmontgomery/"
+            />
+            <ResourceCard 
+              icon={Users}
+              title="Jeremiah Owyang"
+              description="Blitzscaling VC"
+              href="https://www.linkedin.com/in/jowyang/"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Community */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Community</h2>
-            <p className="text-gray-600">Connect with AI marketing communities</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Community & Events</h2>
+            <p className="text-gray-600">Connect with AI marketing communities and attend events</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6">
             <Card className="bg-gradient-to-br from-purple-600 to-purple-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
@@ -381,6 +484,52 @@ export default function SOS() {
                       className="inline-flex items-center gap-2 bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
                     >
                       Join Community
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-green-600 to-green-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-white/20 p-3 rounded-xl">
+                    <Calendar className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-xl font-bold text-white mb-2">AI Insiders Events</h4>
+                    <p className="text-green-100 mb-4">Attend virtual events, workshops, and networking sessions on AI marketing</p>
+                    <a 
+                      href="https://lu.ma/aimg" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-white text-green-700 px-4 py-2 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                    >
+                      View Events
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-red-600 to-red-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-white/20 p-3 rounded-xl">
+                    <Book className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-xl font-bold text-white mb-2">AI Insiders Recordings</h4>
+                    <p className="text-red-100 mb-4">Watch past sessions and learn from AI marketing experts and practitioners</p>
+                    <a 
+                      href="https://www.youtube.com/@aimarketersguild" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-white text-red-700 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition-colors"
+                    >
+                      Watch Videos
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
