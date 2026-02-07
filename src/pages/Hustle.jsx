@@ -602,6 +602,12 @@ export default function Hustle() {
                   );
                 })}
                 <Button
+                  onClick={() => handleSell(showSellModal, inventory[showSellModal])}
+                  className="w-full bg-green-600 hover:bg-green-700 font-bold"
+                >
+                  💰 SELL ALL ({inventory[showSellModal]}) for ${prices[showSellModal] * inventory[showSellModal]}
+                </Button>
+                <Button
                   onClick={() => setShowSellModal(null)}
                   variant="outline"
                   className="w-full"
