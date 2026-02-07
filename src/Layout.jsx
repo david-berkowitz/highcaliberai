@@ -254,6 +254,7 @@ export default function Layout({ children, currentPageName }) {
                   <Link to={createPageUrl("Jobs")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Job Resources</Link>
                   <Link to={createPageUrl("Lux")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Luxury Outlook</Link>
                   <Link to={createPageUrl("FOAF")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">FOAF</Link>
+                  <Link to={createPageUrl("Hustle")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">The Marketing Hustle</Link>
                 </div>
               </div>
             </div>
