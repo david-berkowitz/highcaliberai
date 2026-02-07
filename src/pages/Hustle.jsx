@@ -62,7 +62,45 @@ const EVENTS = [
     name: "Hallucination", 
     effect: "A purchased asset corrupts and vanishes",
     trigger: () => Math.random() < 0.05
+  },
+  {
+    name: "Influencer Endorsement",
+    effect: "Email Campaigns 5x price boost",
+    trigger: () => Math.random() < 0.08
+  },
+  {
+    name: "Platform Outage",
+    effect: "Algorithmic Hellhole closed for the day",
+    trigger: () => Math.random() < 0.12
+  },
+  {
+    name: "Shark Tank Moment",
+    effect: "Invest $500 for 3x return or lose it all",
+    trigger: () => Math.random() < 0.06
   }
+];
+
+const NEWS_HEADLINES = [
+  "Breaking: ChatGPT launches new reasoning model",
+  "Marketing budgets shift 40% to AI tools",
+  "LinkedIn algorithm change impacts B2B reach",
+  "TikTok introduces AI-powered ad targeting",
+  "Meta announces new business messaging features",
+  "Google Search gets more AI-powered results",
+  "Email open rates hit record highs this quarter",
+  "Video content dominates social engagement",
+  "Influencer marketing ROI surges 200%",
+  "SaaS companies battle subscription fatigue"
+];
+
+const ACHIEVEMENTS = [
+  { id: "first_sale", name: "First Sale", desc: "Made your first profit", check: (stats) => stats.totalSales > 0 },
+  { id: "debt_free", name: "Debt Free", desc: "Paid off all debt", check: (stats) => stats.debt === 0 },
+  { id: "big_spender", name: "Big Spender", desc: "Spent $5000+ in a day", check: (stats) => stats.daySpent >= 5000 },
+  { id: "hustler", name: "Hustler", desc: "Made 50+ trades", check: (stats) => stats.totalTrades >= 50 },
+  { id: "viral_king", name: "Viral King", desc: "Survived Going Viral event", check: (stats) => stats.events.includes("Going Viral") },
+  { id: "survivor", name: "Survivor", desc: "Reached Day 20", check: (stats) => stats.day >= 20 },
+  { id: "whale", name: "Whale", desc: "Had $10,000+ cash at once", check: (stats) => stats.maxCash >= 10000 }
 ];
 
 function generatePrice(asset, location, event) {
@@ -100,17 +138,44 @@ export default function Hustle() {
   const [currentLocation, setCurrentLocation] = useState(0);
   const [prices, setPrices] = useState({});
   const [log, setLog] = useState(["Welcome to The Marketing Hustle. Pay off your SaaS debt in 30 days."]);
+  const [stats, setStats] = useState({
+    totalSales: 0,
+    totalTrades: 0,
+    daySpent: 0,
+    maxCash: 500,
+    events: []
+  });
   const [activeEvent, setActiveEvent] = useState(null);
   const [showBuyModal, setShowBuyModal] = useState(null);
   const [showSellModal, setShowSellModal] = useState(null);
+  const [achievements, setAchievements] = useState([]);
+  const [newsHeadline, setNewsHeadline] = useState("");
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
   
   const totalSpace = Object.entries(inventory).reduce((sum, [assetName, qty]) => {
     const asset = ASSETS.find(a => a.name === assetName);
     return sum + (asset.space * qty);
   }, 0);
   
-  const addLog = (message) => {
-    setLog(prev => [message, ...prev].slice(0, 10));
+  const addLog = (message, ascii = null) => {
+    if (ascii) {
+      setLog(prev => [ascii, message, ...prev].slice(0, 15));
+    } else {
+      setLog(prev => [message, ...prev].slice(0, 15));
+    }
+  };
+  
+  const checkAchievements = (newStats) => {
+    ACHIEVEMENTS.forEach(achievement => {
+      if (!achievements.includes(achievement.id) && achievement.check(newStats)) {
+        setAchievements(prev => [...prev, achievement.id]);
+        addLog(`🏆 Achievement Unlocked: ${achievement.name}!`, "★★★★★");
+      }
+    });
+  };
+  
+  const getRandomNews = () => {
+    return NEWS_HEADLINES[Math.floor(Math.random() * NEWS_HEADLINES.length)];
   };
   
   const updatePrices = () => {
@@ -131,25 +196,44 @@ export default function Hustle() {
         const fee = 500;
         if (cash >= fee) {
           setCash(cash - fee);
-          addLog("⚠️ CLIENT AUDIT! Paid $500 in Freelance Editor Fees.");
+          addLog("⚠️ CLIENT AUDIT! Paid $500 in Freelance Editor Fees.", "⚠️⚠️⚠️");
         } else {
           setInventory({});
-          addLog("⚠️ CLIENT AUDIT! Lost all inventory - couldn't afford editor fees!");
+          addLog("⚠️ CLIENT AUDIT! Lost all inventory - couldn't afford editor fees!", "💀💀💀");
         }
       } else if (location.name === "The Algorithmic Hellhole") {
         setCash(Math.max(0, cash - 200));
-        addLog("😱 THE RATIO! Lost $200 in Brand Safety Fines.");
+        addLog("😱 THE RATIO! Lost $200 in Brand Safety Fines.", "☠️☠️☠️");
       }
     }
     
     setCurrentLocation(locationIndex);
+    setNewsHeadline(getRandomNews());
     
     // Check for random events
     let newEvent = null;
     for (const event of EVENTS) {
       if (event.trigger()) {
         newEvent = event.name;
-        addLog(`🎲 ${event.name}: ${event.effect}`);
+        
+        if (event.name === "Shark Tank Moment" && cash >= 500) {
+          const invest = window.confirm("🦈 SHARK TANK MOMENT!\n\nInvest $500 for a chance at $1500?\n(50/50 odds)");
+          if (invest) {
+            setCash(cash - 500);
+            if (Math.random() < 0.5) {
+              setCash(prev => prev + 1500);
+              addLog("🦈 Shark Tank SUCCESS! Won $1500!", "💰💰💰");
+            } else {
+              addLog("🦈 Shark Tank FAIL! Lost $500.", "📉📉📉");
+            }
+          }
+        } else if (event.name === "Going Viral") {
+          addLog(`🎲 ${event.name}: ${event.effect}`, "🚀🚀🚀");
+          setStats(prev => ({ ...prev, events: [...prev.events, event.name] }));
+        } else {
+          addLog(`🎲 ${event.name}: ${event.effect}`);
+        }
+        
         break;
       }
     }
@@ -180,9 +264,18 @@ export default function Hustle() {
       [assetName]: (prev[assetName] || 0) + quantity
     }));
     
+    const newStats = {
+      ...stats,
+      totalTrades: stats.totalTrades + 1,
+      daySpent: stats.daySpent + cost,
+      maxCash: Math.max(stats.maxCash, cash - cost)
+    };
+    setStats(newStats);
+    checkAchievements(newStats);
+    
     // Hallucination check
     if (Math.random() < 0.05) {
-      addLog(`🤖 HALLUCINATION! Your ${assetName} corrupted and vanished!`);
+      addLog(`🤖 HALLUCINATION! Your ${assetName} corrupted and vanished!`, "⚡⚡⚡");
       setInventory(prev => ({
         ...prev,
         [assetName]: Math.max(0, (prev[assetName] || 0) - 1)
@@ -209,7 +302,21 @@ export default function Hustle() {
       ...prev,
       [assetName]: prev[assetName] - quantity
     }));
-    addLog(`💰 Sold ${quantity}x ${assetName} for $${revenue}`);
+    
+    const newStats = {
+      ...stats,
+      totalSales: stats.totalSales + 1,
+      totalTrades: stats.totalTrades + 1,
+      maxCash: Math.max(stats.maxCash, cash + revenue)
+    };
+    setStats(newStats);
+    checkAchievements(newStats);
+    
+    if (quantity >= 10) {
+      addLog(`💰 BIG SALE! Sold ${quantity}x ${assetName} for $${revenue}`, "💵💵💵");
+    } else {
+      addLog(`💰 Sold ${quantity}x ${assetName} for $${revenue}`);
+    }
     setShowSellModal(null);
   };
   
@@ -241,6 +348,9 @@ export default function Hustle() {
     }
     
     setDay(newDay);
+    setNewsHeadline(getRandomNews());
+    setStats(prev => ({ ...prev, day: newDay, daySpent: 0 }));
+    checkAchievements({ ...stats, day: newDay });
     addLog(`📅 Day ${newDay} begins`);
   };
   
@@ -259,8 +369,32 @@ export default function Hustle() {
   useEffect(() => {
     if (gameStarted && !gameEnded) {
       updatePrices();
+      setNewsHeadline(getRandomNews());
     }
   }, [currentLocation, activeEvent, gameStarted]);
+  
+  const saveToLeaderboard = (initials, score, rank) => {
+    const leaderboard = JSON.parse(localStorage.getItem('hustleLeaderboard') || '[]');
+    leaderboard.push({ initials, score: Math.round(score), rank, date: new Date().toISOString() });
+    leaderboard.sort((a, b) => b.score - a.score);
+    localStorage.setItem('hustleLeaderboard', JSON.stringify(leaderboard.slice(0, 10)));
+  };
+  
+  const getLeaderboard = () => {
+    return JSON.parse(localStorage.getItem('hustleLeaderboard') || '[]');
+  };
+  
+  const shareScore = () => {
+    const rank = calculateScore();
+    const text = `I just played The Marketing Hustle! 🎮\n\nFinal Score: $${cash}\nRank: ${rank}\n\nCan you beat my score?\n\nhighcaliberai.com/hustle`;
+    
+    if (navigator.share) {
+      navigator.share({ text });
+    } else {
+      navigator.clipboard.writeText(text);
+      alert('Score copied to clipboard!');
+    }
+  };
   
   if (!gameStarted) {
     return (
@@ -311,12 +445,23 @@ export default function Hustle() {
   }
   
   if (gameEnded) {
+    const rank = calculateScore();
+    const finalScore = cash;
+    
+    const handleSaveScore = () => {
+      const initials = prompt("Enter your initials (3 letters):");
+      if (initials && initials.length <= 3) {
+        saveToLeaderboard(initials.toUpperCase(), finalScore, rank);
+        setShowLeaderboard(true);
+      }
+    };
+    
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center justify-center p-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-2xl"
+          className="max-w-2xl w-full"
         >
           <Card className="bg-gray-800/90 border-2 border-green-500 shadow-2xl">
             <CardContent className="p-12 text-center">
@@ -324,8 +469,25 @@ export default function Hustle() {
                 <>
                   <Trophy className="w-20 h-20 text-yellow-400 mx-auto mb-6" />
                   <h1 className="text-5xl font-bold text-green-400 mb-4 font-mono">VICTORY!</h1>
-                  <p className="text-gray-300 text-2xl mb-6">Final Cash: <span className="text-green-400 font-bold">${cash}</span></p>
-                  <p className="text-xl text-yellow-400 mb-8 font-bold">{calculateScore()}</p>
+                  <p className="text-gray-300 text-2xl mb-2">Final Cash: <span className="text-green-400 font-bold">${cash}</span></p>
+                  <p className="text-xl text-yellow-400 mb-6 font-bold">{rank}</p>
+                  
+                  {achievements.length > 0 && (
+                    <div className="bg-gray-900/50 border border-yellow-500/30 rounded-lg p-4 mb-6">
+                      <h3 className="text-yellow-400 font-mono mb-2">🏆 Achievements</h3>
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {achievements.map(id => {
+                          const ach = ACHIEVEMENTS.find(a => a.id === id);
+                          return (
+                            <span key={id} className="text-xs bg-yellow-900/30 text-yellow-300 px-2 py-1 rounded">
+                              {ach.name}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                  
                   {cash >= 50000 && (
                     <div className="bg-blue-900/50 border border-blue-500 rounded-lg p-6 mb-6">
                       <p className="text-blue-300 text-lg mb-4">
@@ -346,12 +508,56 @@ export default function Hustle() {
                   <p className="text-gray-400 mb-8">Final Cash: <span className="text-yellow-400">${cash}</span></p>
                 </>
               )}
-              <Button
-                onClick={() => window.location.reload()}
-                className="bg-green-500 hover:bg-green-600 text-gray-900 font-bold text-lg px-8 py-4 rounded-lg"
-              >
-                PLAY AGAIN
-              </Button>
+              
+              <div className="space-y-3">
+                {debt === 0 && (
+                  <>
+                    <Button
+                      onClick={handleSaveScore}
+                      className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold"
+                    >
+                      💾 Save to Leaderboard
+                    </Button>
+                    <Button
+                      onClick={shareScore}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold"
+                    >
+                      🔗 Share Score
+                    </Button>
+                  </>
+                )}
+                <Button
+                  onClick={() => setShowLeaderboard(!showLeaderboard)}
+                  variant="outline"
+                  className="w-full"
+                >
+                  {showLeaderboard ? "Hide" : "View"} Leaderboard
+                </Button>
+                <Button
+                  onClick={() => window.location.reload()}
+                  className="w-full bg-green-500 hover:bg-green-600 text-gray-900 font-bold"
+                >
+                  PLAY AGAIN
+                </Button>
+              </div>
+              
+              {showLeaderboard && (
+                <div className="mt-6 bg-gray-900/80 border border-gray-700 rounded-lg p-4">
+                  <h3 className="text-green-400 font-mono mb-3 font-bold">TOP 10 HUSTLERS</h3>
+                  <div className="space-y-2 text-left font-mono text-sm">
+                    {getLeaderboard().map((entry, idx) => (
+                      <div key={idx} className="flex justify-between text-gray-300">
+                        <span>{idx + 1}. {entry.initials}</span>
+                        <span className="text-green-400">${entry.score}</span>
+                        <span className="text-gray-500 text-xs">{entry.rank}</span>
+                      </div>
+                    ))}
+                    {getLeaderboard().length === 0 && (
+                      <p className="text-gray-500 text-center">No scores yet. Be the first!</p>
+                    )}
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         </motion.div>
@@ -367,6 +573,16 @@ export default function Hustle() {
         url="https://highcaliberai.com/hustle"
         canonical="https://highcaliberai.com/hustle"
       />
+      
+      {/* News Ticker */}
+      <div className="max-w-7xl mx-auto mb-2">
+        <div className="bg-gray-900 border border-blue-500/30 px-4 py-2 rounded-lg overflow-hidden">
+          <div className="flex items-center gap-2">
+            <span className="text-blue-400 font-bold text-xs">📰 NEWS:</span>
+            <div className="text-gray-300 text-xs font-mono animate-pulse">{newsHeadline}</div>
+          </div>
+        </div>
+      </div>
       
       {/* Top Bar */}
       <div className="max-w-7xl mx-auto mb-4">
@@ -567,6 +783,20 @@ export default function Hustle() {
                     Buy {qty} for ${prices[showBuyModal] * qty}
                   </Button>
                 ))}
+                <Button
+                  onClick={() => {
+                    const asset = ASSETS.find(a => a.name === showBuyModal);
+                    const maxAffordable = Math.floor(cash / prices[showBuyModal]);
+                    const maxSpace = Math.floor((100 - totalSpace) / asset.space);
+                    const maxBuy = Math.min(maxAffordable, maxSpace);
+                    if (maxBuy > 0) {
+                      handleBuy(showBuyModal, maxBuy);
+                    }
+                  }}
+                  className="w-full bg-yellow-600 hover:bg-yellow-700 font-bold"
+                >
+                  💰 BUY MAX
+                </Button>
                 <Button
                   onClick={() => setShowBuyModal(null)}
                   variant="outline"
