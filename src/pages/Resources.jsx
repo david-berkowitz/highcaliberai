@@ -212,6 +212,18 @@ export default function Resources() {
               description="Experimental AI content generation tools from Google"
               href="https://labs.google/experiments"
             />
+            <ResourceCard 
+              icon={Sparkles}
+              title="Hedra"
+              description="AI video creation platform"
+              href="https://hedra.com"
+            />
+            <ResourceCard 
+              icon={Sparkles}
+              title="HeyGen"
+              description="AI avatar and video generation"
+              href="https://www.heygen.com/"
+            />
           </div>
         </div>
       </section>
@@ -307,6 +319,12 @@ export default function Resources() {
               description="Modern web hosting and deployment platform"
               href="https://www.netlify.com/"
             />
+            <ResourceCard 
+              icon={Lightbulb}
+              title="Codex by OpenAI"
+              description="AI system that translates natural language to code"
+              href="https://openai.com/codex/"
+            />
           </div>
         </div>
       </section>
@@ -383,6 +401,12 @@ export default function Resources() {
               title="IPG Media Lab Weekly"
               description="Weekly media and AI insights"
               href="https://ipglab.substack.com/"
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="The AI Ad Economy"
+              description="Newsletter by Debra Aho Williamson on AI in advertising"
+              href="https://aiadeconomy.substack.com/"
             />
           </div>
         </div>
