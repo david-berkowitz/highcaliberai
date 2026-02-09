@@ -53,8 +53,26 @@ export default function SOS() {
               Source of <span className="font-semibold text-red-600">Sources</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-              SMB-friendly AI marketing tools and resources. Practical, affordable solutions for growing teams.
+              A curated collection of practical AI marketing tools and resources for small and mid-sized businesses. This is where I point growing teams toward affordable, accessible solutions that actually work—without the enterprise complexity or price tag.
             </p>
+            
+            {/* Bio Section */}
+            <div className="max-w-2xl mx-auto mt-12 bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <div className="flex items-start gap-4">
+                <img 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
+                  alt="David Berkowitz"
+                  className="w-20 h-20 rounded-full flex-shrink-0"
+                  loading="lazy"
+                />
+                <div className="text-left">
+                  <h3 className="font-bold text-gray-900 mb-2">Curated by David Berkowitz</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    David is an AI marketing strategist, founder of AI Marketers Guild (7,000+ members), and author of <em>The Non-Obvious Guide to Using AI for Marketing</em>. He serves as Chief Community Officer at Marketecture Media, fractional CMO for AI-forward companies, and Executive in Residence at Progress Partners. With 400+ speaking engagements and 15+ years of experience across agencies and tech companies, David bridges the gap between AI innovation and practical marketing results.
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
