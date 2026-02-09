@@ -18,6 +18,8 @@ const staticPages = [
   { loc: '/jobs', priority: '0.6', changefreq: 'monthly' },
   { loc: '/lux', priority: '0.6', changefreq: 'monthly' },
   { loc: '/foaf', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/hustle', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/sos', priority: '0.7', changefreq: 'weekly' },
 ];
 
 Deno.serve(async () => {

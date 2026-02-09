@@ -17,7 +17,8 @@ import {
   Mail,
   Calendar,
   FileText,
-  ArrowRight
+  ArrowRight,
+  Video
 } from "lucide-react";
 
 export default function Resources() {
