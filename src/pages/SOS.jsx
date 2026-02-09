@@ -77,7 +77,7 @@ export default function SOS() {
         </div>
       </section>
 
-      {/* Presentation Materials - Coming Soon */}
+      {/* Presentation Materials */}
       <section className="py-12 px-6">
         <div className="max-w-4xl mx-auto">
           <Card className="bg-gradient-to-r from-blue-600 to-blue-700 border-0 shadow-xl">
@@ -86,8 +86,26 @@ export default function SOS() {
                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <File className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Presentation Materials</h3>
-                <p className="text-blue-100 text-lg">Coming Soon</p>
+                <h3 className="text-2xl font-bold text-white mb-6">Presentation Materials</h3>
+                <p className="text-blue-100 text-lg mb-6">How to Build Your Marketing Engine on a Bootstrap Budget Using AI</p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a 
+                    href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/89739995a_SOS-1-2026-dberkowitz.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-700 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                  >
+                    <File className="w-5 h-5" />
+                    View PDF
+                  </a>
+                  <a 
+                    href="https://www.dropbox.com/scl/fi/jbcd96t8pacyt6648p87c/SOS-1-2026-dberkowitz.pptx?rlkey=dqj5zct2lvgnw9lhpaugqhkzh&dl=1"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-700 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                    Download PPTX
+                  </a>
+                </div>
               </div>
             </CardContent>
           </Card>
