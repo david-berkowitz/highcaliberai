@@ -132,6 +132,7 @@ export default function JobsPage() {
             <JobLink title="AMA Job Board" href="https://jobs.ama.org/" description="Listings from the American Marketing Association" />
             <JobLink title="Beeler.Tech" href="https://jobs.beeler.tech/" description="Jobs in ad ops, programmatic, and sales ops" />
             <JobLink title="Bolster" href="https://bolster.com/" description="Fractional roles and board seats for senior talent" />
+            <JobLink title="Fractional Jobs" href="https://www.fractionaljobs.io/" description="Job board for fractional marketing roles" />
             <JobLink title="The Boyd Initiative" href="https://www.theboydinitiative.com/" description="Careers for Young Black Professionals in advertising" />
             <JobLink title="Braintrust" href="https://app.usebraintrust.com/r/david77/" description="Freelance platform where talent keeps 100% of bill rate" featured />
             <JobLink title="Built in NYC" href="https://www.builtinnyc.com/jobs" description="Jobs at NYC startups and tech companies" />
