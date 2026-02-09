@@ -74,7 +74,7 @@ import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import ToolsHub from './pages/ToolsHub';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import ZAIAudit from './pages/ZAIAudit';
+import Audit from './pages/Audit';
 import __Layout from './Layout.jsx';
 
 
@@ -106,7 +106,7 @@ export const PAGES = {
     "Speaking": Speaking,
     "ToolsHub": ToolsHub,
     "WorkshopShowcase": WorkshopShowcase,
-    "ZAIAudit": ZAIAudit,
+    "Audit": Audit,
 }
 
 export const pagesConfig = {

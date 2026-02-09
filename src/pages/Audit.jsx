@@ -148,7 +148,7 @@ const getScoreLevel = (score) => {
   };
 };
 
-export default function ZAIAudit() {
+export default function Audit() {
   const [responses, setResponses] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
