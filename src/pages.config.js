@@ -50,6 +50,7 @@
 import AINews from './pages/AINews';
 import AIStrategyHub from './pages/AIStrategyHub';
 import About from './pages/About';
+import Audit from './pages/Audit';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Book from './pages/Book';
@@ -74,7 +75,7 @@ import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import ToolsHub from './pages/ToolsHub';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import Audit from './pages/Audit';
+import WorkingWithDavid from './pages/WorkingWithDavid';
 import __Layout from './Layout.jsx';
 
 
@@ -82,6 +83,7 @@ export const PAGES = {
     "AINews": AINews,
     "AIStrategyHub": AIStrategyHub,
     "About": About,
+    "Audit": Audit,
     "Blog": Blog,
     "BlogPost": BlogPost,
     "Book": Book,
@@ -106,7 +108,7 @@ export const PAGES = {
     "Speaking": Speaking,
     "ToolsHub": ToolsHub,
     "WorkshopShowcase": WorkshopShowcase,
-    "Audit": Audit,
+    "WorkingWithDavid": WorkingWithDavid,
 }
 
 export const pagesConfig = {
