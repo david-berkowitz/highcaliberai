@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "./utils";
-import { Menu, X, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Menu, X, Linkedin, Mail, ChevronDown, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import StickyCTA from "./components/StickyCTA";
+import GlobalSearch from "./components/GlobalSearch";
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const primaryNavLinks = [
     { name: "Home", page: "Home" },
@@ -96,6 +98,13 @@ export default function Layout({ children, currentPageName }) {
                 )
               ))}
               <div className="flex items-center space-x-4 ml-4 pl-4 border-l border-gray-200">
+                <button
+                  onClick={() => setSearchOpen(true)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label="Search"
+                >
+                  <Search className="w-5 h-5" />
+                </button>
                 <a
                   href="https://www.linkedin.com/in/dberkowitz/"
                   target="_blank"
@@ -183,6 +192,9 @@ export default function Layout({ children, currentPageName }) {
           )}
         </AnimatePresence>
       </nav>
+
+      {/* Global Search */}
+      <GlobalSearch open={searchOpen} onOpenChange={setSearchOpen} />
 
       {/* Main Content */}
       <main className="pt-20">{children}</main>

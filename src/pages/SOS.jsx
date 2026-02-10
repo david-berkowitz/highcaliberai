@@ -20,10 +20,16 @@ import {
   FileText,
   File,
   Calendar,
-  ArrowRight
+  ArrowRight,
+  Filter
 } from "lucide-react";
+import ShareButtons from "@/components/ShareButtons";
 
 export default function SOS() {
+  const [filterCategory, setFilterCategory] = React.useState("all");
+
+  const categories = ["all", "Research & Insights", "Content Creation", "Vibe Coding", "Newsletters"];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <MetaTags 
@@ -55,6 +61,14 @@ export default function SOS() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
               A curated collection of practical AI marketing tools and resources for small and mid-sized businesses. This is where I point growing teams toward affordable, accessible solutions that actually work—without the enterprise complexity or price tag.
             </p>
+            
+            <div className="flex justify-center mb-8">
+              <ShareButtons 
+                url="https://highcaliberai.com/sos"
+                title="Source of Sources - AI Marketing Resources"
+                description="Curated AI marketing tools and resources for small and mid-sized businesses"
+              />
+            </div>
             
             {/* Bio Section */}
             <div className="max-w-2xl mx-auto mt-12 bg-white rounded-xl p-6 shadow-sm border border-gray-200">
@@ -523,6 +537,24 @@ export default function SOS() {
               href="https://www.linkedin.com/in/jowyang/"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <Card className="bg-gradient-to-r from-red-600 to-red-700 border-0 shadow-xl">
+            <CardContent className="p-8">
+              <div className="text-center mb-6">
+                <Mail className="w-12 h-12 mx-auto mb-4 text-white" />
+                <h3 className="text-2xl font-bold text-white mb-3">Stay Updated</h3>
+                <p className="text-red-100">
+                  Get monthly AI marketing insights and curated resources delivered to your inbox
+                </p>
+              </div>
+              <NewsletterSignup source="sos" />
+            </CardContent>
+          </Card>
         </div>
       </section>
 

@@ -10,7 +10,10 @@ import { Button } from "@/components/ui/button";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import MetaTags from "@/components/SEO/MetaTags";
 import BlogPostStructuredData from "@/components/SEO/BlogStructuredData";
+import PersonSchema from "@/components/SEO/PersonSchema";
 import PeopleAlsoAsk from "@/components/PeopleAlsoAsk";
+import ShareButtons from "@/components/ShareButtons";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // Generate People Also Ask questions based on post category
 function generatePAAQuestions(post) {
@@ -105,25 +108,22 @@ export default function BlogPost() {
       <MetaTags 
         title={post.title}
         description={post.excerpt}
-        image={post.featured_image}
+        image={post.featured_image || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"}
         url={`https://highcaliberai.com/blog/${post.slug}`}
         canonical={`https://highcaliberai.com/blog/${post.slug}`}
         type="article"
         author="David Berkowitz"
       />
       <BlogPostStructuredData post={post} />
+      <PersonSchema />
 
       {/* Header */}
       <article className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          {/* Breadcrumbs */}
-          <nav className="flex items-center text-sm text-gray-500 mb-8">
-            <Link to={createPageUrl('Home')} className="hover:text-gray-900">Home</Link>
-            <ChevronRight className="w-4 h-4 mx-2" />
-            <Link to={createPageUrl('Blog')} className="hover:text-gray-900">Blog</Link>
-            <ChevronRight className="w-4 h-4 mx-2" />
-            <span className="text-gray-900">{post.category}</span>
-          </nav>
+          <Breadcrumbs items={[
+            { label: "Blog", href: createPageUrl('Blog') },
+            { label: post.category }
+          ]} />
 
           <Link
             to={createPageUrl('Blog')}
@@ -179,15 +179,11 @@ export default function BlogPost() {
                   )}
                 </div>
               </div>
-              <Button
-                onClick={handleShare}
-                variant="outline"
-                size="sm"
-                className="flex items-center gap-2"
-              >
-                <Share2 className="w-4 h-4" />
-                Share
-              </Button>
+              <ShareButtons 
+                url={`https://highcaliberai.com/blog/${post.slug}`}
+                title={post.title}
+                description={post.excerpt}
+              />
             </div>
 
             {post.featured_image && (
