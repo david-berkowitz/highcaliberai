@@ -7,6 +7,7 @@ import MetaTags from "@/components/SEO/MetaTags";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { 
   TrendingUp, 
   Brain, 
