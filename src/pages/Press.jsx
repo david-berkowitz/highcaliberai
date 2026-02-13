@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
-import { Newspaper, ExternalLink, Calendar } from "lucide-react";
+import { Newspaper, ExternalLink, Calendar, Mail, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import MetaTags from "@/components/SEO/MetaTags";
 
 export default function Press() {
@@ -16,6 +19,47 @@ export default function Press() {
 
   const featuredArticles = articles.filter(a => a.featured);
   const otherArticles = articles.filter(a => !a.featured);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setIsSubmitting(true);
+
+    try {
+      await base44.entities.ContactSubmission.create(formData);
+      await base44.integrations.Core.SendEmail({
+        to: "dberkowitz@gmail.com",
+        subject: `New Press Inquiry from ${formData.name}`,
+        body: `
+New press inquiry:
+
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company || "N/A"}
+
+Message:
+${formData.message}
+        `
+      });
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -185,6 +229,108 @@ export default function Press() {
           <p className="text-gray-500">No press coverage available yet.</p>
         </div>
       )}
+
+      {/* Contact Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Press Inquiries
+            </h2>
+            <p className="text-xl text-gray-600">
+              Interested in featuring David or need expert commentary? Get in touch.
+            </p>
+          </motion.div>
+
+          <Card className="border-2 border-gray-200">
+            <CardContent className="p-8">
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Mail className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+                  <p className="text-gray-600 mb-6">Your message has been sent. We'll get back to you soon.</p>
+                  <Button
+                    onClick={() => setSubmitted(false)}
+                    variant="outline"
+                  >
+                    Send Another Message
+                  </Button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Name *
+                    </label>
+                    <Input
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      placeholder="Your name"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email *
+                    </label>
+                    <Input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      placeholder="your@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Publication / Company
+                    </label>
+                    <Input
+                      value={formData.company}
+                      onChange={(e) => setFormData({...formData, company: e.target.value})}
+                      placeholder="Your publication"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Message *
+                    </label>
+                    <Textarea
+                      required
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      placeholder="Tell us about your story or inquiry..."
+                      rows={5}
+                    />
+                  </div>
+
+                  {error && (
+                    <p className="text-red-600 text-sm">{error}</p>
+                  )}
+
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-red-600 hover:bg-red-700"
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </Button>
+                </form>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </section>
     </div>
   );
 }
