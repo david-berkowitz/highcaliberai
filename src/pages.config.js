@@ -74,8 +74,10 @@ import SOS from './pages/SOS';
 import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import ToolsHub from './pages/ToolsHub';
-import WorkshopShowcase from './pages/WorkshopShowcase';
 import WorkingWithDavid from './pages/WorkingWithDavid';
+import WorkshopShowcase from './pages/WorkshopShowcase';
+import Press from './pages/Press';
+import Training from './pages/Training';
 import __Layout from './Layout.jsx';
 
 
@@ -107,8 +109,10 @@ export const PAGES = {
     "Services": Services,
     "Speaking": Speaking,
     "ToolsHub": ToolsHub,
-    "WorkshopShowcase": WorkshopShowcase,
     "WorkingWithDavid": WorkingWithDavid,
+    "WorkshopShowcase": WorkshopShowcase,
+    "Press": Press,
+    "Training": Training,
 }
 
 export const pagesConfig = {

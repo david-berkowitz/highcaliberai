@@ -19,8 +19,17 @@ export default function Layout({ children, currentPageName }) {
       subMenu: [
         { name: "Overview", page: "Services" },
         { name: "Case Studies", page: "CaseStudies" },
-        { name: "Training", page: "WorkshopShowcase" },
         { name: "Speaking", page: "Speaking" }
+      ]
+    },
+    { 
+      name: "Training", 
+      page: "Training",
+      subMenu: [
+        { name: "All Programs", page: "Training" },
+        { name: "CPG Brands", page: "CPG" },
+        { name: "Political Campaigns", page: "Politics" },
+        { name: "Corporate Teams", page: "WorkshopShowcase" }
       ]
     },
     { 
@@ -31,6 +40,7 @@ export default function Layout({ children, currentPageName }) {
         { name: "Blog", page: "Blog" },
         { name: "AI News", page: "AINews" },
         { name: "Book", page: "Book" },
+        { name: "Press", page: "Press" },
         { name: "The Marketing Hustle", page: "Hustle" }
       ]
     },
