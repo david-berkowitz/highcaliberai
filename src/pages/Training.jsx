@@ -22,40 +22,22 @@ import MetaTags from "@/components/SEO/MetaTags";
 export default function Training() {
   const trainingPrograms = [
     {
-      id: "vibe-coding-101",
-      title: "Vibe Coding 101",
+      id: "vibe-coding",
+      title: "Vibe Coding Workshop",
       subtitle: "Build with AI, No Code Required",
-      description: "Learn to build full applications using AI as your development partner. Perfect for marketers, entrepreneurs, and anyone who wants to bring their ideas to life without traditional coding.",
+      description: "Learn to build full applications using AI as your development partner. Perfect for marketers, entrepreneurs, and anyone who wants to bring their ideas to life through conversational development.",
       icon: Code,
-      color: "from-purple-600 to-purple-700",
+      color: "from-purple-600 to-blue-600",
       borderColor: "border-purple-200",
       features: [
         "Conversational AI development",
         "Rapid prototyping techniques",
-        "Deployment & iteration strategies",
-        "Real project walkthroughs"
+        "Live build demonstrations",
+        "Deploy real applications"
       ],
       duration: "Half-day workshop",
-      link: "https://vibecoding101.info",
-      external: true
-    },
-    {
-      id: "vibe-coding-for-good",
-      title: "Vibe Coding for Good",
-      subtitle: "Technology for Social Impact",
-      description: "Use AI to build tools that create real change. Learn to develop platforms for nonprofits, community organizing, fundraising, and social causes.",
-      icon: Heart,
-      color: "from-green-600 to-blue-600",
-      borderColor: "border-green-200",
-      features: [
-        "Community organizing tools",
-        "Fundraising platforms",
-        "Resource sharing systems",
-        "Impact measurement"
-      ],
-      duration: "Half-day workshop",
-      link: "https://vibecodingforgood.org",
-      external: true
+      link: "/vibe",
+      external: false
     },
     {
       id: "cpg",

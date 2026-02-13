@@ -78,6 +78,7 @@ import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import Press from './pages/Press';
 import Training from './pages/Training';
+import Vibe from './pages/Vibe';
 import __Layout from './Layout.jsx';
 
 
@@ -113,6 +114,7 @@ export const PAGES = {
     "WorkshopShowcase": WorkshopShowcase,
     "Press": Press,
     "Training": Training,
+    "Vibe": Vibe,
 }
 
 export const pagesConfig = {
