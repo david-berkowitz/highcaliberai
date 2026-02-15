@@ -21,25 +21,27 @@ Deno.serve(async (req) => {
 
         // Use AI to extract structured data from the post
         const extraction = await base44.asServiceRole.integrations.Core.InvokeLLM({
-            prompt: `Extract information from this LinkedIn post HTML. Look for:
-            1. The person's name being featured/discussed (the "mensch")
-            2. The post date
-            3. A brief excerpt or key quote (2-3 sentences)
-            4. The full text content of the post
-            5. Any image URLs
+            prompt: `Extract information from this LinkedIn post HTML. This is a "Meet a Mensch Monday" post.
+            
+            IMPORTANT INSTRUCTIONS:
+            1. Find the person's name being celebrated as the "mensch" - NOT the author's name (David Berkowitz)
+            2. Extract the post date in YYYY-MM-DD format (look for "Published on LinkedIn" or post timestamp)
+            3. Create a brief excerpt or key quote (2-3 sentences that capture the essence)
+            4. Get the full text content of the post
+            5. Find the main featured image URL (there may be multiple, get the primary one)
             
             HTML content:
             ${html.substring(0, 50000)}
             
-            Return structured data.`,
+            Return structured data with the date in YYYY-MM-DD format.`,
             response_json_schema: {
                 type: "object",
                 properties: {
-                    person_name: { type: "string" },
-                    post_date: { type: "string" },
-                    excerpt: { type: "string" },
-                    full_text: { type: "string" },
-                    image_url: { type: "string" }
+                    person_name: { type: "string", description: "The mensch being featured, NOT the post author" },
+                    post_date: { type: "string", description: "Date in YYYY-MM-DD format" },
+                    excerpt: { type: "string", description: "Brief 2-3 sentence excerpt" },
+                    full_text: { type: "string", description: "Full post text" },
+                    image_url: { type: "string", description: "Main featured image URL" }
                 },
                 required: ["person_name", "excerpt", "full_text"]
             }
