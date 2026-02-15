@@ -69,16 +69,17 @@ import LuxuryRealEstate from './pages/LuxuryRealEstate';
 import Offsite from './pages/Offsite';
 import Partners from './pages/Partners';
 import Politics from './pages/Politics';
+import Press from './pages/Press';
 import Resources from './pages/Resources';
 import SOS from './pages/SOS';
 import Services from './pages/Services';
 import Speaking from './pages/Speaking';
 import ToolsHub from './pages/ToolsHub';
-import WorkingWithDavid from './pages/WorkingWithDavid';
-import WorkshopShowcase from './pages/WorkshopShowcase';
-import Press from './pages/Press';
 import Training from './pages/Training';
 import Vibe from './pages/Vibe';
+import WorkingWithDavid from './pages/WorkingWithDavid';
+import WorkshopShowcase from './pages/WorkshopShowcase';
+import Mensch from './pages/Mensch';
 import __Layout from './Layout.jsx';
 
 
@@ -105,16 +106,17 @@ export const PAGES = {
     "Offsite": Offsite,
     "Partners": Partners,
     "Politics": Politics,
+    "Press": Press,
     "Resources": Resources,
     "SOS": SOS,
     "Services": Services,
     "Speaking": Speaking,
     "ToolsHub": ToolsHub,
-    "WorkingWithDavid": WorkingWithDavid,
-    "WorkshopShowcase": WorkshopShowcase,
-    "Press": Press,
     "Training": Training,
     "Vibe": Vibe,
+    "WorkingWithDavid": WorkingWithDavid,
+    "WorkshopShowcase": WorkshopShowcase,
+    "Mensch": Mensch,
 }
 
 export const pagesConfig = {
