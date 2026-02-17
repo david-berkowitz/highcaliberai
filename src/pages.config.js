@@ -80,6 +80,10 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
+import SmallTeamTraining from './pages/SmallTeamTraining';
+import SaaSFractionalCMO from './pages/SaaSFractionalCMO';
+import EnterpriseWorkshop from './pages/EnterpriseWorkshop';
+import ContentMarketingTools from './pages/ContentMarketingTools';
 import __Layout from './Layout.jsx';
 
 
@@ -117,6 +121,10 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
+    "SmallTeamTraining": SmallTeamTraining,
+    "SaaSFractionalCMO": SaaSFractionalCMO,
+    "EnterpriseWorkshop": EnterpriseWorkshop,
+    "ContentMarketingTools": ContentMarketingTools,
 }
 
 export const pagesConfig = {
