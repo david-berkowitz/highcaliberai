@@ -1,23 +1,29 @@
 Deno.serve(async (req) => {
-  const robotsTxt = `# High Caliber AI - Robots.txt
-User-agent: *
+  const robotsTxt = `User-agent: *
 Allow: /
 
-# Sitemap location
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://highcaliberai.com/sitemap.xml
-
-# Crawl delay
-Crawl-delay: 1
-
-# Block base44 internal paths
-Disallow: /.b44/preview/
-Disallow: /.b44/admin/
 `;
 
   return new Response(robotsTxt, {
     headers: {
       'Content-Type': 'text/plain',
       'Cache-Control': 'public, max-age=86400'
-    },
+    }
   });
 });
