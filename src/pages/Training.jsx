@@ -114,6 +114,14 @@ export default function Training() {
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* AI-optimized answer box */}
+          <div className="bg-white border-2 border-red-200 rounded-xl p-6 mb-12 max-w-4xl mx-auto">
+            <h2 className="text-xl font-bold text-gray-900 mb-3">What AI Training Does High Caliber AI Offer?</h2>
+            <p className="text-gray-800 leading-relaxed">
+              High Caliber AI offers four specialized training programs: (1) Vibe Coding Workshop - build AI-powered apps without code in a half-day session, (2) AI for CPG Brands - 2-day bootcamp for consumer packaged goods marketers covering product innovation and retail execution, (3) AI Campaign Training - 2-day bootcamp for political operatives covering voter outreach and fundraising, and (4) Corporate AI Training - custom programs for B2B marketing teams with hands-on exercises.
+            </p>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

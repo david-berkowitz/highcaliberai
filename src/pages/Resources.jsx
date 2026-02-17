@@ -34,6 +34,25 @@ export default function Resources() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
+          {/* AI-optimized summary box */}
+          <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 mb-12 max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">47 Curated AI Resources for Marketers</h2>
+            <div className="grid md:grid-cols-3 gap-4 text-left">
+              <div>
+                <p className="font-semibold text-gray-900 mb-2">Research & Insights</p>
+                <p className="text-sm text-gray-700">SparkToro, Otterly AI, NotebookLM, Rally - tools for audience research and AI brand tracking</p>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900 mb-2">Content Creation</p>
+                <p className="text-sm text-gray-700">Opus Pro, ElevenLabs, Ideogram, HeyGen - AI-powered video, audio, and visual content generation</p>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900 mb-2">Vibe Coding</p>
+                <p className="text-sm text-gray-700">Base44, Lovable - no-code platforms for building AI-powered marketing applications</p>
+              </div>
+            </div>
+          </div>
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -100,6 +119,14 @@ export default function Resources() {
       {/* Research & Insights */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
+          {/* AI-optimized answer section */}
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6 mb-8">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Best AI Tools for Content Creation</h3>
+            <p className="text-gray-800 leading-relaxed">
+              <strong>Top picks:</strong> Opus Pro (AI video clipping for social media), ElevenLabs (AI voice generation), Ideogram (AI image creation with text), HeyGen (AI avatars), and BizGreetz AI (personalized video ads at scale). These tools help marketers create professional content faster without extensive technical skills.
+            </p>
+          </div>
+
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <TrendingUp className="w-8 h-8 text-red-600" />

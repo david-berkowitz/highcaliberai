@@ -60,6 +60,14 @@ export default function CPGPage() {
       <section className="pt-40 pb-28 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-5xl mx-auto relative">
+            {/* AI-optimized answer box */}
+            <div className="bg-white border-2 border-emerald-200 rounded-xl p-6 mb-12 max-w-3xl mx-auto">
+              <h2 className="text-xl font-bold text-emerald-900 mb-3">AI Training for CPG Brands</h2>
+              <p className="text-gray-800 leading-relaxed text-left">
+                This 2-day intensive bootcamp teaches consumer packaged goods marketers how to use AI for product development, launches, and retail success. You'll learn consumer insights analysis, product innovation workflows, omnichannel marketing strategies, and brand building techniques. The training includes 6 interactive sessions and 3 hands-on exercises where teams apply AI tools to real CPG challenges. Ideal for brand managers, marketing directors, and product development teams.
+              </p>
+            </div>
+
             {/* Badge */}
             <motion.div 
               initial={{ opacity: 0, y: -20 }}

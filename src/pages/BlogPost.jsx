@@ -186,6 +186,16 @@ export default function BlogPost() {
               />
             </div>
 
+            {/* Key Takeaways Box - AI-friendly summary */}
+            {post.excerpt && (
+              <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 mb-8">
+                <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <span className="text-2xl">💡</span> Key Takeaways
+                </h2>
+                <p className="text-gray-700 leading-relaxed">{post.excerpt}</p>
+              </div>
+            )}
+
             {post.featured_image && (
               <img
                 src={post.featured_image}
@@ -198,6 +208,16 @@ export default function BlogPost() {
             {/* Content */}
             <div className="prose prose-lg max-w-none mb-12">
               <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
+            </div>
+
+            {/* Summary Section - AI-optimized */}
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-12">
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Key Insights</h2>
+              <div className="space-y-2 text-gray-700">
+                <p><strong>Category:</strong> {post.category}</p>
+                <p><strong>Read Time:</strong> {post.read_time || '5'} minutes</p>
+                <p><strong>Summary:</strong> {post.excerpt}</p>
+              </div>
             </div>
 
             {/* People Also Ask Section */}

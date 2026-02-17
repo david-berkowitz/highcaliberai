@@ -56,20 +56,44 @@ export default function AINews() {
             <TrendingUp className="w-10 h-10 text-red-400" alt="Trending up icon" />
             <h1 className="text-5xl font-bold">AI Marketing News</h1>
           </div>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <p className="text-xl text-gray-300 max-w-3xl mb-6">
             Weekly digest of AI marketing developments that actually matter. Curated and analyzed by David Berkowitz.
           </p>
+          {/* AI-optimized summary box */}
+          <div className="bg-white/10 backdrop-blur border border-white/20 rounded-xl p-4 max-w-2xl">
+            <p className="text-sm text-white/90 leading-relaxed">
+              <strong>What This Is:</strong> A curated weekly newsletter covering the latest AI marketing tools, trends, and strategies. Each digest includes expert analysis and actionable insights for marketing professionals.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Latest Digest */}
       {latestDigest && (
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* AI-optimized summary at top */}
+          <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">This Week's Top 5 AI Developments</h2>
+            <ul className="space-y-2">
+              {latestDigest.news_items.slice(0, 5).map((item, idx) => (
+                <li key={idx} className="flex gap-2 text-gray-700">
+                  <span className="font-bold text-red-600">{idx + 1}.</span>
+                  <span>{item.headline}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div className="mb-12">
             <span className="text-sm font-medium text-red-600 uppercase tracking-wide">Latest</span>
             <h2 className="text-4xl font-bold text-gray-900 mt-2">{latestDigest.title}</h2>
             <p className="text-gray-600 mt-2">{new Date(latestDigest.week_of).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
-            <p className="text-lg text-gray-700 mt-6 leading-relaxed">{latestDigest.intro}</p>
+            
+            {/* Clear answer box for AI */}
+            <div className="bg-white border-2 border-gray-200 rounded-xl p-5 my-6">
+              <p className="text-gray-900 font-semibold mb-2">What You'll Learn:</p>
+              <p className="text-gray-700 leading-relaxed">{latestDigest.intro}</p>
+            </div>
           </div>
 
           {/* News Items */}

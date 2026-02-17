@@ -66,6 +66,7 @@ import IC from './pages/IC';
 import Jobs from './pages/Jobs';
 import Lux from './pages/Lux';
 import LuxuryRealEstate from './pages/LuxuryRealEstate';
+import Mensch from './pages/Mensch';
 import Offsite from './pages/Offsite';
 import Partners from './pages/Partners';
 import Politics from './pages/Politics';
@@ -79,7 +80,6 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import Mensch from './pages/Mensch';
 import __Layout from './Layout.jsx';
 
 
@@ -103,6 +103,7 @@ export const PAGES = {
     "Jobs": Jobs,
     "Lux": Lux,
     "LuxuryRealEstate": LuxuryRealEstate,
+    "Mensch": Mensch,
     "Offsite": Offsite,
     "Partners": Partners,
     "Politics": Politics,
@@ -116,7 +117,6 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "Mensch": Mensch,
 }
 
 export const pagesConfig = {
