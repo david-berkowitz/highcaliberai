@@ -223,7 +223,7 @@ export default function MenschPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 pb-20">
+      <section className="px-6 pb-12">
         <div className="max-w-4xl mx-auto">
           <Card className="bg-gradient-to-br from-blue-600 to-purple-600 border-0 text-white">
             <CardContent className="p-12 text-center">
@@ -243,6 +243,91 @@ export default function MenschPage() {
               </a>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="px-6 pb-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">About Meet a Mensch Monday</h2>
+          
+          <div className="space-y-6">
+            <Card className="border-2 border-gray-100">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">What is a mensch?</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  "Mensch" is a Yiddish word meaning "a person of integrity and honor." A mensch is someone who does the right thing, treats others with respect, and makes the world a better place through their actions. It's one of the highest compliments you can give someone—it means they're genuinely good people who care about others.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-gray-100">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">What do these mensches have in common?</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  The people featured in Meet a Mensch Monday share several key qualities:
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><strong>Generosity:</strong> They give their time, knowledge, and support freely to help others succeed</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><strong>Community building:</strong> They actively bring people together and strengthen professional networks</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><strong>Authenticity:</strong> They show up as their genuine selves and treat everyone with equal respect</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><strong>Impact:</strong> They make a meaningful difference in their communities, industries, or causes they care about</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><strong>Consistency:</strong> Being a mensch isn't a one-time act—it's how they consistently show up in the world</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-gray-100">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Can anyone be a mensch?</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Absolutely! Being a mensch isn't about your job title, success, or achievements—it's about your character and how you treat people. Anyone can be a mensch by showing kindness, integrity, generosity, and genuine care for others. It's a choice you make every day in how you interact with the world around you. The mensches featured here come from all backgrounds and industries, proving that what matters most is the positive impact you make on others.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-gray-100">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Why does David Berkowitz feature mensches every Monday?</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Meet a Mensch Monday started as a way to celebrate and recognize people who often work behind the scenes to help others. In a world that frequently spotlights controversy and conflict, this series intentionally focuses on highlighting good people doing good things. David believes in the power of recognizing and amplifying positive contributions, especially from those who don't seek recognition themselves. It's about building a culture of appreciation and showing that kindness and generosity deserve as much attention as any business achievement.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-gray-100">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">How are mensches selected for the series?</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Featured mensches are people David Berkowitz has personally encountered or been connected to through his network in the marketing, media, and technology industries. They're individuals who have made a genuine impact on others—whether through mentorship, community organizing, innovative thinking, or simply being someone others can count on. Many are nominated by community members or are people David has observed making a difference consistently over time. The common thread is authentic human connection and positive impact.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-gray-100">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Where can I read the original posts?</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  All Meet a Mensch Monday posts are originally published on David Berkowitz's LinkedIn profile every Monday. Each person featured here has a "Read on LinkedIn" link that takes you to the original post where you can see community reactions, comments, and engage with the content. Following David on LinkedIn ensures you never miss a new mensch feature.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
     </div>

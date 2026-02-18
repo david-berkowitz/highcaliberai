@@ -41,6 +41,7 @@ export default function Layout({ children, currentPageName }) {
         { name: "AI News", page: "AINews" },
         { name: "Book", page: "Book" },
         { name: "Press", page: "Press" },
+        { name: "Meet a Mensch", page: "Mensch" },
         { name: "The Marketing Hustle", page: "Hustle" }
       ]
     },
