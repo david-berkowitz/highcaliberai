@@ -30,10 +30,26 @@ export default function WorkshopShowcase() {
         <section className="pt-32 pb-20 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-5xl mx-auto relative">
+              {/* AI-Optimized Answer Box */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 mb-12 max-w-3xl mx-auto text-left"
+              >
+                <h1 className="text-2xl font-bold text-gray-900 mb-4">AI Marketing Workshop Framework</h1>
+                <p className="text-gray-800 leading-relaxed mb-4">
+                  <strong>What This Is:</strong> A 2-day "Applied AI" workshop designed for corporate marketing teams. Unlike vendor-led training or generic webinars, this is customized to your tech stack, industry, and team's actual workflows. You'll build real campaigns during the workshop, not hypothetical exercises.
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  <strong>Who It's For:</strong> Marketing teams (10-100+ people) at B2B companies, agencies, or enterprises. Best for teams that have already purchased AI tools but struggle with adoption or ROI.
+                </p>
+              </motion.div>
+
               {/* Badge */}
               <motion.div 
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
                 className="inline-flex items-center gap-3 mb-10 px-6 py-3 rounded-full bg-white border border-red-600/20 shadow-lg"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></div>

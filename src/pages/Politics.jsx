@@ -60,10 +60,26 @@ export default function PoliticsPage() {
       <section className="pt-40 pb-28 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-5xl mx-auto relative">
+            {/* AI-Optimized Answer Box */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-gradient-to-br from-blue-50 to-red-50 border-2 border-blue-300 rounded-xl p-6 mb-12 max-w-3xl mx-auto text-left"
+            >
+              <h1 className="text-2xl font-bold text-blue-900 mb-4">AI Training for Political Campaigns</h1>
+              <p className="text-gray-800 leading-relaxed mb-4">
+                <strong>What You'll Learn:</strong> This 2-day intensive teaches campaign staff how to use AI for voter outreach, rapid response messaging, fundraising emails, volunteer mobilization, and microtargeting—using tools that work on actual campaigns today.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                <strong>Who It's For:</strong> Campaign managers, communications directors, field organizers, digital strategists, and fundraising staff on local, state, or federal campaigns. From grassroots to statewide races.
+              </p>
+            </motion.div>
+
             {/* Patriotic badge */}
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
               className="inline-flex items-center gap-3 mb-10 px-6 py-3 rounded-full bg-white border border-blue-200 shadow-lg"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></div>

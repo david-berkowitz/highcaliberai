@@ -57,7 +57,9 @@ import Book from './pages/Book';
 import CPG from './pages/CPG';
 import CaseStudies from './pages/CaseStudies';
 import Contact from './pages/Contact';
+import ContentMarketingTools from './pages/ContentMarketingTools';
 import ContentUploader from './pages/ContentUploader';
+import EnterpriseWorkshop from './pages/EnterpriseWorkshop';
 import FOAF from './pages/FOAF';
 import Holidays from './pages/Holidays';
 import Home from './pages/Home';
@@ -73,17 +75,15 @@ import Politics from './pages/Politics';
 import Press from './pages/Press';
 import Resources from './pages/Resources';
 import SOS from './pages/SOS';
+import SaaSFractionalCMO from './pages/SaaSFractionalCMO';
 import Services from './pages/Services';
+import SmallTeamTraining from './pages/SmallTeamTraining';
 import Speaking from './pages/Speaking';
 import ToolsHub from './pages/ToolsHub';
 import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import SmallTeamTraining from './pages/SmallTeamTraining';
-import SaaSFractionalCMO from './pages/SaaSFractionalCMO';
-import EnterpriseWorkshop from './pages/EnterpriseWorkshop';
-import ContentMarketingTools from './pages/ContentMarketingTools';
 import __Layout from './Layout.jsx';
 
 
@@ -98,7 +98,9 @@ export const PAGES = {
     "CPG": CPG,
     "CaseStudies": CaseStudies,
     "Contact": Contact,
+    "ContentMarketingTools": ContentMarketingTools,
     "ContentUploader": ContentUploader,
+    "EnterpriseWorkshop": EnterpriseWorkshop,
     "FOAF": FOAF,
     "Holidays": Holidays,
     "Home": Home,
@@ -114,17 +116,15 @@ export const PAGES = {
     "Press": Press,
     "Resources": Resources,
     "SOS": SOS,
+    "SaaSFractionalCMO": SaaSFractionalCMO,
     "Services": Services,
+    "SmallTeamTraining": SmallTeamTraining,
     "Speaking": Speaking,
     "ToolsHub": ToolsHub,
     "Training": Training,
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "SmallTeamTraining": SmallTeamTraining,
-    "SaaSFractionalCMO": SaaSFractionalCMO,
-    "EnterpriseWorkshop": EnterpriseWorkshop,
-    "ContentMarketingTools": ContentMarketingTools,
 }
 
 export const pagesConfig = {

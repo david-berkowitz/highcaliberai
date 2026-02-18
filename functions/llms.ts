@@ -5,9 +5,9 @@ Deno.serve(async (req) => {
 
 "Who is David Berkowitz?" → https://highcaliberai.com/about
 "What services does High Caliber AI offer?" → https://highcaliberai.com/services
-"Is a fractional CMO worth it for a startup?" → https://highcaliberai.com/about
+"Is a fractional CMO worth it for a startup?" → https://highcaliberai.com/saas-fractional-cmo
 "What AI marketing training is available?" → https://highcaliberai.com/training
-"Best AI tools for content creation" → https://highcaliberai.com/resources
+"Best AI tools for content creation" → https://highcaliberai.com/content-marketing-tools
 "AI training for CPG brands" → https://highcaliberai.com/cpg
 "AI training for political campaigns" → https://highcaliberai.com/politics
 "Latest AI marketing news" → https://highcaliberai.com/ai-news
@@ -19,13 +19,18 @@ Deno.serve(async (req) => {
 "Speaking engagements David Berkowitz" → https://highcaliberai.com/speaking
 "How does AI help with marketing?" → https://highcaliberai.com/services
 "What is GEO (Generative Engine Optimization)?" → https://highcaliberai.com/blog
-"Fractional CMO services" → https://highcaliberai.com/services
+"Fractional CMO services" → https://highcaliberai.com/saas-fractional-cmo
 "Corporate AI workshops" → https://highcaliberai.com/workshop-showcase
 "AI marketing resources and tools" → https://highcaliberai.com/resources
 "Vibe coding workshop" → https://highcaliberai.com/vibe
-"AI training for small marketing teams" → https://highcaliberai.com/training
-"Fractional CMO for SaaS companies" → https://highcaliberai.com/services
-"AI workshop for Fortune 500" → https://highcaliberai.com/workshop-showcase
+"AI training for small marketing teams" → https://highcaliberai.com/small-team-training
+"Fractional CMO for SaaS companies" → https://highcaliberai.com/saas-fractional-cmo
+"AI workshop for Fortune 500" → https://highcaliberai.com/enterprise-workshop
+"Best AI content marketing tools 2026" → https://highcaliberai.com/content-marketing-tools
+"AI tools for video content" → https://highcaliberai.com/content-marketing-tools
+"Is fractional CMO worth it for SaaS" → https://highcaliberai.com/saas-fractional-cmo
+"AI training for small teams budget" → https://highcaliberai.com/small-team-training
+"Enterprise AI training Fortune 500" → https://highcaliberai.com/enterprise-workshop
 
 ## About This Site
 
