@@ -5,8 +5,35 @@ import { motion } from "framer-motion";
 import { Users, Target, Zap, Calendar, ArrowRight, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
+import { useEffect } from "react";
 
 export default function SmallTeamTraining() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "AI Training for Small Marketing Teams",
+      "description": "Practical AI training designed specifically for small marketing teams. Learn AI tools and workflows that deliver results without enterprise budgets.",
+      "provider": {
+        "@type": "Organization",
+        "name": "High Caliber AI",
+        "sameAs": "https://highcaliberai.com"
+      },
+      "courseMode": ["onsite", "online"],
+      "timeRequired": "P1D",
+      "offers": {
+        "@type": "Offer",
+        "price": "5000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    });
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <MetaTags 

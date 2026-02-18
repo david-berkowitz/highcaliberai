@@ -5,8 +5,35 @@ import { motion } from "framer-motion";
 import { Building2, Users, Target, Zap, ArrowRight, CheckCircle, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
+import { useEffect } from "react";
 
 export default function EnterpriseWorkshop() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "AI Workshops for Fortune 500 Marketing Teams",
+      "description": "Enterprise AI training for large marketing teams at Fortune 500 and Fortune 1000 companies. Custom workshops for 50-500+ marketers.",
+      "provider": {
+        "@type": "Organization",
+        "name": "High Caliber AI",
+        "sameAs": "https://highcaliberai.com"
+      },
+      "courseMode": ["onsite", "online"],
+      "timeRequired": "P2D",
+      "offers": {
+        "@type": "Offer",
+        "price": "50000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    });
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <MetaTags 

@@ -5,8 +5,37 @@ import { motion } from "framer-motion";
 import { Sparkles, Video, FileText, Image, ArrowRight, ExternalLink, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
+import { useEffect } from "react";
 
 export default function ContentMarketingTools() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Best AI Tools for Content Marketing in 2026",
+      "description": "Top AI content creation tools recommended by David Berkowitz: Opus Pro for video, ElevenLabs for voice, Ideogram for images, and more.",
+      "author": {
+        "@type": "Person",
+        "name": "David Berkowitz",
+        "url": "https://highcaliberai.com/about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "High Caliber AI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
+        }
+      },
+      "datePublished": "2026-02-18",
+      "dateModified": "2026-02-18"
+    });
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <MetaTags 

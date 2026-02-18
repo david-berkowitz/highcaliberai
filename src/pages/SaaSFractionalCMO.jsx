@@ -5,8 +5,40 @@ import { motion } from "framer-motion";
 import { TrendingUp, Target, Users, Zap, ArrowRight, CheckCircle, DollarSign } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
+import { useEffect } from "react";
 
 export default function SaaSFractionalCMO() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Fractional CMO Services",
+      "name": "Fractional CMO for SaaS Companies",
+      "description": "Executive-level marketing leadership for B2B SaaS companies. Specialized in AI implementation, GTM strategy, and pipeline growth.",
+      "provider": {
+        "@type": "Organization",
+        "name": "High Caliber AI",
+        "sameAs": "https://highcaliberai.com"
+      },
+      "areaServed": "Worldwide",
+      "offers": {
+        "@type": "Offer",
+        "price": "15000",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "15000",
+          "priceCurrency": "USD",
+          "unitText": "month"
+        }
+      }
+    });
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <MetaTags 
