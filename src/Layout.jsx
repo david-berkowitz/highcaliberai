@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "./utils";
 import { Menu, X, Linkedin, Mail, ChevronDown, Search } from "lucide-react";
@@ -7,6 +7,16 @@ import StickyCTA from "./components/StickyCTA";
 import GlobalSearch from "./components/GlobalSearch";
 
 export default function Layout({ children, currentPageName }) {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://js.knock-ai.com/ad256bf8-8420-4958-a1dd-31d3d0c27d51.js';
+    script.async = true;
+    document.head.appendChild(script);
+    
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
