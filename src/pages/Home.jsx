@@ -395,6 +395,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Bylines Section */}
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Published <span className="text-red-600">Bylines</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Featured articles and thought leadership across leading publications
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/when-the-fire-horse-comes-for-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    When the Fire Horse Comes for AI
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    What does Chinese astrology tell us about how to prepare for the year ahead?
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Feb 19, 2026</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <AgentChat 
         agentName="ai_marketing_advisor"
         title="AI Marketing Advisor"
