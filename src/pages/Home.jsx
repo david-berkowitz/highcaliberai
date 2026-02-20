@@ -437,6 +437,246 @@ export default function Home() {
                 </div>
               </a>
             </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/don-t-be-my-ai-valentine"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    Don't Be My AI Valentine
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    What can go wrong when going on a date with an AI girlfriend at a real NYC wine bar?
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Feb 12, 2026</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/the-emperor-s-new-clawds-a-claw-tionary-tale"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    The Emperor's New Clawds: A Claw-tionary Tale
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    Your 5-step plan for not getting worked up over agents that created their own religion
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Feb 5, 2026</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/ai-brief-vibe-coding-for-good"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    AI Brief: Vibe Coding for Good
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    When it feels like the world's gone completely mad, could AI be a part of the solution?
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Jan 29, 2026</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/ai-brief-claude-1-vibe-coder-0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    AI Brief: Claude 1, Vibe Coder 0
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    Claude Code won this round, but intrepid vibe coders must live to see another day
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Jan 22, 2026</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/ai-brief-talking-and-talking-and-talking-shop"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    AI Brief: Talking and Talking and Talking Shop
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    The barriers preventing AI-powered shopping are melting away
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Jan 15, 2026</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/ai-brief-the-yet-another-year-of-ai-at-ces"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    AI Brief: The (Yet Another) Year of AI at CES
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    What does CES 2026 tell us about where AI is headed this year?
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Jan 8, 2026</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/ai-brief-what-feels-like-magic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    AI Brief: What Feels Like Magic?
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    Let's savor this moment where AI can still deliver a sense of wonder
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Dec 18, 2025</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+              <a
+                href="https://www.aibriefnewsletter.com/p/ai-brief-yet-another-ai-newsletter"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
+                      AI Brief Newsletter
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    AI Brief: Yet Another AI Newsletter?
+                  </h3>
+
+                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
+                    No, this one's by marketers, for marketers. And you'll actually want to read it.
+                  </p>
+
+                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <span>Dec 11, 2025</span>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
