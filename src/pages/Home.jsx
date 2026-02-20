@@ -402,12 +402,18 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Published <span className="text-red-600">Bylines</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
               Featured articles and thought leadership across leading publications
             </p>
+            <Link to={createPageUrl("Bylines")}>
+              <Button variant="outline" className="gap-2">
+                View All Articles
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <BylinesCarousel />
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
               <a
                 href="https://www.aibriefnewsletter.com/p/when-the-fire-horse-comes-for-ai"
@@ -648,36 +654,6 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group">
-              <a
-                href="https://www.aibriefnewsletter.com/p/ai-brief-yet-another-ai-newsletter"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block h-full"
-              >
-                <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">
-                      AI Brief Newsletter
-                    </span>
-                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
-                  </div>
-
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
-                    AI Brief: Yet Another AI Newsletter?
-                  </h3>
-
-                  <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
-                    No, this one's by marketers, for marketers. And you'll actually want to read it.
-                  </p>
-
-                  <div className="flex items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
-                    <span>Dec 11, 2025</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
         </div>
       </section>
 

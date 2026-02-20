@@ -49,6 +49,7 @@ export default function Layout({ children, currentPageName }) {
         { name: "Resource Library", page: "Resources" },
         { name: "Blog", page: "Blog" },
         { name: "AI News", page: "AINews" },
+        { name: "Bylines", page: "Bylines" },
         { name: "Book", page: "Book" },
         { name: "Press", page: "Press" },
         { name: "Meet a Mensch", page: "Mensch" },
