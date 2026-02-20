@@ -61,11 +61,52 @@ ${formData.message}
     }
   };
 
+  // JSON-LD structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Press & Media Coverage - David Berkowitz",
+    "description": "David Berkowitz's media appearances and press coverage on AI marketing, digital strategy, and marketing innovation.",
+    "url": "https://highcaliberai.com/press",
+    "about": {
+      "@type": "Person",
+      "@id": "https://highcaliberai.com/about#person",
+      "name": "David Berkowitz",
+      "jobTitle": "Founder & AI Marketing Strategist",
+      "description": "AI marketing strategist, author, and founder of High Caliber AI"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": articles.map((article, index) => ({
+        "@type": "NewsArticle",
+        "position": index + 1,
+        "headline": article.title,
+        "datePublished": article.date,
+        "url": article.url,
+        "publisher": {
+          "@type": "Organization",
+          "name": article.publication
+        },
+        "author": {
+          "@type": "Person",
+          "@id": "https://highcaliberai.com/about#person"
+        },
+        "description": article.context
+      }))
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       <MetaTags 
         title="Press & Media - David Berkowitz in the News"
-        description="David Berkowitz's media appearances and press coverage on AI marketing, digital strategy, and marketing innovation."
+        description="David Berkowitz's media appearances and press coverage on AI marketing, digital strategy, and marketing innovation. Featured in The New York Times, MarketWatch, and more."
         url="https://highcaliberai.com/press"
         canonical="https://highcaliberai.com/press"
       />
