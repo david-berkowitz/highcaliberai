@@ -5,6 +5,8 @@ import { createPageUrl } from '../utils';
 import { PersonStructuredData, OrganizationStructuredData } from '@/components/SEO/StructuredData';
 import MetaTags from '@/components/SEO/MetaTags';
 import AgentChat from '@/components/AgentChat';
+import BylinesCarousel from '@/components/BylinesCarousel';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
