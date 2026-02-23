@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import MetaTags from '@/components/SEO/MetaTags';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const bylines = [
   {
@@ -88,6 +89,11 @@ export default function Bylines() {
         url="https://highcaliberai.com/bylines"
         canonical="https://highcaliberai.com/bylines"
       />
+
+      {/* Breadcrumbs */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <Breadcrumbs items={[{ label: 'Resources', href: createPageUrl('Resources') }, { label: 'Bylines' }]} />
+      </div>
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 bg-gradient-to-br from-gray-50 to-white">

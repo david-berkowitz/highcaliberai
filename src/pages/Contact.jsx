@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import MetaTags from "@/components/SEO/MetaTags";
+import LocalBusinessSchema from "@/components/SEO/LocalBusinessSchema";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { 
@@ -75,6 +77,13 @@ ${formData.message}
         url="https://highcaliberai.com/contact"
         canonical="https://highcaliberai.com/contact"
       />
+      <LocalBusinessSchema />
+      
+      {/* Breadcrumbs */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <Breadcrumbs items={[{ label: 'Contact' }]} />
+      </div>
+
       {/* Hero Section */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

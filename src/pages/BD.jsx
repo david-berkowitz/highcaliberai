@@ -14,6 +14,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import MetaTags from '@/components/SEO/MetaTags';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function BDPage() {
   return (
@@ -24,6 +25,11 @@ export default function BDPage() {
         url="https://highcaliberai.com/bd"
         canonical="https://highcaliberai.com/bd"
       />
+
+      {/* Breadcrumbs */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <Breadcrumbs items={[{ label: 'Business Development' }]} />
+      </div>
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">

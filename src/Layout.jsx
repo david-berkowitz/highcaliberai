@@ -5,6 +5,7 @@ import { Menu, X, Linkedin, Mail, ChevronDown, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import StickyCTA from "./components/StickyCTA";
 import GlobalSearch from "./components/GlobalSearch";
+import OrganizationSchema from "./components/SEO/OrganizationSchema";
 
 export default function Layout({ children, currentPageName }) {
   useEffect(() => {
@@ -63,6 +64,7 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <div className="min-h-screen bg-white">
+      <OrganizationSchema />
       <StickyCTA />
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">

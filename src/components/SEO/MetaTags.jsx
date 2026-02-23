@@ -77,6 +77,25 @@ export default function MetaTags({
     const finalCanonical = normalizedCanonical || normalizedUrl || normalizeUrl(window.location.href.split('?')[0]);
     link.setAttribute('href', finalCanonical);
 
+    // Hreflang tags for language/region targeting
+    let hreflangUS = document.querySelector('link[rel="alternate"][hreflang="en-US"]');
+    if (!hreflangUS) {
+      hreflangUS = document.createElement('link');
+      hreflangUS.setAttribute('rel', 'alternate');
+      hreflangUS.setAttribute('hreflang', 'en-US');
+      document.head.appendChild(hreflangUS);
+    }
+    hreflangUS.setAttribute('href', finalCanonical);
+
+    let hreflangDefault = document.querySelector('link[rel="alternate"][hreflang="x-default"]');
+    if (!hreflangDefault) {
+      hreflangDefault = document.createElement('link');
+      hreflangDefault.setAttribute('rel', 'alternate');
+      hreflangDefault.setAttribute('hreflang', 'x-default');
+      document.head.appendChild(hreflangDefault);
+    }
+    hreflangDefault.setAttribute('href', finalCanonical);
+
     // Cleanup function
     return () => {
       // Optional: Remove meta tags on unmount if needed
