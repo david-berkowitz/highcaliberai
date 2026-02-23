@@ -57,6 +57,7 @@ export default function Layout({ children, currentPageName }) {
       ]
     },
     { name: "Partners", page: "Partners" },
+    { name: "BD", page: "BD" },
     { name: "Contact", page: "Contact" },
   ];
 

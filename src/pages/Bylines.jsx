@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
+import { base44 } from '@/api/base44Client';
+import { useQuery } from '@tanstack/react-query';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import MetaTags from '@/components/SEO/MetaTags';
 
 const bylines = [
@@ -70,6 +74,12 @@ const bylines = [
 ];
 
 export default function Bylines() {
+  const { data: featuredWriting = [], isLoading } = useQuery({
+    queryKey: ['featured-writing'],
+    queryFn: () => base44.entities.FeaturedWriting.list('-publication_date'),
+    initialData: [],
+  });
+
   return (
     <div className="min-h-screen bg-white">
       <MetaTags 
@@ -96,6 +106,80 @@ export default function Bylines() {
           </motion.div>
         </div>
       </section>
+
+      {/* Featured Writing */}
+      {featuredWriting.length > 0 && (
+        <section className="py-20 px-6 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-blue-100 border border-blue-200">
+                <Sparkles className="w-4 h-4 text-blue-600" />
+                <span className="text-sm font-medium text-blue-900">Featured Writing</span>
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Highlighted Essays & Posts</h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Long-form thoughts and perspectives on business, AI, and making meaningful connections
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              {featuredWriting.map((piece, index) => (
+                <motion.div
+                  key={piece.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Card className="h-full border-2 border-gray-200 hover:border-blue-300 transition-all">
+                    <CardContent className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <Badge className="bg-blue-100 text-blue-700 border-0">
+                          {piece.type === 'linkedin_post' ? 'LinkedIn' : piece.type === 'essay' ? 'Essay' : 'Article'}
+                        </Badge>
+                        <span className="text-sm text-gray-500">
+                          {new Date(piece.publication_date).toLocaleDateString('en-US', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                          })}
+                        </span>
+                      </div>
+
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                        {piece.title}
+                      </h3>
+
+                      <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
+                        {piece.excerpt}
+                      </p>
+
+                      <div className="prose prose-sm prose-gray max-w-none mb-6 text-gray-700 leading-relaxed whitespace-pre-wrap">
+                        {piece.full_text}
+                      </div>
+
+                      <a
+                        href={piece.source_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium group"
+                      >
+                        View Original Post
+                        <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Articles Grid */}
       <section className="py-20 px-6">
