@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, GraduationCap, User } from 'lucide-react';
+import { ChevronLeft, ChevronRight, GraduationCap, User, ArrowRight, Briefcase, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MetaTags from '@/components/SEO/MetaTags';
 
@@ -116,8 +118,50 @@ export default function Baruch() {
         </div>
       </div>
 
+      {/* Bio Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+          <div className="grid md:grid-cols-3 gap-8 items-center">
+            <div className="md:col-span-1">
+              <img
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
+                alt="David Berkowitz"
+                className="w-48 h-48 rounded-full mx-auto shadow-xl"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <h2 className="text-2xl font-bold text-white mb-4">About David Berkowitz</h2>
+              <p className="text-blue-100 leading-relaxed mb-4">
+                David Berkowitz is an AI marketing strategist and author of <em>The Non-Obvious Guide to Using AI for Marketing</em>. He founded AI Marketers Guild (7,000+ members) and Serial Marketers, which were acquired by Marketecture Media in 2025, where he now serves as Chief Community Officer.
+              </p>
+              <p className="text-blue-100 leading-relaxed mb-4">
+                Previously, David held senior roles at 360i (VP), MRY (CMO), Mediaocean (SVP), and Sysomos (CSO). He currently serves as fractional CMO for AI-forward companies and Executive in Residence at Progress Partners.
+              </p>
+              <div className="flex flex-wrap gap-3 mt-6">
+                <Link
+                  to={createPageUrl("Jobs")}
+                  className="inline-flex items-center px-6 py-3 bg-white text-blue-900 font-semibold rounded-lg hover:bg-blue-50 transition-colors"
+                >
+                  <Briefcase className="w-4 h-4 mr-2" />
+                  Job Resources
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+                <Link
+                  to={createPageUrl("Resources")}
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <BookOpen className="w-4 h-4 mr-2" />
+                  AI Resources
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Slide Container */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Slide Content */}
           <div className="relative h-[500px] flex items-center justify-center p-12">
