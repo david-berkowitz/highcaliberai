@@ -117,12 +117,13 @@ export default function Baruch() {
                   <GraduationCap className="w-5 h-5" />
                   <span className="text-sm font-medium">Baruch College</span>
                 </div>
-              <h1 className="text-2xl md:text-3xl font-bold text-white">
-                Advertising Account Management
-              </h1>
-              <div className="flex items-center gap-2 mt-2 text-blue-200">
-                <User className="w-4 h-4" />
-                <span className="text-sm">Professor Dorian Benkoil</span>
+                <h1 className="text-2xl md:text-3xl font-bold text-white">
+                  Advertising Account Management
+                </h1>
+                <div className="flex items-center gap-2 mt-2 text-blue-200">
+                  <User className="w-4 h-4" />
+                  <span className="text-sm">Professor Dorian Benkoil</span>
+                </div>
               </div>
             </div>
             <div className="text-right">
