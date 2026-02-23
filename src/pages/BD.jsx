@@ -85,7 +85,7 @@ export default function BDPage() {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">1. Network Mapping</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    I search my network or create targeted lists using tools like Happenstance to identify the right connections for your goals.
+                    I search my network or create targeted lists using tools like <a href="https://happenstance.ai/invite/friend/kG7j1tmEVzwEe0tzIT8im6pw7m2" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">Happenstance</a> to identify the right connections for your goals.
                   </p>
                 </CardContent>
               </Card>
