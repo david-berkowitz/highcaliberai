@@ -6,7 +6,14 @@ import { ChevronLeft, ChevronRight, GraduationCap, User, ArrowRight, Briefcase, 
 import { Button } from '@/components/ui/button';
 import MetaTags from '@/components/SEO/MetaTags';
 
-const lessons = [
+const slides = [
+  {
+    type: "title",
+    title: "10 Lessons in Account Management",
+    subtitle: "From 15+ Years in Agencies & Marketing Tech",
+    speaker: "David Berkowitz",
+    speakerTitle: "Founder, High Caliber AI | Chief Community Officer, Marketecture Media"
+  },
   {
     number: 1,
     title: "Lesson Title Here",
@@ -69,15 +76,17 @@ const lessons = [
   }
 ];
 
+const lessons = slides.filter(slide => slide.number);
+
 export default function Baruch() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % lessons.length);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + lessons.length) % lessons.length);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const goToSlide = (index) => {
@@ -97,11 +106,17 @@ export default function Baruch() {
       <div className="bg-white/10 backdrop-blur-sm border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-blue-200 mb-2">
-                <GraduationCap className="w-5 h-5" />
-                <span className="text-sm font-medium">Baruch College</span>
-              </div>
+            <div className="flex items-center gap-6">
+              <img
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/193424fd7_image.png"
+                alt="Baruch College"
+                className="h-16 w-auto"
+              />
+              <div>
+                <div className="flex items-center gap-2 text-blue-200 mb-2">
+                  <GraduationCap className="w-5 h-5" />
+                  <span className="text-sm font-medium">Baruch College</span>
+                </div>
               <h1 className="text-2xl md:text-3xl font-bold text-white">
                 Advertising Account Management
               </h1>
@@ -174,21 +189,40 @@ export default function Baruch() {
                 transition={{ duration: 0.3 }}
                 className="w-full"
               >
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-full text-2xl font-bold mb-6">
-                    {lessons[currentSlide].number}
+                {slides[currentSlide].type === "title" ? (
+                  <div className="text-center">
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                      {slides[currentSlide].title}
+                    </h1>
+                    <p className="text-2xl text-gray-600 mb-12">
+                      {slides[currentSlide].subtitle}
+                    </p>
+                    <div className="mt-16">
+                      <div className="text-xl font-semibold text-gray-900 mb-2">
+                        {slides[currentSlide].speaker}
+                      </div>
+                      <div className="text-lg text-gray-600">
+                        {slides[currentSlide].speakerTitle}
+                      </div>
+                    </div>
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    {lessons[currentSlide].title}
-                  </h2>
-                  <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
-                    {lessons[currentSlide].content}
-                  </p>
-                  <div className="bg-blue-50 rounded-xl p-6 max-w-2xl mx-auto border-l-4 border-blue-600">
-                    <div className="text-sm font-semibold text-blue-900 mb-2">Key Takeaway:</div>
-                    <p className="text-gray-800">{lessons[currentSlide].takeaway}</p>
+                ) : (
+                  <div className="text-center mb-8">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-full text-2xl font-bold mb-6">
+                      {slides[currentSlide].number}
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                      {slides[currentSlide].title}
+                    </h2>
+                    <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
+                      {slides[currentSlide].content}
+                    </p>
+                    <div className="bg-blue-50 rounded-xl p-6 max-w-2xl mx-auto border-l-4 border-blue-600">
+                      <div className="text-sm font-semibold text-blue-900 mb-2">Key Takeaway:</div>
+                      <p className="text-gray-800">{slides[currentSlide].takeaway}</p>
+                    </div>
                   </div>
-                </div>
+                )}
               </motion.div>
             </AnimatePresence>
 
@@ -212,12 +246,23 @@ export default function Baruch() {
           {/* Slide Indicators */}
           <div className="bg-gray-50 px-8 py-6 border-t border-gray-200">
             <div className="flex items-center justify-center gap-2 flex-wrap">
+              <button
+                onClick={() => goToSlide(0)}
+                className={`w-10 h-10 rounded-full font-semibold text-sm transition-all ${
+                  currentSlide === 0
+                    ? 'bg-blue-600 text-white scale-110'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-300'
+                }`}
+                aria-label="Go to title slide"
+              >
+                ●
+              </button>
               {lessons.map((lesson, index) => (
                 <button
                   key={index}
-                  onClick={() => goToSlide(index)}
+                  onClick={() => goToSlide(index + 1)}
                   className={`w-10 h-10 rounded-full font-semibold text-sm transition-all ${
-                    currentSlide === index
+                    currentSlide === index + 1
                       ? 'bg-blue-600 text-white scale-110'
                       : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-300'
                   }`}
@@ -228,7 +273,7 @@ export default function Baruch() {
               ))}
             </div>
             <div className="text-center mt-4 text-sm text-gray-600">
-              Lesson {currentSlide + 1} of {lessons.length}
+              {currentSlide === 0 ? 'Title' : `Lesson ${currentSlide}`} of {slides.length - 1}
             </div>
           </div>
         </div>
