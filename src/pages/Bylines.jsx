@@ -119,11 +119,11 @@ export default function Bylines() {
             >
               <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-blue-100 border border-blue-200">
                 <Sparkles className="w-4 h-4 text-blue-600" />
-                <span className="text-sm font-medium text-blue-900">Featured Writing</span>
+                <span className="text-sm font-medium text-blue-900">Featured Tips & Advice</span>
               </div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Highlighted Essays & Posts</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Practical Insights & How-To's</h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Long-form thoughts and perspectives on business, AI, and making meaningful connections
+                Real-world advice on networking, business development, and building meaningful professional relationships
               </p>
             </motion.div>
 
