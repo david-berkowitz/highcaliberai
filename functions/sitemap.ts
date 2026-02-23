@@ -31,6 +31,7 @@ const staticPages = [
   { loc: '/press', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-23' },
   { loc: '/bylines', priority: '0.8', changefreq: 'weekly', lastmod: '2026-02-23' },
   { loc: '/bd', priority: '0.8', changefreq: 'monthly', lastmod: '2026-02-23' },
+  { loc: '/baruch', priority: '0.4', changefreq: 'monthly', lastmod: '2026-02-23' },
 ];
 
 Deno.serve(async () => {
