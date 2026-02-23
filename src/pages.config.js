@@ -54,6 +54,7 @@ import Audit from './pages/Audit';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Book from './pages/Book';
+import Bylines from './pages/Bylines';
 import CPG from './pages/CPG';
 import CaseStudies from './pages/CaseStudies';
 import Contact from './pages/Contact';
@@ -84,7 +85,7 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import Bylines from './pages/Bylines';
+import BD from './pages/BD';
 import __Layout from './Layout.jsx';
 
 
@@ -96,6 +97,7 @@ export const PAGES = {
     "Blog": Blog,
     "BlogPost": BlogPost,
     "Book": Book,
+    "Bylines": Bylines,
     "CPG": CPG,
     "CaseStudies": CaseStudies,
     "Contact": Contact,
@@ -126,7 +128,7 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "Bylines": Bylines,
+    "BD": BD,
 }
 
 export const pagesConfig = {
