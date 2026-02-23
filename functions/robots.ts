@@ -1,8 +1,24 @@
 Deno.serve(async (req) => {
-  const robotsTxt = `User-agent: *
+  const robotsTxt = `# High Caliber AI - Robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# AI Crawlers
+User-agent: GPTBot
 Allow: /
 
-User-agent: GPTBot
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
 Allow: /
 
 User-agent: Claude-Web
@@ -14,11 +30,11 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Google-Extended
-Allow: /
+# Crawl-delay
+Crawl-delay: 1
 
-Sitemap: https://highcaliberai.com/sitemap.xml
-`;
+# Sitemap
+Sitemap: https://highcaliberai.com/api/sitemap`;
 
   return new Response(robotsTxt, {
     headers: {

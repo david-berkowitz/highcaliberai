@@ -7,6 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import { BookOpen, Mic, Users, Award, ArrowRight, ChevronDown, ExternalLink } from "lucide-react";
 import { PersonStructuredData, FAQStructuredData } from "@/components/SEO/StructuredData";
 import MetaTags from "@/components/SEO/MetaTags";
+import LocalBusinessSchema from "@/components/SEO/LocalBusinessSchema";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const stats = [
   { icon: BookOpen, number: "1000+", label: "Published Bylines" },
@@ -165,6 +167,12 @@ export default function About() {
       />
       <PersonStructuredData />
       <FAQStructuredData faqs={faqs} />
+      <LocalBusinessSchema />
+      
+      {/* Breadcrumbs */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <Breadcrumbs items={[{ label: 'About' }]} />
+      </div>
       
       {/* Hero Section */}
       <section className="py-20 lg:py-28 bg-white">
