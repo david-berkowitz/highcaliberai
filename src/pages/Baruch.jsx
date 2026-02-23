@@ -140,9 +140,9 @@ export default function Baruch() {
           <div className="grid md:grid-cols-3 gap-8 items-center">
             <div className="md:col-span-1">
               <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/00874766c_DBheadshot1-2026-smallersq.png"
                 alt="David Berkowitz"
-                className="w-48 h-48 rounded-full mx-auto shadow-xl"
+                className="w-48 h-48 rounded-full mx-auto shadow-xl object-cover"
               />
             </div>
             <div className="md:col-span-2">
@@ -154,6 +154,14 @@ export default function Baruch() {
                 Previously, David held senior roles at 360i (VP), MRY (CMO), Mediaocean (SVP), and Sysomos (CSO). He currently serves as fractional CMO for AI-forward companies and Executive in Residence at Progress Partners.
               </p>
               <div className="flex flex-wrap gap-3 mt-6">
+                <Link
+                  to={createPageUrl("Book")}
+                  className="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+                >
+                  <BookOpen className="w-4 h-4 mr-2" />
+                  My Book
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
                 <Link
                   to={createPageUrl("Jobs")}
                   className="inline-flex items-center px-6 py-3 bg-white text-blue-900 font-semibold rounded-lg hover:bg-blue-50 transition-colors"
