@@ -130,7 +130,6 @@ export default function JobsPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <JobLink title="AMA Job Board" href="https://jobs.ama.org/" description="Listings from the American Marketing Association" />
-            <JobLink title="Beeler.Tech" href="https://jobs.beeler.tech/" description="Jobs in ad ops, programmatic, and sales ops" />
             <JobLink title="Bolster" href="https://bolster.com/" description="Fractional roles and board seats for senior talent" />
             <JobLink title="Fractional Jobs" href="https://www.fractionaljobs.io/" description="Job board for fractional marketing roles" />
             <JobLink title="The Boyd Initiative" href="https://www.theboydinitiative.com/" description="Careers for Young Black Professionals in advertising" />
@@ -140,11 +139,9 @@ export default function JobsPage() {
             <JobLink title="Catalant" href="https://catalant.com/" description="Expert marketplace for independent consultants" />
             <JobLink title="CMO Huddles Transition Team" href="https://cmohuddles.com/join-transition-team" description="Land your next dream job with CMO support" />
             <JobLink title="Comet" href="https://www.comethq.com/" description="Tools for tracking your job search" />
-            <JobLink title="Creative Women of Color" href="https://www.womenwhocreate.org/cwoc" description="Database for creative women of color" />
             <JobLink title="Creatively" href="https://creatively.life/" description="Job platform for creatives" />
             <JobLink title="ExecThread" href="https://execthread.com/apply/ex7GoZ" description="Senior roles, fully vetted membership" featured />
             <JobLink title="The Hired Guns" href="https://thehiredguns.com/" description="Marketing jobs at brands, agencies, and media" />
-            <JobLink title="Hue" href="https://www.wearehue.org/talent" description="Amplifying voices of people of color in marketing" />
             <JobLink title="Jobs in Ad Tech" href="https://www.jobsinadtech.com/" description="Jobs in ad tech" />
             <JobLink title="Jobscan" href="https://www.jobscan.co/" description="ATS tracker and job search tools" />
             <JobLink title="Korn Ferry" href="https://interimjobs.kornferry.com/jobs/search" description="Search interim jobs from top recruiting firm" />
