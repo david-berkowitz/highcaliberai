@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import MetaTags from '@/components/SEO/MetaTags';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { createPageUrl } from '@/utils';
+import { Link } from 'react-router-dom';
 
 const bylines = [
   {
@@ -162,23 +163,29 @@ export default function Bylines() {
                         {piece.title}
                       </h3>
 
-                      <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
+                      <p className="text-gray-600 mb-6 leading-relaxed line-clamp-4">
                         {piece.excerpt}
                       </p>
 
-                      <div className="prose prose-sm prose-gray max-w-none mb-6 text-gray-700 leading-relaxed whitespace-pre-wrap">
-                        {piece.full_text}
-                      </div>
-
-                      <a
-                        href={piece.source_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium group"
-                      >
-                        View Original Post
-                        <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </a>
+                      <div className="flex items-center gap-3">
+                        <Link
+                          to={`${createPageUrl('Article')}?id=${piece.id}`}
+                          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold group"
+                        >
+                          Read Full Article
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                        {piece.source_url && (
+                          <a
+                            href={piece.source_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-700 text-sm font-medium group"
+                          >
+                            Original
+                            <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                          </a>
+                        )}
                     </CardContent>
                   </Card>
                 </motion.div>
