@@ -89,6 +89,7 @@ import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import AIMGFAQ from './pages/AIMGFAQ';
+import PressCoverageAdmin from './pages/PressCoverageAdmin';
 import __Layout from './Layout.jsx';
 
 
@@ -135,6 +136,7 @@ export const PAGES = {
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
     "AIMGFAQ": AIMGFAQ,
+    "PressCoverageAdmin": PressCoverageAdmin,
 }
 
 export const pagesConfig = {
