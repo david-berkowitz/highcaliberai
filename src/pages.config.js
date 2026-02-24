@@ -50,6 +50,7 @@
 import AINews from './pages/AINews';
 import AIStrategyHub from './pages/AIStrategyHub';
 import About from './pages/About';
+import Article from './pages/Article';
 import Audit from './pages/Audit';
 import BD from './pages/BD';
 import Baruch from './pages/Baruch';
@@ -87,7 +88,7 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import Article from './pages/Article';
+import AIMGFAQ from './pages/AIMGFAQ';
 import __Layout from './Layout.jsx';
 
 
@@ -95,6 +96,7 @@ export const PAGES = {
     "AINews": AINews,
     "AIStrategyHub": AIStrategyHub,
     "About": About,
+    "Article": Article,
     "Audit": Audit,
     "BD": BD,
     "Baruch": Baruch,
@@ -132,7 +134,7 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "Article": Article,
+    "AIMGFAQ": AIMGFAQ,
 }
 
 export const pagesConfig = {
