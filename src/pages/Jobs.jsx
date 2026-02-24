@@ -158,10 +158,9 @@ export default function JobsPage() {
             <JobLink title="Publicist.co" href="http://www.publicist.co" description="Vetted talent in communications and marketing" />
             <JobLink title="The Second Shift" href="https://www.thesecondshift.com/" description="Network for female executive talent" />
             <JobLink title="Shiny" href="https://useshiny.com/fractional-executives" description="Matching CXO talent to startups" />
-            <JobLink title="Side Hustle Stack" href="https://sidehustlestack.co/" description="Platform-based gigs and extra income" />
             <JobLink title="Sonara" href="https://www.sonara.ai/" description="AI tool that automates job applications" />
             <JobLink title="Startup.Jobs" href="https://startup.jobs/" description="Marketing jobs at startups" />
-            <JobLink title="TechNY Daily" href="https://www.technyc.org/newsletter" description="Jobs at NY startups" />
+            <JobLink title="TechNY Daily" href="https://jobs.technyc.org/jobs" description="Jobs at NY startups" />
             <JobLink title="Umbrex" href="https://umbrex.com/join-our-community/" description="Community for independent consultants" />
             <JobLink title="Veritux" href="https://veritux.com/" description="Sister community to Umbrex" />
             <JobLink title="VentureLoop" href="https://www.ventureloop.com/ventureloop/home.php" description="Free startup job listings" />
@@ -196,8 +195,7 @@ export default function JobsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <JobLink title="Fractionals United" href="https://www.fractionalsunited.com/" description="Community of fractional CXOs" />
             <JobLink title="Growth Collective" href="https://www.wearegrowth.co/" description="Network of notable freelance marketers" />
-            <JobLink title="Never Search Alone" href="https://www.neversearchalone.org/" description="Join a Free Job Search Council (JSC). JSCs are free support groups for job seekers. If you apply, we will place you with peers and get you the training and tools you need. 50,000 job seekers already helped." featured />
-            <JobLink title="Our Vibe Attracts Our Career Tribe" href="https://docs.google.com/spreadsheets/d/1P1fDhDBUogMEbTH9ENOmITv6znIfW8J9TK-XqbIX0wk/edit?gid=0#gid=0" description="Great group for finding your next move" />
+            <JobLink title="Never Search Alone" href="https://www.neversearchalone.org/" description="Free support groups for job seekers" />
           </div>
         </div>
       </section>
@@ -213,14 +211,13 @@ export default function JobsPage() {
             <p className="text-gray-600">Get paid for your expertise with these networks</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <JobLink title="Atheneum" href="https://www.atheneum.ai/network/" />
-            <JobLink title="DeepBench" href="https://deepbench.io/consult" />
+            <JobLink title="Atheneum" href="https://www.atheneum.ai/network/" description="Global expert network connecting professionals with consulting opportunities" />
             <JobLink title="GLG" href="https://glginsights.com/" description="One of the longer-running, better-known networks" />
-            <JobLink title="Maven" href="https://www.maven.co/" />
-            <JobLink title="NewtonX" href="https://www.newtonx.com/for-professionals/" />
+            <JobLink title="Maven" href="https://www.maven.co/" description="Expert network for research consultations and interviews" />
+            <JobLink title="NewtonX" href="https://www.newtonx.com/for-professionals/" description="B2B expert network for business insights and consulting" />
             <JobLink title="Office Hours" href="https://officehours.com/r/david-berkowitz" description="Share your expertise on B2B products" />
-            <JobLink title="Tegus" href="https://www.tegus.com/experts" />
-            <JobLink title="Third Bridge" href="https://thirdbridge.com/" />
+            <JobLink title="Tegus" href="https://www.tegus.com/experts" description="Expert platform for equity research and investment insights" />
+            <JobLink title="Third Bridge" href="https://thirdbridge.com/" description="Independent investment research and expert insights network" />
           </div>
         </div>
       </section>
