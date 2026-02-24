@@ -200,6 +200,7 @@ export default function JobsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <JobLink title="Fractionals United" href="https://www.fractionalsunited.com/" description="Community of fractional CXOs" />
             <JobLink title="Growth Collective" href="https://www.wearegrowth.co/" description="Network of notable freelance marketers" />
+            <JobLink title="Never Search Alone" href="https://www.neversearchalone.org/" description="Join a Free Job Search Council (JSC). JSCs are free support groups for job seekers. If you apply, we will place you with peers and get you the training and tools you need. 50,000 job seekers already helped." featured />
             <JobLink title="Our Vibe Attracts Our Career Tribe" href="https://docs.google.com/spreadsheets/d/1P1fDhDBUogMEbTH9ENOmITv6znIfW8J9TK-XqbIX0wk/edit?gid=0#gid=0" description="Great group for finding your next move" />
           </div>
         </div>

@@ -52,6 +52,7 @@ import AIStrategyHub from './pages/AIStrategyHub';
 import About from './pages/About';
 import Audit from './pages/Audit';
 import BD from './pages/BD';
+import Baruch from './pages/Baruch';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Book from './pages/Book';
@@ -86,7 +87,6 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import Baruch from './pages/Baruch';
 import __Layout from './Layout.jsx';
 
 
@@ -96,6 +96,7 @@ export const PAGES = {
     "About": About,
     "Audit": Audit,
     "BD": BD,
+    "Baruch": Baruch,
     "Blog": Blog,
     "BlogPost": BlogPost,
     "Book": Book,
@@ -130,7 +131,6 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "Baruch": Baruch,
 }
 
 export const pagesConfig = {
