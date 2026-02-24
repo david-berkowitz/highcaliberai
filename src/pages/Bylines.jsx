@@ -186,6 +186,7 @@ export default function Bylines() {
                             <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                           </a>
                         )}
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>
