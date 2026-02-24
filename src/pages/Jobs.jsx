@@ -298,9 +298,7 @@ export default function JobsPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <JobLink title="Career Dreamer by Google" href="https://grow.google/career-dreamer/" description="Uncover skills and explore career possibilities" />
-            <JobLink title="ChatGPT" href="https://chat.openai.com/" description="AI assistant for interview preparation" />
             <JobLink title="Final Round AI" href="https://www.finalroundai.com/" description="Video responses to common interview questions" />
-            <JobLink title="Fonzi.ai" href="https://fonzi.ai/candidates" description="Practice realistic phone screens anytime" />
             <JobLink title="InterviewBuddy" href="https://interviewbuddy.net/" description="Live mock interviews with professionals" />
             <JobLink title="Winning Interviews" href="https://winninginterviews.com/?sld=davidberkowitz" description="AI-powered interview preparation coach" />
           </div>
