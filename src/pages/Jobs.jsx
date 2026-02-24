@@ -139,7 +139,6 @@ export default function JobsPage() {
             <JobLink title="Career Intelligence" href="https://careerintelligenceresumewriting.com/" description="Executive resume-writing services" />
             <JobLink title="Catalant" href="https://catalant.com/" description="Expert marketplace for independent consultants" />
             <JobLink title="CMO Huddles Transition Team" href="https://cmohuddles.com/join-transition-team" description="Land your next dream job with CMO support" />
-            <JobLink title="Open Talent Collective" href="https://www.opentalentcollective.com/add-talent-profile" description="Community endorsements connecting talent to roles" featured />
             <JobLink title="Comet" href="https://www.comethq.com/" description="Tools for tracking your job search" />
             <JobLink title="Creative Women of Color" href="https://www.womenwhocreate.org/cwoc" description="Database for creative women of color" />
             <JobLink title="Creatively" href="https://creatively.life/" description="Job platform for creatives" />
