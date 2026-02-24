@@ -13,48 +13,58 @@ Deno.serve(async (req) => {
         const response = await fetch('https://serialmarketer.net/contact/press/');
         const html = await response.text();
 
-        // Extract articles using LLM
-        const extractionResult = await base44.asServiceRole.integrations.Core.InvokeLLM({
-            prompt: `Extract ALL press articles from this HTML content. For each article, extract:
+        // Split HTML into smaller chunks (by year roughly)
+        const chunks = html.split(/(?=<h[23]>(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+202[0-6])/i);
+        
+        let allArticles = [];
+        
+        // Process each chunk separately to avoid timeout
+        for (let i = 0; i < Math.min(chunks.length, 15); i++) {
+            const chunk = chunks[i];
+            if (chunk.trim().length < 100) continue; // Skip tiny chunks
+            
+            try {
+                const extractionResult = await base44.asServiceRole.integrations.Core.InvokeLLM({
+                    prompt: `Extract press articles from this HTML content. For each article, extract:
 - publication: The source/publication name
-- title: Article title
-- date: Publication date (convert to YYYY-MM-DD format)
-- url: Article URL (full URL)
-- quote: The description text under the article
-- context: Brief context if provided, or use the description
+- title: Article title  
+- date: Publication date in YYYY-MM-DD format (month/year are in the section header)
+- url: Article URL (full URL from href)
+- quote: The description/excerpt text
+- context: Same as quote if no separate context
 
-Important notes:
-- Extract EVERY article from February 2020 through February 2026
-- Dates are shown as headers (e.g., "February 2026", "December 2025") followed by articles
-- Each article typically has: Publication name, title with link, date, and description
-- Return as complete a list as possible
-
-HTML content:
-${html}`,
-            response_json_schema: {
-                type: "object",
-                properties: {
-                    articles: {
-                        type: "array",
-                        items: {
-                            type: "object",
-                            properties: {
-                                publication: { type: "string" },
-                                title: { type: "string" },
-                                date: { type: "string" },
-                                url: { type: "string" },
-                                quote: { type: "string" },
-                                context: { type: "string" }
-                            },
-                            required: ["publication", "title", "date", "url", "quote"]
-                        }
+HTML chunk:
+${chunk.substring(0, 8000)}`,
+                    response_json_schema: {
+                        type: "object",
+                        properties: {
+                            articles: {
+                                type: "array",
+                                items: {
+                                    type: "object",
+                                    properties: {
+                                        publication: { type: "string" },
+                                        title: { type: "string" },
+                                        date: { type: "string" },
+                                        url: { type: "string" },
+                                        quote: { type: "string" },
+                                        context: { type: "string" }
+                                    },
+                                    required: ["publication", "title", "date", "url", "quote"]
+                                }
+                            }
+                        },
+                        required: ["articles"]
                     }
-                },
-                required: ["articles"]
+                });
+                
+                allArticles = allArticles.concat(extractionResult.articles || []);
+            } catch (chunkError) {
+                console.error(`Error processing chunk ${i}:`, chunkError.message);
             }
-        });
+        }
 
-        const articles = extractionResult.articles || [];
+        const articles = allArticles;
 
         // Get existing articles to avoid duplicates
         const existingArticles = await base44.asServiceRole.entities.PressArticle.list();
