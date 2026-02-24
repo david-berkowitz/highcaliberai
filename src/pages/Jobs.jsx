@@ -362,27 +362,6 @@ export default function JobsPage() {
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="py-16 px-6 bg-gradient-to-br from-red-50 to-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">More Resources</h2>
-          <p className="text-lg text-gray-700 mb-8">
-            View even more resources in the{" "}
-            <a 
-              href="http://bit.ly/howdavidcanhelp" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-red-600 hover:underline font-semibold"
-            >
-              How David Can Help spreadsheet
-            </a>
-            .
-          </p>
-          <p className="text-gray-600">
-            Share this resource freely with anyone who can use it!
-          </p>
-        </div>
-      </section>
     </div>
   );
 }
