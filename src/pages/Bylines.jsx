@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import MetaTags from '@/components/SEO/MetaTags';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { createPageUrl } from '@/utils';
 
 const bylines = [
   {
