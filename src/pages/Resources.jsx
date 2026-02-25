@@ -436,6 +436,20 @@ export default function Resources() {
               description="Newsletter by Debra Aho Williamson on AI in advertising"
               href="https://aiadeconomy.substack.com/"
             />
+            <ResourceCard 
+              icon={Mail}
+              title="Fractional Freedom Friday"
+              description="Weekly insights on fractional work and AI for consultants"
+              href="https://fractionalfreedomfriday.substack.com/"
+              tags={["fractional"]}
+            />
+            <ResourceCard 
+              icon={Mail}
+              title="Fractional Fridays"
+              description="Weekly newsletter on fractional consulting and modern work"
+              href="https://fractionalfridays.substack.com/"
+              tags={["fractional"]}
+            />
           </div>
         </div>
       </section>
@@ -678,7 +692,7 @@ export default function Resources() {
   );
 }
 
-function ResourceCard({ icon: Icon, title, description, href, featured }) {
+function ResourceCard({ icon: Icon, title, description, href, featured, tags }) {
   return (
     <a 
       href={href}

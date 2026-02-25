@@ -47,6 +47,7 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
+import AIMGFAQ from './pages/AIMGFAQ';
 import AINews from './pages/AINews';
 import AIStrategyHub from './pages/AIStrategyHub';
 import About from './pages/About';
@@ -77,6 +78,7 @@ import Offsite from './pages/Offsite';
 import Partners from './pages/Partners';
 import Politics from './pages/Politics';
 import Press from './pages/Press';
+import PressCoverageAdmin from './pages/PressCoverageAdmin';
 import Resources from './pages/Resources';
 import SOS from './pages/SOS';
 import SaaSFractionalCMO from './pages/SaaSFractionalCMO';
@@ -88,12 +90,11 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import AIMGFAQ from './pages/AIMGFAQ';
-import PressCoverageAdmin from './pages/PressCoverageAdmin';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
+    "AIMGFAQ": AIMGFAQ,
     "AINews": AINews,
     "AIStrategyHub": AIStrategyHub,
     "About": About,
@@ -124,6 +125,7 @@ export const PAGES = {
     "Partners": Partners,
     "Politics": Politics,
     "Press": Press,
+    "PressCoverageAdmin": PressCoverageAdmin,
     "Resources": Resources,
     "SOS": SOS,
     "SaaSFractionalCMO": SaaSFractionalCMO,
@@ -135,8 +137,6 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "AIMGFAQ": AIMGFAQ,
-    "PressCoverageAdmin": PressCoverageAdmin,
 }
 
 export const pagesConfig = {
