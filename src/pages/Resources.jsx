@@ -547,6 +547,12 @@ export default function Resources() {
               description="Course by Shelly Palmer"
               href="https://courses.shellypalmer.com/metacademy-generative-ai"
             />
+            <ResourceCard 
+              icon={Book}
+              title="U of Digital AI Accelerator"
+              description="Comprehensive AI training program for marketing teams"
+              href="https://uof.digital/ai/"
+            />
           </div>
         </div>
       </section>
