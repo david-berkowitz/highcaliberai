@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, GraduationCap, User, ArrowRight, Briefcase, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MetaTags from '@/components/SEO/MetaTags';
+import AccountManagerGame from '@/components/baruch/AccountManagerGame';
 
 const slides = [
   {
@@ -155,6 +156,13 @@ export default function Baruch() {
               </p>
               <div className="flex flex-wrap gap-3 mt-6">
                 <Link
+                  to={createPageUrl("Hustle")}
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  🎮 Play The Marketing Hustle
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+                <Link
                   to={createPageUrl("Book")}
                   className="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
                 >
@@ -291,6 +299,11 @@ export default function Baruch() {
         <div className="text-center mt-6 text-blue-200 text-sm">
           Use arrow keys ← → to navigate
         </div>
+      </div>
+
+      {/* Mini Game */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <AccountManagerGame />
       </div>
 
       {/* Keyboard Navigation */}
