@@ -16,63 +16,63 @@ const slides = [
   },
   {
     number: 1,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here. Add specific examples, stories, or frameworks.",
-    takeaway: "Main takeaway or action item"
+    title: "Be the Trusted Advisor",
+    content: "A 'Yes' person is a commodity; a partner is an asset. If you never disagree with your client, you aren't providing value. Trust is built when you steer them away from a bad investment, even if it means a smaller project for the agency in the short term.",
+    takeaway: "Challenge clients when needed—that's where real value lies"
   },
   {
     number: 2,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Live the Brand",
+    content: "Details matter. Using a competitor's service (like sending a DHL package to FedEx) isn't just a faux pas; it's a signal that you aren't thinking about their business. If you're pitching Samsung, don't put your iPhone on the conference table.",
+    takeaway: "Empathy for the brand starts with your own habits"
   },
   {
     number: 3,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Show, Don't Tell",
+    content: "Tangibility beats slides every time. Story: Brought a microwave into the pitch to demo '5 Minute Recipes.' Cut my hand on the cart before walking in—bleeding for the brand literally shows grit and commitment that makes pitches unforgettable.",
+    takeaway: "Build it, don't just sell the idea"
   },
   {
     number: 4,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Authenticity & Vulnerability",
+    content: "In an age of AI-generated perfection, being human is a competitive advantage. Owning a mistake (like the cut hand or a missed deadline) immediately and transparently builds more trust than a polished excuse ever will.",
+    takeaway: "Clients want to work with humans they can trust, not corporate machines"
   },
   {
     number: 5,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Motivate People Who Don't Report to You",
+    content: "Account management is the art of 'leading by influence.' Find the quid pro quos. Get creative and tech teams to prioritize your client's work. What do they care about—winning awards? Friday afternoons off? Portfolio pieces?",
+    takeaway: "Align the client's needs with the team's personal goals"
   },
   {
     number: 6,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Know When NOT to Use AI",
+    content: "As an AI expert, your most valuable advice is often telling a client to put the tools away. AI shouldn't be used for high-stakes, high-empathy communication. If a client needs a sensitive response to a crisis, an AI-generated draft can feel hollow.",
+    takeaway: "Account managers must act as the 'empathy filter' for when technology is—and isn't—appropriate"
   },
   {
     number: 7,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Use AI to Reclaim Your Strategic Brain",
+    content: "Flip the script: use AI to handle the 'grunt work' of account management. Efficiency is for the agency; strategy is for the client. Use AI tools to prep (summarize earnings calls, competitive research) so you show up with deep insights others haven't found.",
+    takeaway: "Let AI handle research so you can focus on strategy"
   },
   {
     number: 8,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Connect the Non-Obvious Dots",
+    content: "Look for random quotes or ideas from outside marketing and see how they apply. If you're reading a book on architecture or a biography, bring a lesson from that into your status meeting.",
+    takeaway: "Show clients you are a broad thinker who brings 'non-obvious' perspectives to their business"
   },
   {
     number: 9,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Be the Brand Guardian",
+    content: "You are the final line of defense. Just because an idea is creative doesn't mean it's right. A great account manager knows the brand's 'DNA' so well they can kill a bad idea before it ever reaches the client's inbox.",
+    takeaway: "Protect the brand—not just promote it"
   },
   {
     number: 10,
-    title: "Lesson Title Here",
-    content: "Your key insight or lesson content goes here.",
-    takeaway: "Main takeaway or action item"
+    title: "Focus on the Right Metrics",
+    content: "Translate agency 'vibe' into client 'value.' Creatives might care about the 'look' of a campaign, but the client cares about the business outcome. Your job is to bridge that gap and ensure you are measuring what actually moves the needle.",
+    takeaway: "Measure what matters to the client's business, not just the agency"
   }
 ];
 
