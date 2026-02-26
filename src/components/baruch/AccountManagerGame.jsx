@@ -16,8 +16,12 @@ export default function AccountManagerGame() {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
+  const [lives, setLives] = useState(3);
+  const [combo, setCombo] = useState(0);
+  const [speed, setSpeed] = useState(ITEM_SPEED);
   const [playerX, setPlayerX] = useState(GAME_WIDTH / 2 - PLAYER_WIDTH / 2);
   const [items, setItems] = useState([]);
+  const [popups, setPopups] = useState([]);
   const canvasRef = useRef(null);
   const gameLoopRef = useRef(null);
 
@@ -37,15 +41,31 @@ export default function AccountManagerGame() {
     setGameStarted(true);
     setGameOver(false);
     setScore(0);
+    setLives(3);
+    setCombo(0);
+    setSpeed(ITEM_SPEED);
     setPlayerX(GAME_WIDTH / 2 - PLAYER_WIDTH / 2);
     setItems([createItem()]);
+    setPopups([]);
   };
 
   const resetGame = () => {
     setGameStarted(false);
     setGameOver(false);
     setScore(0);
+    setLives(3);
+    setCombo(0);
+    setSpeed(ITEM_SPEED);
     setItems([]);
+    setPopups([]);
+  };
+
+  const addPopup = (text, x, y, isGood) => {
+    const popup = { text, x, y, opacity: 1, id: Date.now() + Math.random(), isGood };
+    setPopups(prev => [...prev, popup]);
+    setTimeout(() => {
+      setPopups(prev => prev.filter(p => p.id !== popup.id));
+    }, 1000);
   };
 
   useEffect(() => {
@@ -70,7 +90,7 @@ export default function AccountManagerGame() {
       setItems(prevItems => {
         const newItems = prevItems.map(item => ({
           ...item,
-          y: item.y + ITEM_SPEED
+          y: item.y + speed
         }));
 
         // Check collisions
@@ -79,25 +99,46 @@ export default function AccountManagerGame() {
             item.y + ITEM_SIZE >= GAME_HEIGHT - PLAYER_HEIGHT &&
             item.y <= GAME_HEIGHT &&
             item.x + ITEM_SIZE >= playerX &&
-            item.x <= playerX + PLAYER_WIDTH
+            item.x <= playerX + PLAYER_WIDTH &&
+            item.y < GAME_HEIGHT + 100
           ) {
             if (item.isGood) {
-              setScore(s => s + 10);
+              const comboBonus = Math.floor(combo / 3) * 5;
+              const points = 10 + comboBonus;
+              setScore(s => s + points);
+              setCombo(c => c + 1);
+              addPopup(`+${points}${comboBonus > 0 ? ' COMBO!' : ''}`, item.x, item.y, true);
+              
+              // Speed up every 50 points
+              if ((score + points) % 50 === 0 && speed < ITEM_SPEED * 3) {
+                setSpeed(s => s + 0.3);
+              }
             } else {
-              setScore(s => Math.max(0, s - 15));
-              if (score - 15 <= -30) {
+              setLives(l => l - 1);
+              setCombo(0);
+              addPopup('-1 LIFE', item.x, item.y, false);
+              if (lives - 1 <= 0) {
                 setGameOver(true);
               }
             }
-            item.y = GAME_HEIGHT + 100; // Remove from play
+            item.y = GAME_HEIGHT + 100;
           }
         });
 
-        // Remove off-screen items
-        const filteredItems = newItems.filter(item => item.y < GAME_HEIGHT + ITEM_SIZE);
+        // Remove off-screen items and penalize missed good items
+        const filteredItems = newItems.filter(item => {
+          if (item.y >= GAME_HEIGHT + ITEM_SIZE) {
+            if (item.isGood) {
+              setCombo(0); // Break combo on missed good item
+            }
+            return false;
+          }
+          return true;
+        });
 
-        // Add new items occasionally
-        if (Math.random() < 0.02) {
+        // Add new items with increasing frequency
+        const spawnRate = 0.02 + (speed - ITEM_SPEED) * 0.01;
+        if (Math.random() < spawnRate) {
           filteredItems.push(createItem());
         }
 
@@ -106,7 +147,7 @@ export default function AccountManagerGame() {
     }, 1000 / 60);
 
     return () => clearInterval(gameLoopRef.current);
-  }, [gameStarted, gameOver, playerX, score]);
+  }, [gameStarted, gameOver, playerX, score, lives, combo, speed]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -125,14 +166,29 @@ export default function AccountManagerGame() {
       ctx.fillText(item.emoji, item.x, item.y + ITEM_SIZE);
     });
 
-    // Draw player (desk/portfolio)
-    ctx.fillStyle = '#1e40af';
+    // Draw popups
+    ctx.font = 'bold 16px Arial';
+    ctx.textAlign = 'center';
+    popups.forEach(popup => {
+      ctx.fillStyle = popup.isGood ? '#22c55e' : '#ef4444';
+      ctx.globalAlpha = popup.opacity;
+      ctx.fillText(popup.text, popup.x + ITEM_SIZE / 2, popup.y - 10);
+    });
+    ctx.globalAlpha = 1;
+
+    // Draw player (desk/portfolio) with glow effect for combo
+    if (combo > 2) {
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = '#fbbf24';
+    }
+    ctx.fillStyle = combo > 2 ? '#fbbf24' : '#1e40af';
     ctx.fillRect(playerX, GAME_HEIGHT - PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
+    ctx.shadowBlur = 0;
     ctx.fillStyle = '#fff';
     ctx.font = '12px Arial';
     ctx.textAlign = 'center';
     ctx.fillText('YOU', playerX + PLAYER_WIDTH / 2, GAME_HEIGHT - 5);
-  }, [items, playerX]);
+  }, [items, playerX, combo, popups]);
 
   return (
     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
@@ -180,8 +236,20 @@ export default function AccountManagerGame() {
         </div>
       ) : (
         <div className="text-center">
-          <div className="mb-4">
+          <div className="mb-4 flex items-center justify-center gap-6">
             <span className="text-3xl font-bold text-white">Score: {score}</span>
+            <div className="flex items-center gap-2">
+              {[...Array(3)].map((_, i) => (
+                <span key={i} className="text-2xl">
+                  {i < lives ? '❤️' : '🖤'}
+                </span>
+              ))}
+            </div>
+            {combo > 2 && (
+              <span className="text-xl font-bold text-yellow-400 animate-pulse">
+                🔥 {combo}x COMBO!
+              </span>
+            )}
           </div>
           <canvas
             ref={canvasRef}
