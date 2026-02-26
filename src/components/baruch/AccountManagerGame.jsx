@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Trophy, RotateCcw } from 'lucide-react';
+import { Trophy, RotateCcw, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const GAME_WIDTH = 400;
 const GAME_HEIGHT = 500;
@@ -12,9 +13,27 @@ const ITEM_SPEED = 2;
 const GOOD_ITEMS = ['✅', '🤝', '💡', '📊', '🎯'];
 const BAD_ITEMS = ['❌', '😴', '📱', '🙄', '💩'];
 
+const getLeaderboard = () => {
+  try {
+    const saved = localStorage.getItem('baruch-game-leaderboard');
+    return saved ? JSON.parse(saved) : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveToLeaderboard = (initials, score) => {
+  const leaderboard = getLeaderboard();
+  leaderboard.push({ initials: initials.toUpperCase().slice(0, 3), score, date: Date.now() });
+  leaderboard.sort((a, b) => b.score - a.score);
+  localStorage.setItem('baruch-game-leaderboard', JSON.stringify(leaderboard.slice(0, 10)));
+};
+
 export default function AccountManagerGame() {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [showInitialsInput, setShowInitialsInput] = useState(false);
+  const [initials, setInitials] = useState('');
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
   const [combo, setCombo] = useState(0);
@@ -22,6 +41,7 @@ export default function AccountManagerGame() {
   const [playerX, setPlayerX] = useState(GAME_WIDTH / 2 - PLAYER_WIDTH / 2);
   const [items, setItems] = useState([]);
   const [popups, setPopups] = useState([]);
+  const [leaderboard, setLeaderboard] = useState(getLeaderboard());
   const canvasRef = useRef(null);
   const gameLoopRef = useRef(null);
 
@@ -52,12 +72,23 @@ export default function AccountManagerGame() {
   const resetGame = () => {
     setGameStarted(false);
     setGameOver(false);
+    setShowInitialsInput(false);
+    setInitials('');
     setScore(0);
     setLives(3);
     setCombo(0);
     setSpeed(ITEM_SPEED);
     setItems([]);
     setPopups([]);
+    setLeaderboard(getLeaderboard());
+  };
+
+  const handleSubmitInitials = () => {
+    if (initials.trim().length > 0) {
+      saveToLeaderboard(initials, score);
+      setLeaderboard(getLeaderboard());
+      setShowInitialsInput(false);
+    }
   };
 
   const addPopup = (text, x, y, isGood) => {
@@ -119,6 +150,10 @@ export default function AccountManagerGame() {
               addPopup('-1 LIFE', item.x, item.y, false);
               if (lives - 1 <= 0) {
                 setGameOver(true);
+                const lb = getLeaderboard();
+                if (lb.length < 10 || score > lb[lb.length - 1]?.score) {
+                  setShowInitialsInput(true);
+                }
               }
             }
             item.y = GAME_HEIGHT + 100;
@@ -197,6 +232,34 @@ export default function AccountManagerGame() {
         <p className="text-blue-200">Catch good practices (✅ 🤝 💡), avoid bad ones (❌ 😴 📱)!</p>
       </div>
 
+      {/* Leaderboard */}
+      {leaderboard.length > 0 && !gameStarted && (
+        <div className="mb-6 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-xl p-4 border border-yellow-400/30">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Award className="w-5 h-5 text-yellow-400" />
+            <h4 className="text-lg font-bold text-white">Top Performers</h4>
+          </div>
+          <div className="space-y-1">
+            {leaderboard.slice(0, 10).map((entry, idx) => (
+              <div
+                key={idx}
+                className={`flex items-center justify-between px-4 py-2 rounded-lg ${
+                  idx === 0 ? 'bg-yellow-500/30 text-yellow-200' :
+                  idx === 1 ? 'bg-gray-400/30 text-gray-200' :
+                  idx === 2 ? 'bg-orange-600/30 text-orange-200' :
+                  'bg-white/10 text-blue-200'
+                }`}
+              >
+                <span className="font-mono font-bold">
+                  {idx + 1}. {entry.initials}
+                </span>
+                <span className="font-bold">{entry.score}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {!gameStarted ? (
         <div className="text-center">
           <canvas
@@ -225,6 +288,31 @@ export default function AccountManagerGame() {
             <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
             <h4 className="text-3xl font-bold text-white mb-2">Game Over!</h4>
             <p className="text-2xl text-blue-200 mb-6">Final Score: {score}</p>
+            
+            {showInitialsInput ? (
+              <div className="mb-6 max-w-xs mx-auto">
+                <p className="text-yellow-400 font-bold mb-3">🏆 High Score! Enter Your Initials:</p>
+                <div className="flex gap-2">
+                  <Input
+                    type="text"
+                    maxLength={3}
+                    value={initials}
+                    onChange={(e) => setInitials(e.target.value.toUpperCase())}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSubmitInitials()}
+                    placeholder="AAA"
+                    className="text-center text-2xl font-mono font-bold uppercase bg-white/20 text-white border-yellow-400"
+                    autoFocus
+                  />
+                  <Button
+                    onClick={handleSubmitInitials}
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+            
             <Button
               onClick={resetGame}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4"
