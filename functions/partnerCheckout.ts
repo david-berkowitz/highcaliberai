@@ -39,7 +39,7 @@ Deno.serve(async (req) => {
 
     // If 100% off (comped), skip Stripe and mark as paid directly
     if (finalAmount === 0) {
-      await base44.asServiceRole.entities.PartnerListing.update(listingId, {
+      await base44.entities.PartnerListing.update(listingId, {
         status: "pending_review",
         amount_paid: 0,
         discount_code: discountCode.toUpperCase(),
@@ -61,13 +61,10 @@ Deno.serve(async (req) => {
         discount_percent: String(discountPercent),
         final_amount: String(finalAmount),
       },
-      ...(finalAmount !== BASE_AMOUNT && {
-        discounts: [],
-      }),
     });
 
     // Store session id on the listing
-    await base44.asServiceRole.entities.PartnerListing.update(listingId, {
+    await base44.entities.PartnerListing.update(listingId, {
       stripe_session_id: session.id,
     });
 
