@@ -67,9 +67,17 @@ export default function Speaking() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
               Keynotes, panels, and workshops on AI marketing, digital strategy, and marketing innovation at industry events, universities, and executive forums worldwide
             </p>
-            <p className="text-sm text-gray-500 max-w-3xl mx-auto mb-8">
+            <p className="text-sm text-gray-500 max-w-3xl mx-auto mb-4">
               (Showing recent highlights—view complete history on David's <a href="https://serialmarketer.net/contact/speaking/" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700 underline">speaking page</a>)
             </p>
+            <div className="mb-8">
+              <Link
+                to={createPageUrl("GuestLectures")}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-100 border border-amber-200 text-amber-800 text-sm font-medium hover:bg-amber-200 transition-colors"
+              >
+                🎓 View University & College Guest Lectures
+              </Link>
+            </div>
 
             {/* Year Filter */}
             <div className="flex flex-wrap justify-center gap-2">
