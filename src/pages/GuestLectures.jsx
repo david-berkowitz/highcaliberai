@@ -8,33 +8,57 @@ import MetaTags from "@/components/SEO/MetaTags";
 
 const LECTURES = [
   {
-    school: "Baruch College (CUNY)",
-    department: "Department of Communication Studies",
-    topic: "Advertising Account Management",
-    notes: "Interactive guest lecture with a live game component covering best practices in client-agency relationships, account management strategy, and modern advertising workflows.",
-    link: createPageUrl("Baruch"),
-    linkLabel: "View Lecture Page",
-    internal: true,
-  },
-  {
     school: "NYU Stern School of Business",
-    department: "Marketing",
     topic: "AI & Digital Marketing",
-    notes: "Shared AI tools, frameworks, and practical marketing applications with MBA students and faculty.",
     quote: "Very good of you to come speak, and to share SO MUCH helpful material. I am sure everyone was really impressed, and I know they found it incredibly valuable.",
     quoteAttr: "Ruth Stevens, NYU Stern",
   },
   {
-    school: "Columbia University",
-    department: "Graduate School of Journalism / Business",
-    topic: "Digital & AI Marketing Strategy",
-    notes: "Guest lecture on emerging AI tools and marketing strategy for graduate students.",
+    school: "MIT Sloan School of Management",
+    topic: "AI & Marketing Strategy",
   },
   {
-    school: "Syracuse University",
-    department: "S.I. Newhouse School of Public Communications",
-    topic: "Digital Marketing & AI",
-    notes: "Presentation on AI's impact on advertising and communications for students in one of the top communications programs in the country.",
+    school: "Yale School of Management",
+    topic: "AI & Marketing",
+  },
+  {
+    school: "Rutgers Business School",
+    topic: "AI & Digital Marketing",
+  },
+  {
+    school: "USC Marshall School of Business",
+    topic: "AI & Marketing Strategy",
+  },
+  {
+    school: "Binghamton University",
+    topic: "AI & Marketing",
+  },
+  {
+    school: "Fordham Gabelli School of Business",
+    topic: "AI & Digital Marketing",
+  },
+  {
+    school: "University of Maryland Robert H. Smith School of Business",
+    topic: "AI & Marketing Strategy",
+  },
+  {
+    school: "NYU (Undergraduate)",
+    topic: "AI & Digital Marketing",
+  },
+  {
+    school: "North Carolina Central University",
+    topic: "AI & Marketing",
+  },
+  {
+    school: "Columbia University",
+    topic: "AI & Marketing Strategy",
+  },
+  {
+    school: "Baruch College (CUNY)",
+    topic: "Advertising Account Management",
+    link: createPageUrl("Baruch"),
+    linkLabel: "View Lecture Page",
+    internal: true,
   },
 ];
 
