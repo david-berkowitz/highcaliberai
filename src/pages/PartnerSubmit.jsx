@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
-import { Upload, Plus, X, ChevronRight, AlertCircle } from "lucide-react";
+import { Upload, Plus, X, ChevronRight, AlertCircle, Info } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import MetaTags from "@/components/SEO/MetaTags";
 
 const COMPANY_TYPES = ["Agency", "Consultancy", "SaaS / Tool", "Freelancer", "Research / Analyst", "Media / Publisher", "Other"];
+const SPECIALTY_CATEGORIES = [
+  "Marketing Strategy", "Content & Creative", "Paid Media / Performance", "SEO & Organic",
+  "Social Media", "Email & CRM", "Technical / Development", "Data & Analytics",
+  "AI / Automation", "PR & Communications", "Design & Brand", "Other"
+];
 const VERTICALS_OPTIONS = ["B2B", "B2C", "E-commerce", "Healthcare", "Finance", "Tech", "CPG / Retail", "Media", "Education", "Hospitality", "Real Estate", "Non-Profit", "Government", "Other"];
-const STEPS = ["Your Info", "Services", "Agreement & Payment"];
+const GEOGRAPHY_OPTIONS = ["United States", "Canada", "United Kingdom", "Europe", "Latin America", "Asia Pacific", "Middle East", "Africa", "Global / Remote"];
+const DEFAULT_SERVICES = [
+  "AI Strategy", "Content Marketing", "SEO", "Paid Search (SEM)", "Paid Social",
+  "Email Marketing", "Marketing Automation", "Brand Strategy", "Social Media Management",
+  "Data Analytics", "Web Development", "Creative / Design", "PR & Communications",
+  "Influencer Marketing", "Video Production", "CRM Implementation", "Lead Generation",
+  "Conversion Rate Optimization", "Market Research", "Training & Workshops"
+];
+const STEPS = ["Company Info", "Founder & Reach", "Services", "Agreement & Payment"];
 
 const AGREEMENT_TEXT = `PARTNER MARKETPLACE LISTING AGREEMENT
 
@@ -16,7 +28,7 @@ This agreement is between High Caliber AI ("HCA") and the submitting company ("P
 
 1. LISTING FEE. Partner agrees to pay a one-time, non-refundable listing fee of $49 (or applicable discounted amount) to submit a listing for review. Submission of payment does not guarantee listing approval. HCA reserves the right to reject any submission for any reason without refund.
 
-2. REFERRAL FEE. If a client engagement originates from or is materially facilitated by a referral from HCA, Partner agrees to remit a referral fee equal to 5% of the total contract value of that engagement to High Caliber AI, payable monthly, for the first twelve (12) months of that engagement.
+2. REFERRAL FEE. If a client engagement originates from or is materially facilitated by a referral from HCA, Partner agrees to remit a referral fee equal to 5% of the total contract value of that engagement to High Caliber AI, payable monthly, for the first twelve (12) months from the date of first payment received for that engagement.
 
 3. GOOD FAITH. Partner acknowledges this referral fee obligation and agrees to honor it in good faith. Partner will self-report any qualifying engagements within 30 days of deal close and remit fees monthly via invoice.
 
@@ -26,19 +38,17 @@ This agreement is between High Caliber AI ("HCA") and the submitting company ("P
 
 By checking the box below, you agree to these terms.`;
 
+const DISCOUNT_CODES = { "HCAIVIP": 100, "HCAI50": 50 };
+
 export default function PartnerSubmit() {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({
-    company_name: "",
-    company_type: "",
-    website: "",
-    logo_url: "",
-    description: "",
-    verticals: [],
-    services: [],
-    keywords: [],
-    contact_name: "",
-    contact_email: "",
+    company_name: "", tagline: "", company_type: "", specialty_category: "",
+    website: "", logo_url: "", description: "",
+    founder_bio: "", headquarters: "",
+    geographies_served: [], verticals: [],
+    services: [], keywords: [],
+    contact_name: "", contact_email: "",
   });
   const [serviceInput, setServiceInput] = useState("");
   const [keywordInput, setKeywordInput] = useState("");
@@ -50,14 +60,7 @@ export default function PartnerSubmit() {
   const [error, setError] = useState("");
   const [logoUploading, setLogoUploading] = useState(false);
 
-  const DISCOUNT_CODES = {
-    "HCAIVIP": 100,
-    "HCAI50": 50,
-  };
-
-  const finalPrice = discountApplied !== null
-    ? (49 * (1 - discountApplied / 100)).toFixed(2)
-    : "49.00";
+  const finalPrice = discountApplied !== null ? (49 * (1 - discountApplied / 100)).toFixed(2) : "49.00";
 
   const applyDiscount = () => {
     const code = discountCode.toUpperCase();
@@ -77,15 +80,21 @@ export default function PartnerSubmit() {
     setter("");
   };
 
-  const removeTag = (field, val) => {
-    setForm(f => ({ ...f, [field]: f[field].filter(v => v !== val) }));
-  };
+  const removeTag = (field, val) => setForm(f => ({ ...f, [field]: f[field].filter(v => v !== val) }));
 
-  const toggleVertical = (v) => {
+  const toggleMulti = (field, val) => {
     setForm(f => ({
       ...f,
-      verticals: f.verticals.includes(v) ? f.verticals.filter(x => x !== v) : [...f.verticals, v],
+      [field]: f[field].includes(val) ? f[field].filter(x => x !== val) : [...f[field], val],
     }));
+  };
+
+  const toggleService = (s) => {
+    if (form.services.includes(s)) {
+      removeTag("services", s);
+    } else if (form.services.length < 10) {
+      setForm(f => ({ ...f, services: [...f.services, s] }));
+    }
   };
 
   const handleLogoUpload = async (e) => {
@@ -97,16 +106,19 @@ export default function PartnerSubmit() {
     setLogoUploading(false);
   };
 
-  const step0Valid = form.company_name && form.company_type && form.website && form.contact_name && form.contact_email && form.description;
-  const step1Valid = form.services.length > 0;
-  const step2Valid = agreed;
+  const descLen = form.description.length;
+  const taglineLen = form.tagline.length;
+
+  const step0Valid = form.company_name && form.company_type && form.website && form.contact_name && form.contact_email && descLen >= 50 && descLen <= 2000 && taglineLen <= 150;
+  const step1Valid = true; // founder & geo are optional
+  const step2Valid = form.services.length > 0;
+  const step3Valid = agreed;
 
   const handleSubmit = async () => {
     setSubmitting(true);
     setError("");
     try {
-      // Create the listing record first
-      const listing = await base44.asServiceRole.entities.PartnerListing.create({
+      const listing = await base44.entities.PartnerListing.create({
         ...form,
         status: "pending_payment",
         agreement_accepted: true,
@@ -114,7 +126,6 @@ export default function PartnerSubmit() {
         discount_code: discountApplied !== null ? discountCode.toUpperCase() : null,
       });
 
-      // Check if running in iframe (preview)
       if (window.self !== window.top) {
         alert("Checkout is only available from the published app, not in preview mode.");
         setSubmitting(false);
@@ -140,6 +151,8 @@ export default function PartnerSubmit() {
     setSubmitting(false);
   };
 
+  const inputCls = "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500";
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <MetaTags
@@ -151,68 +164,84 @@ export default function PartnerSubmit() {
       <div className="max-w-2xl mx-auto px-4 pt-28 pb-20">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <h1 className="text-4xl font-bold text-gray-900 mb-2 text-center">Submit Your Listing</h1>
-          <p className="text-gray-500 text-center mb-8">Join the High Caliber AI Partner Marketplace</p>
+          <p className="text-gray-500 text-center mb-8">Join the High Caliber AI Partner Marketplace — $49 lifetime</p>
 
           {/* Step Indicator */}
-          <div className="flex items-center justify-center gap-2 mb-10">
+          <div className="flex items-center justify-center gap-1 mb-10">
             {STEPS.map((s, i) => (
               <React.Fragment key={s}>
-                <div className={`flex items-center gap-2 text-sm font-medium ${i === step ? "text-red-600" : i < step ? "text-green-600" : "text-gray-400"}`}>
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${i === step ? "bg-red-600 text-white" : i < step ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"}`}>
+                <div className={`flex items-center gap-1.5 text-xs font-medium ${i === step ? "text-red-600" : i < step ? "text-green-600" : "text-gray-400"}`}>
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${i === step ? "bg-red-600 text-white" : i < step ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"}`}>
                     {i < step ? "✓" : i + 1}
                   </div>
                   <span className="hidden sm:block">{s}</span>
                 </div>
-                {i < STEPS.length - 1 && <div className="w-8 h-px bg-gray-300" />}
+                {i < STEPS.length - 1 && <div className="w-6 h-px bg-gray-300 mx-1" />}
               </React.Fragment>
             ))}
           </div>
 
           <Card className="border border-gray-200 shadow-sm">
             <CardContent className="p-8">
+
               {/* STEP 0: Company Info */}
               {step === 0 && (
                 <div className="space-y-5">
                   <h2 className="text-xl font-bold text-gray-900 mb-4">Company Information</h2>
-
                   <div className="grid grid-cols-2 gap-4">
                     <div className="col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-1">Company Name *</label>
-                      <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                        value={form.company_name} onChange={e => setForm(f => ({ ...f, company_name: e.target.value }))} />
+                      <input className={inputCls} value={form.company_name} onChange={e => setForm(f => ({ ...f, company_name: e.target.value }))} />
+                    </div>
+                    <div className="col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Tagline <span className="text-gray-400 font-normal">(max 150 chars)</span>
+                      </label>
+                      <input className={inputCls} maxLength={150} placeholder="e.g. AI-powered marketing for mid-market brands"
+                        value={form.tagline} onChange={e => setForm(f => ({ ...f, tagline: e.target.value }))} />
+                      <p className={`text-xs mt-1 ${taglineLen > 140 ? "text-amber-500" : "text-gray-400"}`}>{taglineLen}/150</p>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Company Type *</label>
-                      <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                        value={form.company_type} onChange={e => setForm(f => ({ ...f, company_type: e.target.value }))}>
+                      <select className={inputCls} value={form.company_type} onChange={e => setForm(f => ({ ...f, company_type: e.target.value }))}>
                         <option value="">Select...</option>
                         {COMPANY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Website *</label>
-                      <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                        placeholder="https://" value={form.website} onChange={e => setForm(f => ({ ...f, website: e.target.value }))} />
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Specialty Category</label>
+                      <select className={inputCls} value={form.specialty_category} onChange={e => setForm(f => ({ ...f, specialty_category: e.target.value }))}>
+                        <option value="">Select...</option>
+                        {SPECIALTY_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+                      </select>
                     </div>
                     <div className="col-span-2">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Description * <span className="text-gray-400 font-normal">(what you do, who you serve)</span></label>
-                      <textarea rows={4} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Website *</label>
+                      <input className={inputCls} placeholder="https://" value={form.website} onChange={e => setForm(f => ({ ...f, website: e.target.value }))} />
+                    </div>
+                    <div className="col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Description * <span className="text-gray-400 font-normal">(50–2,000 chars)</span>
+                      </label>
+                      <textarea rows={5} className={`${inputCls} resize-none`}
+                        placeholder="What you do, who you serve, what makes you different..."
                         value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
+                      <p className={`text-xs mt-1 ${descLen > 0 && descLen < 50 ? "text-red-500" : descLen > 1900 ? "text-amber-500" : "text-gray-400"}`}>
+                        {descLen}/2000 {descLen > 0 && descLen < 50 && `— need ${50 - descLen} more chars`}
+                      </p>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Contact Name *</label>
-                      <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                        value={form.contact_name} onChange={e => setForm(f => ({ ...f, contact_name: e.target.value }))} />
+                      <input className={inputCls} value={form.contact_name} onChange={e => setForm(f => ({ ...f, contact_name: e.target.value }))} />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Contact Email *</label>
-                      <input type="email" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                        value={form.contact_email} onChange={e => setForm(f => ({ ...f, contact_email: e.target.value }))} />
+                      <input type="email" className={inputCls} value={form.contact_email} onChange={e => setForm(f => ({ ...f, contact_email: e.target.value }))} />
                     </div>
                     <div className="col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-1">Logo</label>
                       <div className="flex items-center gap-4">
-                        {form.logo_url && <img src={form.logo_url} className="h-12 rounded border border-gray-200 object-contain" />}
+                        {form.logo_url && <img src={form.logo_url} className="h-12 rounded border border-gray-200 object-contain" alt="logo" />}
                         <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
                           <Upload className="w-4 h-4" />
                           {logoUploading ? "Uploading..." : "Upload Logo"}
@@ -221,7 +250,6 @@ export default function PartnerSubmit() {
                       </div>
                     </div>
                   </div>
-
                   <div className="flex justify-end pt-2">
                     <button disabled={!step0Valid} onClick={() => setStep(1)}
                       className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-lg font-medium text-sm disabled:opacity-40 hover:bg-red-700 transition-colors">
@@ -231,17 +259,41 @@ export default function PartnerSubmit() {
                 </div>
               )}
 
-              {/* STEP 1: Services & Tags */}
+              {/* STEP 1: Founder & Reach */}
               {step === 1 && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-4">Services & Keywords</h2>
+                  <h2 className="text-xl font-bold text-gray-900 mb-1">Founder & Geographic Reach</h2>
+                  <p className="text-sm text-gray-500 mb-4">All fields optional but help buyers find the right fit.</p>
 
-                  {/* Verticals */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Verticals / Industries Served</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Founder / Key Leader Bio</label>
+                    <textarea rows={4} className={`${inputCls} resize-none`}
+                      placeholder="Brief bio of the founder or primary contact — background, expertise, notable experience..."
+                      value={form.founder_bio} onChange={e => setForm(f => ({ ...f, founder_bio: e.target.value }))} />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Headquarters <span className="text-gray-400 font-normal">(city, state/country)</span></label>
+                    <input className={inputCls} placeholder="e.g. New York, NY" value={form.headquarters} onChange={e => setForm(f => ({ ...f, headquarters: e.target.value }))} />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Geographies Served</label>
+                    <div className="flex flex-wrap gap-2">
+                      {GEOGRAPHY_OPTIONS.map(g => (
+                        <button key={g} type="button" onClick={() => toggleMulti("geographies_served", g)}
+                          className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${form.geographies_served.includes(g) ? "bg-red-600 text-white border-red-600" : "bg-white text-gray-600 border-gray-300 hover:border-red-400"}`}>
+                          {g}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Industry Verticals</label>
                     <div className="flex flex-wrap gap-2">
                       {VERTICALS_OPTIONS.map(v => (
-                        <button key={v} type="button" onClick={() => toggleVertical(v)}
+                        <button key={v} type="button" onClick={() => toggleMulti("verticals", v)}
                           className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${form.verticals.includes(v) ? "bg-red-600 text-white border-red-600" : "bg-white text-gray-600 border-gray-300 hover:border-red-400"}`}>
                           {v}
                         </button>
@@ -249,38 +301,62 @@ export default function PartnerSubmit() {
                     </div>
                   </div>
 
-                  {/* Services */}
+                  <div className="flex justify-between pt-2">
+                    <button onClick={() => setStep(0)} className="px-6 py-2.5 border border-gray-300 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
+                    <button onClick={() => setStep(2)}
+                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-lg font-medium text-sm hover:bg-red-700 transition-colors">
+                      Next <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 2: Services & Keywords */}
+              {step === 2 && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-bold text-gray-900 mb-1">Services & Keywords</h2>
+
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Services Offered * <span className="text-gray-400 font-normal">(up to 10)</span></label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Services Offered * <span className="text-gray-400 font-normal">({form.services.length}/10 selected)</span>
+                    </label>
+                    <p className="text-xs text-gray-400 mb-3">Click to select from common services, or type your own below.</p>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {DEFAULT_SERVICES.map(s => (
+                        <button key={s} type="button" onClick={() => toggleService(s)}
+                          className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${form.services.includes(s) ? "bg-red-600 text-white border-red-600" : form.services.length >= 10 ? "bg-white text-gray-400 border-gray-200 cursor-not-allowed" : "bg-white text-gray-600 border-gray-300 hover:border-red-400"}`}>
+                          {s}
+                        </button>
+                      ))}
+                    </div>
                     <div className="flex gap-2 mb-2">
-                      <input className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                        placeholder="e.g. AI Strategy, Content Marketing..."
+                      <input className={inputCls} placeholder="Add custom service..."
                         value={serviceInput} onChange={e => setServiceInput(e.target.value)}
                         onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); addTag("services", serviceInput, setServiceInput, 10); } }} />
                       <button type="button" onClick={() => addTag("services", serviceInput, setServiceInput, 10)}
-                        className="px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 text-sm font-medium">
+                        className="px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      {form.services.map(s => (
-                        <span key={s} className="inline-flex items-center gap-1 px-3 py-1 bg-red-50 text-red-700 border border-red-200 rounded-full text-xs font-medium">
-                          {s} <button onClick={() => removeTag("services", s)}><X className="w-3 h-3" /></button>
-                        </span>
-                      ))}
-                    </div>
+                    {form.services.length > 0 && (
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {form.services.map(s => (
+                          <span key={s} className="inline-flex items-center gap-1 px-3 py-1 bg-red-50 text-red-700 border border-red-200 rounded-full text-xs font-medium">
+                            {s} <button onClick={() => removeTag("services", s)}><X className="w-3 h-3" /></button>
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  {/* Keywords */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Keywords <span className="text-gray-400 font-normal">(up to 10, for search)</span></label>
                     <div className="flex gap-2 mb-2">
-                      <input className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                        placeholder="e.g. AI, automation, lead gen..."
+                      <input className={inputCls} placeholder="e.g. AI, automation, lead gen..."
                         value={keywordInput} onChange={e => setKeywordInput(e.target.value)}
                         onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); addTag("keywords", keywordInput, setKeywordInput, 10); } }} />
                       <button type="button" onClick={() => addTag("keywords", keywordInput, setKeywordInput, 10)}
-                        className="px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 text-sm font-medium">
+                        className="px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>
@@ -294,8 +370,8 @@ export default function PartnerSubmit() {
                   </div>
 
                   <div className="flex justify-between pt-2">
-                    <button onClick={() => setStep(0)} className="px-6 py-2.5 border border-gray-300 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
-                    <button disabled={!step1Valid} onClick={() => setStep(2)}
+                    <button onClick={() => setStep(1)} className="px-6 py-2.5 border border-gray-300 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
+                    <button disabled={!step2Valid} onClick={() => setStep(3)}
                       className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-lg font-medium text-sm disabled:opacity-40 hover:bg-red-700 transition-colors">
                       Next <ChevronRight className="w-4 h-4" />
                     </button>
@@ -303,28 +379,26 @@ export default function PartnerSubmit() {
                 </div>
               )}
 
-              {/* STEP 2: Agreement & Payment */}
-              {step === 2 && (
+              {/* STEP 3: Agreement & Payment */}
+              {step === 3 && (
                 <div className="space-y-6">
                   <h2 className="text-xl font-bold text-gray-900 mb-1">Agreement & Payment</h2>
 
-                  {/* Agreement */}
                   <div>
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 h-48 overflow-y-auto text-xs text-gray-600 font-mono leading-relaxed whitespace-pre-wrap">
                       {AGREEMENT_TEXT}
                     </div>
                     <label className="flex items-start gap-3 mt-3 cursor-pointer">
                       <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} className="mt-0.5 w-4 h-4 accent-red-600" />
-                      <span className="text-sm text-gray-700">I have read and agree to the Partner Marketplace Listing Agreement, including the 5% referral fee obligation for the first year of any referred engagements.</span>
+                      <span className="text-sm text-gray-700">I have read and agree to the Partner Marketplace Listing Agreement, including the 5% referral fee obligation for the first 12 months from first client payment on any referred engagement.</span>
                     </label>
                   </div>
 
-                  {/* Discount Code */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Discount Code <span className="text-gray-400 font-normal">(optional)</span></label>
                     <div className="flex gap-2">
-                      <input className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 uppercase"
-                        placeholder="Enter code" value={discountCode} onChange={e => { setDiscountCode(e.target.value); setDiscountApplied(null); setDiscountError(""); }} />
+                      <input className={`${inputCls} uppercase`} placeholder="Enter code"
+                        value={discountCode} onChange={e => { setDiscountCode(e.target.value); setDiscountApplied(null); setDiscountError(""); }} />
                       <button type="button" onClick={applyDiscount}
                         className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50">Apply</button>
                     </div>
@@ -334,11 +408,9 @@ export default function PartnerSubmit() {
                     {discountError && <p className="text-red-500 text-xs mt-1">{discountError}</p>}
                   </div>
 
-                  {/* Price Summary */}
                   <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
                     <div className="flex justify-between text-sm text-gray-600 mb-1">
-                      <span>Listing Fee (Lifetime)</span>
-                      <span>$49.00</span>
+                      <span>Listing Fee (Lifetime)</span><span>$49.00</span>
                     </div>
                     {discountApplied !== null && (
                       <div className="flex justify-between text-sm text-green-600 mb-1">
@@ -347,22 +419,20 @@ export default function PartnerSubmit() {
                       </div>
                     )}
                     <div className="flex justify-between font-bold text-gray-900 text-base border-t border-gray-200 pt-2 mt-2">
-                      <span>Total Due</span>
-                      <span>${finalPrice}</span>
+                      <span>Total Due</span><span>${finalPrice}</span>
                     </div>
                     <p className="text-xs text-gray-400 mt-2">Submission fee is non-refundable. Approval is not guaranteed.</p>
                   </div>
 
                   {error && (
                     <div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg p-3">
-                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                      {error}
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />{error}
                     </div>
                   )}
 
                   <div className="flex justify-between pt-2">
-                    <button onClick={() => setStep(1)} className="px-6 py-2.5 border border-gray-300 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
-                    <button disabled={!step2Valid || submitting} onClick={handleSubmit}
+                    <button onClick={() => setStep(2)} className="px-6 py-2.5 border border-gray-300 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
+                    <button disabled={!step3Valid || submitting} onClick={handleSubmit}
                       className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-lg font-medium text-sm disabled:opacity-40 hover:bg-red-700 transition-colors">
                       {submitting ? "Processing..." : discountApplied === 100 ? "Submit Listing (Free)" : `Pay $${finalPrice} & Submit`}
                       <ChevronRight className="w-4 h-4" />

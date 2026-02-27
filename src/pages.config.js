@@ -94,6 +94,7 @@ import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
 import PartnerSubmit from './pages/PartnerSubmit';
 import PartnerSubmitSuccess from './pages/PartnerSubmitSuccess';
+import PartnerFAQ from './pages/PartnerFAQ';
 import __Layout from './Layout.jsx';
 
 
@@ -145,6 +146,7 @@ export const PAGES = {
     "WorkshopShowcase": WorkshopShowcase,
     "PartnerSubmit": PartnerSubmit,
     "PartnerSubmitSuccess": PartnerSubmitSuccess,
+    "PartnerFAQ": PartnerFAQ,
 }
 
 export const pagesConfig = {
