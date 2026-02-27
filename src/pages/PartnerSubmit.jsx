@@ -124,7 +124,7 @@ export default function PartnerSubmit() {
         agreement_accepted: true,
         agreement_accepted_at: new Date().toISOString(),
         discount_code: discountApplied !== null ? discountCode.toUpperCase() : null,
-      });
+      }, { useServiceRole: false });
 
       if (window.self !== window.top) {
         alert("Checkout is only available from the published app, not in preview mode.");
