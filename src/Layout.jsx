@@ -57,7 +57,15 @@ export default function Layout({ children, currentPageName }) {
         { name: "The Marketing Hustle", page: "Hustle" }
       ]
     },
-    { name: "Partners", page: "Partners" },
+    { 
+      name: "Partners", 
+      page: "Partners",
+      subMenu: [
+        { name: "Partner Marketplace", page: "Partners" },
+        { name: "Submit Your Listing", page: "PartnerSubmit" },
+        { name: "Partner FAQ", page: "PartnerFAQ" },
+      ]
+    },
     { name: "BD", page: "BD" },
     { name: "Contact", page: "Contact" },
   ];
