@@ -101,6 +101,8 @@ import AgenticROICalculator from './pages/AgenticROICalculator';
 import AgenticClientScorecard from './pages/AgenticClientScorecard';
 import AgenticAssessment from './pages/AgenticAssessment';
 import AgenticUseCaseLibrary from './pages/AgenticUseCaseLibrary';
+import Progress from './pages/Progress';
+import Bing from './pages/Bing';
 import __Layout from './Layout.jsx';
 
 
@@ -159,6 +161,8 @@ export const PAGES = {
     "AgenticClientScorecard": AgenticClientScorecard,
     "AgenticAssessment": AgenticAssessment,
     "AgenticUseCaseLibrary": AgenticUseCaseLibrary,
+    "Progress": Progress,
+    "Bing": Bing,
 }
 
 export const pagesConfig = {
