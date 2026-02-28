@@ -66,6 +66,20 @@ export default function Layout({ children, currentPageName }) {
         { name: "Partner FAQ", page: "PartnerFAQ" },
       ]
     },
+    { 
+      name: "Agentic Agency", 
+      page: "AgenticAgency",
+      subMenu: [
+        { name: "Agentic Agency Hub", page: "AgenticAgency" },
+        { name: "Quick Start Guide", page: "AgenticQuickStart" },
+        { name: "Readiness Assessment", page: "AgenticAssessment" },
+        { name: "ROI Calculator", page: "AgenticROICalculator" },
+        { name: "Client Scorecard", page: "AgenticClientScorecard" },
+        { name: "Use Case Library", page: "AgenticUseCaseLibrary" },
+        { name: "Progress Partners", page: "Progress" },
+        { name: "Binghamton Quiz", page: "Bing" },
+      ]
+    },
     { name: "BD", page: "BD" },
     { name: "Contact", page: "Contact" },
   ];
@@ -301,6 +315,16 @@ export default function Layout({ children, currentPageName }) {
                   <Link to={createPageUrl("Lux")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Luxury Outlook</Link>
                   <Link to={createPageUrl("FOAF")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">FOAF</Link>
                   <Link to={createPageUrl("Hustle")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">The Marketing Hustle</Link>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 mb-2">Agentic Agency</h3>
+                <div className="space-y-1">
+                  <Link to={createPageUrl("AgenticAgency")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Hub</Link>
+                  <Link to={createPageUrl("AgenticAssessment")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Assessment</Link>
+                  <Link to={createPageUrl("AgenticROICalculator")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">ROI Calculator</Link>
+                  <Link to={createPageUrl("AgenticUseCaseLibrary")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Use Case Library</Link>
+                  <Link to={createPageUrl("Progress")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Progress Partners</Link>
                 </div>
               </div>
             </div>
