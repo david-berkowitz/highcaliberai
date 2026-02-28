@@ -3,7 +3,7 @@ import { createClientFromRequest } from "npm:@base44/sdk@0.8.6";
 
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY"));
 
-const PRICE_ID = "price_1T5XkOAdr85IMGsS2NCvtJdK";
+const PRICE_ID = "price_1T5bapLPHEpukNPPicHsYTLG";
 const BASE_AMOUNT = 4900; // $49 in cents
 
 const DISCOUNT_CODES = {
