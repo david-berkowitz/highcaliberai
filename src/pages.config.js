@@ -103,6 +103,7 @@ import AgenticAssessment from './pages/AgenticAssessment';
 import AgenticUseCaseLibrary from './pages/AgenticUseCaseLibrary';
 import Progress from './pages/Progress';
 import Bing from './pages/Bing';
+import ICE from './pages/ICE';
 import __Layout from './Layout.jsx';
 
 
@@ -163,6 +164,7 @@ export const PAGES = {
     "AgenticUseCaseLibrary": AgenticUseCaseLibrary,
     "Progress": Progress,
     "Bing": Bing,
+    "ICE": ICE,
 }
 
 export const pagesConfig = {
