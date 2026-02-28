@@ -77,6 +77,9 @@ import Lux from './pages/Lux';
 import LuxuryRealEstate from './pages/LuxuryRealEstate';
 import Mensch from './pages/Mensch';
 import Offsite from './pages/Offsite';
+import PartnerFAQ from './pages/PartnerFAQ';
+import PartnerSubmit from './pages/PartnerSubmit';
+import PartnerSubmitSuccess from './pages/PartnerSubmitSuccess';
 import Partners from './pages/Partners';
 import Politics from './pages/Politics';
 import Press from './pages/Press';
@@ -92,9 +95,12 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import PartnerSubmit from './pages/PartnerSubmit';
-import PartnerSubmitSuccess from './pages/PartnerSubmitSuccess';
-import PartnerFAQ from './pages/PartnerFAQ';
+import AgenticAgency from './pages/AgenticAgency';
+import AgenticQuickStart from './pages/AgenticQuickStart';
+import AgenticROICalculator from './pages/AgenticROICalculator';
+import AgenticClientScorecard from './pages/AgenticClientScorecard';
+import AgenticAssessment from './pages/AgenticAssessment';
+import AgenticUseCaseLibrary from './pages/AgenticUseCaseLibrary';
 import __Layout from './Layout.jsx';
 
 
@@ -129,6 +135,9 @@ export const PAGES = {
     "LuxuryRealEstate": LuxuryRealEstate,
     "Mensch": Mensch,
     "Offsite": Offsite,
+    "PartnerFAQ": PartnerFAQ,
+    "PartnerSubmit": PartnerSubmit,
+    "PartnerSubmitSuccess": PartnerSubmitSuccess,
     "Partners": Partners,
     "Politics": Politics,
     "Press": Press,
@@ -144,9 +153,12 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "PartnerSubmit": PartnerSubmit,
-    "PartnerSubmitSuccess": PartnerSubmitSuccess,
-    "PartnerFAQ": PartnerFAQ,
+    "AgenticAgency": AgenticAgency,
+    "AgenticQuickStart": AgenticQuickStart,
+    "AgenticROICalculator": AgenticROICalculator,
+    "AgenticClientScorecard": AgenticClientScorecard,
+    "AgenticAssessment": AgenticAssessment,
+    "AgenticUseCaseLibrary": AgenticUseCaseLibrary,
 }
 
 export const pagesConfig = {
