@@ -286,6 +286,17 @@ export default function Partners() {
         </div>
       </section>
 
+      {/* Partner Finder Chat */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Not sure who to hire?</h2>
+            <p className="text-gray-500">Tell our AI assistant what you need and get a personalized partner recommendation — or get David involved directly.</p>
+          </div>
+          <AgentChat agentName="partner_finder" />
+        </div>
+      </section>
+
       {/* Submit CTA */}
       <section className="py-16 bg-gradient-to-br from-red-600 to-red-700">
         <div className="max-w-3xl mx-auto px-4 text-center">
