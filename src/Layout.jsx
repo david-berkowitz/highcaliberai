@@ -307,10 +307,11 @@ export default function Layout({ children, currentPageName }) {
                 <h3 className="text-sm font-semibold text-gray-400 mb-2">Agentic Agency</h3>
                 <div className="space-y-1">
                   <Link to={createPageUrl("AgenticAgency")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Hub</Link>
+                  <Link to={createPageUrl("AgenticQuickStart")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Quick Start Guide</Link>
                   <Link to={createPageUrl("AgenticAssessment")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Assessment</Link>
                   <Link to={createPageUrl("AgenticROICalculator")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">ROI Calculator</Link>
+                  <Link to={createPageUrl("AgenticClientScorecard")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Client Scorecard</Link>
                   <Link to={createPageUrl("AgenticUseCaseLibrary")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Use Case Library</Link>
-                  <Link to={createPageUrl("Progress")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Progress Partners</Link>
                 </div>
               </div>
             </div>
