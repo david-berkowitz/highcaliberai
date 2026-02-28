@@ -30,7 +30,8 @@ export default function Layout({ children, currentPageName }) {
       subMenu: [
         { name: "Overview", page: "Services" },
         { name: "Case Studies", page: "CaseStudies" },
-        { name: "Speaking", page: "Speaking" }
+        { name: "Speaking", page: "Speaking" },
+        { name: "BD", page: "BD" }
       ]
     },
     { 
@@ -66,21 +67,6 @@ export default function Layout({ children, currentPageName }) {
         { name: "Partner FAQ", page: "PartnerFAQ" },
       ]
     },
-    { 
-      name: "Agentic Agency", 
-      page: "AgenticAgency",
-      subMenu: [
-        { name: "Agentic Agency Hub", page: "AgenticAgency" },
-        { name: "Quick Start Guide", page: "AgenticQuickStart" },
-        { name: "Readiness Assessment", page: "AgenticAssessment" },
-        { name: "ROI Calculator", page: "AgenticROICalculator" },
-        { name: "Client Scorecard", page: "AgenticClientScorecard" },
-        { name: "Use Case Library", page: "AgenticUseCaseLibrary" },
-        { name: "Progress Partners", page: "Progress" },
-        { name: "Binghamton Quiz", page: "Bing" },
-      ]
-    },
-    { name: "BD", page: "BD" },
     { name: "Contact", page: "Contact" },
   ];
 
