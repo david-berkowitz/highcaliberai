@@ -57,10 +57,11 @@ Deno.serve(async (req) => {
 
         // ---- STEP 2: IMPORT all remaining from Serial Marketer ----
         if (mode !== 'migrate_only') {
-            const wpApiUrl = 'https://serialmarketer.net/wp-json/wp/v2/pages/13514';
-            const response = await fetch(wpApiUrl);
-            const data = await response.json();
-            const htmlContent = data.content?.rendered || '';
+            // Fetch the rendered HTML page (not WP API) to get ALL tabs including Past Years
+            const pageResponse = await fetch('https://serialmarketer.net/contact/press/', {
+                headers: { 'User-Agent': 'Mozilla/5.0 (compatible; press-importer/1.0)' }
+            });
+            const htmlContent = await pageResponse.text();
 
             if (!htmlContent) {
                 return Response.json({ error: 'No content from Serial Marketer' }, { status: 404 });
@@ -70,19 +71,19 @@ Deno.serve(async (req) => {
             const result = await base44.asServiceRole.integrations.Core.InvokeLLM({
                 prompt: `Parse this press coverage HTML page and extract EVERY single article/coverage entry listed.
 
-The page has tabs (Recent: Feb 2026, Dec 2025, Nov 2025, Oct 2025, Sep 2025, Aug 2025, Jun 2025, May 2025, Apr 2025, Mar 2025, Feb 2025, Jan 2025 — and a Past Years tab with older coverage). Extract ALL entries from ALL tabs.
+The page has two main sections: "Recent" (with monthly tabs from early 2025 to Feb 2026) and "Past Years" (with monthly tabs going back to 2020). Extract ALL entries from ALL tabs/sections.
 
 For each entry extract:
 - outlet_name: Publication/outlet name
-- article_title: Article or coverage title
-- article_url: The direct article link (NOT social sharing links like LinkedIn share, Twitter share, Facebook share)
+- article_title: Article or coverage title  
+- article_url: The direct article link (NOT social sharing links like linkedin.com/sharing, twitter.com/intent, facebook.com/sharer)
 - coverage_date: YYYY-MM-DD format if parseable, otherwise null
 - coverage_date_text: Raw date text as displayed
 
-Return every article — expect 80-150+ entries total across all years/months.
+Return every article — expect 100-200+ entries total across all years/months.
 
-HTML:
-${htmlContent.substring(0, 200000)}`,
+HTML (full page):
+${htmlContent.substring(0, 300000)}`,
                 response_json_schema: {
                     type: "object",
                     properties: {
