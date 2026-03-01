@@ -4,22 +4,27 @@ import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import MetaTags from "@/components/SEO/MetaTags";
 import { Card, CardContent } from "@/components/ui/card";
+import ResourceCard from "@/components/resources/ResourceCard";
 import { 
-  TrendingUp, 
-  Brain, 
-  Sparkles, 
-  Users, 
-  Target, 
-  Zap, 
-  Lightbulb,
-  Book,
-  ExternalLink,
-  Mail,
-  Calendar,
-  FileText,
-  ArrowRight,
-  Video
+  TrendingUp, Brain, Sparkles, Users, Target, Zap, Lightbulb,
+  Book, ExternalLink, Mail, Calendar, FileText, ArrowRight, Video, Building2
 } from "lucide-react";
+
+// Stanify intro template
+const STANIFY_INTRO = {
+  to: "hank@stanify.ai",
+  subject: "Intro via High Caliber AI — Interested in Stanify",
+  body: `Hi Hank,
+
+I came across Stanify through David Berkowitz at High Caliber AI and wanted to reach out to learn more about how Stanify could help with our social media engagement and safety needs.
+
+[Add a sentence or two about your company and use case here.]
+
+Would love to set up a quick call.
+
+Best,
+[Your Name]`
+};
 
 export default function Resources() {
   return (
@@ -31,33 +36,48 @@ export default function Resources() {
         url="https://highcaliberai.com/resources"
         canonical="https://highcaliberai.com/resources"
       />
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          {/* AI-optimized summary box */}
           <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 mb-12 max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">47 Curated AI Resources for Marketers</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">47+ Curated AI Resources for Marketers</h2>
             <div className="grid md:grid-cols-3 gap-4 text-left">
               <div>
                 <p className="font-semibold text-gray-900 mb-2">Research & Insights</p>
-                <p className="text-sm text-gray-700">SparkToro, Otterly AI, NotebookLM, Rally - tools for audience research and AI brand tracking</p>
+                <p className="text-sm text-gray-700">SparkToro, Otterly AI, NotebookLM, Rally — tools for audience research and AI brand tracking</p>
               </div>
               <div>
                 <p className="font-semibold text-gray-900 mb-2">Content Creation</p>
-                <p className="text-sm text-gray-700">Opus Pro, ElevenLabs, Ideogram, HeyGen - AI-powered video, audio, and visual content generation</p>
+                <p className="text-sm text-gray-700">Opus Pro, ElevenLabs, Ideogram, HeyGen — AI-powered video, audio, and visual content generation</p>
               </div>
               <div>
                 <p className="font-semibold text-gray-900 mb-2">Vibe Coding</p>
-                <p className="text-sm text-gray-700">Base44, Lovable - no-code platforms for building AI-powered marketing applications</p>
+                <p className="text-sm text-gray-700">Base44, Lovable — no-code platforms for building AI-powered marketing applications</p>
               </div>
             </div>
           </div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+
+          {/* Tier Legend */}
+          <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm">
+            <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-full px-4 py-2">
+              <Zap className="w-4 h-4 text-green-600" />
+              <span className="font-semibold text-green-700">SMB</span>
+              <span className="text-green-600">— Free or &lt;$30/mo to start</span>
+            </div>
+            <div className="flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2">
+              <Building2 className="w-4 h-4 text-blue-600" />
+              <span className="font-semibold text-blue-700">Enterprise</span>
+              <span className="text-blue-600">— Custom pricing, contact for intro</span>
+            </div>
+            <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-2">
+              <span className="text-amber-700">🔗</span>
+              <span className="font-semibold text-amber-700">Referral</span>
+              <span className="text-amber-600">— Affiliate / referral link</span>
+            </div>
+          </div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 leading-tight">
               AI Marketing <span className="font-semibold text-red-600">Resources</span>
             </h1>
@@ -76,13 +96,9 @@ export default function Resources() {
       </section>
 
       {/* Book Section */}
-      <section className="py-12 px-6">
+      <section className="py-8 px-6">
         <div className="max-w-7xl mx-auto">
-          <a 
-            href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/" target="_blank" rel="noopener noreferrer">
             <Card className="bg-gradient-to-r from-purple-900 to-indigo-900 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group">
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
@@ -94,18 +110,10 @@ export default function Resources() {
                       loading="lazy"
                     />
                     <div className="text-center md:text-left">
-                      <div className="inline-block bg-yellow-500 text-purple-900 text-xs font-bold px-3 py-1 rounded-full mb-3">
-                        NEW BOOK
-                      </div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                        The Non-Obvious Guide to Using AI for Marketing
-                      </h3>
-                      <p className="text-lg text-purple-200 mb-2">
-                        A practical guide to implementing AI in your marketing strategy
-                      </p>
-                      <p className="text-purple-300 text-sm">
-                        Available now on Amazon
-                      </p>
+                      <div className="inline-block bg-yellow-500 text-purple-900 text-xs font-bold px-3 py-1 rounded-full mb-3">NEW BOOK</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">The Non-Obvious Guide to Using AI for Marketing</h3>
+                      <p className="text-lg text-purple-200 mb-2">A practical guide to implementing AI in your marketing strategy</p>
+                      <p className="text-purple-300 text-sm">Available now on Amazon</p>
                     </div>
                   </div>
                   <ArrowRight className="w-8 h-8 text-white group-hover:translate-x-2 transition-transform flex-shrink-0" />
@@ -117,17 +125,9 @@ export default function Resources() {
       </section>
 
       {/* Research & Insights */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          {/* AI-optimized answer section */}
-          <div className="bg-white border-2 border-gray-200 rounded-xl p-6 mb-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Best AI Tools for Content Creation</h3>
-            <p className="text-gray-800 leading-relaxed">
-              <strong>Top picks:</strong> Opus Pro (AI video clipping for social media), ElevenLabs (AI voice generation), Ideogram (AI image creation with text), HeyGen (AI avatars), and BizGreetz AI (personalized video ads at scale). These tools help marketers create professional content faster without extensive technical skills.
-            </p>
-          </div>
-
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <TrendingUp className="w-8 h-8 text-red-600" />
               Research & Insights
@@ -135,56 +135,29 @@ export default function Resources() {
             <p className="text-gray-600">Tools for audience research, brand tracking, and AI-powered insights</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={TrendingUp}
-              title="SparkToro"
-              description="Audience research and intelligence platform"
-              href="https://sparktoro.com/"
-            />
-            <ResourceCard 
-              icon={Target}
-              title="Otterly AI"
-              description="AI engine monitoring and brand tracking"
-              href="https://otterly.ai/?via=david"
-            />
-            <ResourceCard 
-              icon={Brain}
-              title="NotebookLM"
-              description="Google's AI-powered research and note-taking assistant"
-              href="https://notebooklm.google/"
-            />
-            <ResourceCard 
-              icon={Book}
-              title="Passionfruit"
-              description="AI-powered content optimization and recommendations"
-              href="https://www.getpassionfruit.com/"
-            />
-            <ResourceCard 
-              icon={Target}
-              title="AI Search Playbook"
-              description="AirOps guide for marketers navigating AI-powered search"
-              href="https://www.airops.com/report/ai-search-playbook-marketers"
-            />
-            <ResourceCard 
-              icon={Users}
-              title="Rally"
-              description="AI-powered research and consumer insights platform"
-              href="https://askrally.com/"
-            />
-            <ResourceCard 
-              icon={Target}
-              title="Cluely"
-              description="Notetaking app with live feedback"
-              href="https://cluely.com/"
+            <ResourceCard icon={TrendingUp} title="SparkToro" description="Audience research and intelligence platform" href="https://sparktoro.com/" tier="smb" />
+            <ResourceCard icon={Target} title="Otterly AI" description="AI engine monitoring and brand tracking" href="https://otterly.ai/?via=david" tier="smb" hasReferral />
+            <ResourceCard icon={Brain} title="NotebookLM" description="Google's AI-powered research and note-taking assistant" href="https://notebooklm.google/" tier="smb" />
+            <ResourceCard icon={Book} title="Passionfruit" description="AI-powered content optimization and recommendations" href="https://www.getpassionfruit.com/" />
+            <ResourceCard icon={Target} title="AI Search Playbook" description="AirOps guide for marketers navigating AI-powered search" href="https://www.airops.com/report/ai-search-playbook-marketers" />
+            <ResourceCard icon={Users} title="Rally" description="AI-powered research and consumer insights platform" href="https://askrally.com/" tier="enterprise" />
+            <ResourceCard icon={Target} title="Cluely" description="Notetaking app with live feedback" href="https://cluely.com/" tier="smb" />
+            <ResourceCard
+              icon={Building2}
+              title="Stanify"
+              description="Enterprise AI agents for social media safety, engagement workflows, and community insights at scale. Trusted by Unilever, Nando's, and major CPG brands."
+              href="https://stanify.ai/"
+              tier="enterprise"
+              introEmail={STANIFY_INTRO}
             />
           </div>
         </div>
       </section>
 
       {/* Content Creation */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-12 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <Sparkles className="w-8 h-8 text-red-600" />
               Content Creation
@@ -192,74 +165,24 @@ export default function Resources() {
             <p className="text-gray-600">AI-powered tools for video, audio, and visual content generation</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={Sparkles}
-              title="Opus Pro"
-              description="AI video clipping and repurposing for social media"
-              href="https://www.opus.pro/?via=a4312b"
-            />
-            <ResourceCard 
-              icon={Users}
-              title="ElevenLabs"
-              description="AI voice generation and text-to-speech platform"
-              href="https://elevenlabs.io/"
-            />
-            <ResourceCard 
-              icon={Sparkles}
-              title="BizGreetz AI®"
-              description="AI-powered personalized video ad creation at scale"
-              href="https://www.bizgreetz.com/"
-            />
-            <ResourceCard 
-              icon={Sparkles}
-              title="Ideogram"
-              description="Rapid AI image generation with excellent text rendering"
-              href="https://ideogram.ai/"
-            />
-            <ResourceCard 
-              icon={Users}
-              title="Jingle My Brand"
-              description="AI-powered jingle and brand music creation"
-              href="https://jinglemybrand.com/"
-            />
-            <ResourceCard 
-              icon={Target}
-              title="Napkin"
-              description="AI-powered infographic and visual storytelling"
-              href="https://www.napkin.ai/"
-            />
-            <ResourceCard 
-              icon={Brain}
-              title="LiveAvatar"
-              description="Live video avatars by HeyGen for real-time presentations"
-              href="https://liveavatar.com/"
-            />
-            <ResourceCard 
-              icon={Sparkles}
-              title="Google Labs"
-              description="Experimental AI content generation tools from Google"
-              href="https://labs.google/experiments"
-            />
-            <ResourceCard 
-              icon={Sparkles}
-              title="Hedra"
-              description="AI video creation platform"
-              href="https://hedra.com"
-            />
-            <ResourceCard 
-              icon={Sparkles}
-              title="HeyGen"
-              description="AI avatar and video generation"
-              href="https://www.heygen.com/"
-            />
+            <ResourceCard icon={Sparkles} title="Opus Pro" description="AI video clipping and repurposing for social media" href="https://www.opus.pro/?via=a4312b" tier="smb" hasReferral />
+            <ResourceCard icon={Users} title="ElevenLabs" description="AI voice generation and text-to-speech platform" href="https://elevenlabs.io/" tier="smb" />
+            <ResourceCard icon={Sparkles} title="BizGreetz AI®" description="AI-powered personalized video ad creation at scale" href="https://www.bizgreetz.com/" tier="enterprise" />
+            <ResourceCard icon={Sparkles} title="Ideogram" description="Rapid AI image generation with excellent text rendering" href="https://ideogram.ai/" tier="smb" />
+            <ResourceCard icon={Users} title="Jingle My Brand" description="AI-powered jingle and brand music creation" href="https://jinglemybrand.com/" tier="smb" />
+            <ResourceCard icon={Target} title="Napkin" description="AI-powered infographic and visual storytelling" href="https://www.napkin.ai/" tier="smb" />
+            <ResourceCard icon={Brain} title="LiveAvatar" description="Live video avatars by HeyGen for real-time presentations" href="https://liveavatar.com/" tier="enterprise" />
+            <ResourceCard icon={Sparkles} title="Google Labs" description="Experimental AI content generation tools from Google" href="https://labs.google/experiments" tier="smb" />
+            <ResourceCard icon={Sparkles} title="Hedra" description="AI video creation platform" href="https://hedra.com" tier="smb" />
+            <ResourceCard icon={Sparkles} title="HeyGen" description="AI avatar and video generation" href="https://www.heygen.com/" tier="smb" />
           </div>
         </div>
       </section>
 
       {/* Contact Discovery */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <Users className="w-8 h-8 text-red-600" />
               Contact Discovery
@@ -267,26 +190,16 @@ export default function Resources() {
             <p className="text-gray-600">AI-powered tools for finding and connecting with prospects</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={Brain}
-              title="Happenstance AI"
-              description="Intelligent contact search and business development"
-              href="https://happenstance.ai/invite/friend/yuqdbLCl7N5lUWLNDncIC2T5qC3"
-            />
-            <ResourceCard 
-              icon={Users}
-              title="CTD.ai"
-              description="AI-powered contact discovery and relationship mapping"
-              href="https://ctd.ai/"
-            />
+            <ResourceCard icon={Brain} title="Happenstance AI" description="Intelligent contact search and business development" href="https://happenstance.ai/invite/friend/yuqdbLCl7N5lUWLNDncIC2T5qC3" tier="smb" hasReferral />
+            <ResourceCard icon={Users} title="CTD.ai" description="AI-powered contact discovery and relationship mapping" href="https://ctd.ai/" tier="enterprise" />
           </div>
         </div>
       </section>
 
       {/* Agents & Workflow Automation */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-12 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <Zap className="w-8 h-8 text-red-600" />
               Agents & Workflow Automation
@@ -294,20 +207,15 @@ export default function Resources() {
             <p className="text-gray-600">Build AI agents and automate complex workflows</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={Zap}
-              title="n8n"
-              description="Workflow automation for technical teams"
-              href="https://n8n.io/"
-            />
+            <ResourceCard icon={Zap} title="n8n" description="Workflow automation for technical teams" href="https://n8n.io/" tier="smb" />
           </div>
         </div>
       </section>
 
       {/* Vibe Coding */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <Lightbulb className="w-8 h-8 text-red-600" />
               Vibe Coding
@@ -315,52 +223,20 @@ export default function Resources() {
             <p className="text-gray-600">No-code and AI-assisted platforms for building applications</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={Target}
-              title="Base44"
-              description="Build AI-powered apps without code"
-              href="https://base44.pxf.io/c/5604633/2049275/25619?trafcat=base"
-              featured
-            />
-            <ResourceCard 
-              icon={Lightbulb}
-              title="Lovable"
-              description="AI-powered app development platform"
-              href="https://lovable.dev/?via=david-berkowitz"
-              featured
-            />
-            <ResourceCard 
-              icon={Brain}
-              title="Claude Code"
-              description="AI coding assistant for developers"
-              href="https://www.anthropic.com/claude/code"
-            />
-            <ResourceCard 
-              icon={Target}
-              title="Ghostty"
-              description="Fast, modern terminal emulator"
-              href="https://ghostty.org/"
-            />
-            <ResourceCard 
-              icon={Zap}
-              title="Netlify"
-              description="Modern web hosting and deployment platform"
-              href="https://www.netlify.com/"
-            />
-            <ResourceCard 
-              icon={Lightbulb}
-              title="Codex by OpenAI"
-              description="AI system that translates natural language to code"
-              href="https://openai.com/codex/"
-            />
+            <ResourceCard icon={Target} title="Base44" description="Build AI-powered apps without code" href="https://base44.pxf.io/c/5604633/2049275/25619?trafcat=base" featured tier="smb" hasReferral />
+            <ResourceCard icon={Lightbulb} title="Lovable" description="AI-powered app development platform" href="https://lovable.dev/?via=david-berkowitz" featured tier="smb" hasReferral />
+            <ResourceCard icon={Brain} title="Claude Code" description="AI coding assistant for developers" href="https://www.anthropic.com/claude/code" tier="smb" />
+            <ResourceCard icon={Target} title="Ghostty" description="Fast, modern terminal emulator" href="https://ghostty.org/" tier="smb" />
+            <ResourceCard icon={Zap} title="Netlify" description="Modern web hosting and deployment platform" href="https://www.netlify.com/" tier="smb" />
+            <ResourceCard icon={Lightbulb} title="Codex by OpenAI" description="AI system that translates natural language to code" href="https://openai.com/codex/" tier="smb" />
           </div>
         </div>
       </section>
 
       {/* Newsletters */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <Mail className="w-8 h-8 text-red-600" />
               Newsletters
@@ -368,96 +244,27 @@ export default function Resources() {
             <p className="text-gray-600">Stay updated with the latest AI marketing news and insights</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={Mail}
-              title="The Neuron Daily"
-              description="Daily AI news and insights by Pete Huang"
-              href="https://www.theneurondaily.com/"
-              featured
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="The Rundown"
-              description="Daily AI updates by Rowan Cheung"
-              href="https://www.therundown.ai/"
-              featured
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="Ben's Bites"
-              description="Daily AI news digest"
-              href="https://www.bensbites.com/"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="One Useful Thing"
-              description="AI insights by Ethan Mollick"
-              href="https://www.oneusefulthing.org/"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="Almost Timely News"
-              description="Weekly AI marketing by Chris Penn"
-              href="https://almosttimely.substack.com?r=xky0"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="AI Marketing School"
-              description="AI marketing insights by Charlie Braithwaite"
-              href="https://aimarketingschool.beehiiv.com/"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="The AI Valley"
-              description="Daily AI news by Barsee"
-              href="https://www.theaivalley.com/"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="Wonder Tools"
-              description="Weekly AI tools by Jeremy Caplan"
-              href="https://wondertools.substack.com/"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="AI Report"
-              description="Weekly AI tool updates"
-              href="https://aitoolreport.beehiiv.com/"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="IPG Media Lab Weekly"
-              description="Weekly media and AI insights"
-              href="https://ipglab.substack.com/"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="The AI Ad Economy"
-              description="Newsletter by Debra Aho Williamson on AI in advertising"
-              href="https://aiadeconomy.substack.com/"
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="Fractional Freedom Friday"
-              description="Weekly insights on fractional work and AI for consultants"
-              href="https://fractionalfreedomfriday.substack.com/"
-              tags={["fractional"]}
-            />
-            <ResourceCard 
-              icon={Mail}
-              title="Fractional Fridays"
-              description="Weekly newsletter on fractional consulting and modern work"
-              href="https://fractionalfridays.substack.com/"
-              tags={["fractional"]}
-            />
+            <ResourceCard icon={Mail} title="The Neuron Daily" description="Daily AI news and insights by Pete Huang" href="https://www.theneurondaily.com/" featured />
+            <ResourceCard icon={Mail} title="The Rundown" description="Daily AI updates by Rowan Cheung" href="https://www.therundown.ai/" featured />
+            <ResourceCard icon={Mail} title="Ben's Bites" description="Daily AI news digest" href="https://www.bensbites.com/" />
+            <ResourceCard icon={Mail} title="One Useful Thing" description="AI insights by Ethan Mollick" href="https://www.oneusefulthing.org/" />
+            <ResourceCard icon={Mail} title="Almost Timely News" description="Weekly AI marketing by Chris Penn" href="https://almosttimely.substack.com?r=xky0" hasReferral />
+            <ResourceCard icon={Mail} title="AI Marketing School" description="AI marketing insights by Charlie Braithwaite" href="https://aimarketingschool.beehiiv.com/" />
+            <ResourceCard icon={Mail} title="The AI Valley" description="Daily AI news by Barsee" href="https://www.theaivalley.com/" />
+            <ResourceCard icon={Mail} title="Wonder Tools" description="Weekly AI tools by Jeremy Caplan" href="https://wondertools.substack.com/" />
+            <ResourceCard icon={Mail} title="AI Report" description="Weekly AI tool updates" href="https://aitoolreport.beehiiv.com/" />
+            <ResourceCard icon={Mail} title="IPG Media Lab Weekly" description="Weekly media and AI insights" href="https://ipglab.substack.com/" />
+            <ResourceCard icon={Mail} title="The AI Ad Economy" description="Newsletter by Debra Aho Williamson on AI in advertising" href="https://aiadeconomy.substack.com/" />
+            <ResourceCard icon={Mail} title="Fractional Freedom Friday" description="Weekly insights on fractional work and AI for consultants" href="https://fractionalfreedomfriday.substack.com/" />
+            <ResourceCard icon={Mail} title="Fractional Fridays" description="Weekly newsletter on fractional consulting and modern work" href="https://fractionalfridays.substack.com/" />
           </div>
         </div>
       </section>
 
       {/* Directories & Prompts */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-12 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <FileText className="w-8 h-8 text-red-600" />
               Directories & Prompts
@@ -465,68 +272,23 @@ export default function Resources() {
             <p className="text-gray-600">Discover AI tools and access curated prompt libraries</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={FileText}
-              title="Supertools by The Rundown"
-              description="Curated directory of AI tools"
-              href="https://www.supertools.com/"
-            />
-            <ResourceCard 
-              icon={FileText}
-              title="Top AI Tools for Business"
-              description="Business-focused AI tools by The Neuron"
-              href="https://www.topaitools.com/"
-            />
-            <ResourceCard 
-              icon={FileText}
-              title="There's an AI for That"
-              description="Comprehensive AI tool database"
-              href="https://www.theresanaiforthat.com/"
-            />
-            <ResourceCard 
-              icon={FileText}
-              title="Find My AI Tool"
-              description="Search engine for AI tools"
-              href="https://www.findmyaitool.com/"
-            />
-            <ResourceCard 
-              icon={FileText}
-              title="AITools.fyi"
-              description="AI marketing tools directory"
-              href="https://aitools.fyi/category/ai-marketing"
-            />
-            <ResourceCard 
-              icon={FileText}
-              title="MKT1's AI Tools"
-              description="Airtable of marketing AI tools"
-              href="https://airtable.com/appcRvwXdyEJR0fsT/shrCMY1xkb2fOmy7t/tblrn88uEcqUypqFX"
-            />
-            <ResourceCard 
-              icon={FileText}
-              title="1000+ Best ChatGPT Prompts"
-              description="Prompt library by Rowan Cheung"
-              href="https://www.notion.so/3c26e97a23a948d499e9f1882dd2f542?pvs=21"
-            />
-            <ResourceCard 
-              icon={FileText}
-              title="Anthropic's Prompt Library"
-              description="Official Claude prompt examples"
-              href="https://docs.anthropic.com/en/prompt-library/library"
-            />
-            <ResourceCard 
-              icon={FileText}
-              title="ChatGPT Prompt Frameworks"
-              description="Prompt frameworks by Shelly Palmer"
-              href="https://shellypalmer.com/2023/11/chatgpt-prompt-frameworks/"
-            />
+            <ResourceCard icon={FileText} title="Supertools by The Rundown" description="Curated directory of AI tools" href="https://www.supertools.com/" />
+            <ResourceCard icon={FileText} title="Top AI Tools for Business" description="Business-focused AI tools by The Neuron" href="https://www.topaitools.com/" />
+            <ResourceCard icon={FileText} title="There's an AI for That" description="Comprehensive AI tool database" href="https://www.theresanaiforthat.com/" />
+            <ResourceCard icon={FileText} title="Find My AI Tool" description="Search engine for AI tools" href="https://www.findmyaitool.com/" />
+            <ResourceCard icon={FileText} title="AITools.fyi" description="AI marketing tools directory" href="https://aitools.fyi/category/ai-marketing" />
+            <ResourceCard icon={FileText} title="MKT1's AI Tools" description="Airtable of marketing AI tools" href="https://airtable.com/appcRvwXdyEJR0fsT/shrCMY1xkb2fOmy7t/tblrn88uEcqUypqFX" />
+            <ResourceCard icon={FileText} title="1000+ Best ChatGPT Prompts" description="Prompt library by Rowan Cheung" href="https://www.notion.so/3c26e97a23a948d499e9f1882dd2f542?pvs=21" />
+            <ResourceCard icon={FileText} title="Anthropic's Prompt Library" description="Official Claude prompt examples" href="https://docs.anthropic.com/en/prompt-library/library" />
+            <ResourceCard icon={FileText} title="ChatGPT Prompt Frameworks" description="Prompt frameworks by Shelly Palmer" href="https://shellypalmer.com/2023/11/chatgpt-prompt-frameworks/" />
           </div>
         </div>
       </section>
 
       {/* Courses & Learning */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <Book className="w-8 h-8 text-red-600" />
               Courses & Learning
@@ -534,33 +296,17 @@ export default function Resources() {
             <p className="text-gray-600">Educational resources and video content for AI marketing</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={Book}
-              title="AIMG YouTube Channel"
-              description="Dozens of AI marketing expert interviews"
-              href="https://www.youtube.com/@aimarketersguild"
-              featured
-            />
-            <ResourceCard 
-              icon={Book}
-              title="Generative AI for Brand Execs"
-              description="Course by Shelly Palmer"
-              href="https://courses.shellypalmer.com/metacademy-generative-ai"
-            />
-            <ResourceCard 
-              icon={Book}
-              title="U of Digital AI Accelerator"
-              description="Comprehensive AI training program for marketing teams"
-              href="https://uof.digital/ai/"
-            />
+            <ResourceCard icon={Book} title="AIMG YouTube Channel" description="Dozens of AI marketing expert interviews" href="https://www.youtube.com/@aimarketersguild" featured />
+            <ResourceCard icon={Book} title="Generative AI for Brand Execs" description="Course by Shelly Palmer" href="https://courses.shellypalmer.com/metacademy-generative-ai" />
+            <ResourceCard icon={Book} title="U of Digital AI Accelerator" description="Comprehensive AI training program for marketing teams" href="https://uof.digital/ai/" tier="enterprise" />
           </div>
         </div>
       </section>
 
       {/* LinkedIn Thought Leaders */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-12 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3 flex items-center gap-3">
               <Users className="w-8 h-8 text-red-600" />
               LinkedIn Thought Leaders
@@ -568,30 +314,15 @@ export default function Resources() {
             <p className="text-gray-600">Follow these AI marketing experts on LinkedIn</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ResourceCard 
-              icon={Users}
-              title="Ethan Mollick"
-              description="Wharton School professor and AI researcher"
-              href="https://www.linkedin.com/in/emollick/"
-            />
-            <ResourceCard 
-              icon={Users}
-              title="Catharine Montgomery"
-              description="Better Together Agency"
-              href="https://www.linkedin.com/in/cnmontgomery/"
-            />
-            <ResourceCard 
-              icon={Users}
-              title="Jeremiah Owyang"
-              description="Blitzscaling VC"
-              href="https://www.linkedin.com/in/jowyang/"
-            />
+            <ResourceCard icon={Users} title="Ethan Mollick" description="Wharton School professor and AI researcher" href="https://www.linkedin.com/in/emollick/" />
+            <ResourceCard icon={Users} title="Catharine Montgomery" description="Better Together Agency" href="https://www.linkedin.com/in/cnmontgomery/" />
+            <ResourceCard icon={Users} title="Jeremiah Owyang" description="Blitzscaling VC" href="https://www.linkedin.com/in/jowyang/" />
           </div>
         </div>
       </section>
 
       {/* Community Links */}
-      <section className="py-20 px-6">
+      <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Community & Events</h2>
@@ -601,20 +332,12 @@ export default function Resources() {
             <Card className="bg-gradient-to-br from-purple-600 to-purple-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-white/20 p-3 rounded-xl">
-                    <Users className="w-8 h-8 text-white" />
-                  </div>
+                  <div className="bg-white/20 p-3 rounded-xl"><Users className="w-8 h-8 text-white" /></div>
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-white mb-2">AI Marketers Guild</h4>
                     <p className="text-purple-100 mb-4">Join a community of AI-forward marketers sharing insights, tools, and best practices</p>
-                    <a 
-                      href="https://bit.ly/AIMGinvite" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white text-purple-700 px-4 py-2 rounded-lg font-semibold hover:bg-purple-50 transition-colors"
-                    >
-                      Join Community
-                      <ExternalLink className="w-4 h-4" />
+                    <a href="https://bit.ly/AIMGinvite" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-purple-700 px-4 py-2 rounded-lg font-semibold hover:bg-purple-50 transition-colors">
+                      Join Community <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
                 </div>
@@ -624,20 +347,12 @@ export default function Resources() {
             <Card className="bg-gradient-to-br from-blue-600 to-blue-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-white/20 p-3 rounded-xl">
-                    <TrendingUp className="w-8 h-8 text-white" />
-                  </div>
+                  <div className="bg-white/20 p-3 rounded-xl"><TrendingUp className="w-8 h-8 text-white" /></div>
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-white mb-2">Serial Marketers</h4>
                     <p className="text-blue-100 mb-4">Connect with experienced marketers and learn from real-world case studies</p>
-                    <a 
-                      href="https://bit.ly/SMINVITE" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-                    >
-                      Join Community
-                      <ExternalLink className="w-4 h-4" />
+                    <a href="https://bit.ly/SMINVITE" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                      Join Community <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
                 </div>
@@ -647,20 +362,12 @@ export default function Resources() {
             <Card className="bg-gradient-to-br from-green-600 to-green-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-white/20 p-3 rounded-xl">
-                    <Calendar className="w-8 h-8 text-white" />
-                  </div>
+                  <div className="bg-white/20 p-3 rounded-xl"><Calendar className="w-8 h-8 text-white" /></div>
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-white mb-2">AI Insiders Events</h4>
                     <p className="text-green-100 mb-4">Attend virtual events, workshops, and networking sessions on AI marketing</p>
-                    <a 
-                      href="https://lu.ma/aimg" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white text-green-700 px-4 py-2 rounded-lg font-semibold hover:bg-green-50 transition-colors"
-                    >
-                      View Events
-                      <ExternalLink className="w-4 h-4" />
+                    <a href="https://lu.ma/aimg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-green-700 px-4 py-2 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+                      View Events <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
                 </div>
@@ -670,55 +377,20 @@ export default function Resources() {
             <Card className="bg-gradient-to-br from-red-600 to-red-700 border-0 shadow-xl hover:scale-[1.02] transition-transform duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-white/20 p-3 rounded-xl">
-                    <Book className="w-8 h-8 text-white" />
-                  </div>
+                  <div className="bg-white/20 p-3 rounded-xl"><Book className="w-8 h-8 text-white" /></div>
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-white mb-2">AI Insiders Recordings</h4>
                     <p className="text-red-100 mb-4">Watch past sessions and learn from AI marketing experts and practitioners</p>
-                    <a 
-                      href="https://www.youtube.com/@aimarketersguild" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white text-red-700 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition-colors"
-                    >
-                      Watch Videos
-                      <ExternalLink className="w-4 h-4" />
+                    <a href="https://www.youtube.com/@aimarketersguild" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-red-700 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition-colors">
+                      Watch Videos <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
                 </div>
               </CardContent>
             </Card>
-
-
           </div>
         </div>
       </section>
     </div>
-  );
-}
-
-function ResourceCard({ icon: Icon, title, description, href, featured, tags }) {
-  return (
-    <a 
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block"
-    >
-      <Card className={`bg-white border ${featured ? 'border-red-600/50 shadow-lg' : 'border-gray-200'} hover:border-red-600/30 hover:shadow-xl transition-all duration-300 rounded-xl h-full`}>
-        <CardContent className="p-6">
-          <div className="w-12 h-12 rounded-lg bg-red-600/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <Icon className="w-6 h-6 text-red-600" />
-          </div>
-          <h3 className={`text-xl ${featured ? 'font-bold' : 'font-semibold'} text-gray-900 mb-2 group-hover:text-red-600 transition-colors`}>{title}</h3>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">{description}</p>
-          <div className="flex items-center gap-2 text-red-600 font-medium text-sm">
-            Visit Site
-            <ExternalLink className="w-4 h-4" />
-          </div>
-        </CardContent>
-      </Card>
-    </a>
   );
 }

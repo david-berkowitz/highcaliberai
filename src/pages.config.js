@@ -87,6 +87,7 @@ import LuxuryRealEstate from './pages/LuxuryRealEstate';
 import Mensch from './pages/Mensch';
 import Offsite from './pages/Offsite';
 import PartnerFAQ from './pages/PartnerFAQ';
+import PartnerListingsAdmin from './pages/PartnerListingsAdmin';
 import PartnerSubmit from './pages/PartnerSubmit';
 import PartnerSubmitSuccess from './pages/PartnerSubmitSuccess';
 import Partners from './pages/Partners';
@@ -105,7 +106,6 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import PartnerListingsAdmin from './pages/PartnerListingsAdmin';
 import __Layout from './Layout.jsx';
 
 
@@ -150,6 +150,7 @@ export const PAGES = {
     "Mensch": Mensch,
     "Offsite": Offsite,
     "PartnerFAQ": PartnerFAQ,
+    "PartnerListingsAdmin": PartnerListingsAdmin,
     "PartnerSubmit": PartnerSubmit,
     "PartnerSubmitSuccess": PartnerSubmitSuccess,
     "Partners": Partners,
@@ -168,7 +169,6 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "PartnerListingsAdmin": PartnerListingsAdmin,
 }
 
 export const pagesConfig = {
