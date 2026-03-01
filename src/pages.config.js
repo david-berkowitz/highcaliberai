@@ -51,10 +51,17 @@ import AIMGFAQ from './pages/AIMGFAQ';
 import AINews from './pages/AINews';
 import AIStrategyHub from './pages/AIStrategyHub';
 import About from './pages/About';
+import AgenticAgency from './pages/AgenticAgency';
+import AgenticAssessment from './pages/AgenticAssessment';
+import AgenticClientScorecard from './pages/AgenticClientScorecard';
+import AgenticQuickStart from './pages/AgenticQuickStart';
+import AgenticROICalculator from './pages/AgenticROICalculator';
+import AgenticUseCaseLibrary from './pages/AgenticUseCaseLibrary';
 import Article from './pages/Article';
 import Audit from './pages/Audit';
 import BD from './pages/BD';
 import Baruch from './pages/Baruch';
+import Bing from './pages/Bing';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Book from './pages/Book';
@@ -72,6 +79,7 @@ import Holidays from './pages/Holidays';
 import Home from './pages/Home';
 import Hustle from './pages/Hustle';
 import IC from './pages/IC';
+import ICE from './pages/ICE';
 import Jobs from './pages/Jobs';
 import Lux from './pages/Lux';
 import LuxuryRealEstate from './pages/LuxuryRealEstate';
@@ -84,6 +92,7 @@ import Partners from './pages/Partners';
 import Politics from './pages/Politics';
 import Press from './pages/Press';
 import PressCoverageAdmin from './pages/PressCoverageAdmin';
+import Progress from './pages/Progress';
 import Resources from './pages/Resources';
 import SOS from './pages/SOS';
 import SaaSFractionalCMO from './pages/SaaSFractionalCMO';
@@ -95,15 +104,7 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import AgenticAgency from './pages/AgenticAgency';
-import AgenticQuickStart from './pages/AgenticQuickStart';
-import AgenticROICalculator from './pages/AgenticROICalculator';
-import AgenticClientScorecard from './pages/AgenticClientScorecard';
-import AgenticAssessment from './pages/AgenticAssessment';
-import AgenticUseCaseLibrary from './pages/AgenticUseCaseLibrary';
-import Progress from './pages/Progress';
-import Bing from './pages/Bing';
-import ICE from './pages/ICE';
+import AdminRoadmap from './pages/AdminRoadmap';
 import __Layout from './Layout.jsx';
 
 
@@ -112,10 +113,17 @@ export const PAGES = {
     "AINews": AINews,
     "AIStrategyHub": AIStrategyHub,
     "About": About,
+    "AgenticAgency": AgenticAgency,
+    "AgenticAssessment": AgenticAssessment,
+    "AgenticClientScorecard": AgenticClientScorecard,
+    "AgenticQuickStart": AgenticQuickStart,
+    "AgenticROICalculator": AgenticROICalculator,
+    "AgenticUseCaseLibrary": AgenticUseCaseLibrary,
     "Article": Article,
     "Audit": Audit,
     "BD": BD,
     "Baruch": Baruch,
+    "Bing": Bing,
     "Blog": Blog,
     "BlogPost": BlogPost,
     "Book": Book,
@@ -133,6 +141,7 @@ export const PAGES = {
     "Home": Home,
     "Hustle": Hustle,
     "IC": IC,
+    "ICE": ICE,
     "Jobs": Jobs,
     "Lux": Lux,
     "LuxuryRealEstate": LuxuryRealEstate,
@@ -145,6 +154,7 @@ export const PAGES = {
     "Politics": Politics,
     "Press": Press,
     "PressCoverageAdmin": PressCoverageAdmin,
+    "Progress": Progress,
     "Resources": Resources,
     "SOS": SOS,
     "SaaSFractionalCMO": SaaSFractionalCMO,
@@ -156,15 +166,7 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "AgenticAgency": AgenticAgency,
-    "AgenticQuickStart": AgenticQuickStart,
-    "AgenticROICalculator": AgenticROICalculator,
-    "AgenticClientScorecard": AgenticClientScorecard,
-    "AgenticAssessment": AgenticAssessment,
-    "AgenticUseCaseLibrary": AgenticUseCaseLibrary,
-    "Progress": Progress,
-    "Bing": Bing,
-    "ICE": ICE,
+    "AdminRoadmap": AdminRoadmap,
 }
 
 export const pagesConfig = {
