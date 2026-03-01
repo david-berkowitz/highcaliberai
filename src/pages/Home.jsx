@@ -161,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight">
