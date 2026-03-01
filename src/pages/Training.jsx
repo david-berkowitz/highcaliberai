@@ -322,18 +322,28 @@ export default function Training() {
             transition={{ duration: 0.6 }}
           >
             <GraduationCap className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Level Up Your Team?
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Ready to Book?
             </h2>
-            <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
-              Custom training programs available for teams and organizations. Let's discuss your needs.
+            <p className="text-xl text-red-100 mb-3 max-w-2xl mx-auto">
+              Sessions are custom-scoped to your team, timeline, and budget — from a one-hour briefing to a multi-day immersive. Pricing scales accordingly.
             </p>
-            <Link
-              to={createPageUrl("Contact")}
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              Inquire About Training
-            </Link>
+            <p className="text-red-200 text-sm mb-8">Most teams start with a 30-minute scoping call to define the right format.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                to={createPageUrl("Contact")}
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-lg"
+              >
+                Book a Scoping Call
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <a
+                href="mailto:david@highcaliberai.com?subject=Training Inquiry"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-lg"
+              >
+                Email David Directly
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
