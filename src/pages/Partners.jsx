@@ -110,9 +110,10 @@ export default function Partners() {
   return (
     <div className="min-h-screen bg-white">
       <MetaTags
-        title="Partner Marketplace - High Caliber AI"
-        description="Find free-to-access, heavily vetted AI marketing service providers in the High Caliber AI Partner Marketplace."
+        title="AI Marketing Partner Marketplace - High Caliber AI"
+        description="Discover vetted AI marketing agencies, consultants, and tools — personally curated by David Berkowitz. Free for buyers. Find your next marketing partner."
         url="https://highcaliberai.com/partners"
+        canonical="https://highcaliberai.com/partners"
       />
 
       {/* Hero */}
