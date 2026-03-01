@@ -40,8 +40,18 @@ By checking the box below, you agree to these terms.`;
 
 const DISCOUNT_CODES = { "HCAIVIP": 100, "HCAI50": 50 };
 
+const STATUS_CONFIG = {
+  pending_payment: { label: "Payment Pending", icon: Clock, color: "text-amber-600 bg-amber-50 border-amber-200" },
+  pending_review: { label: "Under Review", icon: Clock, color: "text-blue-600 bg-blue-50 border-blue-200" },
+  approved: { label: "Approved & Live", icon: CheckCircle, color: "text-green-600 bg-green-50 border-green-200" },
+  rejected: { label: "Not Approved", icon: XCircle, color: "text-red-600 bg-red-50 border-red-200" },
+};
+
 export default function PartnerSubmit() {
   const [step, setStep] = useState(0);
+  const [lookupEmail, setLookupEmail] = useState("");
+  const [lookupResult, setLookupResult] = useState(null); // null | "searching" | listing obj | "none"
+  const [showLookup, setShowLookup] = useState(false);
   const [form, setForm] = useState({
     company_name: "", tagline: "", company_type: "", specialty_category: "",
     website: "", logo_url: "", description: "",
