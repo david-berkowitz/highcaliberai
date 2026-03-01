@@ -46,6 +46,7 @@ export default function BookSection() {
                 href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => { try { window.base44?.analytics?.track({ eventName: "book_amazon_cta_clicked" }); } catch {} }}
                 className="inline-flex items-center justify-center px-8 py-4 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all"
               >
                 <BookOpen className="w-5 h-5 mr-2" />
