@@ -277,10 +277,7 @@ export default function Partners() {
                         </div>
                       )}
                       {listing.website && (
-                        <a href={listing.website} target="_blank" rel="noopener noreferrer"
-                          className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold text-sm gap-1 mt-auto">
-                          Visit Website <ExternalLink className="w-3 h-3" />
-                        </a>
+                        <PartnerReferralButton partnerName={listing.company_name} website={listing.website} />
                       )}
                     </CardContent>
                   </Card>
