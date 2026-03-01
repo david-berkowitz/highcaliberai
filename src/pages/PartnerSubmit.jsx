@@ -423,7 +423,36 @@ export default function PartnerSubmit() {
               {/* STEP 2: Services & Keywords */}
               {step === 2 && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-1">Services & Keywords</h2>
+                  <h2 className="text-xl font-bold text-gray-900 mb-1">Services & Fit</h2>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Typical Engagement Model</label>
+                      <select className={inputCls} value={form.engagement_model} onChange={e => setForm(f => ({ ...f, engagement_model: e.target.value }))}>
+                        <option value="">Select...</option>
+                        {ENGAGEMENT_MODELS.map(m => <option key={m} value={m}>{m}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Typical Budget Range</label>
+                      <select className={inputCls} value={form.budget_range} onChange={e => setForm(f => ({ ...f, budget_range: e.target.value }))}>
+                        <option value="">Select...</option>
+                        {BUDGET_RANGES.map(b => <option key={b} value={b}>{b}</option>)}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Client Stage <span className="text-gray-400 font-normal">(select all that apply)</span></label>
+                    <div className="flex flex-wrap gap-2">
+                      {CLIENT_STAGES.map(s => (
+                        <button key={s} type="button" onClick={() => toggleMulti("client_stages", s)}
+                          className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${form.client_stages.includes(s) ? "bg-red-600 text-white border-red-600" : "bg-white text-gray-600 border-gray-300 hover:border-red-400"}`}>
+                          {s}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
