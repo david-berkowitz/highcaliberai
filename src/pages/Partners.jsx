@@ -52,6 +52,41 @@ const BUYER_FAQS = [
   { q: "How do I contact a partner?", a: "Visit the partner's website directly via the link on their listing. All contact flows through them — we don't share your information without permission." },
 ];
 
+function PartnerReferralButton({ partnerName, website }) {
+  const [copied, setCopied] = useState(false);
+
+  const note = `Hi,\n\nI found you through the High Caliber AI Partner Marketplace (highcaliberai.com), curated by David Berkowitz.\n\nI'd love to learn more about your services.\n\nBest,\n[Your Name]`;
+
+  const handleCopy = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText(note);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const refUrl = website ? (website.includes("?") ? `${website}&ref=highcaliberai` : `${website}?ref=highcaliberai`) : null;
+
+  return (
+    <div className="flex items-center gap-2 flex-wrap mt-2">
+      {refUrl && (
+        <a href={refUrl} target="_blank" rel="noopener noreferrer"
+          className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold text-sm gap-1">
+          Visit Website <ExternalLink className="w-3 h-3" />
+        </a>
+      )}
+      <button
+        onClick={handleCopy}
+        className="inline-flex items-center gap-1.5 px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+        title="Copy a referral note mentioning High Caliber AI"
+      >
+        {copied ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
+        {copied ? "Copied!" : "Copy Referral Note"}
+      </button>
+    </div>
+  );
+}
+
 export default function Partners() {
   const [search, setSearch] = useState("");
   const [filterType, setFilterType] = useState("all");
