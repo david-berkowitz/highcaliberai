@@ -12,9 +12,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <MetaTags 
-        title="AI Marketing Strategy & Fractional CMO Services"
-        description="Real-world AI strategy for B2B marketing leaders. Fractional CMO services, team training, and managed AI pilots. Founded by David Berkowitz, author and AI Marketers Guild founder."
-        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
+        title="High Caliber AI – Applied AI for Marketing"
+        description="David Berkowitz helps B2B marketing teams adopt AI that actually works. Fractional CMO, team training & managed pilots. Founder of AI Marketers Guild (7,000+ members). No hype, just results."
+        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"
         url="https://highcaliberai.com"
         canonical="https://highcaliberai.com"
       />
