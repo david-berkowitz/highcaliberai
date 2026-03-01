@@ -46,8 +46,6 @@ const todo = [
   {
     section: "Features",
     items: [
-      "Email notification to David when a new PartnerListing is submitted (pending_review)",
-      "Admin UI to approve/reject partner listings",
       "Individual partner profile/detail pages",
       "Partner renewal / re-listing flow",
       "Book page — confirm Amazon links and content are current",
@@ -60,7 +58,6 @@ const todo = [
       "Mobile nav audit — test all dropdown submenus on mobile",
       "Homepage hero section copy refresh",
       "Add testimonials to Services, Training, Partners pages",
-      "Customize 404 PageNotFound design",
     ],
   },
   {
@@ -69,7 +66,6 @@ const todo = [
       "Sitemap function — confirm all new pages are included",
       "robots.txt — confirm correct pages are indexed/excluded",
       "og:image tags on all major pages for social sharing",
-      "Analytics: add event tracking to key CTAs (contact form, partner submit, book CTA)",
     ],
   },
 ];
