@@ -446,8 +446,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Pre-footer CTA */}
+      <section className="py-14 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-light text-white mb-3 tracking-tight">Ready to talk?</h2>
+          <p className="text-gray-400 mb-8">Schedule a free 30-minute call to see if we're a good fit.</p>
+          <a
+            href="https://calendly.com/davidberkowitz/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all"
+          >
+            Book a Free Call <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </section>
+
       {/* Bylines Section */}
-      <section className="py-20 lg:py-28 bg-gray-50">
+      <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
