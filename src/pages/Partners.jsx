@@ -181,10 +181,7 @@ export default function Partners() {
                 <div className="flex flex-wrap gap-2">
                   {p.services.map(s => <span key={s} className="px-2 py-1 bg-white text-gray-600 text-xs rounded-full border border-gray-200">{s}</span>)}
                 </div>
-                <a href={p.url} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold text-sm gap-1">
-                  Visit Website <ExternalLink className="w-3 h-3" />
-                </a>
+                <PartnerReferralButton partnerName={p.name} website={p.url} />
               </div>
             ))}
           </div>
