@@ -22,7 +22,7 @@ export default function HeroSection() {
         >
           {/* Logo Mark */}
           <motion.div 
-            className="flex justify-center mb-16"
+            className="flex justify-center mb-6"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
