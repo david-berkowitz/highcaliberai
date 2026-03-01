@@ -77,6 +77,9 @@ const future = [
   "Member login area for training materials",
   "Podcast / video embed page",
   "David's LinkedIn post auto-import pipeline",
+  "Homepage hero copy A/B test — shorten/sharpen the sub-headline",
+  "Blog/AI News teaser section on homepage — show 2-3 latest posts",
+  "Dynamic social proof counter — live count of approved partners in marketplace",
 ];
 
 export default function AdminRoadmap() {
