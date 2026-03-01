@@ -3,12 +3,11 @@ import { createClientFromRequest } from "npm:@base44/sdk@0.8.6";
 
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY"));
 
-const PRICE_ID = "price_1T5bapLPHEpukNPPicHsYTLG";
 const BASE_AMOUNT = 4900; // $49 in cents
 
 const DISCOUNT_CODES = {
-  "HCAIVIP": { percent: 100, label: "Complimentary" },   // 100% off = free
-  "HCAI50":  { percent: 50,  label: "50% Off" },          // 50% off
+  "HCAIVIP": { percent: 100, label: "Complimentary" },  // 100% off = free
+  "HCAI50":  { percent: 50,  label: "50% Off" },         // 50% off
 };
 
 Deno.serve(async (req) => {
@@ -22,35 +21,68 @@ Deno.serve(async (req) => {
     }
 
     let discountPercent = 0;
-    let discountLabel = null;
     if (discountCode) {
       const code = DISCOUNT_CODES[discountCode.toUpperCase()];
       if (code) {
         discountPercent = code.percent;
-        discountLabel = code.label;
       } else {
         return Response.json({ error: "Invalid discount code" }, { status: 400 });
       }
     }
 
     const finalAmount = Math.round(BASE_AMOUNT * (1 - discountPercent / 100));
-
     const baseUrl = origin || "https://highcaliberai.com";
 
     // If 100% off (comped), skip Stripe and mark as paid directly
     if (finalAmount === 0) {
-      await base44.entities.PartnerListing.update(listingId, {
+      await base44.asServiceRole.entities.PartnerListing.update(listingId, {
         status: "pending_review",
         amount_paid: 0,
         discount_code: discountCode.toUpperCase(),
         stripe_session_id: "COMPED",
       });
+
+      // Send email notification for comped listings
+      try {
+        const listing = await base44.asServiceRole.entities.PartnerListing.get(listingId);
+        if (listing) {
+          await base44.asServiceRole.integrations.Core.SendEmail({
+            to: "david@highcaliberai.com",
+            subject: `New Partner Listing Submitted (Comped): ${listing.company_name}`,
+            body: `A new partner listing has been submitted with a complimentary code and is pending your review.
+
+Company: ${listing.company_name}
+Type: ${listing.company_type || "N/A"}
+Website: ${listing.website}
+Contact: ${listing.contact_name} (${listing.contact_email})
+Amount Paid: $0 (Comped - Code: ${discountCode.toUpperCase()})
+
+Review it here: https://highcaliberai.com/partner-listings-admin`
+          });
+        }
+      } catch (emailErr) {
+        console.error("Failed to send comped notification email:", emailErr.message);
+      }
+
       return Response.json({ comped: true, redirect: `${baseUrl}/partner-submit-success?listing=${listingId}` });
     }
 
+    // Create Stripe session with the actual discounted amount as a custom price
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items: [{ price: PRICE_ID, quantity: 1 }],
+      line_items: [{
+        price_data: {
+          currency: "usd",
+          unit_amount: finalAmount,
+          product_data: {
+            name: "High Caliber AI Partner Marketplace Listing",
+            description: discountPercent > 0
+              ? `Lifetime listing fee — ${discountPercent}% discount applied (Code: ${discountCode.toUpperCase()})`
+              : "Lifetime listing fee",
+          },
+        },
+        quantity: 1,
+      }],
       mode: "payment",
       success_url: `${baseUrl}/partner-submit-success?listing=${listingId}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/partners`,
@@ -64,7 +96,7 @@ Deno.serve(async (req) => {
     });
 
     // Store session id on the listing
-    await base44.entities.PartnerListing.update(listingId, {
+    await base44.asServiceRole.entities.PartnerListing.update(listingId, {
       stripe_session_id: session.id,
     });
 
