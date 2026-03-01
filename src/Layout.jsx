@@ -306,6 +306,7 @@ export default function Layout({ children, currentPageName }) {
                   <Link to={createPageUrl("Partners")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Partners</Link>
                   <Link to={createPageUrl("ZAIAudit")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">AI Audit</Link>
                   <Link to={createPageUrl("PartnerListingsAdmin")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Partner Admin</Link>
+                  <Link to={createPageUrl("AdminHub")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Admin Hub</Link>
                 </div>
               </div>
               <div>
