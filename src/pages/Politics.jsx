@@ -155,6 +155,52 @@ export default function PoliticsPage() {
         </div>
       </section>
 
+      {/* Flexible Formats */}
+      <section className="py-14 px-6 bg-gradient-to-r from-blue-900 to-blue-800">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-red-500/20 border border-red-400/30">
+            <Sparkles className="w-3.5 h-3.5 text-red-300" />
+            <span className="text-xs font-medium text-red-200 tracking-wide">Modular & Flexible</span>
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-3">Built for Campaign Realities — Any Format, Any Timeline</h2>
+          <p className="text-blue-200 text-base mb-8 max-w-2xl mx-auto">
+            Campaigns move fast. Sessions are designed to plug into any schedule — from a one-hour candidate briefing to a full two-day staff bootcamp before a critical phase.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {[
+              { duration: "1 Hour", label: "AI Briefing", desc: "High-level overview of AI tools winning campaigns today" },
+              { duration: "Half Day", label: "Ops Focus", desc: "Deep-dive on messaging, fundraising, or field organizing" },
+              { duration: "Full Day", label: "Staff Training", desc: "Sessions + war room exercise + role-specific breakouts" },
+              { duration: "2 Days", label: "Full Bootcamp", desc: "Complete program: messaging → ground game → targeting → 30-day playbook" },
+            ].map((f) => (
+              <div key={f.duration} className="bg-white/10 backdrop-blur rounded-xl p-4 text-left border border-white/10">
+                <div className="text-red-300 font-bold text-lg mb-0.5">{f.duration}</div>
+                <div className="text-white font-semibold text-sm mb-1">{f.label}</div>
+                <div className="text-blue-300 text-xs leading-relaxed">{f.desc}</div>
+              </div>
+            ))}
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-5 max-w-3xl mx-auto text-left">
+            <h3 className="text-white font-semibold mb-3 text-sm">Sample Curricula</h3>
+            <div className="space-y-2">
+              {[
+                { title: "\"AI on the Trail\" (1 hour)", detail: "What AI tools are winning campaigns right now · key use cases · live Q&A" },
+                { title: "\"Messaging & Rapid Response\" (Half day)", detail: "Persuasion frameworks · crisis response drill · fundraising email lab · debrief" },
+                { title: "\"Full Campaign Bootcamp\" (2 days)", detail: "Complete framework: AI landscape → messaging mastery → digital ground game → volunteer mobilization → microtargeting → 30-day playbook" },
+              ].map((c) => (
+                <div key={c.title} className="flex gap-3 p-3 bg-white/5 rounded-lg border border-white/10">
+                  <Zap className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="text-white font-medium text-sm">{c.title}</span>
+                    <span className="text-blue-300 text-sm"> — {c.detail}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Overview Section */}
       <section id="overview" className="py-28 px-6 relative">
         <div className="max-w-7xl mx-auto">
