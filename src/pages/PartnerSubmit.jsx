@@ -118,6 +118,8 @@ export default function PartnerSubmit() {
     setSubmitting(true);
     setError("");
     try {
+      base44.analytics.track({ eventName: "partner_submit_started", properties: { has_discount: discountApplied !== null, discount_percent: discountApplied || 0 } });
+
       const listing = await base44.entities.PartnerListing.create({
         ...form,
         status: "pending_payment",
