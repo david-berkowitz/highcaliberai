@@ -253,7 +253,11 @@ export default function Partners() {
                       <div>
                         <h3 className="text-lg font-bold text-gray-900">{listing.company_name}</h3>
                         {listing.tagline && <p className="text-xs text-gray-500 mt-0.5 italic">{listing.tagline}</p>}
-                        {listing.headquarters && <p className="text-xs text-gray-400 mt-0.5">📍 {listing.headquarters}</p>}
+                        <div className="flex flex-wrap gap-x-3 mt-0.5">
+                          {listing.headquarters && <p className="text-xs text-gray-400">📍 {listing.headquarters}</p>}
+                          {listing.budget_range && <p className="text-xs text-gray-400">💰 {listing.budget_range}</p>}
+                          {listing.engagement_model && <p className="text-xs text-gray-400">🤝 {listing.engagement_model}</p>}
+                        </div>
                       </div>
                       <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 flex-1">{listing.description}</p>
                       {listing.services?.length > 0 && (
