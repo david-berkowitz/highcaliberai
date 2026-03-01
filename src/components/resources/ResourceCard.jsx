@@ -52,11 +52,7 @@ export default function ResourceCard({ icon: Icon, title, description, href, fea
             </div>
             <div className="flex flex-wrap gap-1 justify-end">
               {tierBadge}
-              {hasReferral && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-50 text-amber-700 border border-amber-200 rounded-full text-xs font-semibold">
-                  🔗 Referral
-                </span>
-              )}
+{/* referral links are tracked silently — no badge shown */}
             </div>
           </div>
 
