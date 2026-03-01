@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../../utils";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users, BookOpen, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
