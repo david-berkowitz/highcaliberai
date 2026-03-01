@@ -4,7 +4,7 @@ import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
-import { ExternalLink, Search, Filter, Plus, ShieldCheck, Star, Users, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, Search, Filter, Plus, ShieldCheck, Star, Users, ChevronDown, ChevronUp, Copy, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
 import AgentChat from "@/components/AgentChat";
