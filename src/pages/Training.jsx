@@ -142,6 +142,30 @@ export default function Training() {
         </div>
       </section>
 
+      {/* Flexible Formats Banner */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-red-600">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Every Session Is Modular & Built to Fit</h2>
+          <p className="text-red-100 text-lg mb-8 max-w-3xl mx-auto">
+            Whether you need a one-hour landscape overview for an executive team or a multi-day intensive for hands-on practitioners, sessions are mixed, matched, and customized. No two programs are identical.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { duration: "1 Hour", label: "Keynote / Intro Overview", desc: "Big-picture landscape for leadership or conference audiences" },
+              { duration: "Half Day", label: "Discovery Sprint", desc: "Deep-dive into one area: content, prompting, or AI tools" },
+              { duration: "Full Day", label: "Team Activation", desc: "Mix of sessions + hands-on exercises with live campaigns" },
+              { duration: "2 Days", label: "Full Bootcamp", desc: "Complete training with role breakouts and action planning" },
+            ].map((f) => (
+              <div key={f.duration} className="bg-white/15 backdrop-blur rounded-xl p-4 text-left border border-white/20">
+                <div className="text-white font-bold text-lg mb-0.5">{f.duration}</div>
+                <div className="text-red-100 font-semibold text-sm mb-1">{f.label}</div>
+                <div className="text-red-200 text-xs leading-relaxed">{f.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Training Programs Grid */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
