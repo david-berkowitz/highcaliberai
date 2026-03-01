@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-24 lg:py-40">
+    <section className="relative overflow-hidden bg-white py-16 lg:py-24">
       {/* Subtle background accent */}
       <div className="absolute inset-0 overflow-hidden opacity-40">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-50 rounded-full -translate-y-1/2 translate-x-1/2"></div>
