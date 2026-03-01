@@ -52,37 +52,28 @@ const BUYER_FAQS = [
   { q: "How do I contact a partner?", a: "Visit the partner's website directly via the link on their listing. All contact flows through them — we don't share your information without permission." },
 ];
 
-function PartnerReferralButton({ partnerName, website }) {
-  const [copied, setCopied] = useState(false);
+function PartnerIntroButton({ partnerName, contactEmail, website }) {
+  const subject = encodeURIComponent(`Intro via High Caliber AI — Interested in ${partnerName}`);
+  const body = encodeURIComponent(`Hi,\n\nI came across ${partnerName} through the High Caliber AI Partner Marketplace (highcaliberai.com), personally curated by David Berkowitz.\n\nI'd love to learn more about your services.\n\nBest,\n[Your Name]`);
 
-  const note = `Hi,\n\nI found you through the High Caliber AI Partner Marketplace (highcaliberai.com), curated by David Berkowitz.\n\nI'd love to learn more about your services.\n\nBest,\n[Your Name]`;
-
-  const handleCopy = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    navigator.clipboard.writeText(note);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const refUrl = website ? (website.includes("?") ? `${website}&ref=highcaliberai` : `${website}?ref=highcaliberai`) : null;
+  const emailTo = contactEmail || "david@highcaliberai.com";
+  const mailtoHref = contactEmail
+    ? `mailto:${emailTo}?subject=${subject}&body=${body}`
+    : `mailto:david@highcaliberai.com?subject=${encodeURIComponent(`Intro Request: ${partnerName}`)}&body=${encodeURIComponent(`Hi David,\n\nI found ${partnerName} on the High Caliber AI Partner Marketplace and would love an introduction.\n\nBest,\n[Your Name]`)}`;
 
   return (
-    <div className="flex items-center gap-2 flex-wrap mt-2">
-      {refUrl && (
-        <a href={refUrl} target="_blank" rel="noopener noreferrer"
-          className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold text-sm gap-1">
-          Visit Website <ExternalLink className="w-3 h-3" />
+    <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-100">
+      {website && (
+        <a href={`${website}${website.includes("?") ? "&" : "?"}ref=highcaliberai`} target="_blank" rel="noopener noreferrer"
+          className="inline-flex items-center text-gray-500 hover:text-gray-700 text-xs gap-1">
+          Website <ExternalLink className="w-3 h-3" />
         </a>
       )}
-      <button
-        onClick={handleCopy}
-        className="inline-flex items-center gap-1.5 px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-lg hover:bg-gray-200 transition-colors"
-        title="Copy a referral note mentioning High Caliber AI"
-      >
-        {copied ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
-        {copied ? "Copied!" : "Copy Referral Note"}
-      </button>
+      <a href={mailtoHref}
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-600 text-white text-xs font-semibold rounded-lg hover:bg-red-700 transition-colors ml-auto">
+        <Mail className="w-3 h-3" />
+        {contactEmail ? "Email This Partner" : "Request Intro"}
+      </a>
     </div>
   );
 }
