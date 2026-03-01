@@ -70,6 +70,23 @@ export default function PartnerSubmit() {
   const [error, setError] = useState("");
   const [logoUploading, setLogoUploading] = useState(false);
 
+  // On mount, check if returning from Stripe (stripe adds ?canceled=true or the listing id is in the URL)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const canceled = params.get("canceled");
+    const listingId = params.get("listing_id");
+    if (canceled === "true" || listingId) {
+      setStep(3);
+    }
+  }, []);
+
+  const handleLookup = async () => {
+    if (!lookupEmail.trim()) return;
+    setLookupResult("searching");
+    const results = await base44.entities.PartnerListing.filter({ contact_email: lookupEmail.trim().toLowerCase() }, "-created_date", 5);
+    setLookupResult(results.length > 0 ? results : "none");
+  };
+
   const finalPrice = discountApplied !== null ? (49 * (1 - discountApplied / 100)).toFixed(2) : "49.00";
 
   const applyDiscount = () => {
