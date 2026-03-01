@@ -141,6 +141,52 @@ export default function CPGPage() {
         </div>
       </section>
 
+      {/* Flexible Formats */}
+      <section className="py-14 px-6 bg-gradient-to-r from-emerald-800 to-emerald-900">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-orange-500/20 border border-orange-400/30">
+            <Sparkles className="w-3.5 h-3.5 text-orange-300" />
+            <span className="text-xs font-medium text-orange-200 tracking-wide">Modular & Flexible</span>
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-3">From a One-Hour Briefing to a Two-Day Bootcamp</h2>
+          <p className="text-emerald-200 text-base mb-8 max-w-2xl mx-auto">
+            Training is customized to your team's size, timeline, and goals. Pick a format or mix modules—every session is built around your brand's real challenges.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {[
+              { duration: "1 Hour", label: "CPG AI Landscape", desc: "What's working in AI for consumer brands right now" },
+              { duration: "Half Day", label: "Insight Sprint", desc: "Consumer insights, innovation, or content production focus" },
+              { duration: "Full Day", label: "Brand Activation", desc: "Multiple sessions + live product launch planning exercise" },
+              { duration: "2 Days", label: "Full Bootcamp", desc: "Complete transformation: insights → launches → retail → 90-day plan" },
+            ].map((f) => (
+              <div key={f.duration} className="bg-white/10 backdrop-blur rounded-xl p-4 text-left border border-white/10">
+                <div className="text-orange-300 font-bold text-lg mb-0.5">{f.duration}</div>
+                <div className="text-white font-semibold text-sm mb-1">{f.label}</div>
+                <div className="text-emerald-300 text-xs leading-relaxed">{f.desc}</div>
+              </div>
+            ))}
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-5 max-w-3xl mx-auto text-left">
+            <h3 className="text-white font-semibold mb-3 text-sm">Sample Curricula</h3>
+            <div className="space-y-2">
+              {[
+                { title: "\"AI for CPG Today\" (1 hour)", detail: "Landscape overview of AI in consumer brands + top tools + live Q&A" },
+                { title: "\"Launch Lab\" (Half day)", detail: "Consumer insights with AI · Product launch planning · Content production · Team challenge" },
+                { title: "\"Full CPG Bootcamp\" (2 days)", detail: "Complete framework: insights → omnichannel → brand building → precision marketing → 90-day growth plan" },
+              ].map((c) => (
+                <div key={c.title} className="flex gap-3 p-3 bg-white/5 rounded-lg border border-white/10">
+                  <Zap className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="text-white font-medium text-sm">{c.title}</span>
+                    <span className="text-emerald-300 text-sm"> — {c.detail}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Overview Section */}
       <section id="overview" className="py-28 px-6 relative">
         <div className="max-w-7xl mx-auto">
