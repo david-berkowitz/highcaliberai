@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
-import { Upload, Plus, X, ChevronRight, AlertCircle, Info } from "lucide-react";
+import { Upload, Plus, X, ChevronRight, AlertCircle, Search, CheckCircle, Clock, XCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
 
