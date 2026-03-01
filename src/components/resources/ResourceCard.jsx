@@ -44,41 +44,40 @@ export default function ResourceCard({ icon: Icon, title, description, href, fea
       rel="noopener noreferrer"
       className="group block"
     >
-      <Card className={`bg-white border ${featured ? "border-red-600/50 shadow-lg" : "border-gray-200"} hover:border-red-600/30 hover:shadow-xl transition-all duration-300 rounded-xl h-full`}>
-        <CardContent className="p-6 flex flex-col h-full">
-          <div className="flex items-start justify-between gap-2 mb-4">
-            <div className="w-12 h-12 rounded-lg bg-red-600/10 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-              <Icon className="w-6 h-6 text-red-600" />
+      <Card className={`bg-white border ${featured ? "border-red-300 shadow-sm" : "border-gray-200"} hover:border-red-300 hover:shadow-md transition-all duration-200 rounded-xl h-full`}>
+        <CardContent className="p-4 flex flex-col h-full">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
+                <Icon className="w-4.5 h-4.5 text-red-600" style={{ width: '1.1rem', height: '1.1rem' }} />
+              </div>
+              <h3 className={`text-base ${featured ? "font-bold" : "font-semibold"} text-gray-900 group-hover:text-red-600 transition-colors leading-tight`}>{title}</h3>
             </div>
-            <div className="flex flex-wrap gap-1 justify-end">
-              {tierBadge}
-{/* referral links are tracked silently — no badge shown */}
-            </div>
+            {tierBadge && <div className="flex-shrink-0">{tierBadge}</div>}
           </div>
 
-          <h3 className={`text-xl ${featured ? "font-bold" : "font-semibold"} text-gray-900 mb-2 group-hover:text-red-600 transition-colors`}>{title}</h3>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">{description}</p>
+          <p className="text-gray-500 text-sm leading-relaxed mb-3 flex-1">{description}</p>
 
           <div className="flex flex-wrap items-center gap-2 mt-auto">
-            <div className="flex items-center gap-1.5 text-red-600 font-medium text-sm">
-              Visit Site <ExternalLink className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-1 text-red-600 font-medium text-xs">
+              Visit Site <ExternalLink className="w-3 h-3" />
             </div>
 
             {introEmail && (
               <>
                 <button
                   onClick={handleEmailIntro}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 transition-colors"
                   title="Send an intro email referencing High Caliber AI"
                 >
-                  <Mail className="w-3.5 h-3.5" /> Email Intro
+                  <Mail className="w-3 h-3" /> Email Intro
                 </button>
                 <button
                   onClick={handleCopyIntroNote}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-lg hover:bg-gray-200 transition-colors"
                   title="Copy intro note to clipboard"
                 >
-                  {copied ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copied ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
                   {copied ? "Copied!" : "Copy Note"}
                 </button>
               </>
