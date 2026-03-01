@@ -370,8 +370,20 @@ export default function PartnerSubmit() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Headquarters <span className="text-gray-400 font-normal">(city, state/country)</span></label>
-                    <input className={inputCls} placeholder="e.g. New York, NY" value={form.headquarters} onChange={e => setForm(f => ({ ...f, headquarters: e.target.value }))} />
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Founder LinkedIn <span className="text-gray-400 font-normal">(optional)</span></label>
+                    <input className={inputCls} placeholder="https://linkedin.com/in/..." value={form.linkedin_founder_url} onChange={e => setForm(f => ({ ...f, linkedin_founder_url: e.target.value }))} />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Headquarters <span className="text-gray-400 font-normal">(city, state/country)</span></label>
+                      <input className={inputCls} placeholder="e.g. New York, NY" value={form.headquarters} onChange={e => setForm(f => ({ ...f, headquarters: e.target.value }))} />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Founded Year <span className="text-gray-400 font-normal">(optional)</span></label>
+                      <input className={inputCls} type="number" placeholder="e.g. 2018" min="1980" max={new Date().getFullYear()}
+                        value={form.founded_year} onChange={e => setForm(f => ({ ...f, founded_year: e.target.value }))} />
+                    </div>
                   </div>
 
                   <div>
