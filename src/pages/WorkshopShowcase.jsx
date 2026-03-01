@@ -124,6 +124,52 @@ export default function WorkshopShowcase() {
           </div>
         </section>
 
+        {/* Flexible Formats Section */}
+        <section className="py-14 px-6 bg-gradient-to-r from-gray-900 to-gray-800">
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-red-600/20 border border-red-600/30">
+              <Sparkles className="w-3.5 h-3.5 text-red-400" />
+              <span className="text-xs font-medium text-red-300 tracking-wide">Fully Modular & Flexible</span>
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-3">From One Hour to Two Days — Your Call</h2>
+            <p className="text-gray-400 text-base mb-8 max-w-2xl mx-auto">
+              Every program is custom-built. Mix and match modules to fit your timeline, team, and objectives. No cookie-cutter agendas.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+              {[
+                { duration: "1 Hour", label: "Executive Briefing", desc: "AI landscape overview for leadership, boards, or conference sessions" },
+                { duration: "Half Day", label: "Focus Sprint", desc: "One area—content, prompting, or analytics—with live exercises" },
+                { duration: "Full Day", label: "Team Activation", desc: "Sessions + hands-on work on your actual upcoming campaigns" },
+                { duration: "2 Days", label: "Full Bootcamp", desc: "Deep team transformation with role breakouts and 30-day action plans" },
+              ].map((f) => (
+                <div key={f.duration} className="bg-white/10 backdrop-blur rounded-xl p-4 text-left border border-white/10">
+                  <div className="text-red-400 font-bold text-lg mb-0.5">{f.duration}</div>
+                  <div className="text-white font-semibold text-sm mb-1">{f.label}</div>
+                  <div className="text-gray-400 text-xs leading-relaxed">{f.desc}</div>
+                </div>
+              ))}
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 max-w-3xl mx-auto text-left">
+              <h3 className="text-white font-semibold mb-4">Sample Curriculum Packages</h3>
+              <div className="space-y-3">
+                {[
+                  { title: "\"AI Orientation\" (1 hour)", detail: "What AI can actually do for marketing today · Top 5 tools for your team · Q&A" },
+                  { title: "\"Content Engine\" (Half day)", detail: "AI for content ideation · Prompting workshop · Repurposing across channels · Team challenge" },
+                  { title: "\"Full Activation\" (2 days)", detail: "Complete 2-day framework: Reality check → Prompting mastery → Workflow redesign → Department breakouts → 30-day action plan" },
+                ].map((c) => (
+                  <div key={c.title} className="flex gap-3 p-3 bg-white/5 rounded-lg border border-white/10">
+                    <Zap className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-white font-medium text-sm">{c.title}</span>
+                      <span className="text-gray-400 text-sm"> — {c.detail}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Overview Section */}
         <section id="overview" className="py-28 px-6 relative">
           <div className="max-w-7xl mx-auto">
