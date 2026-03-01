@@ -13,13 +13,11 @@ export default function Layout({ children, currentPageName }) {
     script.src = 'https://js.knock-ai.com/ad256bf8-8420-4958-a1dd-31d3d0c27d51.js';
     script.async = true;
     document.head.appendChild(script);
-    
-    return () => {
-      document.head.removeChild(script);
-    };
+    return () => { document.head.removeChild(script); };
   }, []);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState(null);
 
   const primaryNavLinks = [
     { name: "Home", page: "Home" },
