@@ -172,7 +172,7 @@ export default function Partners() {
                 <div className="flex flex-wrap gap-2">
                   {p.services.map(s => <span key={s} className="px-2 py-1 bg-white text-gray-600 text-xs rounded-full border border-gray-200">{s}</span>)}
                 </div>
-                <PartnerReferralButton partnerName={p.name} website={p.url} />
+                <PartnerIntroButton partnerName={p.name} website={p.url} />
               </div>
             ))}
           </div>
