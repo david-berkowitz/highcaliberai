@@ -6,8 +6,10 @@ const done = [
   "Full site with nav, footer, all major pages",
   "Blog, AI News, Press, Speaking, About, Contact, Resources, Book, Mensch, Bylines, Hustle",
   "Agentic Agency hub + tools (Quick Start, Assessment, ROI Calculator, Scorecard, Use Case Library)",
-  "Partner Marketplace: Stripe checkout ($49), discount codes, webhook, submit flow, FAQ",
-  "Partner Finder AI agent (with escalation to David)",
+  "Partner Marketplace: Stripe checkout ($49), discount codes (HCAIVIP / HCAI50), webhook, submit flow, FAQ",
+  "Partner Finder AI chat widget (floating, corner) on Partners page",
+  "Admin UI to approve/reject partner listings (/partner-listings-admin)",
+  "Email notification to David on new partner submission (via webhook)",
   "ICE Training password-protected page",
   "Global search",
   "SEO meta tags + structured data",
@@ -19,6 +21,8 @@ const done = [
   "Sticky CTA component",
   "ZAI Audit page",
   "Jobs, Lux, FOAF, IC, BD, CPG, Politics pages",
+  "Analytics tracking on contact form, partner submit, book CTA",
+  "Custom 404 page (branded)",
 ];
 
 const needsVerification = [
