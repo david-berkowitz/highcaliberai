@@ -32,8 +32,31 @@ Deno.serve(async (req) => {
           discount_code: discountCode || null,
         });
         console.log(`Listing ${listingId} marked as pending_review after payment`);
+
+        // Fetch listing data and notify David
+        const listing = await base44.asServiceRole.entities.PartnerListing.get(listingId);
+        if (listing) {
+          await base44.asServiceRole.integrations.Core.SendEmail({
+            to: "david@highcaliberai.com",
+            subject: `New Partner Listing Submitted: ${listing.company_name}`,
+            body: `A new partner listing has been submitted and is pending your review.
+
+Company: ${listing.company_name}
+Type: ${listing.company_type || "N/A"}
+Specialty: ${listing.specialty_category || "N/A"}
+Website: ${listing.website}
+Contact: ${listing.contact_name} (${listing.contact_email})
+Amount Paid: $${(finalAmount / 100).toFixed(2)}
+Discount Code: ${discountCode || "None"}
+
+Description:
+${listing.description}
+
+Review it here: https://highcaliberai.com/partner-listings-admin`
+          });
+        }
       } catch (err) {
-        console.error("Error updating listing:", err.message);
+        console.error("Error updating listing or sending email:", err.message);
       }
     }
   }
