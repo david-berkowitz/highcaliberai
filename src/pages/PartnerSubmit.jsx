@@ -20,6 +20,10 @@ const DEFAULT_SERVICES = [
   "Influencer Marketing", "Video Production", "CRM Implementation", "Lead Generation",
   "Conversion Rate Optimization", "Market Research", "Training & Workshops"
 ];
+const CLIENT_STAGES = ["Early-stage / Startup", "Growth / Mid-market", "Late-stage / Pre-IPO", "Enterprise", "Employer / Brand Owner"];
+const ENGAGEMENT_MODELS = ["Retainer", "Project-based", "Hourly", "Mixed"];
+const BUDGET_RANGES = ["Under $2K/month", "$2K–$5K/month", "$5K–$10K/month", "$10K–$20K/month", "$20K+/month", "Project-based (varies)"];
+
 const STEPS = ["Company Info", "Founder & Reach", "Services", "Agreement & Payment"];
 
 const AGREEMENT_TEXT = `PARTNER MARKETPLACE LISTING AGREEMENT
