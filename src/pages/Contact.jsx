@@ -43,6 +43,9 @@ export default function Contact() {
       // Save to database
       await base44.entities.ContactSubmission.create(formData);
 
+      // Track analytics
+      base44.analytics.track({ eventName: "contact_form_submitted", properties: { has_company: !!formData.company } });
+
       // Send email notification
       await base44.integrations.Core.SendEmail({
         to: "dberkowitz@gmail.com",
