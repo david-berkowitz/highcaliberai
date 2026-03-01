@@ -196,7 +196,58 @@ export default function PartnerSubmit() {
       <div className="max-w-2xl mx-auto px-4 pt-28 pb-20">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <h1 className="text-4xl font-bold text-gray-900 mb-2 text-center">Submit Your Listing</h1>
-          <p className="text-gray-500 text-center mb-8">Join the High Caliber AI Partner Marketplace — $49 lifetime</p>
+          <p className="text-gray-500 text-center mb-4">Join the High Caliber AI Partner Marketplace — $49 lifetime</p>
+
+          {/* Check existing listing */}
+          <div className="text-center mb-6">
+            <button onClick={() => setShowLookup(!showLookup)} className="text-sm text-red-600 hover:text-red-700 underline font-medium">
+              {showLookup ? "Hide" : "Already submitted? Check your listing status →"}
+            </button>
+          </div>
+
+          {showLookup && (
+            <div className="mb-8 bg-gray-50 border border-gray-200 rounded-xl p-5">
+              <h3 className="font-semibold text-gray-900 mb-1 text-sm">Look Up Your Listing</h3>
+              <p className="text-xs text-gray-500 mb-3">Enter the email you used when submitting.</p>
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="your@email.com"
+                  value={lookupEmail}
+                  onChange={e => { setLookupEmail(e.target.value); setLookupResult(null); }}
+                  onKeyDown={e => e.key === "Enter" && handleLookup()}
+                />
+                <button onClick={handleLookup} disabled={lookupResult === "searching"}
+                  className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 flex items-center gap-1.5 disabled:opacity-50">
+                  <Search className="w-3.5 h-3.5" /> Look Up
+                </button>
+              </div>
+              {lookupResult === "searching" && <p className="text-sm text-gray-500 mt-3">Searching...</p>}
+              {lookupResult === "none" && <p className="text-sm text-gray-500 mt-3">No listings found for that email.</p>}
+              {Array.isArray(lookupResult) && (
+                <div className="mt-3 space-y-3">
+                  {lookupResult.map(listing => {
+                    const cfg = STATUS_CONFIG[listing.status] || STATUS_CONFIG.pending_review;
+                    const StatusIcon = cfg.icon;
+                    return (
+                      <div key={listing.id} className={`flex items-center justify-between p-3 rounded-lg border ${cfg.color}`}>
+                        <div>
+                          <p className="font-semibold text-gray-900 text-sm">{listing.company_name}</p>
+                          <p className="text-xs text-gray-500 mt-0.5">{listing.contact_email} · Submitted {new Date(listing.created_date).toLocaleDateString()}</p>
+                        </div>
+                        <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full border ${cfg.color}`}>
+                          <StatusIcon className="w-3 h-3" /> {cfg.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                  <p className="text-xs text-gray-400 mt-1">Need to make changes? Email <a href="mailto:david@highcaliberai.com" className="underline">david@highcaliberai.com</a> with your company name.</p>
+                </div>
+              )}
+            </div>
+          )}
+
 
           {/* Step Indicator */}
           <div className="flex items-center justify-center gap-1 mb-10">
