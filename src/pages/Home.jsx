@@ -391,8 +391,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Partner CTA Section */}
+      <section className="py-16 bg-white border-y border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Find a partner */}
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200 flex flex-col">
+              <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Find a Vetted AI Partner</h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">Browse personally curated agencies, tools, and consultants. Free for buyers — no cost, ever.</p>
+              <Link to={createPageUrl("Partners")} className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors text-sm">
+                Browse Partners <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            {/* List your company */}
+            <div className="bg-red-50 rounded-2xl p-8 border border-red-100 flex flex-col">
+              <div className="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+                <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">List Your Services — $49</h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">Get in front of David's audience of 7,000+ marketers. One-time fee, lifetime listing, personally reviewed.</p>
+              <Link to={createPageUrl("PartnerSubmit")} className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors text-sm">
+                Submit a Listing <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block px-4 py-1.5 bg-red-600 text-white text-xs font-medium tracking-wider uppercase mb-6">
             Free Self-Assessment
