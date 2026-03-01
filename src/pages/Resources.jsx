@@ -70,11 +70,7 @@ export default function Resources() {
               <span className="font-semibold text-blue-700">Enterprise</span>
               <span className="text-blue-600">— Custom pricing, contact for intro</span>
             </div>
-            <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-2">
-              <span className="text-amber-700">🔗</span>
-              <span className="font-semibold text-amber-700">Referral</span>
-              <span className="text-amber-600">— Affiliate / referral link</span>
-            </div>
+
           </div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
