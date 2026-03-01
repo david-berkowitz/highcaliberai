@@ -58,9 +58,11 @@ export default function PartnerSubmit() {
   const [showLookup, setShowLookup] = useState(false);
   const [form, setForm] = useState({
     company_name: "", tagline: "", company_type: "", specialty_category: "",
-    website: "", logo_url: "", description: "",
-    founder_bio: "", headquarters: "",
-    geographies_served: [], verticals: [],
+    website: "", linkedin_company_url: "", linkedin_founder_url: "", portfolio_url: "",
+    logo_url: "", description: "",
+    founder_bio: "", headquarters: "", founded_year: "",
+    geographies_served: [], verticals: [], client_stages: [],
+    engagement_model: "", budget_range: "",
     services: [], keywords: [],
     contact_name: "", contact_email: "",
   });
