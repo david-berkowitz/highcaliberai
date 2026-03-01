@@ -308,6 +308,14 @@ export default function PartnerSubmit() {
                       <label className="block text-sm font-medium text-gray-700 mb-1">Website *</label>
                       <input className={inputCls} placeholder="https://" value={form.website} onChange={e => setForm(f => ({ ...f, website: e.target.value }))} />
                     </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Company LinkedIn <span className="text-gray-400 font-normal">(optional)</span></label>
+                      <input className={inputCls} placeholder="https://linkedin.com/company/..." value={form.linkedin_company_url} onChange={e => setForm(f => ({ ...f, linkedin_company_url: e.target.value }))} />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Portfolio / Case Studies <span className="text-gray-400 font-normal">(optional)</span></label>
+                      <input className={inputCls} placeholder="https://" value={form.portfolio_url} onChange={e => setForm(f => ({ ...f, portfolio_url: e.target.value }))} />
+                    </div>
                     <div className="col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Description * <span className="text-gray-400 font-normal">(50–2,000 chars)</span>
