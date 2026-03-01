@@ -14,7 +14,7 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
     const body = await req.json();
-    const { listingId, discountCode, origin } = body;
+    const { listingId, discountCode, origin, cancelUrl } = body;
 
     if (!listingId) {
       return Response.json({ error: "Missing listingId" }, { status: 400 });
@@ -85,7 +85,7 @@ Review it here: https://highcaliberai.com/partner-listings-admin`
       }],
       mode: "payment",
       success_url: `${baseUrl}/partner-submit-success?listing=${listingId}&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/partners`,
+      cancel_url: cancelUrl || `${baseUrl}/partner-submit?canceled=true`,
       metadata: {
         base44_app_id: Deno.env.get("BASE44_APP_ID"),
         listing_id: listingId,
