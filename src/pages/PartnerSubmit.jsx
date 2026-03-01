@@ -165,6 +165,7 @@ export default function PartnerSubmit() {
         listingId: listing.id,
         discountCode: discountApplied !== null ? discountCode.toUpperCase() : "",
         origin: window.location.origin,
+        cancelUrl: `${window.location.origin}${window.location.pathname}?canceled=true`,
       });
 
       if (res.data.comped) {
