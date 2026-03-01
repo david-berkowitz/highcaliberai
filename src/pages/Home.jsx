@@ -72,8 +72,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Stats Bar */}
+      <section className="py-8 bg-gray-900">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { number: "7,000+", label: "Guild Members" },
+              { number: "100+", label: "Workshops Delivered" },
+              { number: "20+", label: "Years in Marketing" },
+              { number: "250+", label: "Published Bylines" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="text-2xl font-bold text-red-400">{stat.number}</div>
+                <div className="text-sm text-gray-400 mt-0.5">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* David Berkowitz Section */}
-      <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
+      <section className="py-16 lg:py-24 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-red-50 to-transparent opacity-50"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
