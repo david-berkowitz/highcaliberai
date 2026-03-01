@@ -170,53 +170,69 @@ export default function Layout({ children, currentPageName }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-gray-100"
+              className="md:hidden bg-white border-t border-gray-100 overflow-y-auto max-h-[80vh]"
             >
-              <div className="px-4 py-4 space-y-3">
+              <div className="px-4 py-3 space-y-1">
                 {primaryNavLinks.map((link) => (
                   <div key={link.page}>
-                    <Link
-                      to={createPageUrl(link.page)}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`block py-2 text-base font-medium ${
-                        currentPageName === link.page
-                          ? "text-red-600"
-                          : "text-gray-600"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                    {link.subMenu && (
-                      <div className="ml-4 mt-2 space-y-2">
-                        {link.subMenu.map((subLink) => (
-                          <Link
-                            key={subLink.page}
-                            to={createPageUrl(subLink.page)}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block py-1.5 text-sm text-gray-600"
-                          >
-                            {subLink.name}
-                          </Link>
-                        ))}
-                      </div>
+                    {link.subMenu ? (
+                      <button
+                        onClick={() => setExpandedMobileMenu(expandedMobileMenu === link.page ? null : link.page)}
+                        className={`w-full flex items-center justify-between py-3 text-base font-medium ${
+                          currentPageName === link.page || link.subMenu.some(s => s.page === currentPageName)
+                            ? "text-red-600" : "text-gray-700"
+                        }`}
+                      >
+                        {link.name}
+                        <ChevronDown className={`w-4 h-4 transition-transform ${expandedMobileMenu === link.page ? "rotate-180" : ""}`} />
+                      </button>
+                    ) : (
+                      <Link
+                        to={createPageUrl(link.page)}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`block py-3 text-base font-medium ${
+                          currentPageName === link.page ? "text-red-600" : "text-gray-700"
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
                     )}
+                    <AnimatePresence>
+                      {link.subMenu && expandedMobileMenu === link.page && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="bg-gray-50 rounded-lg mb-1 overflow-hidden"
+                        >
+                          {link.subMenu.map((subLink) => (
+                            <Link
+                              key={subLink.page}
+                              to={createPageUrl(subLink.page)}
+                              onClick={() => { setMobileMenuOpen(false); setExpandedMobileMenu(null); }}
+                              className={`block px-4 py-2.5 text-sm border-b border-gray-100 last:border-0 ${
+                                currentPageName === subLink.page ? "text-red-600 font-medium" : "text-gray-600"
+                              }`}
+                            >
+                              {subLink.name}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ))}
-                <div className="flex items-center space-x-4 pt-4 border-t border-gray-100">
-                  <a
-                    href="https://www.linkedin.com/in/dberkowitz/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-gray-600"
-                  >
+                <div className="flex items-center space-x-4 pt-3 pb-2 border-t border-gray-100 mt-2">
+                  <a href="https://www.linkedin.com/in/dberkowitz/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600">
                     <Linkedin className="w-5 h-5" />
                   </a>
-                  <a
-                    href="mailto:david@highcaliberai.com"
-                    className="text-gray-400 hover:text-gray-600"
-                  >
+                  <a href="mailto:david@highcaliberai.com" className="text-gray-400 hover:text-gray-600">
                     <Mail className="w-5 h-5" />
                   </a>
+                  <Link to={createPageUrl("Contact")} onClick={() => setMobileMenuOpen(false)}
+                    className="ml-auto px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-colors">
+                    Get in Touch
+                  </Link>
                 </div>
               </div>
             </motion.div>
