@@ -141,8 +141,10 @@ export default function PartnerSubmit() {
       });
 
       if (res.data.comped) {
+        base44.analytics.track({ eventName: "partner_listing_submitted", properties: { amount: 0, comped: true } });
         window.location.href = res.data.redirect;
       } else if (res.data.url) {
+        base44.analytics.track({ eventName: "partner_checkout_initiated", properties: { amount: parseFloat(finalPrice), discount_percent: discountApplied || 0 } });
         window.location.href = res.data.url;
       } else {
         setError(res.data.error || "Something went wrong.");
