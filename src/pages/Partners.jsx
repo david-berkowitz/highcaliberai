@@ -264,9 +264,7 @@ export default function Partners() {
                           {listing.services.length > 4 && <span className="px-2 py-1 text-gray-400 text-xs">+{listing.services.length - 4} more</span>}
                         </div>
                       )}
-                      {listing.website && (
-                        <PartnerReferralButton partnerName={listing.company_name} website={listing.website} />
-                      )}
+                      <PartnerIntroButton partnerName={listing.company_name} contactEmail={listing.contact_email} website={listing.website} />
                     </CardContent>
                   </Card>
                 </motion.div>
