@@ -66,7 +66,7 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-5"
+            className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-14"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -83,6 +83,42 @@ export default function HeroSection() {
               className="inline-flex items-center px-10 py-4 border border-gray-900 text-gray-900 font-medium rounded-md hover:bg-gray-900 hover:text-white transition-all"
             >
               Meet David
+            </Link>
+          </motion.div>
+
+          {/* High-value highlights bar */}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.75 }}
+          >
+            <Link to={createPageUrl("Partners")} className="group flex items-center gap-3 px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50 transition-all text-left">
+              <div className="w-9 h-9 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-red-200 transition-colors">
+                <Users className="w-5 h-5 text-red-600" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-gray-900">Partner Marketplace</div>
+                <div className="text-xs text-gray-500">Find vetted AI agencies</div>
+              </div>
+            </Link>
+            <Link to={createPageUrl("Training")} className="group flex items-center gap-3 px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50 transition-all text-left">
+              <div className="w-9 h-9 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-red-200 transition-colors">
+                <Zap className="w-5 h-5 text-red-600" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-gray-900">AI Training Programs</div>
+                <div className="text-xs text-gray-500">Workshops for your team</div>
+              </div>
+            </Link>
+            <Link to={createPageUrl("Book")} className="group flex items-center gap-3 px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50 transition-all text-left">
+              <div className="w-9 h-9 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-red-200 transition-colors">
+                <BookOpen className="w-5 h-5 text-red-600" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-gray-900">The AI Marketing Book</div>
+                <div className="text-xs text-gray-500">Available on Amazon</div>
+              </div>
             </Link>
           </motion.div>
         </motion.div>
