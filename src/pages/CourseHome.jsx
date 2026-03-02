@@ -84,14 +84,23 @@ export default function CourseHome() {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <span className="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
-              Interactive Course
+             Interactive Course
             </span>
+            <p className="text-sm text-red-200 mb-3">Based on the bestselling book by David Berkowitz</p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
-              {course.title}
+             {course.title}
             </h1>
             {course.subtitle && (
               <p className="text-xl text-gray-300 mb-6">{course.subtitle}</p>
             )}
+            <div className="mb-6 p-4 bg-white/10 rounded-lg border border-white/20">
+              <p className="text-sm text-gray-200 leading-relaxed">
+                From the author of <span className="font-semibold">The Non-Obvious Guide to Using AI for Marketing</span>, an interactive course packed with hands-on exercises, real-world case studies, and AI-powered Q&A. Get lifetime access for one price — no subscription.
+              </p>
+              <a href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/" target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-sm text-red-300 hover:text-red-200 underline">
+                Read the book on Amazon →
+              </a>
+            </div>
             <div className="flex flex-wrap gap-4 text-sm text-gray-400 mb-8">
               {course.total_lessons && (
                 <span className="flex items-center gap-1"><BookOpen className="w-4 h-4" /> {course.total_lessons} lessons</span>
@@ -168,30 +177,35 @@ export default function CourseHome() {
 
       {/* Course Outline */}
       {modules.length > 0 && (
-        <section className="py-16 px-4 sm:px-6 bg-gray-50">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">Course Outline</h2>
-            <p className="text-gray-500 text-center mb-10">Structured around the chapters of the book</p>
-            <div className="space-y-3">
-              {modules.map((mod, i) => (
-                <div key={mod.id} className="flex items-center gap-4 bg-white rounded-xl p-4 border border-gray-200">
-                  <div className="w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold text-sm flex items-center justify-center flex-shrink-0">
-                    {i + 1}
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-gray-900 text-sm">{mod.title}</p>
-                    {mod.description && <p className="text-xs text-gray-500 mt-0.5">{mod.description}</p>}
-                  </div>
-                  {mod.is_free_preview ? (
-                    <span className="text-xs text-green-600 font-medium bg-green-50 px-2 py-0.5 rounded-full">Free Preview</span>
-                  ) : (
-                    <Lock className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+       <section className="py-16 px-4 sm:px-6 bg-gray-50">
+         <div className="max-w-3xl mx-auto">
+           <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">Course Outline</h2>
+           <p className="text-gray-500 text-center mb-10">Structured around the chapters of the book</p>
+           <div className="space-y-3">
+             {modules.map((mod, i) => (
+               <div key={mod.id} className="group">
+                 <Link
+                   to={mod.is_free_preview ? createPageUrl("CourseAccess") : "#"}
+                   className="flex items-center gap-4 bg-white rounded-xl p-4 border border-gray-200 hover:border-red-200 hover:bg-red-50 transition-colors cursor-pointer"
+                 >
+                   <div className="w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold text-sm flex items-center justify-center flex-shrink-0">
+                     {i + 1}
+                   </div>
+                   <div className="flex-1">
+                     <p className="font-semibold text-gray-900 text-sm">{mod.title}</p>
+                     {mod.description && <p className="text-xs text-gray-500 mt-0.5">{mod.description}</p>}
+                   </div>
+                   {mod.is_free_preview ? (
+                     <span className="text-xs text-green-600 font-medium bg-green-50 px-3 py-1 rounded-full group-hover:bg-green-100">Free Preview →</span>
+                   ) : (
+                     <Lock className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                   )}
+                 </Link>
+               </div>
+             ))}
+           </div>
+         </div>
+       </section>
       )}
 
       {/* About the author */}

@@ -115,7 +115,10 @@ export default function CourseAccess() {
 
   const progress = lessons.length > 0 ? Math.round((completedIds.length / lessons.length) * 100) : 0;
 
-  const goNext = () => {
+  const goNext = async () => {
+    if (!completedIds.includes(activeLesson.id)) {
+      await markComplete(activeLesson.id);
+    }
     const idx = lessons.findIndex(l => l.id === activeLessonId);
     if (idx < lessons.length - 1) {
       const next = lessons[idx + 1];
@@ -205,9 +208,27 @@ export default function CourseAccess() {
       </div>
 
       <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar toggle */}
+        {!sidebarOpen && (
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="w-12 bg-gray-100 border-r border-gray-200 flex items-center justify-center hover:bg-gray-200 transition-colors flex-shrink-0"
+            title="Open sidebar"
+          >
+            <ChevronRight className="w-5 h-5 text-gray-600" />
+          </button>
+        )}
+        
         {/* Sidebar */}
         <aside className={`bg-white border-r border-gray-200 overflow-y-auto flex-shrink-0 transition-all duration-200 ${sidebarOpen ? "w-72" : "w-0"}`}>
-          <div className="p-4">
+          <div className="p-4 flex flex-col h-full">
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-xs font-bold text-gray-500 uppercase">Course</span>
+              <button onClick={() => setSidebarOpen(false)} className="text-gray-400 hover:text-gray-600">
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto">
             {modules.map((mod) => (
               <div key={mod.id} className="mb-4">
                 <button
@@ -218,22 +239,26 @@ export default function CourseAccess() {
                   <span className="text-gray-300">{moduleLessons(mod.id).filter(l => completedIds.includes(l.id)).length}/{moduleLessons(mod.id).length}</span>
                 </button>
                 <div className="space-y-1">
-                  {moduleLessons(mod.id).map(lesson => (
-                    <button
-                      key={lesson.id}
-                      onClick={() => { setActiveLessonId(lesson.id); setActiveModuleId(mod.id); }}
-                      className={`w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${activeLessonId === lesson.id ? "bg-red-50 text-red-700 font-medium" : "text-gray-600 hover:bg-gray-50"}`}
-                    >
-                      {completedIds.includes(lesson.id)
-                        ? <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                        : <Circle className="w-4 h-4 text-gray-300 flex-shrink-0" />
-                      }
-                      <span className="truncate">{lesson.title}</span>
-                    </button>
-                  ))}
-                </div>
+                   {moduleLessons(mod.id).map(lesson => (
+                     <button
+                       key={lesson.id}
+                       onClick={() => { setActiveLessonId(lesson.id); setActiveModuleId(mod.id); }}
+                       className={`w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${activeLessonId === lesson.id ? "bg-red-50 text-red-700 font-medium" : "text-gray-600 hover:bg-gray-50"}`}
+                     >
+                       {completedIds.includes(lesson.id)
+                         ? <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                         : <Circle className="w-4 h-4 text-gray-300 flex-shrink-0" />
+                       }
+                       <div className="flex-1 truncate">
+                         <span>{lesson.title}</span>
+                         {lesson.estimated_minutes && <span className="text-xs text-gray-400 ml-1">({lesson.estimated_minutes} min)</span>}
+                       </div>
+                     </button>
+                   ))}
+                 </div>
               </div>
             ))}
+            </div>
           </div>
         </aside>
 
@@ -271,10 +296,17 @@ export default function CourseAccess() {
               )}
 
               {activeLesson.exercise_prompt && (
-                <div className="mt-6 bg-gray-900 rounded-xl p-5">
-                  <h3 className="font-bold text-white text-sm mb-2">✏️ Exercise</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">{activeLesson.exercise_prompt}</p>
-                </div>
+               <div className="mt-6 bg-gray-900 rounded-xl p-5">
+                 <h3 className="font-bold text-white text-sm mb-3">✏️ Exercise</h3>
+                 <p className="text-gray-300 text-sm leading-relaxed mb-4">{activeLesson.exercise_prompt}</p>
+                 <textarea
+                   placeholder="Write your answer or notes here..."
+                   className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 h-32 resize-none"
+                   defaultValue={localStorage.getItem(`exercise_${activeLessonId}`) || ""}
+                   onChange={(e) => localStorage.setItem(`exercise_${activeLessonId}`, e.target.value)}
+                 />
+                 <p className="text-xs text-gray-400 mt-2">Your response is saved locally in your browser.</p>
+               </div>
               )}
 
               <div className="mt-10 flex items-center justify-between gap-4">
@@ -284,9 +316,9 @@ export default function CourseAccess() {
                 </button>
 
                 {!completedIds.includes(activeLesson.id) ? (
-                  <button onClick={() => markComplete(activeLesson.id)}
+                  <button onClick={goNext}
                     className="flex items-center gap-2 px-6 py-2.5 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors">
-                    <CheckCircle className="w-4 h-4" /> Mark Complete
+                    <CheckCircle className="w-4 h-4" /> Mark Complete & Continue
                   </button>
                 ) : (
                   <span className="flex items-center gap-1.5 text-green-600 text-sm font-medium">

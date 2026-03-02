@@ -73,6 +73,9 @@ import CaseStudies from './pages/CaseStudies';
 import Contact from './pages/Contact';
 import ContentMarketingTools from './pages/ContentMarketingTools';
 import ContentUploader from './pages/ContentUploader';
+import CourseAccess from './pages/CourseAccess';
+import CourseHome from './pages/CourseHome';
+import CourseSuccess from './pages/CourseSuccess';
 import Cricket from './pages/Cricket';
 import EnterpriseWorkshop from './pages/EnterpriseWorkshop';
 import FOAF from './pages/FOAF';
@@ -107,9 +110,6 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import CourseHome from './pages/CourseHome';
-import CourseAccess from './pages/CourseAccess';
-import CourseSuccess from './pages/CourseSuccess';
 import __Layout from './Layout.jsx';
 
 
@@ -140,6 +140,9 @@ export const PAGES = {
     "Contact": Contact,
     "ContentMarketingTools": ContentMarketingTools,
     "ContentUploader": ContentUploader,
+    "CourseAccess": CourseAccess,
+    "CourseHome": CourseHome,
+    "CourseSuccess": CourseSuccess,
     "Cricket": Cricket,
     "EnterpriseWorkshop": EnterpriseWorkshop,
     "FOAF": FOAF,
@@ -174,9 +177,6 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "CourseHome": CourseHome,
-    "CourseAccess": CourseAccess,
-    "CourseSuccess": CourseSuccess,
 }
 
 export const pagesConfig = {
