@@ -22,8 +22,12 @@ const PARTNER_FAQS = [
         a: "After payment, your submission goes into a review queue. David personally evaluates each listing for quality, legitimacy, and fit. Expect a response within a few business days. You'll receive an email either confirming approval or explaining why your listing wasn't accepted."
       },
       {
+        q: "Do I have to be an AI marketer to be listed?",
+        a: "Absolutely not. This marketplace is for anyone whose work touches the intersection of AI and marketing — broadly defined. We actively welcome finance and ops consultants helping teams measure AI ROI, web developers building AI-powered sites and tools, SEO and GEO specialists optimizing for AI-driven search, data analysts turning AI outputs into business decisions, legal and compliance advisors navigating AI policy, HR and change management consultants supporting AI adoption, and more. If your services help a marketing-adjacent team work smarter with AI, you belong here."
+      },
+      {
         q: "What are the grounds for rejection?",
-        a: "Common reasons include: misleading or inaccurate information, services that don't align with AI marketing, lack of a credible web presence, or content that doesn't meet our quality bar. We won't list every vendor — quality control is part of the value."
+        a: "Common reasons include: misleading or inaccurate information, lack of a credible web presence, or content that doesn't meet our quality bar. We won't list every vendor — quality control is part of the value. Note: we do NOT require you to be a pure 'AI marketer' — we welcome any discipline that supports AI-enabled marketing and business operations."
       },
       {
         q: "What is the referral fee and how does it work?",
