@@ -316,6 +316,30 @@ export default function Partners() {
         subtitle="Tell me what you need — I'll match you."
       />
 
+      {/* Blog Cross-link */}
+      <section className="py-12 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-sm font-bold text-red-600 uppercase tracking-widest mb-2">From the Blog</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Learn More About AI Marketing Partnerships</h2>
+          <p className="text-gray-500 text-sm mb-6">Deep dives on finding the right AI partner, measuring ROI, and what disciplines matter most right now.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-left mb-6">
+            {[
+              { title: "Why Your AI Marketing Partner Doesn't Have to Be a Marketer", slug: "ai-marketing-partner-not-a-marketer" },
+              { title: "GEO vs. SEO: What Marketers Need to Know About AI Search in 2026", slug: "geo-vs-seo-ai-search-optimization-2026" },
+              { title: "How to Find and Vet an AI Marketing Agency (Without Getting Burned)", slug: "how-to-find-vet-ai-marketing-agency" },
+            ].map(post => (
+              <Link key={post.slug} to={createPageUrl(`BlogPost?slug=${post.slug}`)}
+                className="p-4 bg-gray-50 rounded-xl border border-gray-200 hover:border-red-200 hover:bg-red-50/30 transition-all group">
+                <p className="text-sm font-semibold text-gray-900 group-hover:text-red-700 leading-snug">{post.title} →</p>
+              </Link>
+            ))}
+          </div>
+          <Link to={createPageUrl("Blog")} className="text-red-600 hover:text-red-700 font-semibold text-sm underline">
+            View all blog posts →
+          </Link>
+        </div>
+      </section>
+
       {/* Submit CTA */}
       <section className="py-16 bg-gradient-to-br from-red-600 to-red-700">
         <div className="max-w-3xl mx-auto px-4 text-center">
