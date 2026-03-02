@@ -194,9 +194,10 @@ export default function PartnerSubmit() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <MetaTags
-        title="Submit Your Listing - High Caliber AI Partner Marketplace"
-        description="List your AI marketing services in the High Caliber AI Partner Marketplace."
+        title="Submit Your Listing – High Caliber AI Partner Marketplace"
+        description="List your AI marketing agency, consultancy, or tool in the High Caliber AI Partner Marketplace. $49 lifetime listing fee, personally reviewed by David Berkowitz. Reach 7,000+ marketers."
         url="https://highcaliberai.com/partner-submit"
+        canonical="https://highcaliberai.com/partner-submit"
       />
 
       <div className="max-w-2xl mx-auto px-4 pt-28 pb-20">

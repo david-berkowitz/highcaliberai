@@ -27,6 +27,12 @@ export default function PoliticsPage() {
         }}></div>
       </div>
       
+      <MetaTags
+        title="AI Campaign Training for Political Operatives – High Caliber AI"
+        description="Two-day AI bootcamp for political campaigns. Master AI tools for voter outreach, rapid response, fundraising, messaging, and get-out-the-vote operations. Taught by David Berkowitz."
+        url="https://highcaliberai.com/politics"
+        canonical="https://highcaliberai.com/politics"
+      />
       {/* Content */}
       <div className="relative z-10">
       {/* Navigation */}

@@ -27,6 +27,12 @@ export default function CPGPage() {
         }}></div>
       </div>
       
+      <MetaTags
+        title="AI Training for CPG Brands – High Caliber AI"
+        description="Two-day AI bootcamp for consumer packaged goods marketers. Learn AI tools for product launches, consumer insights, content creation, and omnichannel retail. Taught by David Berkowitz."
+        url="https://highcaliberai.com/cpg"
+        canonical="https://highcaliberai.com/cpg"
+      />
       {/* Content */}
       <div className="relative z-10">
       {/* Navigation */}

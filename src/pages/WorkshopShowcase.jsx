@@ -26,6 +26,12 @@ export default function WorkshopShowcase() {
         }}></div>
       </div>
       
+      <MetaTags
+        title="Corporate AI Marketing Workshop – High Caliber AI"
+        description="Custom AI training workshops for corporate marketing teams. From one-hour briefings to two-day immersive bootcamps — built around your team, stack, and real campaigns. By David Berkowitz."
+        url="https://highcaliberai.com/workshopshowcase"
+        canonical="https://highcaliberai.com/workshopshowcase"
+      />
       {/* Content */}
       <div className="relative z-10">
         {/* Hero Section */}
