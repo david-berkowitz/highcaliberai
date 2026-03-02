@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 import AIMarketingKitchen from '@/components/ice/AIMarketingKitchen';
 import ActionPlanBuilder from '@/components/ice/ActionPlanBuilder';
 
+import MetaTags from '@/components/SEO/MetaTags';
+
 export default function CPGPage() {
   const [activeDay, setActiveDay] = useState('day1');
 

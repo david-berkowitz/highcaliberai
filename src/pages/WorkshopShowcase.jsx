@@ -7,6 +7,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 
+import MetaTags from '@/components/SEO/MetaTags';
+
 export default function WorkshopShowcase() {
   const [activeDay, setActiveDay] = useState('day1');
 
