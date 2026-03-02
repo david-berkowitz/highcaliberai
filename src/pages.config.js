@@ -110,6 +110,7 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
+import ResourceSubmit from './pages/ResourceSubmit';
 import __Layout from './Layout.jsx';
 
 
@@ -177,6 +178,7 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
+    "ResourceSubmit": ResourceSubmit,
 }
 
 export const pagesConfig = {
