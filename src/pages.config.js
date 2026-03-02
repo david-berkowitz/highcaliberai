@@ -107,6 +107,9 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
+import CourseHome from './pages/CourseHome';
+import CourseAccess from './pages/CourseAccess';
+import CourseSuccess from './pages/CourseSuccess';
 import __Layout from './Layout.jsx';
 
 
@@ -171,6 +174,9 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
+    "CourseHome": CourseHome,
+    "CourseAccess": CourseAccess,
+    "CourseSuccess": CourseSuccess,
 }
 
 export const pagesConfig = {
