@@ -51,6 +51,7 @@ import AIMGFAQ from './pages/AIMGFAQ';
 import AINews from './pages/AINews';
 import AIStrategyHub from './pages/AIStrategyHub';
 import About from './pages/About';
+import AdminHub from './pages/AdminHub';
 import AdminRoadmap from './pages/AdminRoadmap';
 import AgenticAgency from './pages/AgenticAgency';
 import AgenticAssessment from './pages/AgenticAssessment';
@@ -106,7 +107,6 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import AdminHub from './pages/AdminHub';
 import __Layout from './Layout.jsx';
 
 
@@ -115,6 +115,7 @@ export const PAGES = {
     "AINews": AINews,
     "AIStrategyHub": AIStrategyHub,
     "About": About,
+    "AdminHub": AdminHub,
     "AdminRoadmap": AdminRoadmap,
     "AgenticAgency": AgenticAgency,
     "AgenticAssessment": AgenticAssessment,
@@ -170,7 +171,6 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "AdminHub": AdminHub,
 }
 
 export const pagesConfig = {

@@ -211,6 +211,8 @@ export default function Resources() {
           <SectionHeader icon={Book} title="Courses & Learning" description="Educational resources and video content for AI marketing" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <ResourceCard icon={Book} title="AIMG YouTube Channel" description="Dozens of AI marketing expert interviews" href="https://www.youtube.com/@aimarketersguild" featured />
+            <ResourceCard icon={Video} title="Build First Academy – Half-Day Intensives" description="Hands-on AI building workshops by Bethany Crystal. Build an internal tool, game, or business in 4 hours. $250/person." href="https://buildfirst.ai/" tier="smb" />
+            <ResourceCard icon={Video} title="Build First Academy – Corporate Workshops" description="Half-day AI fluency workshops for teams of 15–20. Participants build real MVPs. Starts at $7,500." href="https://buildfirst.ai/" tier="enterprise" />
             <ResourceCard icon={Book} title="Generative AI for Brand Execs" description="Course by Shelly Palmer" href="https://courses.shellypalmer.com/metacademy-generative-ai" />
             <ResourceCard icon={Book} title="U of Digital AI Accelerator" description="Comprehensive AI training program for marketing teams" href="https://uof.digital/ai/" tier="enterprise" />
           </div>
