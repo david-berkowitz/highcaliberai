@@ -12,7 +12,8 @@ import {
   ArrowRight,
   CheckCircle2,
   Target,
-  Sparkles
+  Sparkles,
+  Shield
 } from "lucide-react";
 
 const caseStudies = [
