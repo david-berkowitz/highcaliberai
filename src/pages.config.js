@@ -99,6 +99,7 @@ import Politics from './pages/Politics';
 import Press from './pages/Press';
 import PressCoverageAdmin from './pages/PressCoverageAdmin';
 import Progress from './pages/Progress';
+import ResourceSubmit from './pages/ResourceSubmit';
 import Resources from './pages/Resources';
 import SOS from './pages/SOS';
 import SaaSFractionalCMO from './pages/SaaSFractionalCMO';
@@ -110,7 +111,6 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import ResourceSubmit from './pages/ResourceSubmit';
 import __Layout from './Layout.jsx';
 
 
@@ -167,6 +167,7 @@ export const PAGES = {
     "Press": Press,
     "PressCoverageAdmin": PressCoverageAdmin,
     "Progress": Progress,
+    "ResourceSubmit": ResourceSubmit,
     "Resources": Resources,
     "SOS": SOS,
     "SaaSFractionalCMO": SaaSFractionalCMO,
@@ -178,7 +179,6 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "ResourceSubmit": ResourceSubmit,
 }
 
 export const pagesConfig = {

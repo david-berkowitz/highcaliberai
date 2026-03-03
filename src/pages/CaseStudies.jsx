@@ -145,6 +145,60 @@ const caseStudies = [
     color: "red"
   },
   {
+    id: "madtech",
+    client: "MADTECH.AI",
+    industry: "Marketing Technology",
+    icon: TrendingUp,
+    challenge: "Fast-growing martech company needed a fractional CMO to establish go-to-market strategy, build brand authority, and drive pipeline in a competitive space.",
+    solution: [
+      "Served as Fractional Chief Marketing Officer overseeing full GTM strategy",
+      "Developed positioning and messaging to differentiate in the crowded martech landscape",
+      "Built content marketing engine and AI-driven pipeline programs"
+    ],
+    results: [
+      { metric: "Fractional", label: "CMO Embedded 2025" },
+      { metric: "Clear", label: "GTM Strategy & Positioning" },
+      { metric: "AI-Driven", label: "Pipeline Programs" }
+    ],
+    color: "red"
+  },
+  {
+    id: "islaa",
+    client: "ISLAA",
+    industry: "Non-Profit Arts Organization",
+    icon: Users,
+    challenge: "Non-profit needed to equip their marketing team with practical AI skills and establish the right technology stack and workflows for sustainable adoption.",
+    solution: [
+      "Trained entire marketing team on applied AI tools and best practices",
+      "Audited and recommended tailored AI tech stack for non-profit constraints",
+      "Developed repeatable AI-enhanced content and workflow processes"
+    ],
+    results: [
+      { metric: "Full", label: "Team AI Training" },
+      { metric: "Custom", label: "Tech Stack Recommendations" },
+      { metric: "Ongoing", label: "Workflow Improvements" }
+    ],
+    color: "green"
+  },
+  {
+    id: "russo",
+    client: "Russo Partners",
+    industry: "Public Relations",
+    icon: Shield,
+    challenge: "Leading PR firm needed a comprehensive internal and external AI policy framework and a vetted tech stack to guide responsible AI adoption across the team.",
+    solution: [
+      "Developed internal AI usage policy covering ethics, data privacy, and brand safety",
+      "Created external AI policy for client-facing communications",
+      "Evaluated and recommended AI tools tailored to PR workflows"
+    ],
+    results: [
+      { metric: "Internal", label: "AI Policy Developed" },
+      { metric: "External", label: "Client AI Policy" },
+      { metric: "Vetted", label: "PR-Specific Tech Stack" }
+    ],
+    color: "purple"
+  },
+  {
     id: "merck",
     client: "F500 Pharma Co",
     industry: "Pharmaceutical",

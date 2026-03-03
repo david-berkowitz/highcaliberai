@@ -381,6 +381,48 @@ export default function Services() {
               <p className="font-semibold text-gray-900">Simon Dunlop</p>
               <p className="text-gray-600 text-sm">CMO, Instreamatic</p>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                "David Berkowitz blends technical expertise with accessible strategies, offering a roadmap for marketers looking to harness the power of AI."
+              </blockquote>
+              <p className="font-semibold text-gray-900">Marc Maleh</p>
+              <p className="text-gray-600 text-sm">Global Chief Technology Officer, Huge</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                "David's an innovative thinker and a true pleasure to work with. He's always ahead of the curve and tuned into what's next and what's new. He's pragmatic, sharp, and brings an energy every team wishes they had more of."
+              </blockquote>
+              <p className="font-semibold text-gray-900">Leo Morejon</p>
+              <p className="text-gray-600 text-sm">Director of Social & Influencer, Hormel Foods</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                "David Berkowitz's AI Marketers Guild has been impressive to watch and participate in. If you are a marketer or working in growth at a company, large or small, you should consider checking out his community."
+              </blockquote>
+              <p className="font-semibold text-gray-900">Darren Herman</p>
+              <p className="text-gray-600 text-sm">Managing Director, Bain Capital</p>
+            </motion.div>
           </div>
         </div>
       </section>

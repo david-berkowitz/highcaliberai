@@ -263,6 +263,34 @@ export default function Speaking() {
               <p className="font-semibold text-gray-900 text-sm">Aurelie Guerreri</p>
               <p className="text-gray-600 text-xs">CMO, DataDome</p>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-4 italic">
+                "David, thank you again for a fantastic session. I have received a lot of great feedback about it, including from our CIO. The tips and tricks were excellent, and the case studies provided some new ideas on how folks could integrate generative AI into their projects."
+              </blockquote>
+              <p className="font-semibold text-gray-900 text-sm">Dylan O'Brien</p>
+              <p className="text-gray-600 text-xs">Agile Delivery Lead, AARP</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.7 }}
+              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+            >
+              <blockquote className="text-gray-700 mb-4 italic">
+                "Thanks for such an engaging presentation! You've certainly managed to take daunting information and make it so interesting and accessible!"
+              </blockquote>
+              <p className="font-semibold text-gray-900 text-sm">Patricia Raufer</p>
+              <p className="text-gray-600 text-xs">Executive Forum, May 2025</p>
+            </motion.div>
           </div>
         </div>
       </section>
