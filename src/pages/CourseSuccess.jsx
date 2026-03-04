@@ -7,6 +7,7 @@ import { createPageUrl } from "@/utils";
 export default function CourseSuccess() {
   const params = new URLSearchParams(window.location.search);
   const sessionId = params.get("session_id");
+  const freeToken = params.get("token");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center px-4 pt-20">
@@ -22,7 +23,7 @@ export default function CourseSuccess() {
           Bookmark the course page and use your email to log back in anytime.
         </p>
         <Link
-          to={`${createPageUrl("CourseAccess")}${sessionId ? `?session_id=${sessionId}` : ""}`}
+          to={`${createPageUrl("CourseAccess")}${freeToken ? `?token=${freeToken}` : sessionId ? `?session_id=${sessionId}` : ""}`}
           className="inline-flex items-center gap-2 bg-red-600 text-white font-bold px-8 py-3 rounded-xl hover:bg-red-700 transition-colors"
         >
           <BookOpen className="w-5 h-5" />
