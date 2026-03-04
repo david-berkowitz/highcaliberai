@@ -357,6 +357,73 @@ function BlogTab() {
   );
 }
 
+// ─── Discount Codes Tab ───────────────────────────────────────────────────────
+function DiscountCodesTab() {
+  const COURSE_CODES = [
+    { code: "bookVIP", discount: "100%", notes: "Free access — for book readers / VIPs" },
+  ];
+
+  const PARTNER_CODES = [
+    { code: "HCAIVIP", discount: "100%", notes: "Complimentary listing" },
+    { code: "HCAI50",  discount: "50%",  notes: "Half-price listing" },
+  ];
+
+  const CodeTable = ({ codes }) => (
+    <div className="overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-gray-100">
+            <th className="text-left py-2 px-3 font-semibold text-gray-700">Code</th>
+            <th className="text-left py-2 px-3 font-semibold text-gray-700">Discount</th>
+            <th className="text-left py-2 px-3 font-semibold text-gray-700">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {codes.map(c => (
+            <tr key={c.code} className="border-b border-gray-50 hover:bg-gray-50">
+              <td className="py-2.5 px-3">
+                <code className="bg-gray-100 text-gray-800 px-2 py-0.5 rounded font-mono text-xs">{c.code}</code>
+              </td>
+              <td className="py-2.5 px-3">
+                <Badge className={c.discount === "100%" ? "bg-purple-100 text-purple-700 border-0" : "bg-blue-100 text-blue-700 border-0"}>
+                  {c.discount} off
+                </Badge>
+              </td>
+              <td className="py-2.5 px-3 text-gray-500">{c.notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+
+  return (
+    <div className="space-y-6">
+      <Card className="border border-gray-200">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base font-semibold text-gray-900">📚 Online Course Codes</CardTitle>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <CodeTable codes={COURSE_CODES} />
+        </CardContent>
+      </Card>
+
+      <Card className="border border-gray-200">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base font-semibold text-gray-900">🤝 Partner Marketplace Codes</CardTitle>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <CodeTable codes={PARTNER_CODES} />
+        </CardContent>
+      </Card>
+
+      <p className="text-xs text-gray-400">
+        To add or change codes, update the backend functions: <code className="bg-gray-100 px-1 rounded">courseCheckout</code> and <code className="bg-gray-100 px-1 rounded">partnerCheckout</code>.
+      </p>
+    </div>
+  );
+}
+
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function AdminHub() {
   const [activeTab, setActiveTab] = useState("partners");
