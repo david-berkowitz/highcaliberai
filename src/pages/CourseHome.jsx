@@ -42,6 +42,7 @@ export default function CourseHome() {
       courseId: course.id,
       email: email.trim(),
       origin: window.location.origin,
+      discountCode: discountCode.trim() || undefined,
     });
     if (res.data.url) {
       window.location.href = res.data.url;
