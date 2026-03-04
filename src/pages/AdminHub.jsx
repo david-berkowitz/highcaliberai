@@ -16,6 +16,7 @@ const TABS = [
   { id: "mensch", label: "Meet a Mensch", icon: Heart },
   { id: "bylines", label: "Bylines", icon: FileText },
   { id: "blog", label: "Blog Posts", icon: FileText },
+  { id: "codes", label: "Discount Codes", icon: Eye },
 ];
 
 const STATUS_COLORS = {
