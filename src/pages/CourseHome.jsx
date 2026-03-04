@@ -127,6 +127,13 @@ export default function CourseHome() {
                 onChange={e => { setEmail(e.target.value); setError(""); }}
                 onKeyDown={e => e.key === "Enter" && handlePurchase()}
               />
+              <input
+                type="text"
+                placeholder="Discount code (optional)"
+                className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-600"
+                value={discountCode}
+                onChange={e => { setDiscountCode(e.target.value); setError(""); }}
+              />
               {error && <p className="text-red-500 text-xs mb-2">{error}</p>}
               <button
                 onClick={handlePurchase}
