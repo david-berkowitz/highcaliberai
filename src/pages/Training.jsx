@@ -89,7 +89,8 @@ export default function Training() {
         "AI chat assistant for any concept",
         "Lifetime access — one-time price"
       ],
-      duration: "Self-paced",
+      duration: "Self-paced · $39",
+      cta: "Enroll Now — $39",
       link: "/CourseHome",
       external: false
     },
