@@ -475,6 +475,7 @@ export default function AdminHub() {
         {activeTab === "mensch" && <MenschTab />}
         {activeTab === "bylines" && <BylinesTab />}
         {activeTab === "blog" && <BlogTab />}
+        {activeTab === "codes" && <DiscountCodesTab />}
       </div>
     </div>
   );
