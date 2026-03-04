@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 export default function CourseHome() {
   const [email, setEmail] = useState("");
+  const [discountCode, setDiscountCode] = useState("");
   const [purchasing, setPurchasing] = useState(false);
   const [error, setError] = useState("");
 
