@@ -272,7 +272,7 @@ export default function Training() {
                         </ul>
                         
                         <div className="flex items-center text-red-600 font-semibold group-hover:gap-3 transition-all">
-                          Learn More
+                          {program.cta || "Learn More"}
                           <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </CardContent>
