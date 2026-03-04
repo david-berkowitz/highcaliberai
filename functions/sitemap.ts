@@ -34,8 +34,21 @@ const staticPages = [
   { loc: '/baruch', priority: '0.4', changefreq: 'monthly', lastmod: '2026-02-23' },
 ];
 
-Deno.serve(async () => {
-  const urls = staticPages.map(page => `
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.20';
+
+Deno.serve(async (req) => {
+  const today = new Date().toISOString().split('T')[0];
+
+  const base44 = createClientFromRequest(req);
+  let blogPosts = [];
+  try {
+    const posts = await base44.asServiceRole.entities.BlogPost.filter({ published: true });
+    blogPosts = posts.filter(p => !p.published_date || p.published_date <= today);
+  } catch (e) {
+    console.error('Failed to fetch blog posts for sitemap:', e.message);
+  }
+
+  const staticUrls = staticPages.map(page => `
   <url>
     <loc>${baseUrl}${page.loc}</loc>
     <lastmod>${page.lastmod}</lastmod>
@@ -43,8 +56,16 @@ Deno.serve(async () => {
     <priority>${page.priority}</priority>
   </url>`).join('');
 
+  const blogUrls = blogPosts.map(post => `
+  <url>
+    <loc>${baseUrl}/blog/${post.slug}</loc>
+    <lastmod>${post.published_date || post.updated_date?.split('T')[0] || today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`).join('');
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${staticUrls}${blogUrls}
 </urlset>`;
 
   return new Response(sitemap, {
