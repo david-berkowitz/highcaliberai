@@ -16,6 +16,8 @@ export default function Blog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
+  const today = new Date().toISOString().split('T')[0];
+
   const { data: posts = [], isLoading } = useQuery({
     queryKey: ['blog-posts'],
     queryFn: () => base44.entities.BlogPost.filter({ published: true }, '-published_date'),
@@ -25,6 +27,7 @@ export default function Blog() {
   const categories = ["all", "AI Strategy", "Case Studies", "Tools & Tech", "Industry Trends", "How-To"];
 
   const filteredPosts = posts.filter(post => {
+    if (post.published_date && post.published_date > today) return false;
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
