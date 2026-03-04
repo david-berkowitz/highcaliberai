@@ -53,9 +53,14 @@ export default function BlogPost() {
   const urlParams = new URLSearchParams(window.location.search);
   const slug = urlParams.get('slug');
 
+  const today = new Date().toISOString().split('T')[0];
+
   const { data: posts = [], isLoading } = useQuery({
     queryKey: ['blog-post', slug],
-    queryFn: () => base44.entities.BlogPost.filter({ slug, published: true }),
+    queryFn: async () => {
+      const results = await base44.entities.BlogPost.filter({ slug, published: true });
+      return results.filter(p => !p.published_date || p.published_date <= today);
+    },
     enabled: !!slug,
     initialData: [],
   });
