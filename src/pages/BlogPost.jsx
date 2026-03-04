@@ -4,6 +4,7 @@ import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
+import ReactMarkdown from "react-markdown";
 import { Calendar, Clock, ArrowLeft, Tag, Share2, ChevronRight, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
