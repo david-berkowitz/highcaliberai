@@ -76,6 +76,24 @@ export default function Training() {
       external: false
     },
     {
+      id: "course",
+      title: "The Non-Obvious Guide — Online Course",
+      subtitle: "Learn at Your Own Pace",
+      description: "An interactive course based on David's book. Chapter-by-chapter lessons with hands-on exercises, AI-powered Q&A, and lifetime access. Start today for $39.",
+      icon: BookOpen,
+      color: "from-purple-600 to-indigo-700",
+      borderColor: "border-purple-200",
+      features: [
+        "16 lessons drawn from the book",
+        "Hands-on exercises with real campaigns",
+        "AI chat assistant for any concept",
+        "Lifetime access — one-time price"
+      ],
+      duration: "Self-paced",
+      link: "/CourseHome",
+      external: false
+    },
+    {
       id: "corporate",
       title: "Corporate AI Training",
       subtitle: "Team Activation & Enablement",

@@ -21,6 +21,8 @@ import {
   Loader2
 } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
 import { BookStructuredData, PersonStructuredData } from '@/components/SEO/StructuredData';
 import MetaTags from '@/components/SEO/MetaTags';
 import AgentChat from '@/components/AgentChat';
@@ -168,25 +170,31 @@ export default function BookPage() {
               <p className="text-xl text-white/80 mb-8">By David Berkowitz</p>
               
               <div className="flex flex-wrap gap-4">
-                <a 
-                  href="https://www.amazon.com/Non-Obvious-Guide-Using-Marketing-Transformative-ebook/dp/B0DZQQW7M7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="bg-yellow-500 hover:bg-yellow-600 text-purple-900 px-8 py-6 text-lg font-bold shadow-xl">
-                    Order Now on Amazon
-                    <ExternalLink className="ml-2 w-5 h-5" />
-                  </Button>
-                </a>
-                <Button 
-                  onClick={() => scrollToSection('chapters')}
-                  variant="outline" 
-                  className="bg-white/10 border-white/30 text-white hover:bg-white/20 px-8 py-6 text-lg"
-                >
-                  Explore Chapters
-                  <ChevronDown className="ml-2 w-5 h-5" />
-                </Button>
-              </div>
+                 <a 
+                   href="https://www.amazon.com/Non-Obvious-Guide-Using-Marketing-Transformative-ebook/dp/B0DZQQW7M7"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                 >
+                   <Button className="bg-yellow-500 hover:bg-yellow-600 text-purple-900 px-8 py-6 text-lg font-bold shadow-xl">
+                     Order Now on Amazon
+                     <ExternalLink className="ml-2 w-5 h-5" />
+                   </Button>
+                 </a>
+                 <Link to={createPageUrl("CourseHome")}>
+                   <Button className="bg-white text-purple-900 hover:bg-purple-100 px-8 py-6 text-lg font-bold shadow-xl">
+                     <BookOpen className="mr-2 w-5 h-5" />
+                     Take the Course — $39
+                   </Button>
+                 </Link>
+                 <Button 
+                   onClick={() => scrollToSection('chapters')}
+                   variant="outline" 
+                   className="bg-white/10 border-white/30 text-white hover:bg-white/20 px-8 py-6 text-lg"
+                 >
+                   Explore Chapters
+                   <ChevronDown className="ml-2 w-5 h-5" />
+                 </Button>
+               </div>
             </motion.div>
           </div>
         </div>
