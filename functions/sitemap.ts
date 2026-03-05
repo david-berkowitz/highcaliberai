@@ -51,11 +51,16 @@ Deno.serve(async (req) => {
 
   const base44 = createClientFromRequest(req);
   let blogPosts = [];
+  let aiDigests = [];
   try {
-    const posts = await base44.asServiceRole.entities.BlogPost.filter({ published: true });
+    const [posts, digests] = await Promise.all([
+      base44.asServiceRole.entities.BlogPost.filter({ published: true }),
+      base44.asServiceRole.entities.AINewsDigest.filter({ published: true }),
+    ]);
     blogPosts = posts.filter(p => !p.published_date || p.published_date <= today);
+    aiDigests = digests;
   } catch (e) {
-    console.error('Failed to fetch blog posts for sitemap:', e.message);
+    console.error('Failed to fetch dynamic pages for sitemap:', e.message);
   }
 
   const staticUrls = staticPages.map(page => `
