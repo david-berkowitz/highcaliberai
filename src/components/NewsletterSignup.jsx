@@ -17,10 +17,23 @@ export default function NewsletterSignup({ source = "website", variant = "defaul
     setIsSubmitting(true);
 
     try {
+      // Determine segment from source
+      const sourceToSegment = {
+        newsletter_signup: "newsletter",
+        newsletter: "newsletter",
+        resource_library: "resource_library",
+        ai_news: "ai_news",
+        blog: "newsletter",
+        website: "newsletter",
+      };
+      const segment = sourceToSegment[source] || "newsletter";
+
       await base44.entities.EmailSubscriber.create({
         email,
         name: name || undefined,
-        source
+        source,
+        segments: [segment],
+        status: "active",
       });
 
       setIsSubscribed(true);
