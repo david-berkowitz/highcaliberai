@@ -168,7 +168,7 @@ export default function CourseHome() {
 
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
             <img
-              src={course.cover_image || "https://m.media-amazon.com/images/I/71QZe3-WQKL._SL1500_.jpg"}
+              src={course.cover_image || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/4104594a4_IMG_4434.jpg"}
               alt={course.title}
               className="rounded-2xl shadow-2xl w-full max-w-sm mx-auto"
             />
