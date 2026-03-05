@@ -222,8 +222,10 @@ function MenschTab() {
 // ─── Bylines Tab ─────────────────────────────────────────────────────────────
 function BylinesTab() {
   const qc = useQueryClient();
-  const [showAdd, setShowAdd] = useState(false);
-  const [form, setForm] = useState({ title: "", source_url: "", publication_date: "", excerpt: "", full_text: "", type: "article", featured: true });
+  const [urlInput, setUrlInput] = useState("");
+  const [fetching, setFetching] = useState(false);
+  const [form, setForm] = useState(null);
+  const [msg, setMsg] = useState("");
 
   const { data: pieces = [] } = useQuery({
     queryKey: ["featured-writing-admin"],
@@ -232,7 +234,12 @@ function BylinesTab() {
 
   const create = useMutation({
     mutationFn: (data) => base44.entities.FeaturedWriting.create(data),
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ["featured-writing-admin"] }); setShowAdd(false); setForm({ title: "", source_url: "", publication_date: "", excerpt: "", full_text: "", type: "article", featured: true }); },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["featured-writing-admin"] });
+      setForm(null);
+      setUrlInput("");
+      setMsg("✓ Added successfully!");
+    },
   });
 
   const deletePiece = useMutation({
@@ -245,33 +252,56 @@ function BylinesTab() {
     onSuccess: () => qc.invalidateQueries({ queryKey: ["featured-writing-admin"] }),
   });
 
+  const handleFetch = async (e) => {
+    e.preventDefault();
+    if (!urlInput.trim()) return;
+    setFetching(true);
+    setMsg("");
+    try {
+      const result = await base44.functions.invoke("fetchBylineMetadata", { url: urlInput.trim() });
+      setForm({ ...result.data, full_text: "", type: "article", featured: true });
+    } catch (err) {
+      setMsg(`✗ ${err.message}`);
+    }
+    setFetching(false);
+  };
+
   return (
     <div className="space-y-4">
-      <Button onClick={() => setShowAdd(!showAdd)} className="bg-red-600 hover:bg-red-700">
-        <Plus className="w-4 h-4 mr-1"/> Add Byline / Writing
-      </Button>
+      <Card className="border-2 border-red-100 bg-red-50">
+        <CardContent className="p-5">
+          <h3 className="font-semibold text-sm text-gray-900 mb-3">Add Byline by URL</h3>
+          <form onSubmit={handleFetch} className="flex gap-2">
+            <Input placeholder="Paste article URL..." value={urlInput}
+              onChange={e => setUrlInput(e.target.value)} className="flex-1 text-sm bg-white" />
+            <Button type="submit" disabled={fetching} className="bg-red-600 hover:bg-red-700 whitespace-nowrap">
+              {fetching ? "Fetching..." : "Fetch & Add"}
+            </Button>
+          </form>
+          {msg && <p className={`text-xs mt-2 font-medium ${msg.startsWith("✓") ? "text-green-600" : "text-red-600"}`}>{msg}</p>}
+        </CardContent>
+      </Card>
 
-      {showAdd && (
-        <Card className="border-2 border-red-100 bg-red-50">
+      {form && (
+        <Card className="border-2 border-orange-100 bg-orange-50">
           <CardContent className="p-5 space-y-3">
-            <h3 className="font-semibold text-sm text-gray-900">Add Featured Writing</h3>
-            <Input placeholder="Title *" value={form.title} onChange={e => setForm(f => ({...f, title: e.target.value}))} className="text-sm"/>
-            <Input placeholder="Source URL *" value={form.source_url} onChange={e => setForm(f => ({...f, source_url: e.target.value}))} className="text-sm"/>
+            <h3 className="font-semibold text-sm text-gray-900">Review & Save</h3>
+            <Input placeholder="Title *" value={form.title} onChange={e => setForm(f => ({...f, title: e.target.value}))} className="text-sm bg-white"/>
+            <Input placeholder="Source URL *" value={form.source_url} onChange={e => setForm(f => ({...f, source_url: e.target.value}))} className="text-sm bg-white"/>
             <div className="grid grid-cols-2 gap-3">
-              <Input type="date" value={form.publication_date} onChange={e => setForm(f => ({...f, publication_date: e.target.value}))} className="text-sm"/>
+              <Input type="date" value={form.publication_date} onChange={e => setForm(f => ({...f, publication_date: e.target.value}))} className="text-sm bg-white"/>
               <select value={form.type} onChange={e => setForm(f => ({...f, type: e.target.value}))}
-                className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+                className="border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-red-500">
                 <option value="article">Article</option>
                 <option value="linkedin_post">LinkedIn Post</option>
                 <option value="essay">Essay</option>
               </select>
             </div>
-            <Textarea placeholder="Excerpt / summary..." value={form.excerpt} onChange={e => setForm(f => ({...f, excerpt: e.target.value}))} rows={2} className="text-sm"/>
-            <Textarea placeholder="Full text (optional)..." value={form.full_text} onChange={e => setForm(f => ({...f, full_text: e.target.value}))} rows={4} className="text-sm"/>
+            <Textarea placeholder="Excerpt / summary..." value={form.excerpt} onChange={e => setForm(f => ({...f, excerpt: e.target.value}))} rows={2} className="text-sm bg-white"/>
             <div className="flex gap-2">
               <Button onClick={() => create.mutate(form)} disabled={!form.title || !form.source_url || !form.publication_date}
                 className="bg-red-600 hover:bg-red-700">Save</Button>
-              <Button variant="outline" onClick={() => setShowAdd(false)}>Cancel</Button>
+              <Button variant="outline" onClick={() => setForm(null)}>Cancel</Button>
             </div>
           </CardContent>
         </Card>
