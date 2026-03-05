@@ -4,7 +4,8 @@ import { createClientFromRequest } from "npm:@base44/sdk@0.8.20";
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY"));
 
 const DISCOUNT_CODES = {
-  "bookVIP": 100, // 100% off
+  "bookVIP": { percent: 100, limit: null },
+  "AI25":    { percent: 25,  limit: 100 },
 };
 
 Deno.serve(async (req) => {
@@ -25,12 +26,28 @@ Deno.serve(async (req) => {
     }
 
     // Apply discount code
-    const discount = discountCode ? DISCOUNT_CODES[discountCode.trim()] : null;
+    const codeKey = discountCode?.trim().toUpperCase();
+    const discountConfig = codeKey ? DISCOUNT_CODES[codeKey] : null;
+
+    if (discountCode?.trim() && !discountConfig) {
+      return Response.json({ error: "Invalid discount code." }, { status: 400 });
+    }
+
+    // Check usage limit for codes with a cap
+    if (discountConfig?.limit !== null && discountConfig?.limit !== undefined) {
+      const usedEnrollments = await base44.asServiceRole.entities.CourseEnrollment.filter({ course_id: courseId });
+      const usageCount = usedEnrollments.filter(e => e.discount_code?.toUpperCase() === codeKey).length;
+      if (usageCount >= discountConfig.limit) {
+        return Response.json({ error: `Sorry, this promo code has reached its limit of ${discountConfig.limit} uses.` }, { status: 400 });
+      }
+      console.log(`Discount code ${codeKey}: ${usageCount}/${discountConfig.limit} uses`);
+    }
+
     const originalPrice = course.price;
-    const discountPercent = discount ?? 0;
+    const discountPercent = discountConfig?.percent ?? 0;
     const finalPrice = Math.round(originalPrice * (1 - discountPercent / 100) * 100); // in cents
 
-    console.log(`Discount code: ${discountCode}, discount: ${discountPercent}%, final price: $${finalPrice / 100}`);
+    console.log(`Discount code: ${codeKey}, discount: ${discountPercent}%, final price: $${finalPrice / 100}`);
 
     // If 100% off, create enrollment directly without Stripe
     if (finalPrice === 0) {
