@@ -477,6 +477,8 @@ export default function AdminHub() {
 
         {/* Tab Content */}
         {activeTab === "partners" && <PartnersTab />}
+        {activeTab === "resources" && <ResourceSubmissionsTab />}
+        {activeTab === "ainews" && <AINewsEditorTab />}
         {activeTab === "mensch" && <MenschTab />}
         {activeTab === "bylines" && <BylinesTab />}
         {activeTab === "blog" && <BlogTab />}
