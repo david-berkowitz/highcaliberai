@@ -37,21 +37,28 @@ export default function CourseAccess() {
 
   const verifyBySession = async (sessionId) => {
     setVerifying(true);
-    const res = await base44.functions.invoke("courseVerifyAccess", { sessionId });
-    if (res.data.enrollment) {
-      setEnrollment(res.data.enrollment);
-      setToken(res.data.enrollment.access_token);
-      localStorage.setItem("course_token", res.data.enrollment.access_token);
-    }
+    try {
+      const res = await base44.functions.invoke("courseVerifyAccess", { sessionId });
+      if (res.data.enrollment) {
+        setEnrollment(res.data.enrollment);
+        setToken(res.data.enrollment.access_token);
+        localStorage.setItem("course_token", res.data.enrollment.access_token);
+      }
+    } catch (_) {}
     setVerifying(false);
   };
 
   const fetchEnrollmentByToken = async (t) => {
     setVerifying(true);
-    const res = await base44.functions.invoke("courseVerifyAccess", { accessToken: t });
-    if (res.data.enrollment) {
-      setEnrollment(res.data.enrollment);
-    } else {
+    try {
+      const res = await base44.functions.invoke("courseVerifyAccess", { accessToken: t });
+      if (res.data.enrollment) {
+        setEnrollment(res.data.enrollment);
+      } else {
+        setToken("");
+        localStorage.removeItem("course_token");
+      }
+    } catch (_) {
       setToken("");
       localStorage.removeItem("course_token");
     }
@@ -62,12 +69,16 @@ export default function CourseAccess() {
     if (!emailInput.trim()) return;
     setVerifying(true);
     setVerifyError("");
-    const res = await base44.functions.invoke("courseVerifyAccess", { email: emailInput.trim().toLowerCase() });
-    if (res.data.enrollment) {
-      setEnrollment(res.data.enrollment);
-      setToken(res.data.enrollment.access_token);
-      localStorage.setItem("course_token", res.data.enrollment.access_token);
-    } else {
+    try {
+      const res = await base44.functions.invoke("courseVerifyAccess", { email: emailInput.trim().toLowerCase() });
+      if (res.data.enrollment) {
+        setEnrollment(res.data.enrollment);
+        setToken(res.data.enrollment.access_token);
+        localStorage.setItem("course_token", res.data.enrollment.access_token);
+      } else {
+        setVerifyError("No enrollment found for that email. Please check your email or purchase the course.");
+      }
+    } catch (_) {
       setVerifyError("No enrollment found for that email. Please check your email or purchase the course.");
     }
     setVerifying(false);
