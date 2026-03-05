@@ -142,26 +142,28 @@ export default function Partners() {
       </section>
 
       {/* Featured Partners */}
-      <section className="py-12 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">Featured Partners</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {FEATURED_PARTNERS.map((p) => (
-              <div key={p.name} className="bg-gray-50 rounded-2xl p-6 border border-gray-200 flex flex-col gap-4">
-                <div className="flex items-start justify-between gap-4">
-                  <img src={p.logo} alt={p.name} className="h-10 object-contain" loading="lazy" />
-                  <span className="text-xs font-bold px-2 py-1 bg-red-100 text-red-700 rounded-full">Featured</span>
+      {FEATURED_PARTNERS.length > 0 && (
+        <section className="py-12 bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">Featured Partners</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {FEATURED_PARTNERS.map((p) => (
+                <div key={p.name} className="bg-gray-50 rounded-2xl p-6 border border-gray-200 flex flex-col gap-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <img src={p.logo} alt={p.name} className="h-10 object-contain" loading="lazy" />
+                    <span className="text-xs font-bold px-2 py-1 bg-red-100 text-red-700 rounded-full">Featured</span>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">{p.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {p.services.map(s => <span key={s} className="px-2 py-1 bg-white text-gray-600 text-xs rounded-full border border-gray-200">{s}</span>)}
+                  </div>
+                  <PartnerIntroButton partnerName={p.name} website={p.url} />
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed">{p.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {p.services.map(s => <span key={s} className="px-2 py-1 bg-white text-gray-600 text-xs rounded-full border border-gray-200">{s}</span>)}
-                </div>
-                <PartnerIntroButton partnerName={p.name} website={p.url} />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Marketplace Listings */}
       <section id="listings" className="py-16 bg-white">
