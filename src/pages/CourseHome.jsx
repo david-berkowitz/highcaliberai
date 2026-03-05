@@ -81,8 +81,22 @@ export default function CourseHome() {
         canonical="https://highcaliberai.com/course"
       />
 
+      {/* Promo Banner */}
+      <div className="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 py-3 px-4 text-center">
+        <p className="text-gray-900 font-bold text-sm sm:text-base flex items-center justify-center gap-2 flex-wrap">
+          <span>🎉</span>
+          <span>Founding Member Offer:</span>
+          <span className="font-black">First 100 students get 25% off</span>
+          <span>—</span>
+          <span>Use code</span>
+          <span className="bg-gray-900 text-yellow-300 font-black px-2.5 py-0.5 rounded tracking-widest text-sm">AI25</span>
+          <span>at checkout</span>
+          <span>🚀</span>
+        </p>
+      </div>
+
       {/* Hero */}
-      <section className="pt-28 pb-16 px-4 sm:px-6 bg-gradient-to-br from-gray-900 via-gray-800 to-red-950">
+      <section className="pt-20 pb-16 px-4 sm:px-6 bg-gradient-to-br from-gray-900 via-gray-800 to-red-950">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <span className="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
