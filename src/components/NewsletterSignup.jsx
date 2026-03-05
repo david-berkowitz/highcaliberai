@@ -28,13 +28,24 @@ export default function NewsletterSignup({ source = "website", variant = "defaul
       };
       const segment = sourceToSegment[source] || "newsletter";
 
-      await base44.entities.EmailSubscriber.create({
-        email,
-        name: name || undefined,
-        source,
-        segments: [segment],
-        status: "active",
-      });
+      // Upsert: merge segments if subscriber already exists
+      const existing = await base44.entities.EmailSubscriber.filter({ email });
+      if (existing.length > 0) {
+        const sub = existing[0];
+        const segments = Array.from(new Set([...(sub.segments || []), segment]));
+        await base44.entities.EmailSubscriber.update(sub.id, {
+          segments,
+          name: sub.name || name || undefined,
+        });
+      } else {
+        await base44.entities.EmailSubscriber.create({
+          email,
+          name: name || undefined,
+          source,
+          segments: [segment],
+          status: "active",
+        });
+      }
 
       setIsSubscribed(true);
       setEmail("");
