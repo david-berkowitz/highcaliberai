@@ -37,6 +37,7 @@ export default function Layout({ children, currentPageName }) {
       page: "Training",
       subMenu: [
         { name: "All Programs", page: "Training" },
+        { name: "Book Course", page: "CourseHome" },
         { name: "CPG Brands", page: "CPG" },
         { name: "Political Campaigns", page: "Politics" },
         { name: "Corporate Teams", page: "WorkshopShowcase" }
