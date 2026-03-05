@@ -106,12 +106,12 @@ import SaaSFractionalCMO from './pages/SaaSFractionalCMO';
 import Services from './pages/Services';
 import SmallTeamTraining from './pages/SmallTeamTraining';
 import Speaking from './pages/Speaking';
+import SubscribersAdmin from './pages/SubscribersAdmin';
 import ToolsHub from './pages/ToolsHub';
 import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import SubscribersAdmin from './pages/SubscribersAdmin';
 import __Layout from './Layout.jsx';
 
 
@@ -175,12 +175,12 @@ export const PAGES = {
     "Services": Services,
     "SmallTeamTraining": SmallTeamTraining,
     "Speaking": Speaking,
+    "SubscribersAdmin": SubscribersAdmin,
     "ToolsHub": ToolsHub,
     "Training": Training,
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "SubscribersAdmin": SubscribersAdmin,
 }
 
 export const pagesConfig = {

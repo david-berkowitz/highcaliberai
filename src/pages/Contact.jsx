@@ -43,6 +43,22 @@ export default function Contact() {
       // Save to database
       await base44.entities.ContactSubmission.create(formData);
 
+      // Add to email subscribers with contact_form segment
+      const existing = await base44.entities.EmailSubscriber.filter({ email: formData.email });
+      if (existing.length > 0) {
+        const sub = existing[0];
+        const segments = Array.from(new Set([...(sub.segments || []), "contact_form"]));
+        await base44.entities.EmailSubscriber.update(sub.id, { segments, name: sub.name || formData.name });
+      } else {
+        await base44.entities.EmailSubscriber.create({
+          email: formData.email,
+          name: formData.name,
+          source: "contact_form",
+          segments: ["contact_form"],
+          status: "active",
+        });
+      }
+
       // Track analytics
       base44.analytics.track({ eventName: "contact_form_submitted", properties: { has_company: !!formData.company } });
 
