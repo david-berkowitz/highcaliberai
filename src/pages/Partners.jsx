@@ -9,24 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
 import AgentChat from "@/components/AgentChat";
 
-const FEATURED_PARTNERS = [
-  {
-    name: "Morgan Digital Ventures",
-    url: "https://www.morgandv.com/",
-    logo: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/848660c7d_image.png",
-    description: "Strategic consulting firm helping business leaders turn AI experimentation into measurable economic value, validate product-market fit, and drive revenue growth.",
-    services: ["AI Implementation", "GTM Strategy", "Business Development", "Market Validation"],
-    category: "Consultancy",
-  },
-  {
-    name: "Social Lollipop",
-    url: "https://sociallollipop.com/",
-    logo: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/a4e97ed2b_image.png",
-    description: "Social media tools offering competitive intelligence, content preview optimization, and trend monitoring for brands and creators seeking tactical advantages.",
-    services: ["Social Media Tools", "Competitive Analysis", "Content Optimization", "Trend Monitoring"],
-    category: "SaaS / Tool",
-  },
-];
+const FEATURED_PARTNERS = [];
 
 const COMPANY_TYPE_COLORS = {
   "Agency": "bg-blue-100 text-blue-700",
