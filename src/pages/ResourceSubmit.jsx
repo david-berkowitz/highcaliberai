@@ -237,7 +237,7 @@ export default function ResourceSubmit() {
               </div>
 
               {/* Referral */}
-              <div>
+              <div className="space-y-3">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
                     type="checkbox"
@@ -246,8 +246,26 @@ export default function ResourceSubmit() {
                     onChange={handleChange}
                     className="w-4 h-4 text-red-600 rounded"
                   />
-                  <span className="text-sm text-gray-700">This resource has an affiliate/referral link</span>
+                  <span className="text-sm text-gray-700">This resource has an affiliate/referral program</span>
                 </label>
+                {formData.has_referral && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                      Your Referral Code <span className="text-gray-400 font-normal">(optional)</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="referral_code"
+                      value={formData.referral_code}
+                      onChange={handleChange}
+                      placeholder="e.g., DAVID20 or your affiliate URL"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+                    />
+                    <p className="text-xs text-green-700 bg-green-50 border border-green-200 rounded-lg px-3 py-2 mt-2">
+                      💡 If included, we may use your referral code or link when featuring this resource — a great way to earn credit for recommendations that get approved.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Submitter Info */}
