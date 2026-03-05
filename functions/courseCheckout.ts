@@ -59,6 +59,7 @@ Deno.serve(async (req) => {
         amount_paid: 0,
         access_token: token,
         status: "active",
+        discount_code: codeKey || "",
       });
       console.log(`Free enrollment created for ${email} with token ${token}`);
       return Response.json({ url: `${origin}/course-success?token=${token}&free=1` });
