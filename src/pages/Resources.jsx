@@ -230,6 +230,23 @@ export default function Resources() {
 
       </div>
 
+      {/* Submit a Resource CTA */}
+      <section className="py-12 px-4 sm:px-6 border-t border-gray-100">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Know a tool that should be here?</h2>
+          <p className="text-gray-500 text-sm mb-5">
+            Submit a resource for review. If you have a referral code, include it — approved listings may use it.
+          </p>
+          <Link
+            to={createPageUrl("ResourceSubmit")}
+            className="inline-flex items-center gap-2 bg-red-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-red-700 transition-colors"
+          >
+            <ArrowRight className="w-4 h-4" />
+            Submit a Resource
+          </Link>
+        </div>
+      </section>
+
       {/* Community & Events */}
       <section className="py-12 px-4 sm:px-6 bg-gray-50 border-t border-gray-100 mt-4">
         <div className="max-w-5xl mx-auto">
