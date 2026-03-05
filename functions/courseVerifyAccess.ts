@@ -55,6 +55,21 @@ Deno.serve(async (req) => {
         body: `Hi there,\n\nThank you for enrolling! Your course is ready.\n\nAccess your course anytime at:\nhttps://highcaliberai.com/course-access?token=${token}\n\nBookmark this link — you can also log in with your email at https://highcaliberai.com/course-access\n\nEnjoy the course!\n\nDavid Berkowitz\nHigh Caliber AI`
       });
 
+      // Add to email subscribers with course_students segment
+      const existingSubs = await base44.asServiceRole.entities.EmailSubscriber.filter({ email: purchaserEmail });
+      if (existingSubs.length > 0) {
+        const sub = existingSubs[0];
+        const segments = Array.from(new Set([...(sub.segments || []), "course_students"]));
+        await base44.asServiceRole.entities.EmailSubscriber.update(sub.id, { segments });
+      } else {
+        await base44.asServiceRole.entities.EmailSubscriber.create({
+          email: purchaserEmail,
+          source: "course_enrollment",
+          segments: ["course_students"],
+          status: "active",
+        });
+      }
+
       console.log(`Enrollment created for ${purchaserEmail}, session: ${sessionId}`);
       return Response.json({ enrollment });
     }
