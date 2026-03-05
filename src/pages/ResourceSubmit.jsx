@@ -64,7 +64,8 @@ export default function ResourceSubmit() {
           submitter_email: "",
           why_include: "",
           tier: "both",
-          has_referral: false
+          has_referral: false,
+          referral_code: ""
         });
       }
     } catch (err) {
