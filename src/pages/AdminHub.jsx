@@ -3,16 +3,21 @@ import { base44 } from "@/api/base44Client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { 
   Users, Heart, FileText, CheckCircle, XCircle, Clock, 
-  ExternalLink, Plus, X, ChevronDown, ChevronUp, Edit2, Save, Eye, EyeOff
+  ExternalLink, Plus, X, ChevronDown, ChevronUp, Edit2, Save, Eye, EyeOff,
+  Package, Newspaper
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import ResourceSubmissionsTab from "@/components/admin/ResourceSubmissionsTab";
+import AINewsEditorTab from "@/components/admin/AINewsEditorTab";
 
 const TABS = [
   { id: "partners", label: "Partner Approvals", icon: Users },
+  { id: "resources", label: "Resource Submissions", icon: Package },
+  { id: "ainews", label: "AI News Editor", icon: Newspaper },
   { id: "mensch", label: "Meet a Mensch", icon: Heart },
   { id: "bylines", label: "Bylines", icon: FileText },
   { id: "blog", label: "Blog Posts", icon: FileText },
