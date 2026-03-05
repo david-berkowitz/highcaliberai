@@ -153,17 +153,11 @@ export default function CourseHome() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
-            {course.cover_image ? (
-              <img src={course.cover_image} alt={course.title} className="rounded-2xl shadow-2xl w-full max-w-sm mx-auto" />
-            ) : (
-              <div className="rounded-2xl bg-gradient-to-br from-red-800 to-red-950 w-full max-w-sm mx-auto aspect-[3/4] flex items-center justify-center shadow-2xl">
-                <div className="text-center p-8">
-                  <BookOpen className="w-16 h-16 text-red-300 mx-auto mb-4" />
-                  <p className="text-white font-bold text-xl">{course.title}</p>
-                  <p className="text-red-300 text-sm mt-2">Interactive Course</p>
-                </div>
-              </div>
-            )}
+            <img
+              src={course.cover_image || "https://m.media-amazon.com/images/I/71QZe3-WQKL._SL1500_.jpg"}
+              alt={course.title}
+              className="rounded-2xl shadow-2xl w-full max-w-sm mx-auto"
+            />
           </motion.div>
         </div>
       </section>
