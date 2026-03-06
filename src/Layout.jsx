@@ -8,6 +8,18 @@ import GlobalSearch from "./components/GlobalSearch";
 import OrganizationSchema from "./components/SEO/OrganizationSchema";
 
 export default function Layout({ children, currentPageName }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Redirect uppercase/mixed-case paths to lowercase for canonical SEO
+  useEffect(() => {
+    const path = location.pathname;
+    const lowered = path.toLowerCase();
+    if (path !== lowered) {
+      navigate(lowered + location.search, { replace: true });
+    }
+  }, [location.pathname]);
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://js.knock-ai.com/ad256bf8-8420-4958-a1dd-31d3d0c27d51.js';
