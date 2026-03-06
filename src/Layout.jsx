@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { createPageUrl } from "./utils";
 import { Menu, X, Linkedin, Mail, ChevronDown, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
