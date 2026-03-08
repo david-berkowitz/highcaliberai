@@ -64,7 +64,7 @@ Review it here: https://highcaliberai.com/partner-listings-admin`
         console.error("Failed to send comped notification email:", emailErr.message);
       }
 
-      return Response.json({ comped: true, redirect: `${baseUrl}/partner-submit-success?listing=${listingId}` });
+      return Response.json({ comped: true, redirect: `${baseUrl}/partnersubmitsuccess?listing=${listingId}` });
     }
 
     // Create Stripe session with the actual discounted amount as a custom price
