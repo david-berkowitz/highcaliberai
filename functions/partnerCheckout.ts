@@ -84,7 +84,7 @@ Review it here: https://highcaliberai.com/partner-listings-admin`
         quantity: 1,
       }],
       mode: "payment",
-      success_url: `${baseUrl}/partner-submit-success?listing=${listingId}&session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${baseUrl}/partnersubmitsuccess?listing=${listingId}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: cancelUrl || `${baseUrl}/partner-submit?canceled=true`,
       metadata: {
         base44_app_id: Deno.env.get("BASE44_APP_ID"),
