@@ -103,7 +103,6 @@ export default function Resources() {
             <ResourceCard icon={Book} title="Passionfruit" description="AI-powered content optimization and recommendations" href="https://www.getpassionfruit.com/" />
             <ResourceCard icon={Target} title="AI Search Playbook" description="AirOps guide for marketers navigating AI-powered search" href="https://www.airops.com/report/ai-search-playbook-marketers" />
             <ResourceCard icon={Users} title="Rally" description="AI-powered research and consumer insights platform" href="https://askrally.com/" tier="enterprise" />
-            <ResourceCard icon={Target} title="Cluely" description="Notetaking app with live feedback" href="https://cluely.com/" tier="smb" />
             <ResourceCard
               icon={Building2}
               title="Stanify"
