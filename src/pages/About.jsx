@@ -440,6 +440,28 @@ export default function About() {
         </div>
       </section>
 
+      {/* Other Projects */}
+      <section className="py-16 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Other Projects</h2>
+          <p className="text-gray-500 text-sm mb-6">A few other things David has built or is working on.</p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <a href="https://panelsynth.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-5 py-4 hover:border-red-300 hover:shadow-sm transition-all group">
+              <span className="font-semibold text-gray-900">PanelSynth</span>
+              <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+            </a>
+            <a href="https://siddurspinoza.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-5 py-4 hover:border-red-300 hover:shadow-sm transition-all group">
+              <span className="font-semibold text-gray-900">Siddur Spinoza</span>
+              <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+            </a>
+            <a href="https://communitycondolences.org" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-5 py-4 hover:border-red-300 hover:shadow-sm transition-all group">
+              <span className="font-semibold text-gray-900">Community Condolences</span>
+              <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-red-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
