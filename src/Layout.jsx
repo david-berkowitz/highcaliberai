@@ -333,6 +333,14 @@ export default function Layout({ children, currentPageName }) {
                 </div>
               </div>
               <div>
+                <h3 className="text-sm font-semibold text-gray-400 mb-2">Other Projects</h3>
+                <div className="space-y-1">
+                  <a href="https://panelsynth.com" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">PanelSynth</a>
+                  <a href="https://siddurspinoza.com" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Siddur Spinoza</a>
+                  <a href="https://communitycondolences.org" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Community Condolences</a>
+                </div>
+              </div>
+              <div>
                 <h3 className="text-sm font-semibold text-gray-400 mb-2">Agentic Agency</h3>
                 <div className="space-y-1">
                   <Link to={createPageUrl("AgenticAgency")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Hub</Link>
