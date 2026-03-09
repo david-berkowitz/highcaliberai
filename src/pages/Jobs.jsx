@@ -176,7 +176,6 @@ export default function JobsPage() {
             <JobLink title="Marc Goldberg on LinkedIn" href="https://www.linkedin.com/in/marcgoldberg/" description="Constantly shares marketing and ad industry jobs" featured stage="all" selectedStage={selectedStage} />
             <JobLink title="Marketer Hire" href="https://marketerhire.com/" description="Hire top marketing talent on-demand" stage="mid" selectedStage={selectedStage} />
             <JobLink title="MeetFrank" href="https://meetfrank.com/latest-remote-jobs-in-united-states" description="AI-powered job matches personalized to you" stage="all" selectedStage={selectedStage} />
-            <JobLink title="MentorCruise" href="http://mentorcruise.com/referrals/g5kMQdXO4Ghg6pF7DkbX9wfIHyNYrpo4NqmWA1s9/" description="Be a mentor or find one at reasonable rates" stage="all" selectedStage={selectedStage} />
             <JobLink title="The Mom Project" href="https://themomproject.com/" description="Unlocking potential of moms in the workforce" stage="all" selectedStage={selectedStage} />
             <JobLink title="NYC Ad Jobs & Networking" href="https://www.facebook.com/groups/nycadjobsandnetworking/" description="Popular Facebook group for NYC ad jobs" stage="all" selectedStage={selectedStage} />
             <JobLink title="Peerlist" href="https://peerlist.io/dberkowitz/signup" description="LinkedIn alternative with portfolio showcase" stage="all" selectedStage={selectedStage} />
