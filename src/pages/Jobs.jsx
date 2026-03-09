@@ -376,7 +376,6 @@ export default function JobsPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <JobLink title="Private Director Association" href="https://www.privatedirectorassociation.org/" description="National association for private company board governance" stage="executive" selectedStage={selectedStage} />
-            <JobLink title="Bolster" href="https://bolster.com/" description="Fractional roles and board seats for senior talent" stage="executive" selectedStage={selectedStage} />
           </div>
         </div>
       </section>
