@@ -66,7 +66,8 @@ export default function Layout({ children, currentPageName }) {
         { name: "Book", page: "Book" },
         { name: "Press", page: "Press" },
         { name: "Meet a Mensch", page: "Mensch" },
-        { name: "The Marketing Hustle", page: "Hustle" }
+        { name: "The Marketing Hustle", page: "Hustle" },
+        { name: "Job Resources", page: "Jobs" }
       ]
     },
     { 

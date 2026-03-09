@@ -132,23 +132,6 @@ export default function JobsPage() {
           {/* Quick Links */}
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <p className="text-gray-700">
-              Find networking events at{" "}
-              <a href="https://lu.ma/aimg" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline font-semibold">
-                lu.ma/aimg
-              </a>
-              , and more ideas at{" "}
-              <a href="https://www.bit.ly/howdavidcanhelp" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline font-semibold">
-                bit.ly/howdavidcanhelp
-              </a>
-            </p>
-            <p className="text-gray-700">
-              For more job listings, check out{" "}
-              <a href="https://MarketingJobs.ai" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline font-semibold">
-                MarketingJobs.ai
-              </a>
-              {" "}— a new offering of ours getting ready to launch.
-            </p>
-            <p className="text-gray-700">
               If you're hiring, check out this resource via HuntClub's ExpertAccess network:{" "}
               <a href="https://www.huntclub.com/expert/davidberkowitz" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline font-semibold">
                 huntclub.com/expert/davidberkowitz
@@ -156,9 +139,6 @@ export default function JobsPage() {
             </p>
             <p className="text-sm text-gray-600 italic mt-6">
               - <a href="https://www.linkedin.com/in/dberkowitz" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline">David Berkowitz</a>, founder, Serial Marketers, AI Marketers Guild, and High Caliber AI
-            </p>
-            <p className="text-sm text-gray-500 mt-4">
-              Featured partners and friends who we find especially useful are <strong>bolded</strong>.
             </p>
           </div>
         </div>
@@ -178,41 +158,41 @@ export default function JobsPage() {
             <JobLink title="AMA Job Board" href="https://jobs.ama.org/" description="Listings from the American Marketing Association" stage="all" selectedStage={selectedStage} />
             <JobLink title="Bolster" href="https://bolster.com/" description="Fractional roles and board seats for senior talent" stage="executive" selectedStage={selectedStage} />
             <JobLink title="Fractional Jobs" href="https://www.fractionaljobs.io/" description="Job board for fractional marketing roles" stage="senior" selectedStage={selectedStage} />
-            <JobLink title="The Boyd Initiative" href="https://www.theboydinitiative.com/" description="Careers for Young Black Professionals in advertising" />
-            <JobLink title="Braintrust" href="https://app.usebraintrust.com/r/david77/" description="Freelance platform where talent keeps 100% of bill rate" featured />
-            <JobLink title="Built in NYC" href="https://www.builtinnyc.com/jobs" description="Jobs at NYC startups and tech companies" />
-            <JobLink title="Career Intelligence" href="https://careerintelligenceresumewriting.com/" description="Executive resume-writing services" />
-            <JobLink title="Catalant" href="https://catalant.com/" description="Expert marketplace for independent consultants" />
-            <JobLink title="CMO Huddles Transition Team" href="https://cmohuddles.com/join-transition-team" description="Land your next dream job with CMO support" />
-            <JobLink title="Comet" href="https://www.comethq.com/" description="Tools for tracking your job search" />
-            <JobLink title="Creatively" href="https://creatively.life/" description="Job platform for creatives" />
-            <JobLink title="ExecThread" href="https://execthread.com/apply/ex7GoZ" description="Senior roles, fully vetted membership" featured />
-            <JobLink title="The Hired Guns" href="https://thehiredguns.com/" description="Marketing jobs at brands, agencies, and media" />
-            <JobLink title="Jobs in Ad Tech" href="https://www.jobsinadtech.com/" description="Jobs in ad tech" />
-            <JobLink title="Jobscan" href="https://www.jobscan.co/" description="ATS tracker and job search tools" />
-            <JobLink title="Korn Ferry" href="https://interimjobs.kornferry.com/jobs/search" description="Search interim jobs from top recruiting firm" />
-            <JobLink title="Lead5" href="https://lead5.com/" description="Executive roles and company intel" />
-            <JobLink title="Lunch Club" href="https://lunchclub.com/?invite_code=davidb20" description="1:1 matching with accomplished professionals" />
-            <JobLink title="Marc Goldberg on LinkedIn" href="https://www.linkedin.com/in/marcgoldberg/" description="Constantly shares marketing and ad industry jobs" featured />
-            <JobLink title="Marketer Hire" href="https://marketerhire.com/" description="Hire top marketing talent on-demand" />
-            <JobLink title="MeetFrank" href="https://meetfrank.com/latest-remote-jobs-in-united-states" description="AI-powered job matches personalized to you" />
-            <JobLink title="MentorCruise" href="http://mentorcruise.com/referrals/g5kMQdXO4Ghg6pF7DkbX9wfIHyNYrpo4NqmWA1s9/" description="Be a mentor or find one at reasonable rates" />
-            <JobLink title="The Mom Project" href="https://themomproject.com/" description="Unlocking potential of moms in the workforce" />
-            <JobLink title="NYC Ad Jobs & Networking" href="https://www.facebook.com/groups/nycadjobsandnetworking/" description="Popular Facebook group for NYC ad jobs" />
-            <JobLink title="Peerlist" href="https://peerlist.io/dberkowitz/signup" description="LinkedIn alternative with portfolio showcase" />
-            <JobLink title="Pocit" href="https://www.pocitjobs.com/" description="Connecting people of color with tech jobs" />
-            <JobLink title="Publicist.co" href="http://www.publicist.co" description="Vetted talent in communications and marketing" />
-            <JobLink title="The Second Shift" href="https://www.thesecondshift.com/" description="Network for female executive talent" />
-            <JobLink title="Shiny" href="https://useshiny.com/fractional-executives" description="Matching CXO talent to startups" />
-            <JobLink title="Sonara" href="https://www.sonara.ai/" description="AI tool that automates job applications" />
-            <JobLink title="Startup.Jobs" href="https://startup.jobs/" description="Marketing jobs at startups" />
-            <JobLink title="TechNY Daily" href="https://jobs.technyc.org/jobs" description="Jobs at NY startups" />
-            <JobLink title="Umbrex" href="https://umbrex.com/join-our-community/" description="Community for independent consultants" />
-            <JobLink title="Veritux" href="https://veritux.com/" description="Sister community to Umbrex" />
-            <JobLink title="VentureLoop" href="https://www.ventureloop.com/ventureloop/home.php" description="Free startup job listings" />
-            <JobLink title="Venwise" href="https://www.venwise.com/membership" description="Get in front of hiring leads" />
-            <JobLink title="Welcome to the Jungle" href="https://us.welcometothejungle.com/" description="Discover jobs matched with your interests" />
-            <JobLink title="Wellfound" href="https://angel.co/l/2y6Dbr" description="Formerly AngelList, top spot for startup jobs" />
+            <JobLink title="The Boyd Initiative" href="https://www.theboydinitiative.com/" description="Careers for Young Black Professionals in advertising" stage="entry" selectedStage={selectedStage} />
+            <JobLink title="Braintrust" href="https://app.usebraintrust.com/r/david77/" description="Freelance platform where talent keeps 100% of bill rate" featured stage="mid" selectedStage={selectedStage} />
+            <JobLink title="Built in NYC" href="https://www.builtinnyc.com/jobs" description="Jobs at NYC startups and tech companies" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Career Intelligence" href="https://careerintelligenceresumewriting.com/" description="Executive resume-writing services" stage="executive" selectedStage={selectedStage} />
+            <JobLink title="Catalant" href="https://catalant.com/" description="Expert marketplace for independent consultants" stage="senior" selectedStage={selectedStage} />
+            <JobLink title="CMO Huddles Transition Team" href="https://cmohuddles.com/join-transition-team" description="Land your next dream job with CMO support" stage="executive" selectedStage={selectedStage} />
+            <JobLink title="Comet" href="https://www.comethq.com/" description="Tools for tracking your job search" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Creatively" href="https://creatively.life/" description="Job platform for creatives" stage="entry" selectedStage={selectedStage} />
+            <JobLink title="ExecThread" href="https://execthread.com/apply/ex7GoZ" description="Senior roles, fully vetted membership" featured stage="executive" selectedStage={selectedStage} />
+            <JobLink title="The Hired Guns" href="https://thehiredguns.com/" description="Marketing jobs at brands, agencies, and media" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Jobs in Ad Tech" href="https://www.jobsinadtech.com/" description="Jobs in ad tech" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Jobscan" href="https://www.jobscan.co/" description="ATS tracker and job search tools" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Korn Ferry" href="https://interimjobs.kornferry.com/jobs/search" description="Search interim jobs from top recruiting firm" stage="senior" selectedStage={selectedStage} />
+            <JobLink title="Lead5" href="https://lead5.com/" description="Executive roles and company intel" stage="executive" selectedStage={selectedStage} />
+            <JobLink title="Lunch Club" href="https://lunchclub.com/?invite_code=davidb20" description="1:1 matching with accomplished professionals" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Marc Goldberg on LinkedIn" href="https://www.linkedin.com/in/marcgoldberg/" description="Constantly shares marketing and ad industry jobs" featured stage="all" selectedStage={selectedStage} />
+            <JobLink title="Marketer Hire" href="https://marketerhire.com/" description="Hire top marketing talent on-demand" stage="mid" selectedStage={selectedStage} />
+            <JobLink title="MeetFrank" href="https://meetfrank.com/latest-remote-jobs-in-united-states" description="AI-powered job matches personalized to you" stage="all" selectedStage={selectedStage} />
+            <JobLink title="MentorCruise" href="http://mentorcruise.com/referrals/g5kMQdXO4Ghg6pF7DkbX9wfIHyNYrpo4NqmWA1s9/" description="Be a mentor or find one at reasonable rates" stage="all" selectedStage={selectedStage} />
+            <JobLink title="The Mom Project" href="https://themomproject.com/" description="Unlocking potential of moms in the workforce" stage="all" selectedStage={selectedStage} />
+            <JobLink title="NYC Ad Jobs & Networking" href="https://www.facebook.com/groups/nycadjobsandnetworking/" description="Popular Facebook group for NYC ad jobs" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Peerlist" href="https://peerlist.io/dberkowitz/signup" description="LinkedIn alternative with portfolio showcase" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Pocit" href="https://www.pocitjobs.com/" description="Connecting people of color with tech jobs" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Publicist.co" href="http://www.publicist.co" description="Vetted talent in communications and marketing" stage="mid" selectedStage={selectedStage} />
+            <JobLink title="The Second Shift" href="https://www.thesecondshift.com/" description="Network for female executive talent" stage="senior" selectedStage={selectedStage} />
+            <JobLink title="Shiny" href="https://useshiny.com/fractional-executives" description="Matching CXO talent to startups" stage="executive" selectedStage={selectedStage} />
+            <JobLink title="Sonara" href="https://www.sonara.ai/" description="AI tool that automates job applications" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Startup.Jobs" href="https://startup.jobs/" description="Marketing jobs at startups" stage="all" selectedStage={selectedStage} />
+            <JobLink title="TechNY Daily" href="https://jobs.technyc.org/jobs" description="Jobs at NY startups" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Umbrex" href="https://umbrex.com/join-our-community/" description="Community for independent consultants" stage="senior" selectedStage={selectedStage} />
+            <JobLink title="Veritux" href="https://veritux.com/" description="Sister community to Umbrex" stage="senior" selectedStage={selectedStage} />
+            <JobLink title="VentureLoop" href="https://www.ventureloop.com/ventureloop/home.php" description="Free startup job listings" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Venwise" href="https://www.venwise.com/membership" description="Get in front of hiring leads" stage="senior" selectedStage={selectedStage} />
+            <JobLink title="Welcome to the Jungle" href="https://us.welcometothejungle.com/" description="Discover jobs matched with your interests" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Wellfound" href="https://angel.co/l/2y6Dbr" description="Formerly AngelList, top spot for startup jobs" stage="all" selectedStage={selectedStage} />
           </div>
 
           <div className="mt-8">
