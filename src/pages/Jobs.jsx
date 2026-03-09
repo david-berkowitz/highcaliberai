@@ -197,11 +197,11 @@ export default function JobsPage() {
           <div className="mt-8">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">VC Job Boards</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <JobLink title="Eniac Ventures" href="https://jobs.eniac.vc/jobs" />
-              <JobLink title="Primary" href="https://jobs.primary.vc/jobs" />
-              <JobLink title="Sequoia" href="https://jobs.sequoiacap.com/jobs/" />
-              <JobLink title="Union Square Ventures" href="https://jobs.usv.com/jobs" />
-              <JobLink title="Y Combinator" href="https://www.workatastartup.com/" />
+              <JobLink title="Eniac Ventures" href="https://jobs.eniac.vc/jobs" stage="all" selectedStage={selectedStage} />
+              <JobLink title="Primary" href="https://jobs.primary.vc/jobs" stage="all" selectedStage={selectedStage} />
+              <JobLink title="Sequoia" href="https://jobs.sequoiacap.com/jobs/" stage="all" selectedStage={selectedStage} />
+              <JobLink title="Union Square Ventures" href="https://jobs.usv.com/jobs" stage="all" selectedStage={selectedStage} />
+              <JobLink title="Y Combinator" href="https://www.workatastartup.com/" stage="all" selectedStage={selectedStage} />
             </div>
           </div>
         </div>
@@ -218,9 +218,9 @@ export default function JobsPage() {
             <p className="text-gray-600">Professional communities for networking and job opportunities</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <JobLink title="Fractionals United" href="https://www.fractionalsunited.com/" description="Community of fractional CXOs" />
-            <JobLink title="Growth Collective" href="https://www.wearegrowth.co/" description="Network of notable freelance marketers" />
-            <JobLink title="Never Search Alone" href="https://www.neversearchalone.org/" description="Free support groups for job seekers" />
+            <JobLink title="Fractionals United" href="https://www.fractionalsunited.com/" description="Community of fractional CXOs" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Growth Collective" href="https://www.wearegrowth.co/" description="Network of notable freelance marketers" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Never Search Alone" href="https://www.neversearchalone.org/" description="Free support groups for job seekers" stage="all" selectedStage={selectedStage} />
           </div>
         </div>
       </section>
@@ -236,13 +236,13 @@ export default function JobsPage() {
             <p className="text-gray-600">Get paid for your expertise with these networks</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <JobLink title="Atheneum" href="https://www.atheneum.ai/network/" description="Global expert network connecting professionals with consulting opportunities" />
-            <JobLink title="GLG" href="https://glginsights.com/" description="One of the longer-running, better-known networks" />
-            <JobLink title="Maven" href="https://www.maven.co/" description="Expert network for research consultations and interviews" />
-            <JobLink title="NewtonX" href="https://www.newtonx.com/for-professionals/" description="B2B expert network for business insights and consulting" />
-            <JobLink title="Office Hours" href="https://officehours.com/r/david-berkowitz" description="Share your expertise on B2B products" />
-            <JobLink title="Tegus" href="https://www.tegus.com/experts" description="Expert platform for equity research and investment insights" />
-            <JobLink title="Third Bridge" href="https://thirdbridge.com/" description="Independent investment research and expert insights network" />
+            <JobLink title="Atheneum" href="https://www.atheneum.ai/network/" description="Global expert network connecting professionals with consulting opportunities" stage="all" selectedStage={selectedStage} />
+            <JobLink title="GLG" href="https://glginsights.com/" description="One of the longer-running, better-known networks" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Maven" href="https://www.maven.co/" description="Expert network for research consultations and interviews" stage="all" selectedStage={selectedStage} />
+            <JobLink title="NewtonX" href="https://www.newtonx.com/for-professionals/" description="B2B expert network for business insights and consulting" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Office Hours" href="https://officehours.com/r/david-berkowitz" description="Share your expertise on B2B products" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Tegus" href="https://www.tegus.com/experts" description="Expert platform for equity research and investment insights" stage="all" selectedStage={selectedStage} />
+            <JobLink title="Third Bridge" href="https://thirdbridge.com/" description="Independent investment research and expert insights network" stage="all" selectedStage={selectedStage} />
           </div>
         </div>
       </section>
@@ -257,7 +257,7 @@ export default function JobsPage() {
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <JobLink title="VC Jobs" href="https://app.convertkit.com/landing_pages/398564?v=7" description="Newsletter by John Gannon with VC firm jobs" />
+            <JobLink title="VC Jobs" href="https://app.convertkit.com/landing_pages/398564?v=7" description="Newsletter by John Gannon with VC firm jobs" stage="all" selectedStage={selectedStage} />
           </div>
         </div>
       </section>

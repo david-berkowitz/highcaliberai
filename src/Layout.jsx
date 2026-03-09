@@ -311,6 +311,7 @@ export default function Layout({ children, currentPageName }) {
                   <Link to={createPageUrl("Blog")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Blog</Link>
                   <Link to={createPageUrl("AINews")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">AI News</Link>
                   <Link to={createPageUrl("Book")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Book</Link>
+                  <Link to={createPageUrl("Events")} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">Events Calendar</Link>
                 </div>
               </div>
               <div>

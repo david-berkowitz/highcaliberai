@@ -78,6 +78,7 @@ import CourseHome from './pages/CourseHome';
 import CourseSuccess from './pages/CourseSuccess';
 import Cricket from './pages/Cricket';
 import EnterpriseWorkshop from './pages/EnterpriseWorkshop';
+import Events from './pages/Events';
 import FOAF from './pages/FOAF';
 import GuestLectures from './pages/GuestLectures';
 import Holidays from './pages/Holidays';
@@ -112,7 +113,6 @@ import Training from './pages/Training';
 import Vibe from './pages/Vibe';
 import WorkingWithDavid from './pages/WorkingWithDavid';
 import WorkshopShowcase from './pages/WorkshopShowcase';
-import Events from './pages/Events';
 import __Layout from './Layout.jsx';
 
 
@@ -148,6 +148,7 @@ export const PAGES = {
     "CourseSuccess": CourseSuccess,
     "Cricket": Cricket,
     "EnterpriseWorkshop": EnterpriseWorkshop,
+    "Events": Events,
     "FOAF": FOAF,
     "GuestLectures": GuestLectures,
     "Holidays": Holidays,
@@ -182,7 +183,6 @@ export const PAGES = {
     "Vibe": Vibe,
     "WorkingWithDavid": WorkingWithDavid,
     "WorkshopShowcase": WorkshopShowcase,
-    "Events": Events,
 }
 
 export const pagesConfig = {
