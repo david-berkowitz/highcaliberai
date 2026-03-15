@@ -91,7 +91,7 @@ export default function Training() {
       ],
       duration: "Self-paced · $39",
       cta: "Enroll Now — $39",
-      link: "/CourseHome",
+      link: "/Course",
       external: false
     },
     {
