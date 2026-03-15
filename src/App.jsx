@@ -60,6 +60,7 @@ const AuthenticatedApp = () => {
           }
         />
       ))}
+      <Route path="/coursehome" element={<Navigate to="/Course" replace />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

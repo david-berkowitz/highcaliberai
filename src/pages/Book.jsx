@@ -180,7 +180,7 @@ export default function BookPage() {
                      <ExternalLink className="ml-2 w-5 h-5" />
                    </Button>
                  </a>
-                 <Link to={createPageUrl("CourseHome")}>
+                 <Link to={createPageUrl("Course")}>
                    <Button className="bg-white text-purple-900 hover:bg-purple-100 px-8 py-6 text-lg font-bold shadow-xl">
                      <BookOpen className="mr-2 w-5 h-5" />
                      Take the Course — $39
