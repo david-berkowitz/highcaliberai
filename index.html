@@ -8,19 +8,14 @@
     <title>Base44 APP</title>
       <script>
 (function() {
-  try {
-    var path = window.location.pathname;
-    if (path.length <= 1) return;
-    var seg = path.split('/').filter(Boolean)[0];
-    if (!seg) return;
-    var pascal = seg.charAt(0).toUpperCase() + seg.slice(1);
-    if (seg === pascal) return;
-    var correct = window.location.origin + '/' + pascal;
-    var c = document.querySelector('link[rel="canonical"]');
-    if (c) c.href = correct;
-    var og = document.querySelector('meta[property="og:url"]');
-    if (og) og.content = correct;
-  } catch(e) {}
+  var path = window.location.pathname;
+  if (path.length <= 1) return;
+  var seg = path.split('/').filter(Boolean)[0];
+  if (!seg) return;
+  var pascal = seg.charAt(0).toUpperCase() + seg.slice(1);
+  if (seg !== pascal) {
+    window.location.replace(window.location.origin + '/' + pascal + window.location.search);
+  }
 })();
     </script>
   </head>
