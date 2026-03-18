@@ -153,6 +153,7 @@ export default function Resources() {
           <SectionHeader icon={Zap} title="Agents & Workflow Automation" description="Build AI agents and automate complex workflows" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <ResourceCard icon={Zap} title="n8n" description="Workflow automation for technical teams" href="https://n8n.io/" tier="smb" />
+            <ResourceCard icon={Brain} title="Manus" description="AI agent that autonomously completes complex tasks — research, analysis, code, and more — end to end." href="https://manus.im/invitation/AX6DKLYSICEZZL?utm_source=invitation&utm_medium=social&utm_campaign=copy_link" tier="smb" hasReferral />
           </div>
         </section>
 
