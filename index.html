@@ -1,15 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<link href="https://base44.com/logo_v2.svg" rel="icon" type="image/svg+xml"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="/manifest.json" rel="manifest"/>
-<title>Base44 APP</title>
-
-<script>
-  (function() {
-    // Redirect lowercase routes to PascalCase
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>Base44 APP</title>
+    <script>
+(function() {
+  try {
     var path = window.location.pathname;
     if (path.length <= 1) return;
     var seg = path.split('/').filter(Boolean)[0];
@@ -17,46 +16,19 @@
     var pascal = seg.charAt(0).toUpperCase() + seg.slice(1);
     if (seg !== pascal) {
       window.location.replace(window.location.origin + '/' + pascal + window.location.search);
+      return;
     }
-  })();
-</script>
-
-<script>
-  (function() {
-    // Noindex utility/functional routes only — not real content pages
-    var noindexRoutes = [
-      '/blogpost', '/article',
-      '/courseaccess', '/coursehome', '/coursesuccess',
-      '/partnersubmit', '/partnersubmitsuccess',
-      '/resourcesubmit', '/contentuploader',
-      '/progress'
-    ];
-    var path = window.location.pathname.toLowerCase().replace(/\/$/, '');
-    if (noindexRoutes.indexOf(path) !== -1) {
-      var meta = document.createElement('meta');
-      meta.name = 'robots';
-      meta.content = 'noindex, nofollow';
-      [document.head.app](https://document.head.app)endChild(meta);
-    }
-  })();
-</script>
-
-<script>
-  (function() {
-    // Canonical: point [base44.app](https://base44.app) subdomain back to custom domain
-    if (window.location.hostname.indexOf('[base44.app](https://base44.app)') !== -1) {
-      var link = document.createElement('link');
-      link.rel = 'canonical';
-      link.href = 'https://highcaliberai.com' + window.location.pathname;
-      [document.head.app](https://document.head.app)endChild(link);
-    }
-  })();
-</script>
-
-<script crossorigin="" src="/assets/index-DtY6GSHN.js" type="module"></script>
-<link crossorigin="" href="/assets/index-Ckvc6GKK.css" rel="stylesheet"/>
-</head>
-<body>
-<div id="root"></div>
-</body>
+    var correct = window.location.origin + '/' + pascal;
+    var c = document.querySelector('link[rel="canonical"]');
+    if (c) c.href = correct;
+    var og = document.querySelector('meta[property="og:url"]');
+    if (og) og.content = correct;
+  } catch(e) {}
+})();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
