@@ -52,7 +52,6 @@ function ContactModal({ partner, onClose }) {
           sender_email: form.email,
           sender_company: form.company,
           message: form.message,
-          // fixed
         }),
       });
       if (!res.ok) throw new Error("Failed");
