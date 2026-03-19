@@ -8,6 +8,7 @@ import { ExternalLink, Search, Filter, Plus, ShieldCheck, Star, Users, ChevronDo
 import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
 import AgentChat from "@/components/AgentChat";
+import PartnerDetailModal from "@/components/PartnerDetailModal";
 
 const FEATURED_PARTNERS = [];
 
