@@ -6,6 +6,31 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
 
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const FROM_EMAIL = "david@highcaliberai.com";
+const FROM_NAME = "High Caliber AI Partner Marketplace";
+
+async function sendEmail({ to, subject, text }) {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      to: [to],
+      subject,
+      text,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Resend error: ${err}`);
+  }
+  return res.json();
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: CORS_HEADERS });
@@ -36,11 +61,10 @@ Deno.serve(async (req) => {
     }
 
     // Email to the partner
-    await base44.asServiceRole.integrations.Core.SendEmail({
+    await sendEmail({
       to: partner.contact_email,
-      from_name: "High Caliber AI Partner Marketplace",
-      subject: `Intro via High Caliber AI — Interested in ${partner.company_name}`,
-      body: `Hi ${partner.contact_name || partner.company_name},
+      subject: `Intro via High Caliber AI — ${sender_name}${sender_company ? ` at ${sender_company}` : ''} is interested`,
+      text: `Hi ${partner.contact_name || partner.company_name},
 
 You received a new intro request through the High Caliber AI Partner Marketplace.
 
@@ -56,13 +80,12 @@ This message was sent via the High Caliber AI Partner Marketplace (highcaliberai
     });
 
     // Confirmation email to the sender
-    await base44.asServiceRole.integrations.Core.SendEmail({
+    await sendEmail({
       to: sender_email,
-      from_name: "High Caliber AI Partner Marketplace",
       subject: `Your intro to ${partner.company_name} has been sent`,
-      body: `Hi ${sender_name},
+      text: `Hi ${sender_name},
 
-Your message has been sent to ${partner.company_name}. They'll be in touch directly at ${sender_email}.
+Your message has been forwarded to ${partner.company_name}. They'll be in touch with you directly at ${sender_email}.
 
 Here's what you sent:
 "${message}"
@@ -80,7 +103,7 @@ https://highcaliberai.com/partners`,
     );
 
   } catch (error) {
-    console.error('sendPartnerIntro error:', error);
+    console.error('sendPartnerIntro error:', error.message);
     return Response.json(
       { error: 'Failed to send intro. Please try again.' },
       { status: 500, headers: CORS_HEADERS }
