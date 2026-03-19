@@ -7,7 +7,7 @@ const CORS_HEADERS = {
 };
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-const FROM_EMAIL = "onboarding@resend.dev";
+const FROM_EMAIL = "david@highcaliberai.com";
 const FROM_NAME = "High Caliber AI Partner Marketplace";
 
 async function sendEmail({ to, subject, text }) {
