@@ -91,6 +91,9 @@ Your message has been forwarded to ${partner.company_name}. They'll be in touch 
 Here's what you sent:
 "${message}"
 
+View other vetted AI marketing partners: https://highcaliberai.com/partners
+Check out our other AI resources: https://www.aimarketersguild.com
+
 —
 High Caliber AI Partner Marketplace
 https://highcaliberai.com/partners`,
