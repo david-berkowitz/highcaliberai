@@ -394,6 +394,8 @@ export default function Partners() {
         </div>
       </section>
 
+      {selectedPartner && <PartnerDetailModal partner={selectedPartner} onClose={() => setSelectedPartner(null)} />}
+
       <AgentChat
         agentName="partner_finder"
         title="Find the Right Partner"
