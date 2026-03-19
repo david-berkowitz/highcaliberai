@@ -104,9 +104,9 @@ https://highcaliberai.com/partners`,
     );
 
   } catch (error) {
-    console.error('sendPartnerIntro error:', error.message);
+    console.error('sendPartnerIntro error:', error.message, error.stack);
     return Response.json(
-      { error: 'Failed to send intro. Please try again.' },
+      { error: error.message || 'Failed to send intro. Please try again.' },
       { status: 500, headers: CORS_HEADERS }
     );
   }
