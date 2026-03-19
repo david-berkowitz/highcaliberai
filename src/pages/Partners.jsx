@@ -4,7 +4,7 @@ import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
-import { ExternalLink, Search, Filter, Plus, ShieldCheck, Star, Users, ChevronDown, ChevronUp, Mail } from "lucide-react";
+import { ExternalLink, Search, Filter, Plus, ShieldCheck, Star, Users, ChevronDown, ChevronUp, Mail, X, Send, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import MetaTags from "@/components/SEO/MetaTags";
 import AgentChat from "@/components/AgentChat";
@@ -31,33 +31,133 @@ const SPECIALTY_COLORS = {
 const BUYER_FAQS = [
   { q: "Is there any cost to me as a buyer?", a: "Absolutely not. The marketplace is completely free for anyone looking to find and hire a partner. There is zero cost, zero obligation, and no hidden fees for buyers." },
   { q: "How are partners vetted?", a: "Every listing is personally reviewed by David Berkowitz before it goes live. Partners must submit a detailed application, pay a listing fee to demonstrate commitment, and agree to our referral fee terms — which filters for serious, legitimate providers only." },
-  { q: "What if I have a bad experience with a partner?", a: "Reach out to us at david@highcaliberai.com. We take partner quality seriously and will investigate any concerns." },
-  { q: "How do I contact a partner?", a: "Visit the partner's website directly via the link on their listing. All contact flows through them — we don't share your information without permission." },
+  { q: "What if I have a bad experience with a partner?", a: "Reach out to us at david@[highcaliberai.com](https://highcaliberai.com). We take partner quality seriously and will investigate any concerns." },
+  { q: "How do I contact a partner?", a: "Click 'Email This Partner' on any listing. A short form will pop up — fill in your name, email, and a brief message, and we'll send it along. The partner's email is never shown to you directly." },
 ];
 
-function PartnerIntroButton({ partnerName, contactEmail, website }) {
-  const subject = encodeURIComponent(`Intro via High Caliber AI — Interested in ${partnerName}`);
-  const body = encodeURIComponent(`Hi,\n\nI came across ${partnerName} through the High Caliber AI Partner Marketplace (highcaliberai.com), personally curated by David Berkowitz.\n\nI'd love to learn more about your services.\n\nBest,\n[Your Name]`);
+function ContactModal({ partner, onClose }) {
+  const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
+  const [status, setStatus] = useState("idle");
 
-  const emailTo = contactEmail || "david@highcaliberai.com";
-  const mailtoHref = contactEmail
-    ? `mailto:${emailTo}?subject=${subject}&body=${body}`
-    : `mailto:david@highcaliberai.com?subject=${encodeURIComponent(`Intro Request: ${partnerName}`)}&body=${encodeURIComponent(`Hi David,\n\nI found ${partnerName} on the High Caliber AI Partner Marketplace and would love an introduction.\n\nBest,\n[Your Name]`)}`;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/functions/sendPartnerIntro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          partner_id: partner.id,
+          sender_name: form.name,
+          sender_email: form.email,
+          sender_company: [form.com](https://form.com)pany,
+          message: [form.me](https://form.me)ssage,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  };
 
   return (
-    <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-100">
-      {website && (
-        <a href={`${website}${website.includes("?") ? "&" : "?"}ref=highcaliberai`} target="_blank" rel="noopener noreferrer"
-          className="inline-flex items-center text-gray-500 hover:text-gray-700 text-xs gap-1">
-          Website <ExternalLink className="w-3 h-3" />
-        </a>
-      )}
-      <a href={mailtoHref}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-600 text-white text-xs font-semibold rounded-lg hover:bg-red-700 transition-colors ml-auto">
-        <Mail className="w-3 h-3" />
-        {contactEmail ? "Email This Partner" : "Request Intro"}
-      </a>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onClick={onClose}>
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+          <X className="w-5 h-5" />
+        </button>
+
+        {status === "success" ? (
+          <div className="text-center py-6">
+            <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Send className="w-6 h-6 text-green-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Intro sent!</h3>
+            <p className="text-gray-500 text-sm">We've forwarded your message to {[partner.com](https://partner.com)pany_name}. Check your inbox for a confirmation.</p>
+            <button onClick={onClose} className="mt-6 px-6 py-2 bg-gray-900 text-white rounded-lg text-sm font-semibold hover:bg-gray-800">
+              Done
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="mb-5">
+              <h3 className="text-xl font-bold text-gray-900">Email {[partner.com](https://partner.com)pany_name}</h3>
+              <p className="text-sm text-gray-500 mt-1">Your message goes directly to the partner. Their email is never shared with you.</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
+                  <input required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+                    placeholder="Jane Smith" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">Company</label>
+                  <input value={[form.com](https://form.com)pany} onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+                    placeholder="Acme Co" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Your Email *</label>
+                <input required type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="jane@[acme.com](https://acme.com)" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Message *</label>
+                <textarea required value={[form.me](https://form.me)ssage} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                  rows={4}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
+                  placeholder={`Hi, I found ${[partner.com](https://partner.com)pany_name} through the High Caliber AI Partner Marketplace and I'd love to learn more about your services...`} />
+              </div>
+
+              {status === "error" && (
+                <p className="text-red-600 text-xs">Something went wrong. Please try again or email david@[highcaliberai.com](https://highcaliberai.com).</p>
+              )}
+
+              <div className="flex gap-3 pt-1">
+                <button type="button" onClick={onClose}
+                  className="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-50">
+                  Cancel
+                </button>
+                <button type="submit" disabled={status === "sending"}
+                  className="flex-1 px-4 py-2.5 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700 disabled:opacity-60 flex items-center justify-center gap-2">
+                  {status === "sending" ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</> : <><Send className="w-4 h-4" /> Send Message</>}
+                </button>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
     </div>
+  );
+}
+
+function PartnerIntroButton({ partner, website }) {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <>
+      <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-100">
+        {website && (
+          <a href={`${website}${website.includes("?") ? "&" : "?"}ref=highcaliberai`} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center text-gray-500 hover:text-gray-700 text-xs gap-1">
+            Website <ExternalLink className="w-3 h-3" />
+          </a>
+        )}
+        <button
+          onClick={() => setShowModal(true)}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-600 text-white text-xs font-semibold rounded-lg hover:bg-red-700 transition-colors ml-auto">
+          <Mail className="w-3 h-3" />
+          Email This Partner
+        </button>
+      </div>
+      {showModal && <ContactModal partner={partner} onClose={() => setShowModal(false)} />}
+    </>
   );
 }
 
@@ -73,15 +173,15 @@ export default function Partners() {
     initialData: [],
   });
 
-  const companyTypes = ["all", ...new Set(listings.map(l => l.company_type).filter(Boolean))];
+  const companyTypes = ["all", ...new Set(listings.map(l => [l.com](https://l.com)pany_type).filter(Boolean))];
   const categories = ["all", ...new Set(listings.map(l => l.specialty_category).filter(Boolean))];
 
   const filtered = listings.filter(l => {
-    const matchesType = filterType === "all" || l.company_type === filterType;
+    const matchesType = filterType === "all" || [l.com](https://l.com)pany_type === filterType;
     const matchesCat = filterCategory === "all" || l.specialty_category === filterCategory;
     const q = search.toLowerCase();
     const matchesSearch = !q ||
-      l.company_name?.toLowerCase().includes(q) ||
+      [l.com](https://l.com)pany_name?.toLowerCase().includes(q) ||
       l.description?.toLowerCase().includes(q) ||
       l.tagline?.toLowerCase().includes(q) ||
       l.services?.some(s => s.toLowerCase().includes(q)) ||
@@ -99,7 +199,6 @@ export default function Partners() {
         canonical="https://highcaliberai.com/partners"
       />
 
-      {/* Hero */}
       <section className="py-20 lg:py-28 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto">
@@ -109,7 +208,6 @@ export default function Partners() {
             <p className="text-xl text-gray-600 leading-relaxed mb-6">
               Vetted AI marketing service providers — agencies, tools, consultants, and specialists, personally curated by David Berkowitz.
             </p>
-            {/* Buyer trust bar */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-full px-4 py-2">
                 <ShieldCheck className="w-4 h-4 text-green-600" />
@@ -133,7 +231,6 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Buyer trust section */}
       <section className="py-10 bg-green-50 border-y border-green-100">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-lg font-semibold text-green-800 mb-1">🎉 Looking for a partner? It's completely free.</p>
@@ -141,7 +238,6 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Featured Partners */}
       {FEATURED_PARTNERS.length > 0 && (
         <section className="py-12 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,7 +253,7 @@ export default function Partners() {
                   <div className="flex flex-wrap gap-2">
                     {p.services.map(s => <span key={s} className="px-2 py-1 bg-white text-gray-600 text-xs rounded-full border border-gray-200">{s}</span>)}
                   </div>
-                  <PartnerIntroButton partnerName={p.name} website={p.url} />
+                  <PartnerIntroButton partner={p} website={p.url} />
                 </div>
               ))}
             </div>
@@ -165,7 +261,6 @@ export default function Partners() {
         </section>
       )}
 
-      {/* Marketplace Listings */}
       <section id="listings" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4 mb-8">
@@ -220,13 +315,13 @@ export default function Partners() {
                     <CardContent className="p-6 flex flex-col gap-3 h-full">
                       <div className="flex items-start justify-between gap-3">
                         {listing.logo_url
-                          ? <img src={listing.logo_url} alt={listing.company_name} className="h-8 object-contain" />
-                          : <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center text-red-600 font-bold text-sm">{listing.company_name[0]}</div>
+                          ? <img src={listing.logo_url} alt={[listing.com](https://listing.com)pany_name} className="h-8 object-contain" />
+                          : <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center text-red-600 font-bold text-sm">{[listing.com](https://listing.com)pany_name[0]}</div>
                         }
                         <div className="flex flex-col items-end gap-1">
-                          {listing.company_type && (
-                            <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${COMPANY_TYPE_COLORS[listing.company_type] || "bg-gray-100 text-gray-700"}`}>
-                              {listing.company_type}
+                          {[listing.com](https://listing.com)pany_type && (
+                            <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${COMPANY_TYPE_COLORS[[listing.com](https://listing.com)pany_type] || "bg-gray-100 text-gray-700"}`}>
+                              {[listing.com](https://listing.com)pany_type}
                             </span>
                           )}
                           {listing.specialty_category && (
@@ -237,7 +332,7 @@ export default function Partners() {
                         </div>
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-gray-900">{listing.company_name}</h3>
+                        <h3 className="text-lg font-bold text-gray-900">{[listing.com](https://listing.com)pany_name}</h3>
                         {listing.tagline && <p className="text-xs text-gray-500 mt-0.5 italic">{listing.tagline}</p>}
                         <div className="flex flex-wrap gap-x-3 mt-0.5">
                           {listing.headquarters && <p className="text-xs text-gray-400">📍 {listing.headquarters}</p>}
@@ -254,7 +349,7 @@ export default function Partners() {
                           {listing.services.length > 4 && <span className="px-2 py-1 text-gray-400 text-xs">+{listing.services.length - 4} more</span>}
                         </div>
                       )}
-                      <PartnerIntroButton partnerName={listing.company_name} contactEmail={listing.contact_email} website={listing.website} />
+                      <PartnerIntroButton partner={listing} website={listing.website} />
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -268,7 +363,6 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Buyer FAQ */}
       <section className="py-16 bg-gray-50 border-t border-gray-100">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">For Buyers: Your Questions Answered</h2>
@@ -294,14 +388,12 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Floating Partner Finder Chat */}
       <AgentChat
         agentName="partner_finder"
         title="Find the Right Partner"
         subtitle="Tell me what you need — I'll match you."
       />
 
-      {/* Blog Cross-link */}
       <section className="py-12 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-sm font-bold text-red-600 uppercase tracking-widest mb-2">From the Blog</p>
@@ -325,7 +417,6 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Submit CTA */}
       <section className="py-16 bg-gradient-to-br from-red-600 to-red-700">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Are You a Service Provider?</h2>
