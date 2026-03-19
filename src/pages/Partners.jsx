@@ -167,6 +167,7 @@ export default function Partners() {
   const [filterType, setFilterType] = useState("all");
   const [filterCategory, setFilterCategory] = useState("all");
   const [expandedFaq, setExpandedFaq] = useState(null);
+  const [selectedPartner, setSelectedPartner] = useState(null);
 
   const { data: listings = [] } = useQuery({
     queryKey: ["partner-listings"],
