@@ -313,7 +313,7 @@ export default function Partners() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((listing, i) => (
                 <motion.div key={listing.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                  <Card className="h-full border border-gray-200 hover:border-red-200 hover:shadow-md transition-all duration-300 flex flex-col">
+                  <Card className="h-full border border-gray-200 hover:border-red-200 hover:shadow-md transition-all duration-300 flex flex-col cursor-pointer" onClick={() => setSelectedPartner(listing)}>
                     <CardContent className="p-6 flex flex-col gap-3 h-full">
                       <div className="flex items-start justify-between gap-3">
                         {listing.logo_url
