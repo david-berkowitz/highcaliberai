@@ -189,7 +189,7 @@ export default function PartnerDetailModal({ partner, onClose }) {
           {/* Links */}
           <div className="flex flex-wrap gap-3 mb-6 pb-6 border-b border-gray-100">
             {partner.website && (
-              <a href={`${partner.website}${partner.website.includes("?") ? "&" : "?"}ref=highcaliberai`}
+              <a href={withReferral(partner.website)}
                 target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900 font-medium">
                 <ExternalLink className="w-4 h-4" /> Website
