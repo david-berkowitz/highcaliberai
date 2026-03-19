@@ -348,7 +348,11 @@ export default function Partners() {
                           {listing.services.slice(0, 4).map(s => (
                             <span key={s} className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-full border border-gray-200">{s}</span>
                           ))}
-                          {listing.services.length > 4 && <span className="px-2 py-1 text-gray-400 text-xs">+{listing.services.length - 4} more</span>}
+                          {listing.services.length > 4 && (
+                            <span className="px-2 py-1 text-red-600 text-xs font-medium cursor-pointer hover:underline">
+                              +{listing.services.length - 4} more
+                            </span>
+                          )}
                         </div>
                       )}
                       <PartnerIntroButton partner={listing} website={listing.website} />
