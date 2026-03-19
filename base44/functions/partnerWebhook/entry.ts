@@ -33,9 +33,29 @@ Deno.serve(async (req) => {
         });
         console.log(`Listing ${listingId} marked as pending_review after payment`);
 
-        // Fetch listing data and notify David
+        // Fetch listing data and notify David + confirm to submitter
         const listing = await base44.asServiceRole.entities.PartnerListing.get(listingId);
         if (listing) {
+          // Confirmation email to the submitter
+          if (listing.contact_email) {
+            await base44.asServiceRole.integrations.Core.SendEmail({
+              to: listing.contact_email,
+              from_name: "David Berkowitz / High Caliber AI",
+              subject: `We received your Partner Marketplace submission — ${listing.company_name}`,
+              body: `Hi ${listing.contact_name || "there"},
+
+Thanks for submitting ${listing.company_name} to the High Caliber AI Partner Marketplace!
+
+We've received your listing and will review it shortly. If we have any questions or need anything else from you, we'll reach out directly.
+
+In the meantime, feel free to reply to this email if you have any questions.
+
+— David
+High Caliber AI
+https://highcaliberai.com/partners`,
+            });
+          }
+
           await base44.asServiceRole.integrations.Core.SendEmail({
             to: "david@highcaliberai.com",
             subject: `New Partner Listing Submitted: ${listing.company_name}`,

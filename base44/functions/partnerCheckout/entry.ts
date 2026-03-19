@@ -42,10 +42,30 @@ Deno.serve(async (req) => {
         stripe_session_id: "COMPED",
       });
 
-      // Send email notification for comped listings
+      // Send emails for comped listings
       try {
         const listing = await base44.asServiceRole.entities.PartnerListing.get(listingId);
         if (listing) {
+          // Confirmation to submitter
+          if (listing.contact_email) {
+            await base44.asServiceRole.integrations.Core.SendEmail({
+              to: listing.contact_email,
+              from_name: "David Berkowitz / High Caliber AI",
+              subject: `We received your Partner Marketplace submission — ${listing.company_name}`,
+              body: `Hi ${listing.contact_name || "there"},
+
+Thanks for submitting ${listing.company_name} to the High Caliber AI Partner Marketplace!
+
+We've received your listing and will review it shortly. If we have any questions or need anything else from you, we'll reach out directly.
+
+In the meantime, feel free to reply to this email if you have any questions.
+
+— David
+High Caliber AI
+https://highcaliberai.com/partners`,
+            });
+          }
+
           await base44.asServiceRole.integrations.Core.SendEmail({
             to: "david@highcaliberai.com",
             subject: `New Partner Listing Submitted (Comped): ${listing.company_name}`,
