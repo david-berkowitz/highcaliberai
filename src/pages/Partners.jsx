@@ -31,7 +31,7 @@ const SPECIALTY_COLORS = {
 const BUYER_FAQS = [
   { q: "Is there any cost to me as a buyer?", a: "Absolutely not. The marketplace is completely free for anyone looking to find and hire a partner. There is zero cost, zero obligation, and no hidden fees for buyers." },
   { q: "How are partners vetted?", a: "Every listing is personally reviewed by David Berkowitz before it goes live. Partners must submit a detailed application, pay a listing fee to demonstrate commitment, and agree to our referral fee terms — which filters for serious, legitimate providers only." },
-  { q: "What if I have a bad experience with a partner?", a: "Reach out to us at david@[highcaliberai.com](https://highcaliberai.com). We take partner quality seriously and will investigate any concerns." },
+  { q: "What if I have a bad experience with a partner?", a: "Reach out to us at david@highcaliberai.com. We take partner quality seriously and will investigate any concerns." },
   { q: "How do I contact a partner?", a: "Click 'Email This Partner' on any listing. A short form will pop up — fill in your name, email, and a brief message, and we'll send it along. The partner's email is never shown to you directly." },
 ];
 
@@ -50,8 +50,8 @@ function ContactModal({ partner, onClose }) {
           partner_id: partner.id,
           sender_name: form.name,
           sender_email: form.email,
-          sender_company: [form.com](https://form.com)pany,
-          message: [form.me](https://form.me)ssage,
+          sender_company: form.company,
+          message: form.message,
         }),
       });
       if (!res.ok) throw new Error("Failed");
@@ -74,7 +74,7 @@ function ContactModal({ partner, onClose }) {
               <Send className="w-6 h-6 text-green-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">Intro sent!</h3>
-            <p className="text-gray-500 text-sm">We've forwarded your message to {[partner.com](https://partner.com)pany_name}. Check your inbox for a confirmation.</p>
+            <p className="text-gray-500 text-sm">We've forwarded your message to {partner.company_name}. Check your inbox for a confirmation.</p>
             <button onClick={onClose} className="mt-6 px-6 py-2 bg-gray-900 text-white rounded-lg text-sm font-semibold hover:bg-gray-800">
               Done
             </button>
@@ -82,7 +82,7 @@ function ContactModal({ partner, onClose }) {
         ) : (
           <>
             <div className="mb-5">
-              <h3 className="text-xl font-bold text-gray-900">Email {[partner.com](https://partner.com)pany_name}</h3>
+              <h3 className="text-xl font-bold text-gray-900">Email {partner.company_name}</h3>
               <p className="text-sm text-gray-500 mt-1">Your message goes directly to the partner. Their email is never shared with you.</p>
             </div>
 
@@ -96,7 +96,7 @@ function ContactModal({ partner, onClose }) {
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 mb-1">Company</label>
-                  <input value={[form.com](https://form.com)pany} onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
+                  <input value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
                     className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     placeholder="Acme Co" />
                 </div>
@@ -105,18 +105,18 @@ function ContactModal({ partner, onClose }) {
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Your Email *</label>
                 <input required type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="jane@[acme.com](https://acme.com)" />
+                  placeholder="jane@acme.com" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Message *</label>
-                <textarea required value={[form.me](https://form.me)ssage} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                <textarea required value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                   rows={4}
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
-                  placeholder={`Hi, I found ${[partner.com](https://partner.com)pany_name} through the High Caliber AI Partner Marketplace and I'd love to learn more about your services...`} />
+                  placeholder={`Hi, I found ${partner.company_name} through the High Caliber AI Partner Marketplace and I'd love to learn more about your services...`} />
               </div>
 
               {status === "error" && (
-                <p className="text-red-600 text-xs">Something went wrong. Please try again or email david@[highcaliberai.com](https://highcaliberai.com).</p>
+                <p className="text-red-600 text-xs">Something went wrong. Please try again or email david@highcaliberai.com.</p>
               )}
 
               <div className="flex gap-3 pt-1">
@@ -173,15 +173,15 @@ export default function Partners() {
     initialData: [],
   });
 
-  const companyTypes = ["all", ...new Set(listings.map(l => [l.com](https://l.com)pany_type).filter(Boolean))];
+  const companyTypes = ["all", ...new Set(listings.map(l => l.company_type).filter(Boolean))];
   const categories = ["all", ...new Set(listings.map(l => l.specialty_category).filter(Boolean))];
 
   const filtered = listings.filter(l => {
-    const matchesType = filterType === "all" || [l.com](https://l.com)pany_type === filterType;
+    const matchesType = filterType === "all" || l.company_type === filterType;
     const matchesCat = filterCategory === "all" || l.specialty_category === filterCategory;
     const q = search.toLowerCase();
     const matchesSearch = !q ||
-      [l.com](https://l.com)pany_name?.toLowerCase().includes(q) ||
+      l.company_name?.toLowerCase().includes(q) ||
       l.description?.toLowerCase().includes(q) ||
       l.tagline?.toLowerCase().includes(q) ||
       l.services?.some(s => s.toLowerCase().includes(q)) ||
@@ -315,13 +315,13 @@ export default function Partners() {
                     <CardContent className="p-6 flex flex-col gap-3 h-full">
                       <div className="flex items-start justify-between gap-3">
                         {listing.logo_url
-                          ? <img src={listing.logo_url} alt={[listing.com](https://listing.com)pany_name} className="h-8 object-contain" />
-                          : <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center text-red-600 font-bold text-sm">{[listing.com](https://listing.com)pany_name[0]}</div>
+                          ? <img src={listing.logo_url} alt={listing.company_name} className="h-8 object-contain" />
+                          : <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center text-red-600 font-bold text-sm">{listing.company_name[0]}</div>
                         }
                         <div className="flex flex-col items-end gap-1">
-                          {[listing.com](https://listing.com)pany_type && (
-                            <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${COMPANY_TYPE_COLORS[[listing.com](https://listing.com)pany_type] || "bg-gray-100 text-gray-700"}`}>
-                              {[listing.com](https://listing.com)pany_type}
+                          {listing.company_type && (
+                            <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${COMPANY_TYPE_COLORS[listing.company_type] || "bg-gray-100 text-gray-700"}`}>
+                              {listing.company_type}
                             </span>
                           )}
                           {listing.specialty_category && (
@@ -332,7 +332,7 @@ export default function Partners() {
                         </div>
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-gray-900">{[listing.com](https://listing.com)pany_name}</h3>
+                        <h3 className="text-lg font-bold text-gray-900">{listing.company_name}</h3>
                         {listing.tagline && <p className="text-xs text-gray-500 mt-0.5 italic">{listing.tagline}</p>}
                         <div className="flex flex-wrap gap-x-3 mt-0.5">
                           {listing.headquarters && <p className="text-xs text-gray-400">📍 {listing.headquarters}</p>}
