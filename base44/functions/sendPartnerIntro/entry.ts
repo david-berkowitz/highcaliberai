@@ -22,6 +22,7 @@ async function sendEmail({ to, subject, text }) {
       to: [to],
       subject,
       text,
+      reply_to: "david@highcaliberai.com",
     }),
   });
   if (!res.ok) {
