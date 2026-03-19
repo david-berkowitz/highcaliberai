@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { X, ExternalLink, Mail, Send, Loader2 } from "lucide-react";
+import { withReferral } from "@/utils/urls";
 
 function ContactForm({ partner, onClose }) {
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
