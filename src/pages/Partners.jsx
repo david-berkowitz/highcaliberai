@@ -146,12 +146,13 @@ function PartnerIntroButton({ partner, website }) {
       <div className="flex items-center gap-2 flex-wrap mt-auto pt-3 border-t border-gray-100">
         {website && (
           <a href={`${website}${website.includes("?") ? "&" : "?"}ref=highcaliberai`} target="_blank" rel="noopener noreferrer"
+            onClick={e => e.stopPropagation()}
             className="inline-flex items-center text-gray-500 hover:text-gray-700 text-xs gap-1">
             Website <ExternalLink className="w-3 h-3" />
           </a>
         )}
         <button
-          onClick={() => setShowModal(true)}
+          onClick={(e) => { e.stopPropagation(); setShowModal(true); }}
           className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-600 text-white text-xs font-semibold rounded-lg hover:bg-red-700 transition-colors ml-auto">
           <Mail className="w-3 h-3" />
           Email This Partner
