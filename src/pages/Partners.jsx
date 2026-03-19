@@ -342,7 +342,7 @@ export default function Partners() {
                           {listing.engagement_model && <p className="text-xs text-gray-400">🤝 {listing.engagement_model}</p>}
                         </div>
                       </div>
-                      <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 flex-1">{listing.description}</p>
+                      <p className="text-gray-600 text-sm leading-relaxed line-clamp-4 flex-1">{listing.description}</p>
                       {listing.services?.length > 0 && (
                         <div className="flex flex-wrap gap-1.5">
                           {listing.services.slice(0, 4).map(s => (
