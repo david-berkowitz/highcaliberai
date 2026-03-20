@@ -86,7 +86,8 @@ export default function PartnerSubmit() {
       setExistingListingId(listingId);
       setStep(3);
       // Fetch the saved listing and restore form data
-      base44.entities.PartnerListing.get(listingId).then(listing => {
+      base44.entities.PartnerListing.filter({ id: listingId }, "-created_date", 1).then(results => {
+        const listing = results?.[0];
         if (listing) {
           setForm({
             company_name: listing.company_name || "",
