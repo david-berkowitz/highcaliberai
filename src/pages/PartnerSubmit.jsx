@@ -151,32 +151,51 @@ export default function PartnerSubmit() {
   const step2Valid = form.services.length > 0;
   const step3Valid = agreed;
 
+  // Helper: strip empty optional string fields before saving
+  const cleanForm = (f) => {
+    const optionalStrings = [
+      "tagline", "linkedin_company_url", "linkedin_founder_url", "portfolio_url",
+      "logo_url", "founder_bio", "headquarters", "engagement_model", "budget_range",
+      "specialty_category",
+    ];
+    const result = { ...f };
+    optionalStrings.forEach(key => {
+      if (result[key] === "") result[key] = undefined;
+    });
+    result.founded_year = f.founded_year ? Number(f.founded_year) : undefined;
+    return result;
+  };
+
   const handleSubmit = async () => {
     setSubmitting(true);
     setError("");
     try {
-      base44.analytics.track({ eventName: "partner_submit_started", properties: { has_discount: discountApplied !== null, discount_percent: discountApplied || 0 } });
-
-      const listing = await base44.entities.PartnerListing.create({
-        ...form,
-        founded_year: form.founded_year ? Number(form.founded_year) : undefined,
-        status: "pending_payment",
-        agreement_accepted: true,
-        agreement_accepted_at: new Date().toISOString(),
-        discount_code: discountApplied !== null ? discountCode.toUpperCase() : null,
-      });
-
       if (window.self !== window.top) {
         alert("Checkout is only available from the published app, not in preview mode.");
         setSubmitting(false);
         return;
       }
 
+      base44.analytics.track({ eventName: "partner_submit_started", properties: { has_discount: discountApplied !== null, discount_percent: discountApplied || 0 } });
+
+      // If returning from a canceled Stripe session, reuse existing listing — don't create a duplicate
+      let listingId = existingListingId;
+      if (!listingId) {
+        const listing = await base44.entities.PartnerListing.create({
+          ...cleanForm(form),
+          status: "pending_payment",
+          agreement_accepted: true,
+          agreement_accepted_at: new Date().toISOString(),
+          discount_code: discountApplied !== null ? discountCode.toUpperCase() : undefined,
+        });
+        listingId = listing.id;
+      }
+
       const res = await base44.functions.invoke("partnerCheckout", {
-        listingId: listing.id,
+        listingId,
         discountCode: discountApplied !== null ? discountCode.toUpperCase() : "",
         origin: window.location.origin,
-        cancelUrl: `${window.location.origin}${window.location.pathname}?canceled=true`,
+        cancelUrl: `${window.location.origin}${window.location.pathname}?canceled=true&listing_id=${listingId}`,
       });
 
       if (res.data.comped) {
