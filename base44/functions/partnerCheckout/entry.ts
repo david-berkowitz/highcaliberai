@@ -1,6 +1,29 @@
 import Stripe from "npm:stripe@14.21.0";
 import { createClientFromRequest } from "npm:@base44/sdk@0.8.21";
 
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+async function sendEmail({ to, subject, text }) {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "High Caliber AI <david@highcaliberai.com>",
+      to: [to],
+      subject,
+      text,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Resend error: ${err}`);
+  }
+  return res.json();
+}
+
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY"));
 
 const BASE_AMOUNT = 4900; // $49 in cents
