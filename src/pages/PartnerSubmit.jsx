@@ -85,7 +85,36 @@ export default function PartnerSubmit() {
     if (canceled === "true" && listingId) {
       setExistingListingId(listingId);
       setStep(3);
-    } else if (canceled === "true" || listingId) {
+      // Fetch the saved listing and restore form data
+      base44.entities.PartnerListing.get(listingId).then(listing => {
+        if (listing) {
+          setForm({
+            company_name: listing.company_name || "",
+            tagline: listing.tagline || "",
+            company_type: listing.company_type || "",
+            specialty_category: listing.specialty_category || "",
+            website: listing.website || "",
+            linkedin_company_url: listing.linkedin_company_url || "",
+            linkedin_founder_url: listing.linkedin_founder_url || "",
+            portfolio_url: listing.portfolio_url || "",
+            logo_url: listing.logo_url || "",
+            description: listing.description || "",
+            founder_bio: listing.founder_bio || "",
+            headquarters: listing.headquarters || "",
+            founded_year: listing.founded_year ? String(listing.founded_year) : "",
+            geographies_served: listing.geographies_served || [],
+            verticals: listing.verticals || [],
+            client_stages: listing.client_stages || [],
+            engagement_model: listing.engagement_model || "",
+            budget_range: listing.budget_range || "",
+            services: listing.services || [],
+            keywords: listing.keywords || [],
+            contact_name: listing.contact_name || "",
+            contact_email: listing.contact_email || "",
+          });
+        }
+      }).catch(() => {});
+    } else if (canceled === "true") {
       setStep(3);
     }
   }, []);
