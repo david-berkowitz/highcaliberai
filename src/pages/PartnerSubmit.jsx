@@ -75,13 +75,17 @@ export default function PartnerSubmit() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [logoUploading, setLogoUploading] = useState(false);
+  const [existingListingId, setExistingListingId] = useState(null);
 
-  // On mount, check if returning from Stripe (stripe adds ?canceled=true or the listing id is in the URL)
+  // On mount, check if returning from Stripe canceled flow
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const canceled = params.get("canceled");
     const listingId = params.get("listing_id");
-    if (canceled === "true" || listingId) {
+    if (canceled === "true" && listingId) {
+      setExistingListingId(listingId);
+      setStep(3);
+    } else if (canceled === "true" || listingId) {
       setStep(3);
     }
   }, []);
