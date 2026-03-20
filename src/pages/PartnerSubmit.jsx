@@ -155,6 +155,7 @@ export default function PartnerSubmit() {
 
       const listing = await base44.entities.PartnerListing.create({
         ...form,
+        founded_year: form.founded_year ? Number(form.founded_year) : undefined,
         status: "pending_payment",
         agreement_accepted: true,
         agreement_accepted_at: new Date().toISOString(),
