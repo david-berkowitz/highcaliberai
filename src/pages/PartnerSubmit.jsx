@@ -604,7 +604,6 @@ export default function PartnerSubmit() {
                     )}
                     <button disabled={!step3Valid || submitting} onClick={handleSubmit}
                       className={`inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-lg font-medium text-sm disabled:opacity-40 hover:bg-red-700 transition-colors ${existingListingId ? "ml-auto" : ""}`}>
-                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-lg font-medium text-sm disabled:opacity-40 hover:bg-red-700 transition-colors">
                       {submitting ? "Processing..." : discountApplied === 100 ? "Submit Listing (Free)" : `Pay $${finalPrice} & Submit`}
                       <ChevronRight className="w-4 h-4" />
                     </button>
