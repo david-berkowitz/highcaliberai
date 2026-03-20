@@ -1,5 +1,28 @@
 import { createClientFromRequest } from "npm:@base44/sdk@0.8.21";
 
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+async function sendEmail({ to, subject, text }) {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "High Caliber AI <david@highcaliberai.com>",
+      to: [to],
+      subject,
+      text,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Resend error: ${err}`);
+  }
+  return res.json();
+}
+
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
@@ -29,10 +52,10 @@ Deno.serve(async (req) => {
     }
 
     // Send email notification to David
-    await base44.asServiceRole.integrations.Core.SendEmail({
+    await sendEmail({
       to: "david@highcaliberai.com",
       subject: `New Partner Listing Submitted: ${listing.company_name}`,
-      body: `A new partner listing has been submitted and is pending review.
+      text: `A new partner listing has been submitted and is pending review.
 
 Company: ${listing.company_name}
 Type: ${listing.company_type || "N/A"}
@@ -45,8 +68,7 @@ Discount Code: ${listing.discount_code || "None"}
 Description:
 ${listing.description}
 
-Review it here: https://highcaliberai.com/partner-listings-admin
-`
+Review it here: https://highcaliberai.com/partner-listings-admin`,
     });
 
     return Response.json({ success: true });
