@@ -599,8 +599,11 @@ export default function PartnerSubmit() {
                   )}
 
                   <div className="flex justify-between pt-2">
-                    <button onClick={() => setStep(2)} className="px-6 py-2.5 border border-gray-300 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
+                    {!existingListingId && (
+                      <button onClick={() => setStep(2)} className="px-6 py-2.5 border border-gray-300 text-gray-600 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
+                    )}
                     <button disabled={!step3Valid || submitting} onClick={handleSubmit}
+                      className={`inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-lg font-medium text-sm disabled:opacity-40 hover:bg-red-700 transition-colors ${existingListingId ? "ml-auto" : ""}`}>
                       className="inline-flex items-center gap-2 px-6 py-2.5 bg-red-600 text-white rounded-lg font-medium text-sm disabled:opacity-40 hover:bg-red-700 transition-colors">
                       {submitting ? "Processing..." : discountApplied === 100 ? "Submit Listing (Free)" : `Pay $${finalPrice} & Submit`}
                       <ChevronRight className="w-4 h-4" />
