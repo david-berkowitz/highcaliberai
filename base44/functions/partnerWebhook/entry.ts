@@ -60,11 +60,10 @@ Deno.serve(async (req) => {
         if (listing) {
           // Confirmation email to the submitter
           if (listing.contact_email) {
-            await base44.asServiceRole.integrations.Core.SendEmail({
+            await sendEmail({
               to: listing.contact_email,
-              from_name: "David Berkowitz / High Caliber AI",
               subject: `We received your Partner Marketplace submission — ${listing.company_name}`,
-              body: `Hi ${listing.contact_name || "there"},
+              text: `Hi ${listing.contact_name || "there"},
 
 Thanks for submitting ${listing.company_name} to the High Caliber AI Partner Marketplace!
 
@@ -78,10 +77,10 @@ https://highcaliberai.com/partners`,
             });
           }
 
-          await base44.asServiceRole.integrations.Core.SendEmail({
+          await sendEmail({
             to: "david@highcaliberai.com",
             subject: `New Partner Listing Submitted: ${listing.company_name}`,
-            body: `A new partner listing has been submitted and is pending your review.
+            text: `A new partner listing has been submitted and is pending your review.
 
 Company: ${listing.company_name}
 Type: ${listing.company_type || "N/A"}
@@ -94,7 +93,7 @@ Discount Code: ${discountCode || "None"}
 Description:
 ${listing.description}
 
-Review it here: https://highcaliberai.com/partner-listings-admin`
+Review it here: https://highcaliberai.com/partner-listings-admin`,
           });
         }
       } catch (err) {
