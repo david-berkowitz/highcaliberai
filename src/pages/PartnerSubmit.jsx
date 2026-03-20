@@ -546,6 +546,11 @@ export default function PartnerSubmit() {
               {step === 3 && (
                 <div className="space-y-6">
                   <h2 className="text-xl font-bold text-gray-900 mb-1">Agreement & Payment</h2>
+                  {existingListingId && (
+                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm text-amber-800">
+                      Your listing was already saved. Click the button below to complete payment — no need to re-enter your info.
+                    </div>
+                  )}
 
                   <div>
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 h-48 overflow-y-auto text-xs text-gray-600 font-mono leading-relaxed whitespace-pre-wrap">
