@@ -5,428 +5,261 @@ import { motion } from "framer-motion";
 import MetaTags from "@/components/SEO/MetaTags";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  TrendingUp, 
-  Brain, 
-  Sparkles, 
-  Users, 
-  Target, 
-  Lightbulb,
-  Book,
-  ExternalLink,
-  Mail,
-  FileText,
-  Calendar,
-  ArrowRight,
-  Award,
-  Rocket,
-  DollarSign,
-  CheckCircle,
-  Briefcase,
-  Newspaper,
-  Zap
+  TrendingUp, Brain, Sparkles, Users, Target, Lightbulb,
+  Book, ExternalLink, Mail, ArrowRight, Award, Rocket,
+  Briefcase, Newspaper, Zap, CheckCircle, FileText, Video
 } from "lucide-react";
 import ShareButtons from "@/components/ShareButtons";
 import NewsletterSignup from "@/components/NewsletterSignup";
+
+const FREE_TOOLS = [
+  {
+    category: "Research & Insights",
+    emoji: "🔍",
+    items: [
+      { name: "SparkToro", desc: "Find where your audience hangs out online — invaluable for startup targeting", href: "https://sparktoro.com/", badge: "Free tier" },
+      { name: "NotebookLM", desc: "Google's AI research assistant — upload docs, get instant summaries and Q&A", href: "https://notebooklm.google/", badge: "Free" },
+      { name: "Otterly AI", desc: "Track how your brand shows up in AI search results (ChatGPT, Perplexity, etc.)", href: "https://otterly.ai/?via=david", badge: "Free trial" },
+    ],
+  },
+  {
+    category: "Content Creation",
+    emoji: "✨",
+    items: [
+      { name: "Ideogram", desc: "AI image generation with great text rendering — perfect for fast ad creative", href: "https://ideogram.ai/", badge: "Free tier" },
+      { name: "Opus Pro", desc: "Turn long videos into short social clips automatically", href: "https://www.opus.pro/?via=a4312b", badge: "Free trial" },
+      { name: "Napkin", desc: "Turn text into infographics and visual slides instantly", href: "https://www.napkin.ai/", badge: "Free tier" },
+      { name: "ElevenLabs", desc: "AI voice generation — narrate your content without a studio", href: "https://elevenlabs.io/", badge: "Free tier" },
+      { name: "Google Labs", desc: "Experimental AI content tools from Google, mostly free to try", href: "https://labs.google/experiments", badge: "Free" },
+      { name: "HeyGen", desc: "AI avatar video generation — create spokesperson videos fast", href: "https://www.heygen.com/", badge: "Free tier" },
+    ],
+  },
+  {
+    category: "Automation & Building",
+    emoji: "⚡",
+    items: [
+      { name: "Base44", desc: "Build AI-powered apps and tools without code — fast and surprisingly powerful", href: "https://base44.pxf.io/c/5604633/2049275/25619?trafcat=base", badge: "Free tier" },
+      { name: "Lovable", desc: "AI-powered app development — describe what you want, get a working product", href: "https://lovable.dev/?via=david-berkowitz", badge: "Free tier" },
+      { name: "n8n", desc: "Workflow automation that connects your tools without code", href: "https://n8n.io/", badge: "Free tier" },
+      { name: "Manus", desc: "AI agent that does research, analysis, and complex tasks end-to-end", href: "https://manus.im/invitation/AX6DKLYSICEZZL?utm_source=invitation&utm_medium=social&utm_campaign=copy_link", badge: "Free trial" },
+    ],
+  },
+  {
+    category: "AI Directories & Prompts",
+    emoji: "📂",
+    items: [
+      { name: "There's an AI for That", desc: "Comprehensive database to find the right AI tool for any task", href: "https://www.theresanaiforthat.com/", badge: "Free" },
+      { name: "Supertools by The Rundown", desc: "Curated, searchable directory of the best AI tools", href: "https://www.supertools.com/", badge: "Free" },
+      { name: "Anthropic's Prompt Library", desc: "Ready-to-use Claude prompts for marketing, writing, analysis", href: "https://docs.anthropic.com/en/prompt-library/library", badge: "Free" },
+      { name: "1000+ ChatGPT Prompts", desc: "Massive prompt library to jumpstart your AI marketing workflows", href: "https://www.notion.so/3c26e97a23a948d499e9f1882dd2f542?pvs=21", badge: "Free" },
+    ],
+  },
+  {
+    category: "Learn & Stay Sharp",
+    emoji: "📚",
+    items: [
+      { name: "AIMG YouTube Channel", desc: "Dozens of expert interviews on AI marketing — free to watch anytime", href: "https://www.youtube.com/@aimarketersguild", badge: "Free" },
+      { name: "The Neuron Daily", desc: "The best daily AI newsletter — curated news + practical tips", href: "https://www.theneurondaily.com/", badge: "Free" },
+      { name: "Wonder Tools", desc: "Weekly AI tool roundups by Jeremy Caplan — concise and useful", href: "https://wondertools.substack.com/", badge: "Free" },
+      { name: "One Useful Thing", desc: "Ethan Mollick's newsletter on how to actually use AI — must-read", href: "https://www.oneusefulthing.org/", badge: "Free" },
+    ],
+  },
+];
 
 export default function QueensTech() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       <MetaTags 
-        title="Queens Tech + Innovation Challenge - AI-Powered Startup Marketing"
-        description="Keynote: AI-Powered Startup Marketing on a Bootstrap Budget at the Queens Tech + Innovation Challenge, March 31, 2026"
+        title="AI-Powered Startup Marketing Resources — Queens Tech + Innovation Challenge"
+        description="Free and low-cost AI marketing tools and resources from David Berkowitz's keynote at the Queens Tech + Innovation Challenge, March 31, 2026."
         url="https://highcaliberai.com/queenstech"
         canonical="https://highcaliberai.com/queenstech"
       />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="mb-8">
+      {/* Hero */}
+      <section className="pt-32 pb-16 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <div className="mb-6">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/49ad330a9_image.png"
                 alt="Queens Tech + Innovation Challenge"
-                className="h-20 mx-auto mb-6"
+                className="h-16 mx-auto mb-4"
               />
             </div>
-            <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 leading-tight">
-              Queens Tech + <span className="font-semibold text-blue-600">Innovation Challenge</span>
+            <p className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-3">Queens Tech + Innovation Challenge · March 31, 2026</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              AI-Powered Marketing<br />on a <span className="text-blue-600">Bootstrap Budget</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-4">
-              Finalists Announcement & Networking Event
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-6 leading-relaxed">
+              The tools, tactics, and resources from David Berkowitz's keynote — curated for founders and early-stage entrepreneurs who need to market smarter without a big team or big budget.
             </p>
-            <p className="text-2xl font-bold text-blue-600 mb-8">
-              March 31, 2026
-            </p>
-            
+
             <div className="flex justify-center mb-8">
               <ShareButtons 
                 url="https://highcaliberai.com/queenstech"
-                title="Queens Tech + Innovation Challenge - AI-Powered Startup Marketing"
-                description="Keynote on AI-Powered Startup Marketing on a Bootstrap Budget"
+                title="AI-Powered Startup Marketing on a Bootstrap Budget"
+                description="Free AI marketing tools and resources from David Berkowitz's keynote at Queens Tech + Innovation Challenge"
               />
             </div>
-            
-            {/* Keynote Announcement */}
-            <div className="max-w-3xl mx-auto mb-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 shadow-xl">
-              <div className="text-center">
-                <Rocket className="w-16 h-16 mx-auto mb-4 text-white" />
-                <h2 className="text-3xl font-bold text-white mb-3">Keynote Presentation</h2>
-                <h3 className="text-2xl font-semibold text-blue-100 mb-4">
-                  AI-Powered Startup Marketing on a Bootstrap Budget
-                </h3>
-                <p className="text-blue-100 text-lg mb-6">
-                  Learn how early-stage startups can leverage AI tools to compete with bigger players—without breaking the bank
-                </p>
-                <div className="grid sm:grid-cols-2 gap-3 text-left">
-                  {[
-                    "Identify the right AI tools for your stage and budget",
-                    "Build a lean content engine with AI-assisted workflows",
-                    "Use AI to punch above your weight in paid and organic channels",
-                    "Avoid the most common AI marketing mistakes early-stage startups make",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-blue-200 mt-0.5 flex-shrink-0" />
-                      <span className="text-blue-100 text-sm">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-white/60 text-xs mt-6 italic">Slides will be shared after the event</p>
+
+            {/* What you'll learn */}
+            <div className="max-w-2xl mx-auto bg-blue-600 rounded-2xl p-7 shadow-xl text-left mb-10">
+              <div className="flex items-center gap-2 mb-4">
+                <Rocket className="w-6 h-6 text-white" />
+                <h2 className="text-lg font-bold text-white">What the keynote covers</h2>
               </div>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {[
+                  "Identify the right AI tools for your stage and budget",
+                  "Build a lean content engine with AI-assisted workflows",
+                  "Use AI to compete with bigger players on organic and paid",
+                  "Avoid the most common AI marketing mistakes startups make",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-blue-200 mt-0.5 flex-shrink-0" />
+                    <span className="text-blue-100 text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-white/50 text-xs mt-5 italic">Slides will be shared here after the event</p>
             </div>
 
-            {/* Bio Section */}
-            <div className="max-w-2xl mx-auto bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <div className="flex items-start gap-4">
-                <img 
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
-                  alt="David Berkowitz"
-                  className="w-20 h-20 rounded-full flex-shrink-0"
-                  loading="lazy"
-                />
-                <div className="text-left">
-                  <h3 className="font-bold text-gray-900 mb-2">Presented by David Berkowitz</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    David is an AI marketing strategist, founder of AI Marketers Guild (7,000+ members), and author of <em>The Non-Obvious Guide to Using AI for Marketing</em>. He serves as Chief Community Officer at Marketecture Media, fractional CMO for AI-forward companies, and Executive in Residence at Progress Partners. With 400+ speaking engagements and 15+ years of experience across agencies and tech companies, David bridges the gap between AI innovation and practical marketing results.
-                  </p>
-                </div>
+            {/* Bio */}
+            <div className="max-w-xl mx-auto bg-white rounded-xl p-5 shadow-sm border border-gray-200 flex items-start gap-4 text-left">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/7cdf61db4_introstars2copy.png"
+                alt="David Berkowitz"
+                className="w-16 h-16 rounded-full flex-shrink-0"
+                loading="lazy"
+              />
+              <div>
+                <h3 className="font-bold text-gray-900 mb-1">David Berkowitz</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  AI marketing strategist, founder of AI Marketers Guild (7,000+ members), and author of <em>The Non-Obvious Guide to Using AI for Marketing</em>. Fractional CMO for AI-forward companies. 400+ speaking engagements worldwide.
+                </p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* About the Challenge */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
+      {/* RSVP strip */}
+      <div className="bg-blue-700 py-4 px-6 text-center">
+        <a 
+          href="https://www.eventbrite.com/e/queens-tech-innovation-challenge-networking-finalists-announcement-tickets-1984475968041"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-white font-semibold hover:text-blue-200 transition-colors"
+        >
+          <Award className="w-4 h-4" />
+          Attending the event? RSVP on Eventbrite →
+          <ExternalLink className="w-4 h-4" />
+        </a>
+      </div>
+
+      {/* Free & Low-Cost Resources */}
+      <section className="py-16 px-6">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">About the Challenge</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A program of the Queens Economic Development Corporation designed to help early-stage entrepreneurs grow their businesses
+            <p className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-2">From the keynote</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Free & Low-Cost AI Tools for Startups</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">
+              Every tool here has a free tier or costs less than $30/month. No enterprise budget required.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="border-2 border-blue-200 hover:border-blue-400 transition-all">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="w-8 h-8 text-blue-600" />
+          <div className="space-y-12">
+            {FREE_TOOLS.map((section) => (
+              <div key={section.category}>
+                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <span>{section.emoji}</span> {section.category}
+                </h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {section.items.map((tool) => (
+                    <a
+                      key={tool.name}
+                      href={tool.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group bg-white border border-gray-200 rounded-xl p-5 hover:border-blue-400 hover:shadow-md transition-all"
+                    >
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <h4 className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors">{tool.name}</h4>
+                        <span className="text-xs font-semibold px-2 py-0.5 bg-green-100 text-green-700 rounded-full whitespace-nowrap flex-shrink-0">{tool.badge}</span>
+                      </div>
+                      <p className="text-gray-500 text-sm leading-relaxed">{tool.desc}</p>
+                      <div className="flex items-center gap-1 mt-3 text-blue-600 text-xs font-medium">
+                        Try it <ExternalLink className="w-3 h-3" />
+                      </div>
+                    </a>
+                  ))}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">$100K</h3>
-                <p className="text-gray-600">in Total Prizes</p>
-                <p className="text-sm text-gray-500 mt-2">Five up-to $20K grants</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-blue-200 hover:border-blue-400 transition-all">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">90+</h3>
-                <p className="text-gray-600">Winners Since 2007</p>
-                <p className="text-sm text-gray-500 mt-2">$790K in total grants</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-blue-200 hover:border-blue-400 transition-all">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">6,200+</h3>
-                <p className="text-gray-600">Participants</p>
-                <p className="text-sm text-gray-500 mt-2">Queens entrepreneurs supported</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="bg-blue-50 rounded-2xl p-8 border border-blue-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">What the Program Offers</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="flex items-start gap-3">
-                <Award className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1">Cash Prizes</h4>
-                  <p className="text-gray-600 text-sm">One winner in each category receives up to $20,000 with no strings attached</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Book className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1">Online Workshops</h4>
-                  <p className="text-gray-600 text-sm">Wide range of startup topics from product development to fundraising and legal issues</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Users className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1">Networking Events</h4>
-                  <p className="text-gray-600 text-sm">Monthly in-person events to meet local entrepreneurs and learn about Queens resources</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Lightbulb className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1">One-on-One Office Hours</h4>
-                  <p className="text-gray-600 text-sm">Schedule meetings with program directors and advisors for personalized guidance</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Competition Categories */}
-      <section className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Competition Categories</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <CategoryCard title="Consumer Tech" description="B2C technology products or services designed for everyday use by consumers" />
-            <CategoryCard title="Enterprise Tech" description="B2B technology products or services used by businesses or organizations" />
-            <CategoryCard title="Sustainability" description="Innovative solutions for a healthy planet with positive environmental impact" />
-            <CategoryCard title="Community" description="Non-tech businesses delivering services in lifestyle, wellness, fashion, and e-commerce" />
-            <CategoryCard title="Food-Based" description="Food/beverage businesses as wholesalers, manufacturers, or retail (Queens location required)" />
-          </div>
-        </div>
-      </section>
-
-      {/* Event Details */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-blue-600 to-blue-700 border-0 shadow-xl">
-            <CardContent className="p-8">
-              <div className="text-center">
-                <Calendar className="w-16 h-16 mx-auto mb-4 text-white" />
-                <h3 className="text-3xl font-bold text-white mb-4">Join Us March 31, 2026</h3>
-                <p className="text-blue-100 text-lg mb-6">
-                  Finalists Announcement & Networking Event at Flushing Town Hall
-                </p>
-                <a 
-                  href="https://www.eventbrite.com/e/queens-tech-innovation-challenge-networking-finalists-announcement-tickets-1984475968041"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-700 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors"
-                >
-                  RSVP on Eventbrite
-                  <ExternalLink className="w-5 h-5" />
-                </a>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Quick AI Wins for Startups */}
-      <section className="py-16 px-6 bg-blue-600">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-white mb-3">Quick AI Wins on a Bootstrap Budget</h2>
-            <p className="text-blue-100 max-w-2xl mx-auto">Tactics you can use immediately — no enterprise budget required</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            {[
-              { icon: Zap, tip: "Use AI to repurpose one piece of content into 10+ formats — blog, LinkedIn, email, short video script, thread" },
-              { icon: Target, tip: "Let AI draft your ICP (ideal customer profile) and messaging — then refine with real customer language" },
-              { icon: Brain, tip: "Run customer discovery interviews with AI-generated question sets tailored to your market" },
-              { icon: TrendingUp, tip: "Use AI to analyze competitors' public content and identify positioning gaps you can own" },
-              { icon: Sparkles, tip: "Generate A/B test variants for ad copy, subject lines, and CTAs in minutes, not days" },
-              { icon: Lightbulb, tip: "Build a simple AI-powered FAQ chatbot for your site — reduces support load and qualifies leads" },
-            ].map(({ icon: Icon, tip }, i) => (
-              <div key={i} className="bg-white/10 rounded-xl p-5 flex items-start gap-3">
-                <div className="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon className="w-5 h-5 text-white" />
-                </div>
-                <p className="text-blue-50 text-sm leading-relaxed">{tip}</p>
               </div>
             ))}
           </div>
+
+          {/* Cross-link to full library */}
+          <div className="mt-12 bg-gray-900 rounded-2xl p-8 text-center">
+            <Sparkles className="w-10 h-10 text-blue-400 mx-auto mb-3" />
+            <h3 className="text-xl font-bold text-white mb-2">Want the full list?</h3>
+            <p className="text-gray-400 text-sm mb-5 max-w-md mx-auto">
+              The complete High Caliber AI resource library has 50+ tools across research, social, automation, newsletters, communities, and more — all personally curated.
+            </p>
+            <Link to={createPageUrl("Resources")}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+              Browse the Full Resource Library <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Resources for Startups */}
-      <section className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">AI Marketing Resources for Startups</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore affordable AI marketing tools and strategies perfect for bootstrap budgets
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link to={createPageUrl("SOS")}>
-              <Card className="border-2 border-blue-200 hover:border-blue-600 hover:shadow-xl transition-all cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <Sparkles className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Source of Sources</h3>
-                  <p className="text-gray-600 text-sm mb-4">Curated AI marketing tools for SMBs on a budget</p>
-                  <div className="flex items-center gap-2 text-blue-600 font-medium text-sm">Explore Tools <ArrowRight className="w-4 h-4" /></div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            <Link to={createPageUrl("Book")}>
-              <Card className="border-2 border-blue-200 hover:border-blue-600 hover:shadow-xl transition-all cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <Book className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">AI Marketing Guide</h3>
-                  <p className="text-gray-600 text-sm mb-4">The Non-Obvious Guide to Using AI for Marketing</p>
-                  <div className="flex items-center gap-2 text-blue-600 font-medium text-sm">Learn More <ArrowRight className="w-4 h-4" /></div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            <Link to={createPageUrl("Blog")}>
-              <Card className="border-2 border-blue-200 hover:border-blue-600 hover:shadow-xl transition-all cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <FileText className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">AI Marketing Blog</h3>
-                  <p className="text-gray-600 text-sm mb-4">Latest insights on AI-powered marketing strategies</p>
-                  <div className="flex items-center gap-2 text-blue-600 font-medium text-sm">Read Articles <ArrowRight className="w-4 h-4" /></div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            <Link to={createPageUrl("Hustle")}>
-              <Card className="border-2 border-blue-200 hover:border-blue-600 hover:shadow-xl transition-all cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <Newspaper className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">The Marketing Hustle</h3>
-                  <p className="text-gray-600 text-sm mb-4">Practical marketing insights for entrepreneurs and startup teams</p>
-                  <div className="flex items-center gap-2 text-blue-600 font-medium text-sm">Check It Out <ArrowRight className="w-4 h-4" /></div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            <Link to={createPageUrl("Jobs")}>
-              <Card className="border-2 border-blue-200 hover:border-blue-600 hover:shadow-xl transition-all cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <Briefcase className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Job Resources</h3>
-                  <p className="text-gray-600 text-sm mb-4">Tools, tips, and strategies for building your startup team or landing your next role</p>
-                  <div className="flex items-center gap-2 text-blue-600 font-medium text-sm">Explore Resources <ArrowRight className="w-4 h-4" /></div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            <Link to={createPageUrl("Resources")}>
-              <Card className="border-2 border-blue-200 hover:border-blue-600 hover:shadow-xl transition-all cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <TrendingUp className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Full Resource Library</h3>
-                  <p className="text-gray-600 text-sm mb-4">The complete AI marketing toolkit — tools, guides, communities, and more</p>
-                  <div className="flex items-center gap-2 text-blue-600 font-medium text-sm">Browse All <ArrowRight className="w-4 h-4" /></div>
-                </CardContent>
-              </Card>
-            </Link>
-          </div>
-
-          {/* Marketing Hustle + Jobs Cross-Promo */}
-          <div className="mt-10 bg-gray-900 rounded-2xl p-8 grid md:grid-cols-2 gap-6">
+      {/* More from David */}
+      <section className="py-12 px-6 bg-white border-t border-gray-100">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">More from High Caliber AI</h2>
+          <div className="grid md:grid-cols-3 gap-5">
             <Link to={createPageUrl("Hustle")} className="group">
-              <div className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-6 transition-all h-full">
-                <Newspaper className="w-8 h-8 text-blue-400 mb-3" />
-                <h3 className="text-lg font-bold text-white mb-2">The Marketing Hustle</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-3">Real-world marketing strategies, founder stories, and tactical playbooks — built for people who have to do more with less.</p>
-                <span className="text-blue-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Read it now <ArrowRight className="w-4 h-4" /></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 hover:border-blue-300 hover:shadow-md transition-all h-full">
+                <Newspaper className="w-8 h-8 text-blue-600 mb-3" />
+                <h3 className="font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">The Marketing Hustle</h3>
+                <p className="text-gray-500 text-sm mb-3">Practical marketing strategies built for founders and small teams who hustle.</p>
+                <span className="text-blue-600 text-sm font-medium flex items-center gap-1">Read it <ArrowRight className="w-4 h-4" /></span>
               </div>
             </Link>
             <Link to={createPageUrl("Jobs")} className="group">
-              <div className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-6 transition-all h-full">
-                <Briefcase className="w-8 h-8 text-blue-400 mb-3" />
-                <h3 className="text-lg font-bold text-white mb-2">Job Resources for Marketers</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-3">Whether you're hiring for your startup or looking for your next move, these tools and resources help you navigate the AI-era job market.</p>
-                <span className="text-blue-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Explore resources <ArrowRight className="w-4 h-4" /></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 hover:border-blue-300 hover:shadow-md transition-all h-full">
+                <Briefcase className="w-8 h-8 text-blue-600 mb-3" />
+                <h3 className="font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">Job Resources</h3>
+                <p className="text-gray-500 text-sm mb-3">Hiring for your startup or exploring your next role? Tools and tips for the AI-era job market.</p>
+                <span className="text-blue-600 text-sm font-medium flex items-center gap-1">Explore <ArrowRight className="w-4 h-4" /></span>
               </div>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <Card className="bg-gradient-to-r from-blue-600 to-blue-700 border-0 shadow-xl">
-            <CardContent className="p-8">
-              <div className="text-center mb-6">
-                <Mail className="w-12 h-12 mx-auto mb-4 text-white" />
-                <h3 className="text-2xl font-bold text-white mb-3">Stay Updated</h3>
-                <p className="text-blue-100">
-                  Get monthly AI marketing insights and startup resources delivered to your inbox
-                </p>
+            <a href="https://www.amazon.com/Non-Obvious-Guide-AI-Marketing-Guides/dp/1646871863/" target="_blank" rel="noopener noreferrer" className="group">
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 hover:border-blue-300 hover:shadow-md transition-all h-full">
+                <Book className="w-8 h-8 text-blue-600 mb-3" />
+                <h3 className="font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors">The Book</h3>
+                <p className="text-gray-500 text-sm mb-3"><em>The Non-Obvious Guide to Using AI for Marketing</em> — the companion to everything in this keynote.</p>
+                <span className="text-blue-600 text-sm font-medium flex items-center gap-1">Get it on Amazon <ExternalLink className="w-4 h-4" /></span>
               </div>
-              <NewsletterSignup source="queenstech" />
-            </CardContent>
-          </Card>
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Learn More */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Learn More About the Challenge</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://queensstartup.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Visit Official Site
-              <ExternalLink className="w-5 h-5" />
-            </a>
-            <a 
-              href="https://www.f6s.com/2026-queens-tech-innovation-challenge/apply"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-            >
-              Apply to the Challenge
-              <ArrowRight className="w-5 h-5" />
-            </a>
+      {/* Newsletter */}
+      <section className="py-14 px-6 bg-gradient-to-r from-blue-600 to-blue-700">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-6">
+            <Mail className="w-10 h-10 mx-auto mb-3 text-white" />
+            <h3 className="text-2xl font-bold text-white mb-2">Get the slides + more resources</h3>
+            <p className="text-blue-100 text-sm">
+              Sign up and I'll send the keynote slides when they're ready, plus monthly AI marketing insights for startup marketers.
+            </p>
           </div>
+          <NewsletterSignup source="queenstech" />
         </div>
       </section>
     </div>
-  );
-}
-
-function CategoryCard({ title, description }) {
-  return (
-    <Card className="border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all">
-      <CardContent className="p-6">
-        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-          <Target className="w-6 h-6 text-blue-600" />
-        </div>
-        <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-600 text-sm">{description}</p>
-      </CardContent>
-    </Card>
   );
 }
