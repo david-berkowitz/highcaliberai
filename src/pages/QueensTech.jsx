@@ -20,6 +20,7 @@ const FREE_TOOLS = [
       { name: "SparkToro", desc: "Find where your audience hangs out online — invaluable for startup targeting", href: "https://sparktoro.com/", badge: "Free tier" },
       { name: "NotebookLM", desc: "Google's AI research assistant — upload docs, get instant summaries and Q&A", href: "https://notebooklm.google/", badge: "Free" },
       { name: "Otterly AI", desc: "Track how your brand shows up in AI search results (ChatGPT, Perplexity, etc.)", href: "https://otterly.ai/?via=david", badge: "Free trial" },
+      { name: "PanelSynth", desc: "AI-powered synthetic focus groups — get consumer insights fast without recruiting real participants", href: "https://panelsynth.com", badge: "Beta", mine: true },
     ],
   },
   {
@@ -122,7 +123,10 @@ export default function QueensTech() {
                   </div>
                 ))}
               </div>
-              <p className="text-white/50 text-xs mt-5 italic">Slides will be shared here after the event</p>
+              <div className="mt-5 border-t border-blue-500 pt-5">
+                <p className="text-white font-semibold text-sm mb-2">📊 Keynote Slides</p>
+                <p className="text-blue-200 text-xs italic">Slides will be posted here after the event on March 31. Check back soon!</p>
+              </div>
             </div>
 
             {/* Bio */}
@@ -185,8 +189,11 @@ export default function QueensTech() {
                       className="group bg-white border border-gray-200 rounded-xl p-5 hover:border-blue-400 hover:shadow-md transition-all"
                     >
                       <div className="flex items-start justify-between gap-2 mb-2">
-                        <h4 className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors">{tool.name}</h4>
-                        <span className="text-xs font-semibold px-2 py-0.5 bg-green-100 text-green-700 rounded-full whitespace-nowrap flex-shrink-0">{tool.badge}</span>
+                        <div className="flex items-center gap-1.5">
+                          <h4 className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors">{tool.name}</h4>
+                          {tool.mine && <span className="text-xs font-bold px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded">David's</span>}
+                        </div>
+                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0 ${tool.badge === 'Beta' ? 'bg-amber-100 text-amber-700' : 'bg-green-100 text-green-700'}`}>{tool.badge}</span>
                       </div>
                       <p className="text-gray-500 text-sm leading-relaxed">{tool.desc}</p>
                       <div className="flex items-center gap-1 mt-3 text-blue-600 text-xs font-medium">
