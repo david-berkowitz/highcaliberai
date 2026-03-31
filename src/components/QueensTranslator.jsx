@@ -4,21 +4,68 @@ import { base44 } from "@/api/base44Client";
 import { Globe, Shuffle, Sparkles, Volume2, RefreshCw } from "lucide-react";
 
 const QUEENS_LANGUAGES = [
-  { name: "Mandarin Chinese", community: "Flushing, Queens — the largest Chinatown outside Manhattan", emoji: "🇨🇳", script: "中文" },
-  { name: "Spanish", community: "Jackson Heights & Corona — Queens is home to one of NYC's largest Latino communities", emoji: "🇪🇸", script: "Español" },
+  { name: "Mandarin Chinese", community: "Flushing — the largest Chinatown outside Manhattan", emoji: "🇨🇳", script: "中文" },
+  { name: "Cantonese", community: "Flushing & Elmhurst — a distinct and vibrant Chinese dialect community", emoji: "🇨🇳", script: "廣東話" },
+  { name: "Spanish", community: "Jackson Heights & Corona — one of NYC's largest Latino communities", emoji: "🇪🇸", script: "Español" },
+  { name: "Mexican Spanish", community: "Corona — one of the largest Mexican communities in NYC", emoji: "🇲🇽", script: "Español Mexicano" },
+  { name: "Ecuadorian Spanish", community: "Jackson Heights & Corona — the largest Ecuadorian community in NYC", emoji: "🇪🇨", script: "Español Ecuatoriano" },
+  { name: "Colombian Spanish", community: "Jackson Heights — a large Colombian community and cultural hub", emoji: "🇨🇴", script: "Español Colombiano" },
+  { name: "Dominican Spanish", community: "Jamaica & Southeast Queens — vibrant Dominican community", emoji: "🇩🇴", script: "Español Dominicano" },
   { name: "Korean", community: "Flushing — Little Korea, one of the largest Korean communities outside Korea", emoji: "🇰🇷", script: "한국어" },
   { name: "Hindi", community: "Jackson Heights & Elmhurst — the heart of South Asian Queens", emoji: "🇮🇳", script: "हिन्दी" },
   { name: "Punjabi", community: "Richmond Hill — home to a thriving Sikh community", emoji: "🌐", script: "ਪੰਜਾਬੀ" },
-  { name: "Bengali", community: "Jamaica — one of NYC's fastest-growing Bangladeshi communities", emoji: "🇧🇩", script: "বাংলা" },
-  { name: "Greek", community: "Astoria — once the largest Greek community outside Greece", emoji: "🇬🇷", script: "Ελληνικά" },
-  { name: "Tagalog", community: "Woodside — known as 'Little Manila', one of the largest Filipino communities in the US", emoji: "🇵🇭", script: "Filipino" },
-  { name: "Romanian", community: "Sunnyside & Woodside — a large Eastern European community", emoji: "🇷🇴", script: "Română" },
   { name: "Gujarati", community: "Jackson Heights — alongside a thriving South Asian business district", emoji: "🌐", script: "ગુજરાતી" },
+  { name: "Bengali", community: "Jamaica — one of NYC's fastest-growing Bangladeshi communities", emoji: "🇧🇩", script: "বাংলা" },
   { name: "Urdu", community: "Jamaica & Richmond Hill — a major South Asian hub in southern Queens", emoji: "🇵🇰", script: "اردو" },
-  { name: "Arabic", community: "Astoria — home to a large Egyptian and Middle Eastern community", emoji: "🇪🇬", script: "عربي" },
-  { name: "Polish", community: "Ridgewood — a historically Polish neighborhood on the Queens/Brooklyn border", emoji: "🇵🇱", script: "Polski" },
+  { name: "Tamil", community: "Jackson Heights & Flushing — South Indian Tamil community", emoji: "🌐", script: "தமிழ்" },
+  { name: "Telugu", community: "Flushing & Jamaica — South Indian Telugu-speaking professionals", emoji: "🌐", script: "తెలుగు" },
+  { name: "Marathi", community: "Jackson Heights — part of the broader Maharashtrian diaspora", emoji: "🌐", script: "मराठी" },
+  { name: "Sinhalese", community: "Woodside & Elmhurst — Sri Lankan community", emoji: "🇱🇰", script: "සිංහල" },
   { name: "Nepali", community: "Woodside & Jackson Heights — a growing Nepali community", emoji: "🇳🇵", script: "नेपाली" },
+  { name: "Tibetan", community: "Jackson Heights — one of the largest Tibetan communities in the US", emoji: "🏔️", script: "བོད་སྐད" },
+  { name: "Greek", community: "Astoria — once the largest Greek community outside Greece", emoji: "🇬🇷", script: "Ελληνικά" },
+  { name: "Arabic", community: "Astoria — home to a large Egyptian and Middle Eastern community", emoji: "🇪🇬", script: "عربي" },
+  { name: "Hebrew", community: "Forest Hills & Great Neck — Israeli expat and Jewish community", emoji: "🇮🇱", script: "עברית" },
+  { name: "Yiddish", community: "Forest Hills — an Ashkenazi Jewish community with deep historical roots", emoji: "✡️", script: "ייִדיש" },
+  { name: "Tagalog", community: "Woodside — 'Little Manila', one of the largest Filipino communities in the US", emoji: "🇵🇭", script: "Filipino" },
+  { name: "Vietnamese", community: "Elmhurst & Woodside — a vibrant Vietnamese community", emoji: "🇻🇳", script: "Tiếng Việt" },
+  { name: "Thai", community: "Elmhurst — home to Thai restaurants and a tight-knit Thai community", emoji: "🇹🇭", script: "ไทย" },
+  { name: "Burmese", community: "Woodside & Elmhurst — a growing Southeast Asian community", emoji: "🇲🇲", script: "မြန်မာ" },
+  { name: "Khmer", community: "Elmhurst — Cambodian community rooted in Queens", emoji: "🇰🇭", script: "ខ្មែរ" },
+  { name: "Indonesian", community: "Elmhurst — one of the most diverse ZIP codes on Earth", emoji: "🇮🇩", script: "Bahasa Indonesia" },
+  { name: "Japanese", community: "Flushing & Forest Hills — Japanese expats and professionals", emoji: "🇯🇵", script: "日本語" },
+  { name: "Romanian", community: "Sunnyside & Woodside — a large Eastern European community", emoji: "🇷🇴", script: "Română" },
+  { name: "Polish", community: "Ridgewood — historically Polish neighborhood on the Queens/Brooklyn border", emoji: "🇵🇱", script: "Polski" },
+  { name: "Russian", community: "Forest Hills & Rego Park — a major Russian-speaking Jewish community", emoji: "🇷🇺", script: "Русский" },
+  { name: "Ukrainian", community: "Sunnyside & Woodside — a growing Ukrainian community", emoji: "🇺🇦", script: "Українська" },
+  { name: "Uzbek", community: "Rego Park — a large Bukharian Jewish community from Central Asia", emoji: "🇺🇿", script: "O'zbek" },
+  { name: "Hungarian", community: "Woodside & Sunnyside — Eastern European Hungarian community", emoji: "🇭🇺", script: "Magyar" },
+  { name: "Albanian", community: "Astoria & Woodside — one of the largest Albanian communities in the US", emoji: "🇦🇱", script: "Shqip" },
+  { name: "Serbian", community: "Astoria — home to a vibrant Serbian Orthodox community", emoji: "🇷🇸", script: "Српски" },
+  { name: "Croatian", community: "Astoria — part of the South Slavic diaspora in western Queens", emoji: "🇭🇷", script: "Hrvatski" },
+  { name: "Turkish", community: "Sunnyside & Astoria — a Turkish community with cultural presence", emoji: "🇹🇷", script: "Türkçe" },
+  { name: "French", community: "Astoria & Jamaica — Francophone West African and Caribbean communities", emoji: "🇫🇷", script: "Français" },
+  { name: "Italian", community: "Howard Beach & Ozone Park — Italian-American heritage neighborhoods", emoji: "🇮🇹", script: "Italiano" },
+  { name: "Portuguese", community: "Astoria & Sunnyside — Brazilian and Portuguese communities", emoji: "🇧🇷", script: "Português" },
   { name: "Haitian Creole", community: "Cambria Heights — a large Haitian community in southeastern Queens", emoji: "🇭🇹", script: "Kreyòl" },
+  { name: "Jamaican Patois", community: "Jamaica & Southeast Queens — one of the largest Jamaican communities outside the Caribbean", emoji: "🇯🇲", script: "Patwa" },
+  { name: "Trinidadian Creole", community: "Southeast Queens — large Trinidadian-American community", emoji: "🇹🇹", script: "Trini" },
+  { name: "Guyanese Creole", community: "Richmond Hill — the largest Guyanese community outside Guyana", emoji: "🇬🇾", script: "Guyanese" },
+  { name: "Amharic", community: "Jamaica & Southeast Queens — a growing East African community", emoji: "🇪🇹", script: "አማርኛ" },
+  { name: "Tigrinya", community: "Jamaica — Eritrean community in southeastern Queens", emoji: "🇪🇷", script: "ትግርኛ" },
+  { name: "Somali", community: "Jamaica — Somali immigrant community in southeastern Queens", emoji: "🇸🇴", script: "Soomaali" },
+  { name: "Wolof", community: "Southeast Queens — West African Senegalese community", emoji: "🇸🇳", script: "Wolof" },
+  { name: "Yoruba", community: "Jamaica & Southeast Queens — Nigerian Yoruba community", emoji: "🇳🇬", script: "Yorùbá" },
+  { name: "Igbo", community: "Southeast Queens — Nigerian Igbo community", emoji: "🇳🇬", script: "Igbo" },
+  { name: "Twi", community: "Southeast Queens — Ghanaian Akan community", emoji: "🇬🇭", script: "Twi" },
+  { name: "Swahili", community: "Southeast Queens — East African diaspora community", emoji: "🌍", script: "Kiswahili" },
+  { name: "Fulani", community: "Southeast Queens — West African Fulani community", emoji: "🌍", script: "Fulfulde" },
+  { name: "Persian (Farsi)", community: "Forest Hills & Rego Park — Iranian Jewish and Muslim communities", emoji: "🇮🇷", script: "فارسی" },
+  { name: "Pashto", community: "Flushing & Jamaica — Afghan community in Queens", emoji: "🇦🇫", script: "پښتو" },
+  { name: "Dari", community: "Flushing — Afghan Dari-speaking community", emoji: "🇦🇫", script: "دری" },
+  { name: "Bukharian", community: "Rego Park & Forest Hills — the largest Bukharian Jewish community outside Central Asia", emoji: "🕍", script: "Бухорӣ" },
+  { name: "Czech", community: "Astoria — Central European community", emoji: "🇨🇿", script: "Čeština" },
+  { name: "Slovak", community: "Woodside — Slovak immigrant community", emoji: "🇸🇰", script: "Slovenčina" },
 ];
 
 export default function QueensTranslator() {
@@ -69,14 +116,8 @@ Return ONLY this JSON (no extra text):
     setLoading(false);
   };
 
-  const tryAnother = async () => {
-    if (!tagline.trim()) return;
-    await translate();
-  };
-
   return (
     <div className="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 rounded-3xl p-8 md:p-10 overflow-hidden relative">
-      {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-4 left-8 text-6xl">🌍</div>
         <div className="absolute top-8 right-12 text-5xl">🗽</div>
@@ -85,7 +126,6 @@ Return ONLY this JSON (no extra text):
       </div>
 
       <div className="relative z-10">
-        {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1.5 rounded-full mb-4">
             <Globe className="w-3.5 h-3.5" /> QUEENS EXCLUSIVE EXPERIENCE
@@ -94,12 +134,12 @@ Return ONLY this JSON (no extra text):
             The Queens Language Challenge 🗺️
           </h3>
           <p className="text-blue-200 text-sm max-w-xl mx-auto leading-relaxed">
-            Queens is the most linguistically diverse place on Earth — <strong className="text-white">160+ languages</strong> spoken across 2.3 million people. 
+            Queens is the most linguistically diverse place on Earth — <strong className="text-white">160+ languages</strong> spoken across 2.3 million people.
             Type your startup tagline and discover how it sounds in a random Queens language.
           </p>
+          <p className="text-white/40 text-xs mt-2">{QUEENS_LANGUAGES.length} languages in this experience</p>
         </div>
 
-        {/* Input */}
         <div className="max-w-xl mx-auto mb-6">
           <label className="block text-blue-200 text-sm font-semibold mb-2">Your startup tagline or marketing message:</label>
           <div className="flex gap-2">
@@ -124,7 +164,6 @@ Return ONLY this JSON (no extra text):
           </div>
         </div>
 
-        {/* Loading state */}
         {loading && (
           <div className="text-center py-8">
             <Globe className="w-10 h-10 text-yellow-400 mx-auto mb-3 animate-pulse" />
@@ -132,7 +171,6 @@ Return ONLY this JSON (no extra text):
           </div>
         )}
 
-        {/* Result */}
         <AnimatePresence>
           {result && language && !loading && (
             <motion.div
@@ -143,7 +181,6 @@ Return ONLY this JSON (no extra text):
               className="max-w-2xl mx-auto"
             >
               <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6">
-                {/* Language header */}
                 <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/20">
                   <span className="text-4xl">{language.emoji}</span>
                   <div>
@@ -155,13 +192,11 @@ Return ONLY this JSON (no extra text):
                   </div>
                 </div>
 
-                {/* Translation */}
                 <div className="mb-4">
                   <p className="text-xs font-semibold text-yellow-400 uppercase tracking-widest mb-1">Your tagline in {language.name}:</p>
                   <p className="text-2xl font-bold text-white leading-relaxed">{result.translation}</p>
                 </div>
 
-                {/* Pronunciation */}
                 <div className="bg-white/10 rounded-xl p-4 mb-4">
                   <div className="flex items-center gap-1.5 mb-1">
                     <Volume2 className="w-3.5 h-3.5 text-blue-300" />
@@ -170,7 +205,6 @@ Return ONLY this JSON (no extra text):
                   <p className="text-white text-sm font-mono">{result.pronunciation}</p>
                 </div>
 
-                {/* Nuance + marketing insight */}
                 <div className="grid sm:grid-cols-2 gap-3">
                   {result.literal_meaning && (
                     <div className="bg-yellow-400/10 border border-yellow-400/20 rounded-xl p-4">
@@ -186,10 +220,9 @@ Return ONLY this JSON (no extra text):
                   )}
                 </div>
 
-                {/* Try another */}
                 <div className="mt-5 text-center">
                   <button
-                    onClick={tryAnother}
+                    onClick={translate}
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 border border-white/20 text-white text-sm font-semibold rounded-xl hover:bg-white/20 transition-colors"
                   >
                     <Shuffle className="w-4 h-4" /> Translate into a different Queens language
@@ -204,12 +237,9 @@ Return ONLY this JSON (no extra text):
           )}
         </AnimatePresence>
 
-        {/* Pre-interaction nudge */}
         {!tried && !loading && (
           <div className="text-center">
-            <p className="text-white/40 text-xs">
-              ↑ Try it — every translation is a surprise from a real Queens community
-            </p>
+            <p className="text-white/40 text-xs">↑ Try it — every translation is a surprise from a real Queens community</p>
           </div>
         )}
       </div>
