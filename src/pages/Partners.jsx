@@ -228,7 +228,7 @@ export default function Partners() {
               </a>
               <Link to={createPageUrl("PartnerSubmit")}
                 className="inline-flex items-center gap-2 px-6 py-3 border-2 border-red-600 text-red-600 font-semibold rounded-lg hover:bg-red-50 transition-colors">
-                <Plus className="w-4 h-4" /> List Your Services — $49
+                <Plus className="w-4 h-4" /> List Your Services
               </Link>
             </div>
           </motion.div>
