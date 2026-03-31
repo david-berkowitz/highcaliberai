@@ -10,6 +10,7 @@ import {
   Briefcase, Newspaper, Zap, CheckCircle, FileText, Video
 } from "lucide-react";
 import ShareButtons from "@/components/ShareButtons";
+import QueensTranslator from "@/components/QueensTranslator";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
 const FREE_TOOLS = [
@@ -161,6 +162,13 @@ export default function QueensTech() {
           <ExternalLink className="w-4 h-4" />
         </a>
       </div>
+
+      {/* Queens Language Challenge */}
+      <section className="py-12 px-6">
+        <div className="max-w-4xl mx-auto">
+          <QueensTranslator />
+        </div>
+      </section>
 
       {/* Free & Low-Cost Resources */}
       <section className="py-16 px-6">
