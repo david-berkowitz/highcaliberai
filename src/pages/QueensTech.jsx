@@ -125,8 +125,17 @@ export default function QueensTech() {
                 ))}
               </div>
               <div className="mt-5 border-t border-blue-500 pt-5">
-                <p className="text-white font-semibold text-sm mb-2">📊 Keynote Slides</p>
-                <p className="text-blue-200 text-xs italic">Slides will be posted here after the event on March 31. Check back soon!</p>
+                <p className="text-white font-semibold text-sm mb-3">📊 Download the Keynote Slides</p>
+                <div className="flex flex-wrap gap-3">
+                  <a href="https://media.base44.com/files/public/693b1c5eede2934f1ee50170/ee6d7bf33_QueensEDC-3-2026-dberkowitz.pdf" target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-blue-700 font-semibold text-sm rounded-lg hover:bg-blue-50 transition-colors">
+                    📄 Download PDF
+                  </a>
+                  <a href="https://www.dropbox.com/scl/fi/pgsqgndzy4w0dzulh1n1m/Queens-EDC-3-2026-dberkowitz.pptx?rlkey=382zvktsaac559cck0kb02w7q&dl=1" target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/20 border border-white/30 text-white font-semibold text-sm rounded-lg hover:bg-white/30 transition-colors">
+                    📥 Download PPTX
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -149,19 +158,6 @@ export default function QueensTech() {
         </div>
       </section>
 
-      {/* RSVP strip */}
-      <div className="bg-blue-700 py-4 px-6 text-center">
-        <a 
-          href="https://www.eventbrite.com/e/queens-tech-innovation-challenge-networking-finalists-announcement-tickets-1984475968041"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-white font-semibold hover:text-blue-200 transition-colors"
-        >
-          <Award className="w-4 h-4" />
-          Attending the event? RSVP on Eventbrite →
-          <ExternalLink className="w-4 h-4" />
-        </a>
-      </div>
 
       {/* Queens Language Challenge */}
       <section className="py-12 px-6">
