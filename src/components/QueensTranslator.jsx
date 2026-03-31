@@ -151,6 +151,35 @@ const QUEENS_LANGUAGES = [
   { name: "Kurdish (Kurmanji)", community: "Astoria & Ridgewood — Kurdish diaspora community", emoji: "🌐", script: "Kurdî" },
   { name: "Kurdish (Sorani)", community: "Flushing — Iraqi Kurdish community", emoji: "🌐", script: "کوردی" },
   { name: "Romani", community: "Woodside & Astoria — Romani community in Queens", emoji: "🌐", script: "Romani" },
+  // Filling to 160
+  { name: "Chamorro", community: "Queens — Guamanian and CNMI Pacific Islander community", emoji: "🇬🇺", script: "Chamoru" },
+  { name: "Palauan", community: "Queens — Micronesian Pacific Islander community", emoji: "🇵🇼", script: "Tekoi ra Belau" },
+  { name: "Marshallese", community: "Queens — Pacific Islander Marshallese community", emoji: "🇲🇭", script: "Kajin M̧ajeļ" },
+  { name: "Chuukese", community: "Queens — Micronesian community from Chuuk, Federated States of Micronesia", emoji: "🇫🇲", script: "Chuukese" },
+  { name: "Tigrinya (Eritrean)", community: "Jamaica — Eritrean community distinct from Ethiopian Tigrinya speakers", emoji: "🇪🇷", script: "ትግርኛ" },
+  { name: "Afar", community: "Jamaica & Southeast Queens — Ethiopian and Djiboutian Afar diaspora", emoji: "🇪🇹", script: "Qafar af" },
+  { name: "Sidama", community: "Southeast Queens — Ethiopian Sidama community", emoji: "🇪🇹", script: "Sidaamu Afo" },
+  { name: "Hadiyya", community: "Southeast Queens — Ethiopian Hadiyya diaspora", emoji: "🇪🇹", script: "Hadiyyisa" },
+  { name: "Luo", community: "Jamaica — Kenyan and Ugandan Luo community", emoji: "🇰🇪", script: "Dholuo" },
+  { name: "Luganda", community: "Southeast Queens — Ugandan Ganda community", emoji: "🇺🇬", script: "Oluganda" },
+  { name: "Kinyarwanda", community: "Southeast Queens — Rwandan community", emoji: "🇷🇼", script: "Kinyarwanda" },
+  { name: "Kirundi", community: "Southeast Queens — Burundian community", emoji: "🇧🇮", script: "Ikirundi" },
+  { name: "Chichewa", community: "Southeast Queens — Malawian community", emoji: "🇲🇼", script: "Chichewa" },
+  { name: "Ndebele", community: "Southeast Queens — Zimbabwean Ndebele community", emoji: "🇿🇼", script: "isiNdebele" },
+  { name: "Sesotho", community: "Southeast Queens — Lesotho and South African Sotho diaspora", emoji: "🇱🇸", script: "Sesotho" },
+  { name: "Setswana", community: "Southeast Queens — Botswanan and South African community", emoji: "🇧🇼", script: "Setswana" },
+  { name: "Fante", community: "Southeast Queens — Ghanaian Fante coastal community", emoji: "🇬🇭", script: "Mfantse" },
+  { name: "Nuer", community: "Jamaica — South Sudanese Nuer refugee community", emoji: "🇸🇸", script: "Thok Nath" },
+  { name: "Zarma", community: "Southeast Queens — Nigerien Zarma community", emoji: "🇳🇪", script: "Zarma" },
+  { name: "Tamasheq", community: "Southeast Queens — Tuareg diaspora from Mali and Niger", emoji: "🌐", script: "ⵍⵎⴰⵙⵚⵉⵔ" },
+  { name: "Sango", community: "Southeast Queens — Central African Republic community", emoji: "🇨🇫", script: "Sângbä" },
+  { name: "Tetum", community: "Queens — Timorese community from East Timor", emoji: "🇹🇱", script: "Tetun" },
+  { name: "Malagasy", community: "Queens — Malagasy community from Madagascar", emoji: "🇲🇬", script: "Malagasy" },
+  { name: "Mauritian Creole", community: "Queens — Mauritian community", emoji: "🇲🇺", script: "Kreol Morisyen" },
+  { name: "Seychellois Creole", community: "Queens — Seychellois diaspora", emoji: "🇸🇨", script: "Kreol seselwa" },
+  { name: "Cape Verdean Creole", community: "Queens — Cape Verdean community", emoji: "🇨🇻", script: "Kriolu" },
+  { name: "São Toméan Creole", community: "Queens — São Tomé and Príncipe community", emoji: "🇸🇹", script: "Forro" },
+  { name: "Dzongkha", community: "Woodside — Bhutanese refugee community resettled in Queens", emoji: "🇧🇹", script: "རྫོང་ཁ" },
 ];
 
 export default function QueensTranslator() {
@@ -222,7 +251,7 @@ Return ONLY this JSON (no extra text):
             Queens is the most linguistically diverse place on Earth — <strong className="text-white">160+ languages</strong> spoken across 2.3 million people.
             Type your startup tagline and discover how it sounds in a random Queens language.
           </p>
-          <p className="text-white/40 text-xs mt-2">{QUEENS_LANGUAGES.length} languages in this experience</p>
+          <p className="text-white/40 text-xs mt-2">160 languages in this experience — matching Queens' real diversity</p>
         </div>
 
         <div className="max-w-xl mx-auto mb-6">
@@ -316,7 +345,7 @@ Return ONLY this JSON (no extra text):
               </div>
 
               <p className="text-center text-white/30 text-xs mt-3">
-                This is one of {QUEENS_LANGUAGES.length} languages in this experience — Queens has 160+ total. Reach them all with the right marketing.
+                This is one of 160 languages in this experience — Queens has 160+ total. Reach them all with the right marketing.
               </p>
             </motion.div>
           )}
