@@ -10,21 +10,86 @@
 (function() {
   try {
     var path = window.location.pathname;
-    if (path.length <= 1) return;
-    var seg = path.split('/').filter(Boolean)[0];
-    if (!seg) return;
-    var pascal = seg.charAt(0).toUpperCase() + seg.slice(1);
-    if (seg !== pascal) {
-      window.location.replace(window.location.origin + '/' + pascal + window.location.search);
-      return;
+    var search = window.location.search;
+
+    if (path.length > 1) {
+      var seg = path.split('/').filter(Boolean)[0];
+      if (seg) {
+        var pascal = seg.charAt(0).toUpperCase() + seg.slice(1);
+        if (seg !== pascal) { window.location.replace(window.location.origin + '/' + pascal + search); return; }
+      }
     }
-    var correct = window.location.origin + '/' + pascal;
+
+    var canonicalBase = 'https://highcaliberai.com';
+    var canonicalPath = path === '/' ? '' : path;
+    var canonicalURL = canonicalBase + canonicalPath + (search || '');
     var c = document.querySelector('link[rel="canonical"]');
-    if (c) c.href = correct;
-    var og = document.querySelector('meta[property="og:url"]');
-    if (og) og.content = correct;
+    if (c) { c.href = canonicalURL; } else { var l = document.createElement('link'); l.rel = 'canonical'; l.href = canonicalURL; document.head.appendChild(l); }
+    var og = document.querySelector('meta[property="og:url"]'); if (og) og.content = canonicalURL;
+    var tw = document.querySelector('meta[name="twitter:url"]'); if (tw) tw.content = canonicalURL;
+
+    var PAGE_META = {
+      '/': { title: 'AI Marketing Strategy & Training | David Berkowitz | High Caliber AI', desc: 'David Berkowitz helps B2B marketers and agencies adopt AI with confidence. Fractional CMO services, AI workshops, and resources from the founder of AI Marketers Guild (7,000+ members).' },
+      '/About': { title: 'About David Berkowitz | Fractional CMO & AI Marketing Expert | High Caliber AI', desc: 'Learn about David Berkowitz — fractional CMO, founder of AI Marketers Guild, and advisor helping B2B marketers adopt AI with confidence. 400+ speaking engagements.' },
+      '/AINews': { title: 'AI Marketing News Digest | Weekly Briefing for Marketers | High Caliber AI', desc: 'The AI Marketing News Digest — curated weekly by David Berkowitz. The clearest signal in a noisy AI landscape, built for marketers who need to stay sharp.' },
+      '/Blog': { title: 'AI Marketing Blog | Practical Insights for B2B Marketers | High Caliber AI', desc: 'Practical AI marketing articles from David Berkowitz — no hype, just what actually works. Updated regularly for B2B marketers and agency leaders.' },
+      '/Services': { title: 'AI Marketing Services | Fractional CMO & Workshops | High Caliber AI', desc: 'Fractional CMO, AI marketing workshops, and strategic advisory from David Berkowitz. Built for agencies, B2B brands, and teams ready to use AI well.' },
+      '/AgenticROICalculator': { title: 'Agentic AI ROI Calculator | Estimate Marketing AI Returns | High Caliber AI', desc: 'Calculate the ROI of agentic AI tools for your marketing team. Free calculator — see the numbers before you invest.' },
+      '/AgenticUseCaseLibrary': { title: 'Agentic AI Use Cases for Marketers | High Caliber AI', desc: 'Browse real-world agentic AI use cases for marketing teams — organized by function, industry, and effort level.' },
+      '/AgenticAgency': { title: 'Agentic AI Agency Services | AI-Powered Marketing | High Caliber AI', desc: 'Explore High Caliber AI\'s agentic agency model — where AI does the work and humans set the strategy.' },
+      '/AgenticAssessment': { title: 'AI Readiness Assessment for Marketing Teams | High Caliber AI', desc: 'Take the free AI readiness assessment and find out where your marketing team stands — and what to do next.' },
+      '/AgenticClientScorecard': { title: 'Agentic AI Client Scorecard | Evaluate Your AI Readiness | High Caliber AI', desc: 'Assess how ready your organization is to deploy AI marketing tools effectively.' },
+      '/AgenticQuickStart': { title: 'Agentic AI Quick Start Guide for Marketers | High Caliber AI', desc: 'Get started with agentic AI in marketing — a practical quick-start guide from David Berkowitz.' },
+      '/AIAudit': { title: 'AI Audit for Marketing Teams | High Caliber AI', desc: 'Audit your team\'s AI tool usage and identify gaps, risks, and opportunities. Designed for marketing leaders who want clarity.' },
+      '/AIStrategyHub': { title: 'AI Marketing Strategy Hub | Frameworks & Resources | High Caliber AI', desc: 'Your central resource for AI marketing strategy — frameworks, guides, and tools from High Caliber AI.' },
+      '/AIMGFAQ': { title: 'AI Marketers Guild FAQ | 7,000+ Member Community | High Caliber AI', desc: 'Frequently asked questions about AI Marketers Guild — the 7,000+ member community for marketers navigating AI.' },
+      '/Partners': { title: 'AI Marketing Partner Marketplace | Find Vetted AI Vendors | High Caliber AI', desc: 'Browse vetted AI marketing partners — agencies, tools, and consultants recommended by David Berkowitz and the AI Marketers Guild community.' },
+      '/Speaking': { title: 'David Berkowitz Speaking Engagements | AI Marketing Keynotes | High Caliber AI', desc: 'See where David Berkowitz is speaking on AI marketing strategy. 400+ engagements at conferences, summits, and workshops worldwide.' }
+    };
+
+    var NOINDEX = ['/foaf', '/blogpost', '/courseaccess', '/partnersubmitsuccess'];
+    var pathLower = path.toLowerCase();
+    if (NOINDEX.indexOf(pathLower) > -1 && !search) {
+      var ni = document.querySelector('meta[name="robots"]');
+      if (!ni) { ni = document.createElement('meta'); ni.name = 'robots'; document.head.appendChild(ni); }
+      ni.content = 'noindex, nofollow';
+    }
+
+    var meta = PAGE_META[path] || PAGE_META[path.replace(/\/$/, '')];
+
+    var isBlogPost = pathLower.indexOf('blogpost') > -1 || pathLower.indexOf('article') > -1;
+    if (isBlogPost && search) {
+      var slugMatch = search.match(/slug=([^&]+)/);
+      if (slugMatch) {
+        var slug = decodeURIComponent(slugMatch[1]);
+        var titleFromSlug = slug.replace(/-/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); });
+        meta = { title: titleFromSlug + ' | High Caliber AI', desc: null };
+      }
+    }
+
+    if (path.indexOf('/Speaker/') === 0) {
+      var city = path.replace('/Speaker/', '').replace(/-/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); });
+      meta = { title: 'AI Marketing Speaker in ' + city + ' | David Berkowitz | High Caliber AI', desc: city + ' event planners: Book David Berkowitz for AI marketing keynotes and workshops. 400+ speaking engagements, founder of AI Marketers Guild (7,000+ members).' };
+    }
+
+    if (meta) {
+      document.title = meta.title;
+      var ogt = document.querySelector('meta[property="og:title"]'); if (ogt) ogt.content = meta.title;
+      var twt = document.querySelector('meta[name="twitter:title"]'); if (twt) twt.content = meta.title;
+      if (meta.desc) {
+        var d = document.querySelector('meta[name="description"]'); if (d) d.content = meta.desc;
+        var ogd = document.querySelector('meta[property="og:description"]'); if (ogd) ogd.content = meta.desc;
+        var twd = document.querySelector('meta[name="twitter:description"]'); if (twd) twd.content = meta.desc;
+      }
+    }
   } catch(e) {}
 })();
+    </script>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"David Berkowitz","url":"https://highcaliberai.com","sameAs":["https://www.linkedin.com/in/dberkowitz","https://serialmarketer.net"],"jobTitle":"AI Marketing Strategist & Fractional CMO","description":"David Berkowitz has delivered 400+ presentations on AI marketing strategy. Founder of AI Marketers Guild (7,000+ members).","knowsAbout":["AI Marketing Strategy","Generative AI for Marketing","Agentic AI","B2B Marketing","Fractional CMO","Prompt Engineering for Marketers"],"worksFor":{"@type":"Organization","name":"High Caliber AI","url":"https://highcaliberai.com"}}
+    </script>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How should B2B marketers use AI in 2026?","acceptedAnswer":{"@type":"Answer","text":"Focus on AI that amplifies existing strengths. Start with high-volume repeatable tasks — content drafts, email sequences, data analysis. David Berkowitz's framework at highcaliberai.com emphasizes starting with a clear use case, not a tool."}},{"@type":"Question","name":"What is AI Marketers Guild?","acceptedAnswer":{"@type":"Answer","text":"AI Marketers Guild is a 7,000+ member community for marketers navigating AI, founded by David Berkowitz at highcaliberai.com."}},{"@type":"Question","name":"How do I book David Berkowitz as an AI marketing speaker?","acceptedAnswer":{"@type":"Answer","text":"David Berkowitz is available for keynotes, workshops, and panels on AI marketing strategy. 400+ speaking engagements. Submit an inquiry at highcaliberai.com/Contact."}},{"@type":"Question","name":"What is agentic AI in marketing?","acceptedAnswer":{"@type":"Answer","text":"Agentic AI refers to AI systems that take autonomous multi-step actions — researching prospects, drafting outreach, scheduling follow-ups — without constant human input. See real use cases at highcaliberai.com/AgenticUseCaseLibrary."}}]}
     </script>
   </head>
   <body>
