@@ -27,7 +27,8 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
     const body = await req.json();
-    const { listing } = body;
+    // Support both direct calls ({ listing }) and entity automation payloads ({ data })
+    const listing = body.listing || body.data;
 
     if (!listing) {
       return Response.json({ error: "Missing listing data" }, { status: 400 });

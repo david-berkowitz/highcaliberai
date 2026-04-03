@@ -115,8 +115,8 @@ export default function BlogPost() {
         title={post.title}
         description={post.excerpt}
         image={post.featured_image || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"}
-        url={`https://highcaliberai.com/blog/${post.slug}`}
-        canonical={`https://highcaliberai.com/blog/${post.slug}`}
+        url={`https://highcaliberai.com/BlogPost?slug=${post.slug}`}
+        canonical={`https://highcaliberai.com/BlogPost?slug=${post.slug}`}
         type="article"
         author="David Berkowitz"
       />
@@ -186,7 +186,7 @@ export default function BlogPost() {
                 </div>
               </div>
               <ShareButtons 
-                url={`https://highcaliberai.com/blog/${post.slug}`}
+                url={`https://highcaliberai.com/BlogPost?slug=${post.slug}`}
                 title={post.title}
                 description={post.excerpt}
               />

@@ -27,12 +27,19 @@ export default function Home() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await base44.entities.EmailSubscriber.create({
-        email,
-        source: 'homepage',
-        segments: ['newsletter'],
-        status: 'active',
-      });
+      const existing = await base44.entities.EmailSubscriber.filter({ email });
+      if (existing.length > 0) {
+        const sub = existing[0];
+        const segments = Array.from(new Set([...(sub.segments || []), 'newsletter']));
+        await base44.entities.EmailSubscriber.update(sub.id, { segments });
+      } else {
+        await base44.entities.EmailSubscriber.create({
+          email,
+          source: 'homepage',
+          segments: ['newsletter'],
+          status: 'active',
+        });
+      }
       setIsSubscribed(true);
       setEmail('');
     } catch (err) {
