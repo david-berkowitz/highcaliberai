@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Download, RefreshCw, AlertCircle, ExternalLink, CheckCircle } from "lucide-react";
+import { RefreshCw, AlertCircle, ExternalLink, CheckCircle } from "lucide-react";
 
 export default function PressCoverageAdmin() {
   const [filter, setFilter] = useState("all");
@@ -16,19 +16,7 @@ export default function PressCoverageAdmin() {
     initialData: [],
   });
 
-  const importMutation = useMutation({
-    mutationFn: async () => {
-      const response = await base44.functions.invoke('importPressCoverage', {});
-      return response.data;
-    },
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['pressCoverage'] });
-      alert(`Import complete!\n\nParsed: ${data.parsed_rows}\nNeeds Review: ${data.needs_review_rows}\nDuplicates: ${data.duplicates_skipped}`);
-    },
-    onError: (error) => {
-      alert(`Import failed: ${error.message}`);
-    }
-  });
+
 
   const filteredCoverage = coverage.filter(item => {
     if (filter === "needs_review") return item.import_status === "needs_review";
@@ -56,15 +44,7 @@ export default function PressCoverageAdmin() {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-4 mb-6 flex-wrap">
-          <Button
-            onClick={() => importMutation.mutate()}
-            disabled={importMutation.isPending}
-            className="bg-red-600 hover:bg-red-700"
-          >
-            <Download className="w-4 h-4 mr-2" />
-            {importMutation.isPending ? 'Importing...' : 'Import from Serial Marketer'}
-          </Button>
+        <div className="flex gap-4 mb-6">
           <Button
             onClick={() => queryClient.invalidateQueries({ queryKey: ['pressCoverage'] })}
             variant="outline"
