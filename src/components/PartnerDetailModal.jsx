@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { X, ExternalLink, Mail, Send, Loader2 } from "lucide-react";
+import { base44 } from "@/api/base44Client";
 import { withReferral } from "@/utils/urls";
 
 function ContactForm({ partner, onClose }) {
@@ -10,18 +11,13 @@ function ContactForm({ partner, onClose }) {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch("/api/functions/sendPartnerIntro", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          partner_id: partner.id,
-          sender_name: form.name,
-          sender_email: form.email,
-          sender_company: form.company,
-          message: form.message,
-        }),
+      await base44.functions.invoke("sendPartnerIntro", {
+        partner_id: partner.id,
+        sender_name: form.name,
+        sender_email: form.email,
+        sender_company: form.company,
+        message: form.message,
       });
-      if (!res.ok) throw new Error("Failed");
       setStatus("success");
     } catch {
       setStatus("error");

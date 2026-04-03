@@ -12,8 +12,20 @@ export default function SpeakerCity() {
     ? city.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
     : "Your City";
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "David Berkowitz",
+    "url": "https://highcaliberai.com",
+    "jobTitle": "AI Marketing Strategist & Fractional CMO",
+    "description": `David Berkowitz delivers AI marketing keynotes and workshops in ${cityName} and worldwide. Founder of AI Marketers Guild (7,000+ members). 400+ speaking engagements.`,
+    "knowsAbout": ["AI Marketing Strategy", "Generative AI for Marketing", "Agentic AI", "B2B Marketing", "Fractional CMO"],
+    "worksFor": { "@type": "Organization", "name": "High Caliber AI", "url": "https://highcaliberai.com" }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <MetaTags
         title={`AI Marketing Speaker in ${cityName} | David Berkowitz | High Caliber AI`}
         description={`${cityName} event planners: Book David Berkowitz for AI marketing keynotes and workshops. 400+ speaking engagements, founder of AI Marketers Guild (7,000+ members).`}
