@@ -39,8 +39,8 @@ export default function AINews() {
       <MetaTags
         title="Weekly AI Marketing News Digest"
         description="Stay updated with the latest AI marketing news, tools, and trends. Curated weekly by David Berkowitz."
-        url="https://highcaliberai.com/ai-news"
-        canonical="https://highcaliberai.com/ai-news"
+        url="https://highcaliberai.com/AINews"
+        canonical="https://highcaliberai.com/AINews"
       />
       <BreadcrumbStructuredData 
         items={[

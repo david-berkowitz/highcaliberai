@@ -1,10 +1,10 @@
 import Stripe from "npm:stripe@14";
-import { createClientFromRequest } from "npm:@base44/sdk@0.8.20";
+import { createClientFromRequest } from "npm:@base44/sdk@0.8.23";
 
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY"));
 
 const DISCOUNT_CODES = {
-  "bookVIP": { percent: 100, limit: null },
+  "BOOKVIP": { percent: 100, limit: null },
   "AI25":    { percent: 25,  limit: 100 },
 };
 
