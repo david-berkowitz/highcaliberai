@@ -21,7 +21,7 @@
     }
 
     var canonicalBase = 'https://highcaliberai.com';
-    var canonicalPath = path === '/' ? '' : path;
+    var canonicalPath = path === '/' ? '' : path.toLowerCase();
     var canonicalURL = canonicalBase + canonicalPath + (search || '');
     var c = document.querySelector('link[rel="canonical"]');
     if (c) { c.href = canonicalURL; } else { var l = document.createElement('link'); l.rel = 'canonical'; l.href = canonicalURL; document.head.appendChild(l); }
