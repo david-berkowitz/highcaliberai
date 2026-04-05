@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
  * referralUrl: if set, uses this URL (already has ref params baked in)
  * hasReferral: bool — shows a "Referral Link" badge
  */
-export default function ResourceCard({ icon: Icon, title, description, href, featured, tier, introEmail, hasReferral }) {
+export default function ResourceCard({ icon: Icon, title, description, href, featured, tier, introEmail, hasReferral, startingPrice }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopyIntroNote = (e) => {
@@ -57,6 +57,10 @@ export default function ResourceCard({ icon: Icon, title, description, href, fea
           </div>
 
           <p className="text-gray-500 text-sm leading-relaxed mb-3 flex-1">{description}</p>
+
+          {startingPrice && (
+            <p className="text-xs font-semibold text-gray-400 mb-2">Paid plans from <span className="text-gray-600">{startingPrice}</span></p>
+          )}
 
           <div className="flex flex-wrap items-center gap-2 mt-auto">
             <div className="flex items-center gap-1 text-red-600 font-medium text-xs">
