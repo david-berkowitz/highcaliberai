@@ -47,7 +47,7 @@ export default function Resources() {
               AI Marketing <span className="text-red-600">Resource Library</span>
             </h1>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-6">
-              47+ hand-picked tools, newsletters, and communities — curated by David Berkowitz.
+              49+ hand-picked tools, newsletters, and communities — curated by David Berkowitz.
             </p>
             {/* Tier legend */}
             <div className="flex flex-wrap justify-center gap-3 mb-6 text-xs font-semibold">
@@ -154,6 +154,15 @@ export default function Resources() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <ResourceCard icon={Zap} title="n8n" description="Workflow automation for technical teams" href="https://n8n.io/" tier="smb" />
             <ResourceCard icon={Brain} title="Manus" description="AI agent that autonomously completes complex tasks — research, analysis, code, and more — end to end." href="https://manus.im/invitation/AX6DKLYSICEZZL?utm_source=invitation&utm_medium=social&utm_campaign=copy_link" tier="smb" hasReferral />
+          </div>
+        </section>
+
+        {/* Meeting Notes & Transcription */}
+        <section className="py-10">
+          <SectionHeader icon={FileText} title="Meeting Notes & Transcription" description="AI-powered tools to capture, summarize, and act on your meetings" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <ResourceCard icon={FileText} title="Granola" description="AI notepad for people in back-to-back meetings. Works like Apple Notes but also transcribes — no meeting bot joins your call." href="https://www.granola.ai/" tier="smb" />
+            <ResourceCard icon={FileText} title="Fireflies" description="AI notetaker that transcribes, summarizes, searches, and analyzes your team conversations. Used across 1M+ companies." href="https://fireflies.ai/" tier="smb" />
           </div>
         </section>
 
