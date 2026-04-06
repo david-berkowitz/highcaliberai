@@ -79,6 +79,18 @@ export default function Speaking() {
               </Link>
             </div>
 
+            {/* Featured Stages */}
+            <div className="mt-10 mb-8">
+              <p className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-5">Featured keynotes at</p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {["Google", "Coca-Cola", "AARP", "SXSW", "ad:tech Latin America", "Binghamton University", "Columbia University", "INBOUND"].map((org) => (
+                  <span key={org} className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm">
+                    {org}
+                  </span>
+                ))}
+              </div>
+            </div>
+
             {/* Year Filter */}
             <div className="flex flex-wrap justify-center gap-2">
               {years.map((year) => (
