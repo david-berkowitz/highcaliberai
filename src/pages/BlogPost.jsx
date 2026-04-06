@@ -53,6 +53,13 @@ export default function BlogPost() {
   const pathParts = window.location.pathname.split('/');
   const slug = pathParts[pathParts.length - 1];
 
+  // Redirect old ?slug= URLs to new clean paths
+  const urlParams = new URLSearchParams(window.location.search);
+  const oldSlug = urlParams.get('slug');
+  if (oldSlug) {
+    window.location.replace(`/Blog/${oldSlug}`);
+  }
+
   const today = new Date().toISOString().split('T')[0];
 
   const { data: posts = [], isLoading } = useQuery({
