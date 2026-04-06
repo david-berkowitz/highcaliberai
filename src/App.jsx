@@ -8,6 +8,7 @@ import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import SpeakerCity from './pages/SpeakerCity';
+import BlogPost from './pages/BlogPost';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -63,6 +64,7 @@ const AuthenticatedApp = () => {
       ))}
       <Route path="/coursehome" element={<Navigate to="/Course" replace />} />
       <Route path="/Speaker/:city" element={<LayoutWrapper currentPageName="SpeakerCity"><SpeakerCity /></LayoutWrapper>} />
+      <Route path="/Blog/:slug" element={<LayoutWrapper currentPageName="BlogPost"><BlogPost /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

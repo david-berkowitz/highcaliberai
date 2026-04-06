@@ -50,8 +50,8 @@ function generatePAAQuestions(post) {
 }
 
 export default function BlogPost() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const slug = urlParams.get('slug');
+  const pathParts = window.location.pathname.split('/');
+  const slug = pathParts[pathParts.length - 1];
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -115,8 +115,8 @@ export default function BlogPost() {
         title={post.title}
         description={post.excerpt}
         image={post.featured_image || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/2679ed99d_highcaliberaibiggerlogo.png"}
-        url={`https://highcaliberai.com/BlogPost?slug=${post.slug}`}
-        canonical={`https://highcaliberai.com/BlogPost?slug=${post.slug}`}
+        url={`https://highcaliberai.com/Blog/${post.slug}`}
+        canonical={`https://highcaliberai.com/Blog/${post.slug}`}
         type="article"
         author="David Berkowitz"
       />
@@ -186,7 +186,7 @@ export default function BlogPost() {
                 </div>
               </div>
               <ShareButtons 
-                url={`https://highcaliberai.com/BlogPost?slug=${post.slug}`}
+                url={`https://highcaliberai.com/Blog/${post.slug}`}
                 title={post.title}
                 description={post.excerpt}
               />
@@ -267,7 +267,7 @@ export default function BlogPost() {
                   {related.map(relatedPost => (
                     <Link
                       key={relatedPost.id}
-                      to={createPageUrl(`BlogPost?slug=${relatedPost.slug}`)}
+                      to={`/Blog/${relatedPost.slug}`}
                       className="group"
                     >
                       {relatedPost.featured_image && (

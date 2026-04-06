@@ -142,7 +142,7 @@ export default function Blog() {
                       )}
                     </div>
                     <Link
-                      to={createPageUrl(`BlogPost?slug=${featuredPost.slug}`)}
+                      to={`/Blog/${featuredPost.slug}`}
                       className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold group"
                     >
                       Read Article
@@ -220,7 +220,7 @@ export default function Blog() {
                         </div>
                       )}
                       <Link
-                        to={createPageUrl(`BlogPost?slug=${post.slug}`)}
+                        to={`/Blog/${post.slug}`}
                         className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold text-sm group"
                       >
                         Read More
