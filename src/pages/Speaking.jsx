@@ -1,348 +1,371 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { createPageUrl } from "../utils";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { base44 } from "@/api/base44Client";
-import { useQuery } from "@tanstack/react-query";
-import { Calendar, ExternalLink, Mic, ChevronDown } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import MetaTags from "@/components/SEO/MetaTags";
 
+// ── Data ──────────────────────────────────────────────────────────────────────
+
+const SPEAKING_TOPICS = [
+  {
+    title: "AI Marketing Strategy for 2026 & Beyond",
+    desc: "What's actually working right now — and what's hype. A framework marketing teams can act on Monday morning.",
+    icon: "🎯",
+  },
+  {
+    title: "From ChatGPT to Revenue: Practical AI for Marketing Teams",
+    desc: "Real tools, real workflows, real ROI. No fluff, no fear — just what B2B marketers need to move fast.",
+    icon: "💡",
+  },
+  {
+    title: "Agentic AI: The Future of Marketing Operations",
+    desc: "How autonomous AI agents are reshaping agency models, content production, and the CMO role.",
+    icon: "🤖",
+  },
+  {
+    title: "The Non-Obvious Guide to Using AI for Marketing",
+    desc: "Based on David's bestselling book — counterintuitive lessons for marketers who want an edge.",
+    icon: "📖",
+  },
+  {
+    title: "AI Marketing Ethics, Risks & Getting It Right",
+    desc: "The guardrails leaders need. How to adopt AI without losing trust, brand voice, or your team's buy-in.",
+    icon: "⚖️",
+  },
+];
+
+const STATS = [
+  { value: "400+", label: "Speaking Engagements" },
+  { value: "7,000+", label: "AI Marketers Guild Members" },
+  { value: "20+", label: "Years in Digital Marketing" },
+  { value: "1", label: "Published Book on AI Strategy" },
+];
+
+const PAST_STAGES = [
+  "SXSW", "Cannes Lions", "INBOUND", "Google", "Adobe",
+  "Salesforce", "Columbia University", "AARP", "HSMAI", "Kochava",
+];
+
+const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+// ── Main Component ────────────────────────────────────────────────────────────
+
 export default function Speaking() {
-  const [selectedYear, setSelectedYear] = useState("all");
+  const [engagements, setEngagements] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("All Years");
+  const [loading, setLoading] = useState(true);
 
-  const { data: engagements = [], isLoading } = useQuery({
-    queryKey: ['speaking-engagements'],
-    queryFn: () => base44.entities.SpeakingEngagement.list('-date'),
-    initialData: [],
-  });
+  useEffect(() => {
+    base44.entities.SpeakingEngagement.list("-date").then((data) => {
+      setEngagements(data);
+      setLoading(false);
+    });
+  }, []);
 
-  const years = ["all", ...new Set(engagements.map(e => new Date(e.date).getFullYear()))];
-  
-  const filteredEngagements = selectedYear === "all" 
-    ? engagements 
-    : engagements.filter(e => new Date(e.date).getFullYear() === parseInt(selectedYear));
+  // Derive unique years from data
+  const years = ["All Years", ...Array.from(
+    new Set(engagements.map((e) => new Date(e.date).getFullYear()))
+  ).sort((a, b) => b - a)];
 
-  const groupedByYear = filteredEngagements.reduce((acc, eng) => {
+  // Filter + deduplicate
+  const filtered = engagements
+    .filter((e) => {
+      const year = new Date(e.date).getFullYear();
+      return selectedYear === "All Years" || year === Number(selectedYear);
+    })
+    .filter((e, idx, arr) =>
+      arr.findIndex(
+        (x) => x.event_name === e.event_name && x.role === e.role && x.date === e.date
+      ) === idx
+    );
+
+  // Group by year for display
+  const grouped = filtered.reduce((acc, eng) => {
     const year = new Date(eng.date).getFullYear();
     if (!acc[year]) acc[year] = [];
     acc[year].push(eng);
     return acc;
   }, {});
 
-  const roleColors = {
-    "Keynote": "bg-red-100 text-red-700",
-    "Speaker": "bg-blue-100 text-blue-700",
-    "Panelist": "bg-green-100 text-green-700",
-    "Moderator": "bg-purple-100 text-purple-700",
-    "Guest Lecture": "bg-amber-100 text-amber-700"
-  };
+  const sortedYears = Object.keys(grouped).sort((a, b) => b - a);
 
   return (
-    <div className="min-h-screen bg-white">
-      <MetaTags 
-        title="Speaking Engagements - David Berkowitz"
-        description="David Berkowitz's speaking history on AI marketing, digital strategy, and marketing innovation. 400+ speaking engagements at industry events, universities, and executive forums."
-        image="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/693b1c5eede2934f1ee50170/eebbb17c5_dbforbes.jpg"
+    <div style={{ fontFamily: "inherit", background: "#fff", minHeight: "100vh" }}>
+
+      <MetaTags
+        title="David Berkowitz Speaking Engagements | AI Marketing Keynotes"
+        description="Book David Berkowitz for AI marketing keynotes, workshops, and panels. 400+ speaking engagements at SXSW, Cannes Lions, INBOUND, Google, and more."
         url="https://highcaliberai.com/speaking"
+        canonical="https://highcaliberai.com/speaking"
       />
 
-      {/* Hero Section */}
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center gap-2 mb-6 px-5 py-2.5 rounded-full bg-red-100 border border-red-200">
-              <Mic className="w-4 h-4 text-red-600" />
-              <span className="text-sm font-medium text-red-900 tracking-wide">400+ Speaking Engagements</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Speaking <span className="text-red-600">Engagements</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
-              Keynotes, panels, and workshops on AI marketing, digital strategy, and marketing innovation at industry events, universities, and executive forums worldwide
-            </p>
-            <p className="text-sm text-gray-500 max-w-3xl mx-auto mb-4">
-              (Showing recent highlights—view complete history on David's <a href="https://serialmarketer.net/contact/speaking/" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700 underline">speaking page</a>)
-            </p>
-            <div className="mb-8">
-              <Link
-                to={createPageUrl("GuestLectures")}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-100 border border-amber-200 text-amber-800 text-sm font-medium hover:bg-amber-200 transition-colors"
-              >
-                🎓 View University & College Guest Lectures
-              </Link>
-            </div>
+      {/* ── GEO / Speaker Schema ──────────────────────────────────── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "David Berkowitz",
+            url: "https://highcaliberai.com",
+            jobTitle: "AI Marketing Strategist & Keynote Speaker",
+            description:
+              "David Berkowitz is a keynote speaker on AI marketing strategy with 400+ speaking engagements at SXSW, Cannes Lions, INBOUND, Google, and more. Founder of AI Marketers Guild (7,000+ members) and author of The Non-Obvious Guide to Using AI for Marketing.",
+            knowsAbout: [
+              "AI Marketing Strategy",
+              "Agentic AI",
+              "Marketing Automation",
+              "B2B Marketing",
+              "Generative AI for Marketing",
+              "Marketing Leadership",
+            ],
+            sameAs: [
+              "https://www.linkedin.com/in/dberkowitz",
+              "https://serialmarketer.net",
+              "https://highcaliberai.com/About",
+            ],
+          }),
+        }}
+      />
 
-            {/* Featured Stages */}
-            <div className="mt-10 mb-8">
-              <p className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-5">Featured keynotes at</p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {["Google", "Coca-Cola", "AARP", "SXSW", "ad:tech Latin America", "Binghamton University", "Columbia University", "INBOUND"].map((org) => (
-                  <span key={org} className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700 shadow-sm">
-                    {org}
-                  </span>
-                ))}
-              </div>
-            </div>
+      {/* ── HERO ─────────────────────────────────────────────────── */}
+      <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)", padding: "56px 24px 48px" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 
-            {/* Year Filter */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {years.map((year) => (
-                <button
-                  key={year}
-                  onClick={() => setSelectedYear(year)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    selectedYear === year
-                      ? "bg-red-600 text-white"
-                      : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
-                  }`}
-                >
-                  {year === "all" ? "All Years" : year}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+          <div style={{ textAlign: "center", marginBottom: "16px" }}>
+            <span style={{
+              background: "rgba(239,68,68,0.15)", color: "#ef4444",
+              border: "1px solid rgba(239,68,68,0.3)", borderRadius: "999px",
+              padding: "6px 18px", fontSize: "13px", fontWeight: 700, letterSpacing: "0.05em",
+            }}>
+              🎤 400+ Speaking Engagements
+            </span>
+          </div>
 
-      {/* Speaking Engagements Timeline */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          {isLoading ? (
-            <div className="text-center py-20">
-              <p className="text-gray-500">Loading speaking engagements...</p>
-            </div>
-          ) : (
-            Object.keys(groupedByYear).sort((a, b) => b - a).map((year) => (
-              <div key={year} className="mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 sticky top-24 bg-white py-4 z-10">
-                  {year}
-                </h2>
-                <div className="space-y-4">
-                  {groupedByYear[year].map((engagement, index) => (
-                    <motion.div
-                      key={engagement.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Card className="hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-red-200">
-                        <CardContent className="p-6">
-                          <div className="flex flex-col md:flex-row md:items-start gap-4">
-                            <div className="flex-shrink-0">
-                              <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-center min-w-[100px]">
-                                <div className="text-xs text-red-600 font-semibold mb-1">
-                                  {new Date(engagement.date).toLocaleDateString('en-US', { month: 'short' })}
-                                </div>
-                                <div className="text-2xl font-bold text-red-600">
-                                  {new Date(engagement.date).getDate()}
-                                </div>
-                              </div>
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between gap-3 mb-2">
-                                <h3 className="text-xl font-bold text-gray-900">{engagement.event_name}</h3>
-                                <Badge className={`${roleColors[engagement.role]} flex-shrink-0`}>
-                                  {engagement.role}
-                                </Badge>
-                              </div>
-                              <p className="text-gray-700 mb-3">{engagement.title}</p>
-                              {engagement.url && (
-                                <a
-                                  href={engagement.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center text-red-600 hover:text-red-700 text-sm font-medium"
-                                >
-                                  Event Details
-                                  <ExternalLink className="ml-1 w-3 h-3" />
-                                </a>
-                              )}
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
+          <h1 style={{
+            textAlign: "center", color: "#ffffff",
+            fontSize: "clamp(26px, 5vw, 42px)", fontWeight: 800,
+            marginBottom: "8px", lineHeight: 1.15,
+          }}>
+            Speaking Engagements
+          </h1>
+
+          <p style={{
+            textAlign: "center", color: "#94a3b8", fontSize: "17px",
+            maxWidth: "600px", margin: "0 auto 10px", lineHeight: 1.6,
+          }}>
+            Keynotes, panels, and workshops on AI marketing, digital strategy,
+            and marketing innovation at industry events, universities, and executive forums worldwide.
+          </p>
+
+          <p style={{
+            textAlign: "center", color: "#64748b", fontSize: "14px",
+            fontStyle: "italic", marginBottom: "36px",
+          }}>
+            Not a futurist. Not a theorist. A practitioner who runs AI-powered campaigns,
+            trains teams, and leads a 7,000-member community — then brings that experience to your stage.
+          </p>
+
+          {/* Stats bar */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+            gap: "12px", marginBottom: "36px",
+          }}>
+            {STATS.map((stat, i) => (
+              <div key={i} style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "10px", padding: "18px 12px", textAlign: "center",
+              }}>
+                <div style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: 800, color: "#ef4444", lineHeight: 1 }}>
+                  {stat.value}
+                </div>
+                <div style={{ fontSize: "11px", color: "#94a3b8", marginTop: "5px", lineHeight: 1.3 }}>
+                  {stat.label}
                 </div>
               </div>
-            ))
-          )}
-        </div>
-      </section>
+            ))}
+          </div>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Event Organizers Say
-            </h2>
-          </motion.div>
+          {/* Past stages */}
+          <p style={{
+            textAlign: "center", color: "#475569", fontSize: "12px",
+            fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "6px",
+          }}>
+            Past & Recent Stages
+          </p>
+          <p style={{ textAlign: "center", color: "#475569", fontSize: "13px", marginBottom: "32px" }}>
+            {PAST_STAGES.join("  ·  ")}
+          </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 mb-4 italic">
-                "That session was awesome -- truly! Would love to have you share what you see as new/next with our community WHENEVER you feel inspired. I wrote down multiple things I'll be digging into personally."
-              </blockquote>
-              <p className="font-semibold text-gray-900 text-sm">Sam Lee</p>
-              <p className="text-gray-600 text-xs">Founder, IndeCollective</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 mb-4 italic">
-                "You have an incredible ability to make AI accessible, practical and fun! Thanks for joining our podcast!"
-              </blockquote>
-              <p className="font-semibold text-gray-900 text-sm">Tessa Burg</p>
-              <p className="text-gray-600 text-xs">ModOp</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 mb-4 italic">
-                "We truly appreciated the time and effort you put into preparing and presenting such a great interactive session. We had 260 attendees to this session, and the audience was really engaged!"
-              </blockquote>
-              <p className="font-semibold text-gray-900 text-sm">Sally Word</p>
-              <p className="text-gray-600 text-xs">Digital Marketing Manager, AARP</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 mb-4 italic">
-                "Your willingness to come out and help with an amazing day of content for HSMAI Curate was invaluable. You were the perfect closing keynote. You struck just the right tone after a day long of action packed content."
-              </blockquote>
-              <p className="font-semibold text-gray-900 text-sm">David Atkins</p>
-              <p className="text-gray-600 text-xs">HSMAI Curate</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 mb-4 italic">
-                "Very good of you to come speak, and to share SO MUCH helpful material. I am sure everyone was really impressed, and I know they found it incredibly valuable."
-              </blockquote>
-              <p className="font-semibold text-gray-900 text-sm">Ruth Stevens</p>
-              <p className="text-gray-600 text-xs">NYU Stern</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 mb-4 italic">
-                "Thanks again for coming to share your thoughts on AI in marketing with my team. They found you approachable and relatable, and loved your advice on which tools to use."
-              </blockquote>
-              <p className="font-semibold text-gray-900 text-sm">Aurelie Guerreri</p>
-              <p className="text-gray-600 text-xs">CMO, DataDome</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 mb-4 italic">
-                "David, thank you again for a fantastic session. I have received a lot of great feedback about it, including from our CIO. The tips and tricks were excellent, and the case studies provided some new ideas on how folks could integrate generative AI into their projects."
-              </blockquote>
-              <p className="font-semibold text-gray-900 text-sm">Dylan O'Brien</p>
-              <p className="text-gray-600 text-xs">Agile Delivery Lead, AARP</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.7 }}
-              className="bg-gray-50 rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 mb-4 italic">
-                "Thanks for such an engaging presentation! You've certainly managed to take daunting information and make it so interesting and accessible!"
-              </blockquote>
-              <p className="font-semibold text-gray-900 text-sm">Patricia Raufer</p>
-              <p className="text-gray-600 text-xs">Executive Forum, May 2025</p>
-            </motion.div>
+          {/* CTAs */}
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="/Contact" style={{
+              background: "#ef4444", color: "#ffffff", fontWeight: 700,
+              fontSize: "15px", padding: "13px 26px", borderRadius: "8px",
+              textDecoration: "none", display: "inline-block",
+            }}>
+              Submit a Speaking Inquiry →
+            </a>
+            <a href="/Book" style={{
+              background: "transparent", color: "#e2e8f0", fontWeight: 600,
+              fontSize: "15px", padding: "13px 26px", borderRadius: "8px",
+              textDecoration: "none", display: "inline-block",
+              border: "1px solid rgba(255,255,255,0.2)",
+            }}>
+              📖 View David's Book
+            </a>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-red-600 to-red-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Mic className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Book David for Your Event
-            </h2>
-            <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
-              Looking for a speaker on AI marketing, digital strategy, or marketing innovation? Let's discuss how David can add value to your event.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to={createPageUrl("Contact")}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                Contact for Speaking
-              </Link>
-              <a
-                href="https://serialmarketer.net/contact/speaking/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-400 transition-colors"
-              >
-                View Speaking Info
-                <ExternalLink className="ml-2 w-4 h-4" />
-              </a>
-            </div>
-          </motion.div>
+      {/* ── Speaking Topics ───────────────────────────────────────── */}
+      <div style={{ background: "#f8fafc", padding: "48px 24px", borderBottom: "1px solid #e2e8f0" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <h2 style={{ textAlign: "center", fontSize: "20px", fontWeight: 700, color: "#0f172a", marginBottom: "4px" }}>
+            Topics & Keynotes
+          </h2>
+          <p style={{ textAlign: "center", color: "#64748b", fontSize: "14px", marginBottom: "24px" }}>
+            All sessions customized for your audience — from startup ecosystems to enterprise teams
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "12px" }}>
+            {SPEAKING_TOPICS.map((topic, i) => (
+              <div key={i} style={{
+                background: "#ffffff", border: "1px solid #e2e8f0",
+                borderRadius: "10px", padding: "16px 18px",
+                display: "flex", gap: "12px", alignItems: "flex-start",
+              }}>
+                <span style={{ fontSize: "20px", flexShrink: 0, marginTop: "2px" }}>{topic.icon}</span>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: "13px", color: "#0f172a", marginBottom: "4px", lineHeight: 1.3 }}>
+                    {topic.title}
+                  </div>
+                  <div style={{ fontSize: "12px", color: "#64748b", lineHeight: 1.5 }}>
+                    {topic.desc}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
+
+      {/* ── Engagement List ───────────────────────────────────────── */}
+      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "40px 24px" }}>
+
+        {/* Year filter pills */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "32px", justifyContent: "center" }}>
+          {years.map((yr) => (
+            <button
+              key={yr}
+              onClick={() => setSelectedYear(yr)}
+              style={{
+                padding: "6px 16px", borderRadius: "999px", border: "1px solid",
+                borderColor: selectedYear === yr ? "#ef4444" : "#e2e8f0",
+                background: selectedYear === yr ? "#ef4444" : "#fff",
+                color: selectedYear === yr ? "#fff" : "#64748b",
+                fontWeight: selectedYear === yr ? 700 : 400,
+                fontSize: "13px", cursor: "pointer",
+              }}
+            >
+              {yr}
+            </button>
+          ))}
+        </div>
+
+        {/* Engagement cards grouped by year */}
+        {loading ? (
+          <p style={{ textAlign: "center", color: "#94a3b8" }}>Loading…</p>
+        ) : sortedYears.length === 0 ? (
+          <p style={{ textAlign: "center", color: "#94a3b8" }}>No engagements found.</p>
+        ) : (
+          sortedYears.map((year) => (
+            <div key={year} style={{ marginBottom: "40px" }}>
+              <h3 style={{
+                fontSize: "22px", fontWeight: 800, color: "#0f172a",
+                borderBottom: "2px solid #f1f5f9", paddingBottom: "10px", marginBottom: "16px",
+              }}>
+                {year}
+              </h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                {grouped[year].map((eng, i) => {
+                  const d = new Date(eng.date);
+                  const mon = monthNames[d.getMonth()];
+                  const day = d.getDate();
+                  return (
+                    <div key={i} style={{
+                      display: "flex", gap: "16px", alignItems: "flex-start",
+                      padding: "16px", background: "#f8fafc",
+                      borderRadius: "10px", border: "1px solid #e2e8f0",
+                    }}>
+                      {/* Date badge */}
+                      <div style={{
+                        flexShrink: 0, width: "48px", textAlign: "center",
+                        background: "#0f172a", borderRadius: "8px", padding: "8px 4px",
+                      }}>
+                        <div style={{ color: "#ef4444", fontSize: "11px", fontWeight: 700 }}>{mon}</div>
+                        <div style={{ color: "#fff", fontSize: "18px", fontWeight: 800, lineHeight: 1 }}>{day}</div>
+                      </div>
+
+                      {/* Content */}
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", marginBottom: "4px" }}>
+                          <span style={{
+                            background: "#1e3a5f", color: "#fff",
+                            fontSize: "11px", fontWeight: 700,
+                            padding: "2px 10px", borderRadius: "999px",
+                          }}>
+                            {eng.role}
+                          </span>
+                          <span style={{ fontSize: "15px", fontWeight: 700, color: "#0f172a" }}>
+                            {eng.event_name}
+                          </span>
+                        </div>
+                        {eng.title && (
+                          <p style={{ fontSize: "13px", color: "#64748b", margin: "2px 0 0", lineHeight: 1.4 }}>
+                            {eng.title}
+                          </p>
+                        )}
+                        {eng.url && (
+                          <a
+                            href={eng.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: "12px", color: "#ef4444", textDecoration: "none", marginTop: "4px", display: "inline-block" }}
+                          >
+                            Event Details →
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* ── Bottom CTA ────────────────────────────────────────────── */}
+      <div style={{
+        background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)",
+        padding: "56px 24px", textAlign: "center",
+      }}>
+        <h2 style={{ color: "#fff", fontSize: "26px", fontWeight: 800, marginBottom: "10px" }}>
+          Ready to Book David for Your Event?
+        </h2>
+        <p style={{ color: "#94a3b8", fontSize: "16px", maxWidth: "500px", margin: "0 auto 28px", lineHeight: 1.6 }}>
+          Keynotes, workshops, and panels. Available for in-person and virtual events.
+          Let's build something your audience will actually use.
+        </p>
+        <a href="/Contact" style={{
+          background: "#ef4444", color: "#fff", fontWeight: 700,
+          fontSize: "16px", padding: "14px 32px", borderRadius: "8px",
+          textDecoration: "none", display: "inline-block",
+        }}>
+          Submit a Speaking Inquiry →
+        </a>
+      </div>
+
     </div>
   );
 }
