@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
@@ -50,15 +50,9 @@ function generatePAAQuestions(post) {
 }
 
 export default function BlogPost() {
-  const pathParts = window.location.pathname.split('/');
-  const slug = pathParts[pathParts.length - 1];
-
-  // Redirect old ?slug= URLs to new clean paths
-  const urlParams = new URLSearchParams(window.location.search);
-  const oldSlug = urlParams.get('slug');
-  if (oldSlug) {
-    window.location.replace(`/Blog/${oldSlug}`);
-  }
+  const { slug: slugParam } = useParams();
+  const [searchParams] = useSearchParams();
+  const slug = slugParam || searchParams.get('slug');
 
   const today = new Date().toISOString().split('T')[0];
 
