@@ -81,7 +81,7 @@ export default function Home() {
             </div>
             
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-14 leading-relaxed font-light">
-              Your team is sitting on AI tools they don't actually use. I fix that — through workshops, training, and a community of 7,000+ marketers who've already figured it out.
+              Your team is sitting on AI tools they don't actually use. I fix that — through workshops, training, and a community of 7,000+ marketers building real AI skills together.
             </p>
             
             <div className="flex flex-col items-center justify-center gap-4">
