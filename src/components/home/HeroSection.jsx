@@ -41,7 +41,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Real-World AI Strategy.
+            Your team bought the tools.
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -50,18 +50,18 @@ export default function HeroSection() {
             className="mb-6"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-red-600 leading-[1.15] tracking-tight">
-              No Science Fiction.
+              Now let's make them work.
             </h2>
           </motion.div>
 
           {/* Subheadline */}
           <motion.p 
-            className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed font-light"
+            className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            I partner with B2B marketing leaders to bridge the gap between "buying tools" and "getting results"—combining fractional leadership, applied training, and safe execution.
+            David Berkowitz helps B2B marketing teams cut through AI hype, build workflows that actually run, and get results you can report on — not just demos you can screenshot.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -75,14 +75,14 @@ export default function HeroSection() {
               to={createPageUrl("Services")}
               className="inline-flex items-center px-10 py-4 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all group"
             >
-              View Capabilities
+              See How It Works
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              to={createPageUrl("About")}
+              to={createPageUrl("Contact")}
               className="inline-flex items-center px-10 py-4 border border-gray-900 text-gray-900 font-medium rounded-md hover:bg-gray-900 hover:text-white transition-all"
             >
-              Meet David
+              Book a Conversation
             </Link>
           </motion.div>
 
@@ -99,7 +99,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <div className="text-sm font-semibold text-gray-900">Partner Marketplace</div>
-                <div className="text-xs text-gray-500">Find vetted AI agencies</div>
+                <div className="text-xs text-gray-500">Browse 50+ vetted AI vendors</div>
               </div>
             </Link>
             <Link to={createPageUrl("Training")} className="group flex items-center gap-3 px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50 transition-all text-left">
@@ -108,7 +108,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <div className="text-sm font-semibold text-gray-900">AI Training Programs</div>
-                <div className="text-xs text-gray-500">Workshops for your team</div>
+                <div className="text-xs text-gray-500">Build real AI skills in a day</div>
               </div>
             </Link>
             <Link to={createPageUrl("Book")} className="group flex items-center gap-3 px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50 transition-all text-left">
@@ -117,7 +117,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <div className="text-sm font-semibold text-gray-900">The AI Marketing Book</div>
-                <div className="text-xs text-gray-500">Available on Amazon</div>
+                <div className="text-xs text-gray-500">The no-hype guide for marketers</div>
               </div>
             </Link>
           </motion.div>
