@@ -237,7 +237,7 @@ export default function Partners() {
 
       <section className="py-10 bg-green-50 border-y border-green-100">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-lg font-semibold text-green-800 mb-1">🎉 Looking for a partner? It's completely free.</p>
+          <p className="text-lg font-semibold text-green-800 mb-1">Looking for a partner? It's completely free.</p>
           <p className="text-green-700 text-sm">Every partner in this marketplace has been personally reviewed. You won't find random vendors here — only providers David would actually recommend to his own clients.</p>
         </div>
       </section>

@@ -257,7 +257,7 @@ export default function PartnerSubmit() {
       <div className="max-w-2xl mx-auto px-4 pt-28 pb-20">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <h1 className="text-4xl font-bold text-gray-900 mb-2 text-center">Submit Your Listing</h1>
-          <p className="text-gray-500 text-center mb-4">Join the High Caliber AI Partner Marketplace — $49 lifetime</p>
+          <p className="text-gray-500 text-center mb-4">A personally curated directory of AI marketing service providers — $49 lifetime listing</p>
 
           {/* Check existing listing */}
           <div className="text-center mb-6">

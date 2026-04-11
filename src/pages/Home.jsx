@@ -81,7 +81,7 @@ export default function Home() {
             </div>
             
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-14 leading-relaxed font-light">
-              Your team is sitting on AI tools they don't actually use. I fix that — through workshops, training, and a community of 7,000+ marketers building real AI skills together.
+              Your team is sitting on AI tools they don't actually use. I fix that — through workshops, applied training, and a practitioner with deep roots across the AI marketing world.
             </p>
             
             <div className="flex flex-col items-center justify-center gap-4">
@@ -108,7 +108,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { number: "7,000+", label: "Guild Members" },
+              { number: "7,000+", label: "AIMG Members" },
               { number: "100+", label: "Workshops Delivered" },
               { number: "250+", label: "Published Bylines" },
               { number: "20+", label: "Years in Marketing" },
@@ -358,7 +358,7 @@ export default function Home() {
                 <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">List Your Services — $49</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">Get in front of David's audience of 7,000+ marketers. One-time fee, lifetime listing, personally reviewed.</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">Get in front of the practitioners and leaders David works with. One-time fee, lifetime listing, personally reviewed.</p>
               <Link to={createPageUrl("PartnerSubmit")} className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors text-sm">
                 Submit a Listing <ArrowRight className="w-4 h-4" />
               </Link>
