@@ -61,7 +61,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            David Berkowitz helps B2B marketing teams cut through AI hype, build skills that stick, and move from "we should be doing more with AI" to actually doing it. — not just demos you can screenshot.
+            David Berkowitz helps B2B marketing teams cut through AI hype, build real skills, and turn "we should be doing more with AI" into work that actually ships.
           </motion.p>
 
           {/* CTA Buttons */}
