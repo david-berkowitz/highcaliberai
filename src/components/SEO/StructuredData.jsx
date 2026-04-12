@@ -149,8 +149,11 @@ export function OrganizationStructuredData() {
 
 export function FAQStructuredData({ faqs }) {
   useEffect(() => {
+    if (!faqs || faqs.length === 0) return;
+
     const script = document.createElement('script');
     script.type = 'application/ld+json';
+    script.id = 'faq-schema';
     script.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -163,9 +166,15 @@ export function FAQStructuredData({ faqs }) {
         }
       }))
     });
+
+    const existing = document.getElementById('faq-schema');
+    if (existing) existing.remove();
+
     document.head.appendChild(script);
+
     return () => {
-      document.head.removeChild(script);
+      const s = document.getElementById('faq-schema');
+      if (s) s.remove();
     };
   }, [faqs]);
 

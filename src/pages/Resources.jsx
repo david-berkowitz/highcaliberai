@@ -97,8 +97,8 @@ export default function Resources() {
         <section className="py-10">
           <SectionHeader icon={TrendingUp} title="Research & Insights" description="Audience research, brand tracking, and AI-powered intelligence" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <ResourceCard icon={TrendingUp} title="SparkToro" description="Audience research and intelligence platform" href="https://sparktoro.com/" tier="smb" startingPrice="$150/mo" /> description="Audience research and intelligence platform" href="https://sparktoro.com/" tier="smb" />
-            <ResourceCard icon={Target} title="Otterly AI" description="AI engine monitoring and brand tracking" href="https://otterly.ai/?via=david" tier="smb" hasReferral startingPrice="$49/mo" /> description="AI engine monitoring and brand tracking" href="https://otterly.ai/?via=david" tier="smb" hasReferral />
+            <ResourceCard icon={TrendingUp} title="SparkToro" description="Audience research and intelligence platform" href="https://sparktoro.com/" tier="smb" startingPrice="$150/mo" />
+            <ResourceCard icon={Target} title="Otterly AI" description="AI engine monitoring and brand tracking" href="https://otterly.ai/?via=david" tier="smb" hasReferral startingPrice="$49/mo" />
             <ResourceCard icon={Brain} title="NotebookLM" description="Google's AI-powered research and note-taking assistant" href="https://notebooklm.google/" tier="smb" />
             <ResourceCard icon={Book} title="Passionfruit" description="AI-powered content optimization and recommendations" href="https://www.getpassionfruit.com/" />
             <ResourceCard icon={Target} title="AI Search Playbook" description="AirOps guide for marketers navigating AI-powered search" href="https://www.airops.com/report/ai-search-playbook-marketers" />
@@ -118,8 +118,8 @@ export default function Resources() {
         <section className="py-10">
           <SectionHeader icon={Sparkles} title="Content Creation" description="AI-powered video, audio, and visual content generation" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <ResourceCard icon={Sparkles} title="Opus Pro" description="AI video clipping and repurposing for social media" href="https://www.opus.pro/?via=a4312b" tier="smb" hasReferral startingPrice="$19/mo" /> description="AI video clipping and repurposing for social media" href="https://www.opus.pro/?via=a4312b" tier="smb" hasReferral />
-            <ResourceCard icon={Users} title="ElevenLabs" description="AI voice generation and text-to-speech platform" href="https://elevenlabs.io/" tier="smb" startingPrice="$5/mo" /> description="AI voice generation and text-to-speech platform" href="https://elevenlabs.io/" tier="smb" />
+            <ResourceCard icon={Sparkles} title="Opus Pro" description="AI video clipping and repurposing for social media" href="https://www.opus.pro/?via=a4312b" tier="smb" hasReferral startingPrice="$19/mo" />
+            <ResourceCard icon={Users} title="ElevenLabs" description="AI voice generation and text-to-speech platform" href="https://elevenlabs.io/" tier="smb" startingPrice="$5/mo" />
             <ResourceCard icon={Sparkles} title="BizGreetz AI®" description="AI-powered personalized video ad creation at scale" href="https://www.bizgreetz.com/" tier="enterprise" />
             <ResourceCard icon={Sparkles} title="Ideogram" description="Rapid AI image generation with excellent text rendering" href="https://ideogram.ai/" tier="smb" />
             <ResourceCard icon={Users} title="Jingle My Brand" description="AI-powered jingle and brand music creation" href="https://jinglemybrand.com/" tier="smb" />
