@@ -81,7 +81,7 @@ export default function Home() {
             </div>
             
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-14 leading-relaxed font-light">
-              Your team is sitting on AI tools they don't actually use. I fix that — through workshops, applied training, and a practitioner with deep roots across the AI marketing world.
+              Your team is sitting on AI tools they don't actually use. I fix that through workshops, applied training, and a practitioner with deep roots across the AI marketing world.
             </p>
             
             <div className="flex flex-col items-center justify-center gap-4">
@@ -143,7 +143,7 @@ export default function Home() {
                 AI Workshops & Training
               </h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Half-day and full-day workshops that get your team actually using AI on live campaigns — not just watching demos. Book me for your next offsite, summit, or internal training day.
+                Half-day and full-day workshops that get your team actually using AI on live campaigns, not just watching demos. Book me for your next offsite, summit, or internal training day.
               </p>
               <Link 
                 to={createPageUrl('Training')}
@@ -162,7 +162,7 @@ export default function Home() {
                 AI Readiness Assessment
               </h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Not sure where your team stands? Start here. Free 10-minute self-assessment, personalized roadmap delivered instantly — no call required.
+                Not sure where your team stands? Start here. Free 10-minute self-assessment, personalized roadmap delivered instantly. No call required.
               </p>
               <Link 
                 to={createPageUrl('AgenticAssessment')}
@@ -249,7 +249,7 @@ export default function Home() {
               
               <div className="space-y-6">
                 <p className="text-xl text-gray-700 leading-relaxed">
-                  David Berkowitz has delivered AI workshops for marketing teams across the country. He founded AI Marketers Guild — 7,000+ members strong — and sold Serial Marketers to Marketecture in 2025. He's not here to tell you AI is changing everything. He's here to show your team what to actually do about it.
+                  David Berkowitz has delivered AI workshops for marketing teams across the country. He founded AI Marketers Guild (7,000+ members) and sold Serial Marketers to Marketecture in 2025. He's not here to tell you AI is changing everything. He's here to show your team what to actually do about it.
                 </p>
                 
                 <div className="flex flex-col gap-4 py-6 border-y border-gray-200">
@@ -309,7 +309,7 @@ export default function Home() {
           </h2>
           
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Practical tips, tool recommendations, and resources — straight from someone who's actually using this stuff. No hype, no fluff. Join the list.
+            Practical tips, tool recommendations, and resources from someone who's actually using this stuff. No hype, no fluff. Join the list.
           </p>
           
           {isSubscribed ? (
@@ -348,7 +348,7 @@ export default function Home() {
                 <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Find a Vetted AI Partner</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">Browse personally curated agencies, tools, and consultants. Free for buyers — no cost, ever.</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">Browse personally curated agencies, tools, and consultants. Free for buyers, no cost, ever.</p>
               <Link to={createPageUrl("Partners")} className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors text-sm">
                 Browse Partners <ArrowRight className="w-4 h-4" />
               </Link>

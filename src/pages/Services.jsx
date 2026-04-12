@@ -163,7 +163,7 @@ export default function Services() {
               No Science Fiction.
             </h2>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
-              I partner with B2B marketing leaders to bridge the gap between "buying tools" and "getting results"—combining fractional leadership, applied training, and safe execution.
+              I partner with B2B marketing leaders to bridge the gap between "buying tools" and "getting results": fractional leadership, applied training, and safe execution.
             </p>
           </motion.div>
         </div>
@@ -183,7 +183,7 @@ export default function Services() {
               The Challenge
             </h3>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Buying tools is easy. Adoption is hard. Your team is overwhelmed. You've bought the tech, but you're stuck in "experiment mode." Policies are non-existent, shelfware is piling up, and you're worried about losing search visibility. You don't need tech support—you need a <span className="font-semibold text-red-600">GTM partner who knows what actually works</span>.
+              Buying tools is easy. Adoption is hard. Your team is overwhelmed. You've bought the tech, but you're stuck in "experiment mode." Policies are non-existent, shelfware is piling up, and you're worried about losing search visibility. You don't need tech support. You need a <span className="font-semibold text-red-600">GTM partner who knows what actually works</span>.
             </p>
           </motion.div>
         </div>
