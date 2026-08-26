@@ -181,7 +181,6 @@ export default function JobsPage() {
             <JobLink title="Peerlist" href="https://peerlist.io/dberkowitz/signup" description="LinkedIn alternative with portfolio showcase" stage="all" selectedStage={selectedStage} />
             <JobLink title="Pocit" href="https://www.pocitjobs.com/" description="Connecting people of color with tech jobs" stage="all" selectedStage={selectedStage} />
             <JobLink title="Publicist.co" href="http://www.publicist.co" description="Vetted talent in communications and marketing" stage="mid" selectedStage={selectedStage} />
-            <JobLink title="Refer" href="https://tryrefer.com/invite?access_code=DAVIDBERKOWI-IDHB" description="AI career agent (Lia) for your job search" featured stage="all" selectedStage={selectedStage} />
             <JobLink title="The Second Shift" href="https://www.thesecondshift.com/" description="Network for female executive talent" stage="senior" selectedStage={selectedStage} />
             <JobLink title="Shiny" href="https://useshiny.com/fractional-executives" description="Matching CXO talent to startups" stage="executive" selectedStage={selectedStage} />
             <JobLink title="Sonara" href="https://www.sonara.ai/" description="AI tool that automates job applications" stage="all" selectedStage={selectedStage} />
