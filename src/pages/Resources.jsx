@@ -155,6 +155,7 @@ export default function Resources() {
             <ResourceCard icon={Zap} title="n8n" description="Workflow automation for technical teams" href="https://n8n.io/" tier="smb" startingPrice="$20/mo (cloud)" />
             <ResourceCard icon={Brain} title="Manus" description="AI agent that autonomously completes complex tasks — research, analysis, code, and more — end to end." href="https://manus.im/invitation/AX6DKLYSICEZZL?utm_source=invitation&utm_medium=social&utm_campaign=copy_link" tier="smb" hasReferral />
             <ResourceCard icon={Zap} title="Polsia" description="AI that runs your company while you sleep. Plans, codes, and markets your projects autonomously — operating 24/7 and improving itself without human intervention." href="https://polsia.com/" tier="smb" startingPrice="$49/mo" />
+            <ResourceCard icon={Target} title="Is Agentic" description="Scores how ready your website is for AI agents, with evidence and recommended fixes" href="https://is-agentic.com/" tier="smb" />
           </div>
         </section>
 
